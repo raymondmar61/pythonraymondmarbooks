@@ -37,3 +37,69 @@ for eachplayers in players[0:3]:
 for eachnumber in range(100,-51,-25):
 	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
 print("\n")
+
+groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
+print(groceryset) #print {'duct tape', 'milk', 'lotion', 'starcrunch', 'beer', 'cereal'}
+if "milk" in groceryset:
+	print("Yes I have milk") #print Yes I have milk
+for eachgroceryset in groceryset:
+	print(eachgroceryset,end=",") #print duct tape,milk,lotion,starcrunch,beer,cereal,
+print("\n")
+
+classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
+print(classmatesdictionary["Emma"]) #print sits behind me
+for key, value in classmatesdictionary.items():
+	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
+print("")
+classmatesdictionary["Lucy"] = "I'm from Peanuts"
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
+print("\n")
+
+def functionname(number=17):
+	return number
+print(functionname(150)) #print 150
+print(functionname()) #print 17
+def functionname2(name="Raymond", action="jump", braincells=500000000, item="glue"):
+	print(name+" "+action+" "+item, braincells)
+functionname2(action="run") #return Raymond run glue 500000000
+functionname2(action="sleep", braincells=100000000) #return Raymond sleep glue 100000000
+def addnumbers(*numbers, ray="sunshine"):
+	total = 0
+	print(numbers)
+	for eachnumbers in numbers:
+		total+= eachnumbers
+	return total, ray
+print(addnumbers(3, 32)) #print (3, 32)\n (35, 'sunshine')
+print(addnumbers(-30, 30, 32, ray="moon")) #print (-30, 30, 32)\n (32, 'moon')
+players = [29, 58, 66, 71, 87]
+print(addnumbers(*players)) #print (29, 58, 66, 71, 87)\n (311, 'sunshine')
+print("\n")
+
+filewrite = open("thenewbostontextfile.txt","w")
+filewrite.write("Writing some stuff in my text file.\n")
+filewrite.write("I like bacon.\n")
+filewrite.close()
+fileread = open("thenewbostontextfile.txt","r")
+printtextfile = fileread.read()
+print(printtextfile) #print Writing some stuff in my text file.\n I like bacon.
+fileread.close()
+import os
+os.remove("thenewbostontextfile.txt")
+print("\n")
+
+try:
+	number = int("I'm a string")
+	#number = (5/0)
+	#number = 50/100
+except ValueError:
+	print(r"number = int(\"I'm a string\") is a ValueError") #print number = int(\"I'm a string\") is a ValueError
+except ZeroDivisionError:
+	print("number = (5/0) can't divide by zero is a ZeroDivisionError")
+except:
+	print("The number = 50/100 is valid code.  No error messages in except:.")
+finally:
+	print("The finally is printed not matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed not matter if the code works or doesn't work.  Finally always activates.
+
+
+
