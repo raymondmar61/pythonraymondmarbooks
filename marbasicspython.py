@@ -24,6 +24,12 @@ players.append(120)
 print(players) #print [90, 91, 98, 29, 58, 68, 71, 87, 120]
 players[7:] = [-1, -2, -3]
 print(players) #print [90, 91, 98, 29, 58, 68, 71, -1, -2, -3]
+singlea = [1, 2, 3, 4, 5]
+doubleb = [10, 11, 12, 13, 14]
+singleadoubleb = []
+for eachsinglea, eachdoubleb in zip(singlea, doubleb):
+	singleadoubleb.append(eachsinglea+eachdoubleb)
+print(singleadoubleb) #print [11, 13, 15, 17, 19]
 name = "Bucky"
 if name == "Bucky":
 	print("Hey there Bucky") #print Hey there Bucky
