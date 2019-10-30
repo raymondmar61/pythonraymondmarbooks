@@ -30,6 +30,41 @@ singleadoubleb = []
 for eachsinglea, eachdoubleb in zip(singlea, doubleb):
 	singleadoubleb.append(eachsinglea+eachdoubleb)
 print(singleadoubleb) #print [11, 13, 15, 17, 19]
+firstname = ["Bucky","Tom","Taylor"]
+lastname = ["Roberts","Hanks","Swift"]
+names = zip(firstname, lastname)
+print(names) #print <zip object at 0x7f7c3a3eeb48>
+for a, b in names:
+	print(a,end=",")
+	print(b,end=",")
+	print(a, b)
+'''
+Bucky,Roberts,Bucky Roberts
+Tom,Hanks,Tom Hanks
+Taylor,Swift,Taylor Swift
+'''
+nameslistcomprehension = list(names)
+print(nameslistcomprehension) #print []
+nameslistcomprehension = list(zip(names))
+print(nameslistcomprehension) #print []
+nameslistcomprehension = list(zip(firstname, lastname))
+print(nameslistcomprehension) #print [('Bucky', 'Roberts'), ('Tom', 'Hanks'), ('Taylor', 'Swift')]
+numbersa = [1, 5, 10, 79]
+numbersb = [2, 3, 42, 79]
+numbersab = zip(numbersa, numbersb)
+for numbersa, numbersb in numbersab:
+	if numbersa > numbersb:
+		print(numbersa)
+	elif numbersa < numbersb:
+		print(numbersb)
+	else:
+		print(numbersa,"two equal numbers.")
+"""
+2
+5
+42
+79 two equal numbers.
+"""
 name = "Bucky"
 if name == "Bucky":
 	print("Hey there Bucky") #print Hey there Bucky
@@ -39,9 +74,12 @@ else:
 	print("No name")
 players = [29, 58, 66, 71, 87]
 for eachplayers in players[0:3]:
-	print(eachplayers,end=" ") #print 29 58 66
+	print(eachplayers, end=" ") #print 29 58 66
 for eachnumber in range(100,-51,-25):
 	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
+print("")
+date, name, price = ["December 31, 2015","Bread Gloves",8.51]
+print(name) #print Bread Gloves
 print("\n")
 
 groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
@@ -80,6 +118,12 @@ print(addnumbers(3, 32)) #print (3, 32)\n (35, 'sunshine')
 print(addnumbers(-30, 30, 32, ray="moon")) #print (-30, 30, 32)\n (32, 'moon')
 players = [29, 58, 66, 71, 87]
 print(addnumbers(*players)) #print (29, 58, 66, 71, 87)\n (311, 'sunshine')
+def dropfirstlast(grades):
+	first, *middle, last = grades #first index is saved in first, last index is saved in last, the rest are saved in *middle
+	avg = sum(middle)/len(middle)
+	return avg
+print(dropfirstlast([65, 76, 98, 54, 21])) #print 76.0.  65 saved in first, 21 saved in last, averaged 76, 98, 54 is 76.0
+print(dropfirstlast([65, 76, 98, 54, 21, 54, 65, 99, 88, 78])) #print 69.375.  65 saved in first, 78 saved in last, averaged 76, 98, 54, 21, 54, 65, 99, 88 is 69.375.
 print("\n")
 
 filewrite = open("thenewbostontextfile.txt","w")
@@ -107,5 +151,5 @@ except:
 finally:
 	print("The finally is printed not matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed not matter if the code works or doesn't work.  Finally always activates.
 
-
-
+love = "check"
+print("{}".format(love))
