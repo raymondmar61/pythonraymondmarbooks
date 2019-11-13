@@ -24,12 +24,25 @@ players.append(120)
 print(players) #print [90, 91, 98, 29, 58, 68, 71, 87, 120]
 players[7:] = [-1, -2, -3]
 print(players) #print [90, 91, 98, 29, 58, 68, 71, -1, -2, -3]
+date, name, price = ["December 31, 2015","Bread Gloves",8.51]
+print(name) #print Bread Gloves
 singlea = [1, 2, 3, 4, 5]
 doubleb = [10, 11, 12, 13, 14]
 singleadoubleb = []
 for eachsinglea, eachdoubleb in zip(singlea, doubleb):
 	singleadoubleb.append(eachsinglea+eachdoubleb)
 print(singleadoubleb) #print [11, 13, 15, 17, 19]
+import heapq
+grades = [32, 43, 654, 34, 132, 66, 99, 532]
+print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
+print(heapq.nlargest(1, grades)) #print [654]
+print(heapq.nlargest(3, grades)) #print [654, 532, 132]
+print(heapq.nsmallest(2, grades)) #print [32, 34]
+stocks = [{"Ticker": "AAPL", "Price": 201}, {"Ticker": "GOOG", "Price": 800}, {"Ticker": "F", "Price": 54}, {"Ticker": "MSFT", "Price": 313}, {"Ticker": "TUNA", "Price": 68}]
+print(stocks) #print [{'Ticker': 'AAPL', 'Price': 201}, {'Ticker': 'GOOG', 'Price': 800}, {'Ticker': 'F', 'Price': 54}, {'Ticker': 'MSFT', 'Price': 313}, {'Ticker': 'TUNA', 'Price': 68}]
+print(heapq.nsmallest(2, stocks, key=lambda stock:stock["Price"])) #print [{'Ticker': 'F', 'Price': 54}, {'Ticker': 'TUNA', 'Price': 68}]
+print(heapq.nsmallest(2, stocks, key=lambda anyvariable:anyvariable["Price"])) #print [{'Ticker': 'F', 'Price': 54}, {'Ticker': 'TUNA', 'Price': 68}]
+print(heapq.nlargest(2, stocks, key=lambda anyvariable:anyvariable["Ticker"])) #print [{'Ticker': 'TUNA', 'Price': 68}, {'Ticker': 'MSFT', 'Price': 313}]
 firstname = ["Bucky","Tom","Taylor"]
 lastname = ["Roberts","Hanks","Swift"]
 names = zip(firstname, lastname)
@@ -65,6 +78,22 @@ for numbersa, numbersb in numbersab:
 42
 79 two equal numbers.
 """
+stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
+print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
+print(min(stocks)) #print AAPL
+print(zip(stocks.keys(),stocks.values())) #print <zip object at 0x7f85f40ac648>
+print(min(zip(stocks.keys(),stocks.values()))) #print ('AAPL', 99.76)
+print(max(zip(stocks.values(),stocks.keys()))) #print (520.54, 'GOOG')
+print(list(zip(stocks.keys(),stocks.values()))) #print [('GOOG', 520.54), ('FB', 76.45), ('YHOO', 39.28), ('AMZN', 306.21), ('AAPL', 99.76)]
+print(sorted(zip(stocks.keys(),stocks.values()))) #print [('AAPL', 99.76), ('AMZN', 306.21), ('FB', 76.45), ('GOOG', 520.54), ('YHOO', 39.28)]
+print(sorted(zip(stocks.values(),stocks.keys()))) #print [(39.28, 'YHOO'), (76.45, 'FB'), (99.76, 'AAPL'), (306.21, 'AMZN'), (520.54, 'GOOG')]
+income = [10, 30, 75]
+def doublemoney(dollars):
+	return dollars*2
+print(map(doublemoney, income)) #print <map object at 0x7fc2d7dcb278>
+print(list(map(doublemoney, income))) #print [20, 60, 150]
+print("\n")
+
 name = "Bucky"
 if name == "Bucky":
 	print("Hey there Bucky") #print Hey there Bucky
@@ -78,8 +107,6 @@ for eachplayers in players[0:3]:
 for eachnumber in range(100,-51,-25):
 	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
 print("")
-date, name, price = ["December 31, 2015","Bread Gloves",8.51]
-print(name) #print Bread Gloves
 print("\n")
 
 groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
@@ -88,6 +115,16 @@ if "milk" in groceryset:
 	print("Yes I have milk") #print Yes I have milk
 for eachgroceryset in groceryset:
 	print(eachgroceryset,end=",") #print duct tape,milk,lotion,starcrunch,beer,cereal,
+print("\n")
+
+text = "We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem."
+print(text)
+splittext = text.split()
+print(splittext) #print ['We', 'hope', 'to', 'one', 'day', 'become', 'the', "world's", 'leader', 'in', 'free,', 'education', 'resources.', 'We', 'are', 'constantly', 'discovering', 'and', 'adding', 'more', 'free', 'content', 'to', 'the', 'website', 'everyday.', 'There', 'is', 'already', 'an', 'enormous', 'amount', 'of', 'resoruces', 'online', 'that', 'can', 'be', 'accessed', 'for', 'free', 'by', 'anyone', 'in', 'the', 'world,', 'the', 'main', 'issue', 'right', 'now', 'is', 'that', 'very', 'little', 'of', 'it', 'is', 'organized', 'or', 'structured', 'in', 'any', 'way.', 'We', 'want', 'to', 'be', 'the', 'solution', 'to', 'that', 'problem.']
+from collections import Counter
+topwords = Counter(splittext)
+topthree = topwords.most_common(3)
+print(topthree) #print [('the', 5), ('to', 4), ('We', 3)]
 print("\n")
 
 classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
@@ -151,5 +188,18 @@ except:
 finally:
 	print("The finally is printed not matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed not matter if the code works or doesn't work.  Finally always activates.
 
+answer = lambda x: x*7
+print(answer(5)) #print 35
+
 love = "check"
 print("{}".format(love))
+
+
+
+
+
+
+
+
+
+
