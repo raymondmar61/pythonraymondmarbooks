@@ -80,13 +80,18 @@ for numbersa, numbersb in numbersab:
 """
 stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
 print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
+print(zip(stocks.values(), stocks.keys())) #print <zip object at 0x7f56392f8b48>
 print(min(stocks)) #print AAPL
 print(zip(stocks.keys(),stocks.values())) #print <zip object at 0x7f85f40ac648>
-print(min(zip(stocks.keys(),stocks.values()))) #print ('AAPL', 99.76)
-print(max(zip(stocks.values(),stocks.keys()))) #print (520.54, 'GOOG')
+print(min(zip(stocks.values(), stocks.keys()))) #print (39.28, 'YHOO')
+print(max(zip(stocks.keys(), stocks.values()))) #print ('YHOO', 39.28)
 print(list(zip(stocks.keys(),stocks.values()))) #print [('GOOG', 520.54), ('FB', 76.45), ('YHOO', 39.28), ('AMZN', 306.21), ('AAPL', 99.76)]
 print(sorted(zip(stocks.keys(),stocks.values()))) #print [('AAPL', 99.76), ('AMZN', 306.21), ('FB', 76.45), ('GOOG', 520.54), ('YHOO', 39.28)]
-print(sorted(zip(stocks.values(),stocks.keys()))) #print [(39.28, 'YHOO'), (76.45, 'FB'), (99.76, 'AAPL'), (306.21, 'AMZN'), (520.54, 'GOOG')]
+users = [{"fname": "Bucky", "lname": "Roberts"},{"fname": "Tom", "lname": "Roberts"},{"fname": "Bernie", "lname": "Zunks"},{"fname": "Jenna", "lname": "Hayes"},{"fname": "Sally", "lname": "Jones"},{"fname": "Amanda", "lname": "Roberts"},{"fname": "Tom", "lname": "Williams"},{"fname": "Dean", "lname": "Hayes"},{"fname": "Bernie", "lname": "Barbie"},{"fname": "Tom", "lname": "Jones"}]
+print(users) #print [{'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Tom', 'lname': 'Jones'}]
+from operator import itemgetter
+print(sorted(users, key=itemgetter("fname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Tom', 'lname': 'Jones'}]
+print(sorted(users, key=itemgetter("fname","lname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}]
 income = [10, 30, 75]
 def doublemoney(dollars):
 	return dollars*2
@@ -193,6 +198,8 @@ print(answer(5)) #print 35
 
 love = "check"
 print("{}".format(love))
+
+
 
 
 

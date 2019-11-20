@@ -112,5 +112,17 @@ kathy.move() #return Kathy is moving Mario
 #raymond.fireflower() #error message AttributeError: 'Mario' object has no attribute 'fireflower'
 edward.eatshroom() #return Edward made Mario eat the shroom
 edward.move() #return Edward is moving Mario
+from operator import attrgetter
+class User3:
+	def __init__(self, name, anumber):
+		self.name = name
+		self.user_id = anumber
+	def __repr__(self):
+		return self.name+" : "+str(self.user_id)
+users3list = [User3("Bucky", 43),User3("Sally", 5),User3("Tuna", 61),User3("Brian", 2),	User3("Joby", 77),User3("Amanda", 9)]
+print(users3list) #print [Bucky : 43, Sally : 5, Tuna : 61, Brian : 2, Joby : 77, Amanda : 9]
+print(sorted(users3list,key=attrgetter("name"))) #print [Amanda : 9, Brian : 2, Bucky : 43, Joby : 77, Sally : 5, Tuna : 61]
+print(sorted(users3list,key=attrgetter("user_id"))) #print [Brian : 2, Sally : 5, Amanda : 9, Bucky : 43, Tuna : 61, Joby : 77]
+
 
 
