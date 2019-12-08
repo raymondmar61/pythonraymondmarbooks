@@ -1,5 +1,6 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #thenewbostonallvideos
+#williamfisetallvideos
 
 print(18/5) #print 3.6
 print(18//5) #print 3
@@ -13,6 +14,7 @@ print(user[1:4]) #print una
 print(user[1:9:2]) #print uaMF
 print(user[-1]) #print h
 print(user[-1::-1]) #print hsiFcM an
+
 players = [29, 58, 66, 71, 87]
 print(players[2]) #print 66
 players[2] = 68
@@ -24,6 +26,60 @@ players.append(120)
 print(players) #print [90, 91, 98, 29, 58, 68, 71, 87, 120]
 players[7:] = [-1, -2, -3]
 print(players) #print [90, 91, 98, 29, 58, 68, 71, -1, -2, -3]
+list1 = [n for n in range(1,7)]
+print(list1) #print [1, 2, 3, 4, 5, 6]
+print(len(list1)) #print 6
+items = ["cat","dog","moon","shoe"]
+print(items[1]) #print dog
+print(items.index("cat")) #print 0
+items[1] = "parrot"
+print(items) #print ['cat', 'parrot', 'moon', 'shoe']
+items.append("door")
+print(items) #print ['cat', 'parrot', 'moon', 'shoe', 'door']
+items.insert(0,"door beginning at index zero")
+print(items) #print ['door beginning at index zero', 'cat', 'parrot', 'moon', 'shoe', 'door']
+items.remove("door beginning at index zero")
+print(items) #print ['cat', 'parrot', 'moon', 'shoe', 'door']
+items.pop()
+print(items) #print ['cat', 'parrot', 'moon', 'shoe']
+items.pop(2)
+print(items) #print ['cat', 'parrot', 'shoe']
+tryit = ['cat', 'parrot', 'shoe']
+del tryit[2]
+print(tryit) #print ['cat', 'parrot']
+tryit.remove("parrot")
+print(tryit) #print ['cat']
+duplicateitems = ["cat","dog","moon","shoe","cat","dog","cat"]
+print(duplicateitems.count("cat")) #print 3
+print(duplicateitems.count("dog")) #print 2
+duplicateitems.sort()
+print(duplicateitems) #print ['cat', 'cat', 'cat', 'dog', 'dog', 'moon', 'shoe']
+duplicateitems.reverse()
+print(duplicateitems) #print ['shoe', 'moon', 'dog', 'dog', 'cat', 'cat', 'cat']
+duplicateitems = []
+print(duplicateitems) #print []
+backwarditems = ["mop","hop","cat","dog","moon","shoe","dog","cat"]
+print(backwarditems) #print ['mop', 'hop', 'cat', 'dog', 'moon', 'shoe', 'dog', 'cat']
+backwarditems.reverse()
+print(backwarditems) #print ['cat', 'dog', 'shoe', 'moon', 'dog', 'cat', 'hop', 'mop']
+numberslist = [11,22,33,44,55,66,77,88]
+pipelist = ["|||"]
+fourpipelists = pipelist*4
+print(fourpipelists) #print ['|||', '|||', '|||', '|||']
+joinfourpipelists = "".join(fourpipelists)
+print(joinfourpipelists) #print ||||||||||||
+print(numberslist) #print [11, 22, 33, 44, 55, 66, 77, 88] 
+print(numberslist[::-1]) #print [88, 77, 66, 55, 44, 33, 22, 11]
+print(numberslist[2:5]) #print [33, 44, 55]
+print(numberslist[0::2]) #print [11, 33, 55, 77]
+print(numberslist[-1]) #print 88
+print(numberslist[-1::-2]) #print [88, 66, 44, 22]
+lettertuple = ("a","b","c")
+print(lettertuple[2]) #print c
+numbertuple = (1,2,3,4,5,6,7,8)
+print(numbertuple[1:5]) #print (2, 3, 4, 5)
+numbertuple = ()
+print(numbertuple) #print ()
 date, name, price = ["December 31, 2015","Bread Gloves",8.51]
 print(name) #print Bread Gloves
 singlea = [1, 2, 3, 4, 5]
@@ -106,6 +162,21 @@ elif name == "Lucky":
 	print("You're lucky")
 else:
 	print("No name")
+apples = 20
+if apples > 3:
+	print("First if statement independent greater than three apples.") #print First if statement independent greater than three apples.
+if apples > 5:
+	print("Second if statement independent greater than five apples.") #print Second if statement independent greater than five apples.
+if apples > 50:
+	print("Third if statement independent greater than fifty apples")
+else:
+	print("Third if statement independent greater than fifty apples else:  is like elif True:") #print Third if statement independent greater than fifty apples else:  is like elif True:
+if 10 <= apples <=20:
+	print("Fourth if statement independent between 10 and 20 apples inclusive.") #print Fourth if statement independent between 10 and 20 apples inclusive.
+location = "home"
+if location is "home" or location is "Vegas":
+	print("I'm {}".format(location)) #print I'm home
+
 players = [29, 58, 66, 71, 87]
 for eachplayers in players[0:3]:
 	print(eachplayers, end=" ") #print 29 58 66
