@@ -1,4 +1,6 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
+#Category:  *topic*
+#Categories:  Strings, Lists, Tuples, Dictionaries, try except, open file write file
 #thenewbostonallvideos
 #williamfisetallvideos
 
@@ -7,14 +9,98 @@ print(18//5) #print 3
 print(18//5.0) #print 3.0
 print(18/8) #print 2.25
 print(18//8) #print 2
+
+#Category:  Strings
 print(r"this story is \nokday d'kay") #print this story is \nokday d'kay. RM:  print as-is exact text
 user = "Tuna McFish"
 print(user[0]) #print T
 print(user[1:4]) #print una
 print(user[1:9:2]) #print uaMF
 print(user[-1]) #print h
-print(user[-1::-1]) #print hsiFcM an
+print(user[-1::-1]) #print hsiFcM anuT
+helloworld = "Hello world!"
+print(helloworld[::-1]) #print !dlrow olleH
+splitstring = "do goat sheep boat"
+print(list(splitstring)) #print ['d', 'o', ' ', 'g', 'o', 'a', 't', ' ', 's', 'h', 'e', 'e', 'p', ' ', 'b', 'o', 'a', 't']
+print(splitstring.split()) #print ['do', 'goat', 'sheep', 'boat']
+print(splitstring.split(" ")) #print ['do goat sheep boat']
+print(splitstring.split("\n")) #print ['do goat sheep boat']
+print(" ".split(splitstring)) #print [' ']
+print(splitstring.replace("boat","yoga")) #print do goat sheep yoga
+splitstring = "do goat sheep boat"
+print(splitstring.find("goat")) #print 3 which is the starting index number
+print(splitstring.startswith("do")) #print True
+print(splitstring.startswith("goat")) #print False
+print(splitstring.endswith("t")) #print True
+print(splitstring.endswith("boat")) #print True
+wordis = "ABCiop"
+print(wordis.lower()) #print abciop
+print(wordis.upper()) #print ABCIOP
+text = "We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem."
+print(text)
+splittext = text.split()
+print(splittext) #print ['We', 'hope', 'to', 'one', 'day', 'become', 'the', "world's", 'leader', 'in', 'free,', 'education', 'resources.', 'We', 'are', 'constantly', 'discovering', 'and', 'adding', 'more', 'free', 'content', 'to', 'the', 'website', 'everyday.', 'There', 'is', 'already', 'an', 'enormous', 'amount', 'of', 'resoruces', 'online', 'that', 'can', 'be', 'accessed', 'for', 'free', 'by', 'anyone', 'in', 'the', 'world,', 'the', 'main', 'issue', 'right', 'now', 'is', 'that', 'very', 'little', 'of', 'it', 'is', 'organized', 'or', 'structured', 'in', 'any', 'way.', 'We', 'want', 'to', 'be', 'the', 'solution', 'to', 'that', 'problem.']
+#inputcolors = str(input("Enter a list of colors separated by a space "))
+inputcolors = "black white red"
+print(inputcolors) #print black white red
+print(inputcolors.split()) #print ['black', 'white', 'red']
+splitinputcolors = inputcolors.split()
+print(" ".join(splitinputcolors)) #print black white red
+print(", ".join(splitinputcolors)) #print black, white, red
+from collections import Counter
+topwords = Counter(splittext)
+topthree = topwords.most_common(3)
+print(topthree) #print [('the', 5), ('to', 4), ('We', 3)]
+astring = "The String"
+anumber = 457
+print("Standard novice plus sign to concatenate string variables.  My number is " +str(anumber)+ ".  My string is " +astring+".") #print Standard novice plus sign to concatenate string variables.  My number is 457.  My string is The String.
+print("My number is %f.  My string is %s." %(anumber, astring)) #print My number is 457.000000.  My string is The String.
+print("My number is %d.  My string is %s." %(anumber, astring)) #print My number is 457.  My string is The String.
+print("Looking ahead .format().  My number is {}.  My string is {}." .format(anumber, astring)) #print Looking ahead .format().  My number is 457.  My string is The String.
+astring2 = "The String2"
+anumber2 = 457.56789
+print("My number is %f.  My string is %s." %(anumber2, astring2)) #print My number is 457.567890.  My string is The String2.
+print("My number is %d.  My string is %s." %(anumber2, astring2)) #print My number is 457.  My string is The String2.
+print("Looking ahead .format().  My number is {}.  My string is {}." .format(anumber2, astring2)) #print Looking ahead .format().  My number is 457.56789.  My string is The String2.
+print("Looking ahead .format().  My number is {:.2f}.  My string is {}." .format(anumber2, astring2)) #print Looking ahead .format().  My number is 457.57.  My string is The String2.
+print("Looking ahead .format().  My number is {1:.2f}.  My string is {0}." .format(astring2, anumber2)) #print Looking ahead .format().  My number is 457.57.  My string is The String2.
+escapecharacters = list("Hello World!")
+print(escapecharacters) #print ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!']
+print("\v".join(escapecharacters))
+'''
+H
+ e
+  l
+   l
+    o
+      
+      W
+       o
+        r
+         l
+          d
+           !
+'''
+print("\t".join(escapecharacters)) #H	e	l	l	o	 	W	o	r	l	d!
+print("\n".join(escapecharacters)) #H	e	l	l	o	 	W	o	r	l	d!
+'''
+H
+e
+l
+l
+o
+ 
+W
+o
+r
+l
+d
+!
+'''
+print("\h".join(escapecharacters)) #print H\he\hl\hl\ho\h \hW\ho\hr\hl\hd\h!
+print("\n")
 
+#Category:  Lists
 players = [29, 58, 66, 71, 87]
 print(players[2]) #print 66
 players[2] = 68
@@ -26,9 +112,6 @@ players.append(120)
 print(players) #print [90, 91, 98, 29, 58, 68, 71, 87, 120]
 players[7:] = [-1, -2, -3]
 print(players) #print [90, 91, 98, 29, 58, 68, 71, -1, -2, -3]
-list1 = [n for n in range(1,7)]
-print(list1) #print [1, 2, 3, 4, 5, 6]
-print(len(list1)) #print 6
 items = ["cat","dog","moon","shoe"]
 print(items[1]) #print dog
 print(items.index("cat")) #print 0
@@ -62,24 +145,23 @@ backwarditems = ["mop","hop","cat","dog","moon","shoe","dog","cat"]
 print(backwarditems) #print ['mop', 'hop', 'cat', 'dog', 'moon', 'shoe', 'dog', 'cat']
 backwarditems.reverse()
 print(backwarditems) #print ['cat', 'dog', 'shoe', 'moon', 'dog', 'cat', 'hop', 'mop']
-numberslist = [11,22,33,44,55,66,77,88]
+llist = ["candy","cookie","cracker","chips"]
+print("-".join(llist)) #print candy-cookie-cracker-chips
+print(" ".join(llist)) #print candy cookie cracker chips
 pipelist = ["|||"]
 fourpipelists = pipelist*4
 print(fourpipelists) #print ['|||', '|||', '|||', '|||']
 joinfourpipelists = "".join(fourpipelists)
 print(joinfourpipelists) #print ||||||||||||
+numberslist = [11,22,33,44,55,66,77,88]
 print(numberslist) #print [11, 22, 33, 44, 55, 66, 77, 88] 
 print(numberslist[::-1]) #print [88, 77, 66, 55, 44, 33, 22, 11]
 print(numberslist[2:5]) #print [33, 44, 55]
 print(numberslist[0::2]) #print [11, 33, 55, 77]
 print(numberslist[-1]) #print 88
 print(numberslist[-1::-2]) #print [88, 66, 44, 22]
-lettertuple = ("a","b","c")
-print(lettertuple[2]) #print c
-numbertuple = (1,2,3,4,5,6,7,8)
-print(numbertuple[1:5]) #print (2, 3, 4, 5)
-numbertuple = ()
-print(numbertuple) #print ()
+print(list(range(1,11))) #print [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(list(range(10,101,10))) #print [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 date, name, price = ["December 31, 2015","Bread Gloves",8.51]
 print(name) #print Bread Gloves
 singlea = [1, 2, 3, 4, 5]
@@ -118,6 +200,9 @@ nameslistcomprehension = list(zip(names))
 print(nameslistcomprehension) #print []
 nameslistcomprehension = list(zip(firstname, lastname))
 print(nameslistcomprehension) #print [('Bucky', 'Roberts'), ('Tom', 'Hanks'), ('Taylor', 'Swift')]
+list1 = [n for n in range(1,7)]
+print(list1) #print [1, 2, 3, 4, 5, 6]
+print(len(list1)) #print 6
 numbersa = [1, 5, 10, 79]
 numbersb = [2, 3, 42, 79]
 numbersab = zip(numbersa, numbersb)
@@ -134,6 +219,21 @@ for numbersa, numbersb in numbersab:
 42
 79 two equal numbers.
 """
+players = [29, 58, 66, 71, 87]
+for eachplayers in players[0:3]:
+	print(eachplayers, end=" ") #print 29 58 66
+for eachnumber in range(100,-51,-25):
+	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
+
+#Category:  Tuples
+lettertuple = ("a","b","c")
+print(lettertuple[2]) #print c
+numbertuple = (1,2,3,4,5,6,7,8)
+print(numbertuple[1:5]) #print (2, 3, 4, 5)
+numbertuple = ()
+print(numbertuple) #print ()
+
+#Category:  Dictionaries
 stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
 print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 print(zip(stocks.values(), stocks.keys())) #print <zip object at 0x7f56392f8b48>
@@ -148,11 +248,21 @@ print(users) #print [{'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Tom', 'l
 from operator import itemgetter
 print(sorted(users, key=itemgetter("fname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Tom', 'lname': 'Jones'}]
 print(sorted(users, key=itemgetter("fname","lname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}]
-income = [10, 30, 75]
-def doublemoney(dollars):
-	return dollars*2
-print(map(doublemoney, income)) #print <map object at 0x7fc2d7dcb278>
-print(list(map(doublemoney, income))) #print [20, 60, 150]
+classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
+print(classmatesdictionary["Emma"]) #print sits behind me
+for key, value in classmatesdictionary.items():
+	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
+print("")
+classmatesdictionary["Lucy"] = "I'm from Peanuts"
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
+groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
+print(groceryset) #print {'duct tape', 'milk', 'lotion', 'starcrunch', 'beer', 'cereal'}
+if "milk" in groceryset:
+	print("Yes I have milk") #print Yes I have milk
+for eachgroceryset in groceryset:
+	print(eachgroceryset,end=",") #print duct tape,milk,lotion,starcrunch,beer,cereal,
+print("\n")
 print("\n")
 
 name = "Bucky"
@@ -177,41 +287,13 @@ location = "home"
 if location is "home" or location is "Vegas":
 	print("I'm {}".format(location)) #print I'm home
 
-players = [29, 58, 66, 71, 87]
-for eachplayers in players[0:3]:
-	print(eachplayers, end=" ") #print 29 58 66
-for eachnumber in range(100,-51,-25):
-	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
+
 print("")
 print("\n")
 
-groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
-print(groceryset) #print {'duct tape', 'milk', 'lotion', 'starcrunch', 'beer', 'cereal'}
-if "milk" in groceryset:
-	print("Yes I have milk") #print Yes I have milk
-for eachgroceryset in groceryset:
-	print(eachgroceryset,end=",") #print duct tape,milk,lotion,starcrunch,beer,cereal,
 print("\n")
 
-text = "We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem."
-print(text)
-splittext = text.split()
-print(splittext) #print ['We', 'hope', 'to', 'one', 'day', 'become', 'the', "world's", 'leader', 'in', 'free,', 'education', 'resources.', 'We', 'are', 'constantly', 'discovering', 'and', 'adding', 'more', 'free', 'content', 'to', 'the', 'website', 'everyday.', 'There', 'is', 'already', 'an', 'enormous', 'amount', 'of', 'resoruces', 'online', 'that', 'can', 'be', 'accessed', 'for', 'free', 'by', 'anyone', 'in', 'the', 'world,', 'the', 'main', 'issue', 'right', 'now', 'is', 'that', 'very', 'little', 'of', 'it', 'is', 'organized', 'or', 'structured', 'in', 'any', 'way.', 'We', 'want', 'to', 'be', 'the', 'solution', 'to', 'that', 'problem.']
-from collections import Counter
-topwords = Counter(splittext)
-topthree = topwords.most_common(3)
-print(topthree) #print [('the', 5), ('to', 4), ('We', 3)]
-print("\n")
 
-classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
-print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
-print(classmatesdictionary["Emma"]) #print sits behind me
-for key, value in classmatesdictionary.items():
-	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
-print("")
-classmatesdictionary["Lucy"] = "I'm from Peanuts"
-print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
-print("\n")
 
 def functionname(number=17):
 	return number
@@ -237,8 +319,14 @@ def dropfirstlast(grades):
 	return avg
 print(dropfirstlast([65, 76, 98, 54, 21])) #print 76.0.  65 saved in first, 21 saved in last, averaged 76, 98, 54 is 76.0
 print(dropfirstlast([65, 76, 98, 54, 21, 54, 65, 99, 88, 78])) #print 69.375.  65 saved in first, 78 saved in last, averaged 76, 98, 54, 21, 54, 65, 99, 88 is 69.375.
+income = [10, 30, 75]
+def doublemoney(dollars):
+	return dollars*2
+print(map(doublemoney, income)) #print <map object at 0x7fc2d7dcb278>
+print(list(map(doublemoney, income))) #print [20, 60, 150]
 print("\n")
 
+#Category open file write file
 filewrite = open("thenewbostontextfile.txt","w")
 filewrite.write("Writing some stuff in my text file.\n")
 filewrite.write("I like bacon.\n")
@@ -251,6 +339,8 @@ import os
 os.remove("thenewbostontextfile.txt")
 print("\n")
 
+
+#Category:  try except
 try:
 	number = int("I'm a string")
 	#number = (5/0)
@@ -269,15 +359,4 @@ print(answer(5)) #print 35
 
 love = "check"
 print("{}".format(love))
-
-
-
-
-
-
-
-
-
-
-
 
