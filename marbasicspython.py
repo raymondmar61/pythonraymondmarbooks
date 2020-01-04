@@ -1,6 +1,6 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Strings, Lists, Tuples, Dictionaries, try except, open file write file
+#Categories:  Strings, Lists, Tuples, Dictionaries, try except, open file write file, Functions, import statement
 #thenewbostonallvideos
 #williamfisetallvideos
 
@@ -181,6 +181,14 @@ print(stocks) #print [{'Ticker': 'AAPL', 'Price': 201}, {'Ticker': 'GOOG', 'Pric
 print(heapq.nsmallest(2, stocks, key=lambda stock:stock["Price"])) #print [{'Ticker': 'F', 'Price': 54}, {'Ticker': 'TUNA', 'Price': 68}]
 print(heapq.nsmallest(2, stocks, key=lambda anyvariable:anyvariable["Price"])) #print [{'Ticker': 'F', 'Price': 54}, {'Ticker': 'TUNA', 'Price': 68}]
 print(heapq.nlargest(2, stocks, key=lambda anyvariable:anyvariable["Ticker"])) #print [{'Ticker': 'TUNA', 'Price': 68}, {'Ticker': 'MSFT', 'Price': 313}]
+numbers = list(range(0,10))
+squares = []
+for onenumber in numbers:
+	squares.append(onenumber*onenumber)
+print(squares) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+squareslistcomprehension = [onenumber*onenumber for onenumber in numbers]
+print(squareslistcomprehension) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+#Reuven Lerner:  For loops perform an action a number of times; e.g. delete files, submit scrabble score for each word in a sentence, ping IP addresses, and copy a file to a server up to five times.  List comprehension get a list back for direct use as a list or input to create a different data structure; e.g. get usernames from Unix's, turning a configuration file a list of lists, and summing a bunch of hex numbers into integers. 
 firstname = ["Bucky","Tom","Taylor"]
 lastname = ["Roberts","Hanks","Swift"]
 names = zip(firstname, lastname)
@@ -294,7 +302,20 @@ print("\n")
 print("\n")
 
 
-
+#Category:  Functions
+def helloreuvenlerner(name):
+	"This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute."
+	return "Hello, {}".format(name)
+print(helloreuvenlerner("Raymond")) #print Hello, Raymond
+help(helloreuvenlerner) #return Help on function helloreuvenlerner in module __main__: helloreuvenlerner(name) This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute.  (END)
+def helloreuvenlernerbetterdocstring(name):
+	"""
+	This is the better docstring.
+	Write multiple lines.
+	Docstring tells user what the function does, how to run the function, and what it returns.
+	"""
+	return "Hello, {}".format(name)
+help(helloreuvenlernerbetterdocstring)  #return Help on function helloreuvenlernerbetterdocstring in module __main__: helloreuvenlernerbetterdocstring(name) This is the better docstring. Write multiple lines. Docstring tells user what the function does, how to run the function, and what it returns. (END)
 def functionname(number=17):
 	return number
 print(functionname(150)) #print 150
@@ -360,3 +381,12 @@ print(answer(5)) #print 35
 love = "check"
 print("{}".format(love))
 
+#Category:  import statement
+#import mymod
+#import is a statement.  import is not a function.  import has no return value like def and class.
+#mymod is the name of the module to be loaded and the name of the variable we define.  The global variable "x" defined in mymod is available afterwards as mymod.x.
+#The import statement is defining a variable mymod.  We can't pass mymod as a string.
+#from X import Y
+#import foobar
+#from foorbar import hello, x
+#from mymod import *  <--Reuven says don't do this in production.  Okay in development.
