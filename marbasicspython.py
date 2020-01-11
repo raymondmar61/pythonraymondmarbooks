@@ -1,6 +1,6 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Strings, Lists, Tuples, Dictionaries, try except, open file write file, Functions, import statement
+#Categories:  Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, import statement
 #thenewbostonallvideos
 #williamfisetallvideos
 
@@ -242,8 +242,19 @@ numbertuple = ()
 print(numbertuple) #print ()
 
 #Category:  Dictionaries
+classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
+print(classmatesdictionary["Emma"]) #print sits behind me
+for key, value in classmatesdictionary.items():
+	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
+classmatesdictionary["Lucy"] = "I'm from Peanuts"
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
+classmatesdictionary.update({"Lucy":"Psychiatric Help $0.05"})
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'Psychiatric Help $0.05'}
 stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
 print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
+for eachvalue in stocks.values():
+	print(eachvalue) #print 520.54\n76.45\n39.28\n306.21\n99.76
 print(zip(stocks.values(), stocks.keys())) #print <zip object at 0x7f56392f8b48>
 print(min(stocks)) #print AAPL
 print(zip(stocks.keys(),stocks.values())) #print <zip object at 0x7f85f40ac648>
@@ -251,26 +262,24 @@ print(min(zip(stocks.values(), stocks.keys()))) #print (39.28, 'YHOO')
 print(max(zip(stocks.keys(), stocks.values()))) #print ('YHOO', 39.28)
 print(list(zip(stocks.keys(),stocks.values()))) #print [('GOOG', 520.54), ('FB', 76.45), ('YHOO', 39.28), ('AMZN', 306.21), ('AAPL', 99.76)]
 print(sorted(zip(stocks.keys(),stocks.values()))) #print [('AAPL', 99.76), ('AMZN', 306.21), ('FB', 76.45), ('GOOG', 520.54), ('YHOO', 39.28)]
+del(stocks["GOOG"])
+print(stocks) #print {'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
+stocks.clear()
+print(stocks) #print {}
 users = [{"fname": "Bucky", "lname": "Roberts"},{"fname": "Tom", "lname": "Roberts"},{"fname": "Bernie", "lname": "Zunks"},{"fname": "Jenna", "lname": "Hayes"},{"fname": "Sally", "lname": "Jones"},{"fname": "Amanda", "lname": "Roberts"},{"fname": "Tom", "lname": "Williams"},{"fname": "Dean", "lname": "Hayes"},{"fname": "Bernie", "lname": "Barbie"},{"fname": "Tom", "lname": "Jones"}]
 print(users) #print [{'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Tom', 'lname': 'Jones'}]
 from operator import itemgetter
 print(sorted(users, key=itemgetter("fname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Tom', 'lname': 'Jones'}]
 print(sorted(users, key=itemgetter("fname","lname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}]
-classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
-print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
-print(classmatesdictionary["Emma"]) #print sits behind me
-for key, value in classmatesdictionary.items():
-	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
-print("")
-classmatesdictionary["Lucy"] = "I'm from Peanuts"
-print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
+print("\n")
+
+#Category:  Sets
 groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
 print(groceryset) #print {'duct tape', 'milk', 'lotion', 'starcrunch', 'beer', 'cereal'}
 if "milk" in groceryset:
 	print("Yes I have milk") #print Yes I have milk
 for eachgroceryset in groceryset:
 	print(eachgroceryset,end=",") #print duct tape,milk,lotion,starcrunch,beer,cereal,
-print("\n")
 print("\n")
 
 name = "Bucky"
@@ -324,6 +333,32 @@ def functionname2(name="Raymond", action="jump", braincells=500000000, item="glu
 	print(name+" "+action+" "+item, braincells)
 functionname2(action="run") #return Raymond run glue 500000000
 functionname2(action="sleep", braincells=100000000) #return Raymond sleep glue 100000000
+def removevowels(string):
+	vowels = "aeiou"
+	consonantstring = ""
+	for eachstring in string:
+		if eachstring not in vowels:
+			consonantstring += eachstring
+	return consonantstring
+print(removevowels("abcdefghij")) #print bcdfghj
+def commonstartendlists(list1, list2):
+	startsmatch = list1[0] == list2[0]
+	endsmatch = list1[-1] == list2[-1]
+	return startsmatch and endsmatch
+print(commonstartendlists([1,4,6,3],[1,57,3])) #print True
+print(commonstartendlists([1,4,6,3],[1,57,9])) #print False
+print(True and True) #print True
+print(True and False) #print False
+print(False and False) #print False
+print(True, True) #print True, True
+print(True, False) #print True, False
+print(False, False) #print False, False
+def commonstartendlistscomma(list1, list2):
+	startsmatch = list1[0] == list2[0]
+	endsmatch = list1[-1] == list2[-1]
+	return startsmatch, endsmatch
+print(commonstartendlistscomma([1,4,6,3],[1,57,3])) #print (True, True)
+print(commonstartendlistscomma([1,4,6,3],[1,57,9])) #print (True, False)
 def addnumbers(*numbers, ray="sunshine"):
 	total = 0
 	print(numbers)
@@ -334,12 +369,72 @@ print(addnumbers(3, 32)) #print (3, 32)\n (35, 'sunshine')
 print(addnumbers(-30, 30, 32, ray="moon")) #print (-30, 30, 32)\n (32, 'moon')
 players = [29, 58, 66, 71, 87]
 print(addnumbers(*players)) #print (29, 58, 66, 71, 87)\n (311, 'sunshine')
+def addnumbers2(ray2="sunshine", *numbers2):
+	total2 = 0
+	print(ray2)
+	print(numbers2)
+	print(type(numbers2))
+	for eachnumbers in numbers2:
+		total2 += eachnumbers
+	return ray2 and total2
+print(addnumbers2())
+'''
+sunshine
+()
+<class 'tuple'>
+0
+'''
+print(addnumbers2("rainy",3,32))
+'''
+rainy
+(3, 32)
+<class 'tuple'>
+35
+'''
 def dropfirstlast(grades):
 	first, *middle, last = grades #first index is saved in first, last index is saved in last, the rest are saved in *middle
 	avg = sum(middle)/len(middle)
 	return avg
 print(dropfirstlast([65, 76, 98, 54, 21])) #print 76.0.  65 saved in first, 21 saved in last, averaged 76, 98, 54 is 76.0
 print(dropfirstlast([65, 76, 98, 54, 21, 54, 65, 99, 88, 78])) #print 69.375.  65 saved in first, 78 saved in last, averaged 76, 98, 54, 21, 54, 65, 99, 88 is 69.375.
+def peopleinformation(**peopleages):
+	averageage = 0
+	print(peopleages) #print {'susan': 88, 'ryan': 345, 'roxanne': 45
+	for age in peopleages.values():
+		averageage += age
+	return averageage/len(peopleages)
+print(peopleinformation(susan=88, ryan=345, roxanne=45)) #print 159.33333333333334
+passdictionary = {'susan': 88, 'ryan': 345, 'roxanne': 45}
+print(passdictionary) #print {'susan': 88, 'ryan': 345, 'roxanne': 45}
+def peopleinformation2(peopleages2):
+	averageage2 = 0
+	print(peopleages2) #print {'susan': 88, 'ryan': 345, 'roxanne': 45}
+	for age2 in peopleages2.values():
+		averageage2 += age2
+	return averageage2/len(peopleages2)
+print(peopleinformation2(passdictionary)) #print 159.33333333333334
+#inefficient way to print largestnumber global variable
+largestnumber2 = 0
+def setlargestnumber2(list_):
+	largest = 0
+	for number in list_:
+		if number > largest:
+			largest = number
+	largestnumber = largest
+	return largestnumber	
+largestnumber2 = setlargestnumber2([45,3,67,357,33])
+print(largestnumber2) #print 357
+#efficient way to print largestnumber global variable
+largestnumber3 = 0
+def setlargestnumber3(list_):
+	global largestnumber3
+	largest = 0
+	for number in list_:
+		if number > largest:
+			largest = number
+	largestnumber3 = largest
+	print(largestnumber3)
+setlargestnumber3([45,3,67,3357,33]) #return 3357
 income = [10, 30, 75]
 def doublemoney(dollars):
 	return dollars*2
