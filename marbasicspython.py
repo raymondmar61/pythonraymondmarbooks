@@ -1,6 +1,6 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, import statement
+#Categories:  Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, Lambda, import statement
 #thenewbostonallvideos
 #williamfisetallvideos
 
@@ -310,8 +310,11 @@ print("\n")
 
 print("\n")
 
-
 #Category:  Functions
+def functionobjectnamedhello(name):
+	return "The function object named hello returns {}".format(name)
+print(functionobjectnamedhello("Return red")) #print The function object named hello returns Return red
+print(functionobjectnamedhello("Python calls or invokes the object attached to functionobjectnamedhello")) #print The function object named hello returns Python calls or invokes the object attached to functionobjectnamedhello
 def helloreuvenlerner(name):
 	"This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute."
 	return "Hello, {}".format(name)
@@ -470,8 +473,26 @@ except:
 finally:
 	print("The finally is printed not matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed not matter if the code works or doesn't work.  Finally always activates.
 
+#Category:  Lambda
 answer = lambda x: x*7
 print(answer(5)) #print 35
+#Lambda separates creating a new function object and assigning a name to the function object; e.g. def functionobjectnamedhello(name).  Lambda creates the function object; e.g. a list [10, 20, 30] and a dictionary{"a":1, "b":2}.
+mynumberlist = [10, 3, -5, -7, -15, 17]
+mynumberlist.sort()
+print(mynumberlist) #print [-15, -7, -5, 3, 10, 17]
+#sort mynumberlist according to string length 1 is before -1.  -1 is before -10.
+#list.sort() allows us to pass a "key" parameter which is a function.  The function is invoked once for every element in the list.  The result invoking the "key" function is used for comparison purposes.  Ordering of the reslting list is affected by the "key" function.  The elements themselves are unaffected.
+def stringlength(x):
+	print("x",x) #print x 10\n x 3\n x -5\n x -7\n x -15\n x 17
+	print(len(str(x))) #print 2\n 1\n 2\n 2\n 3\n 2\n
+	return len(str(x))
+mynumberlist = [10, 3, -5, -7, -15, 17]
+mynumberlist.sort(key=stringlength)
+print(mynumberlist) #print [3, 10, -5, -7, 17, -15]
+#lambda comes in handy.  def stringlength() used once.  No need to create a new function.  Pass the "key" value of an anonymous function object.  We don't define a program used once.
+mynumberlist = [10, 3, -5, -7, -15, 17]
+mynumberlist.sort(key=lambda x: len(str(x)))
+print(mynumberlist) #print [3, 10, -5, -7, 17, -15]
 
 love = "check"
 print("{}".format(love))
