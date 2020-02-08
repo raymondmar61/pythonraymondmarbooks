@@ -443,7 +443,64 @@ def doublemoney(dollars):
 	return dollars*2
 print(map(doublemoney, income)) #print <map object at 0x7fc2d7dcb278>
 print(list(map(doublemoney, income))) #print [20, 60, 150]
+#Recursion
+def doublenorecursion(x):
+	print("x variable {}".format(x))
+	x -=1
+	return x
+doublenorecursion(4) #return x variable 4
+print(doublenorecursion(4)) #return x variable 4\n 3
+def doubleyesrecursion(x):
+	print("x yes recursion variable {}".format(x))
+	if x == 0:
+		return "x is zero is the base case"
+	return doubleyesrecursion(x-1)
+doubleyesrecursion(4) #return x yes recursion variable 4\n x yes recursion variable 3\n x yes recursion variable 2\n x yes recursion variable 1\n x yes recursion variable 0
+print(doubleyesrecursion(4)) #return x yes recursion variable 4\n x yes recursion variable 3\n x yes recursion variable 2\n x yes recursion variable 1\n x yes recursion variable 0\n x is zero is the base case
 print("\n")
+#Embed Function Calls
+def addten(num):
+	return num+10
+def double(num):
+	return num*2
+def triple(num):
+	return num*3
+number = 3
+tripled = triple(number)
+print(tripled) #print 9
+doubled = double(tripled)
+print(doubled) #print 18
+addedten = addten(doubled)
+print(addedten) #print 28
+number = 3
+result = addten(double(triple(number)))
+print(result) #print 28
+def assignvariable():
+	#print("Assigned variable to function")
+	return "Assigned variable to function"
+functionvariable = assignvariable()
+print(functionvariable) #print Assigned variable to function
+def addfunction():
+	def addtwonumbers(a, b):
+		return a+b
+	return addtwonumbers
+functionvariable = addfunction()
+print(functionvariable(4,5)) #print 9
+def doubleaddfunction():
+	def addtwonumbers(a,b):
+		def double(n):
+			return n*2
+		return double(a) + double(b)
+	return addtwonumbers
+functionvariable = doubleaddfunction()
+print(functionvariable(4,5)) #print 18
+def combinestrings(*strings):
+	return "".join(strings)
+print(combinestrings("Ed","Al","Winry","Riza","Roy","Mei Chang")) #print EdAlWinryRizaRoyMei Chang
+def printcombinestrings(functionname, *args):
+	return functionname(*args)
+print(printcombinestrings(combinestrings,"red","green","blue","yellow")) #print redgreenblueyellow
+
 
 #Category open file write file
 filewrite = open("thenewbostontextfile.txt","w")
