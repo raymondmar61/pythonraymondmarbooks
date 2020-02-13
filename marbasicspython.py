@@ -1,14 +1,20 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, Lambda, import statement
+#Categories:  Math, Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, Lambda, import statement
+#Classes at marbasicspythonclasses.py.
+#Modules at marcommonmodulespython.py.  Math.
 #thenewbostonallvideos
 #williamfisetallvideos
 
+#Category:  Math
 print(18/5) #print 3.6
 print(18//5) #print 3
 print(18//5.0) #print 3.0
 print(18/8) #print 2.25
 print(18//8) #print 2
+print(abs(-100)) #print 100
+print(pow(4,2)) #print 16
+print(4**2) #print 16
 
 #Category:  Strings
 print(r"this story is \nokday d'kay") #print this story is \nokday d'kay. RM:  print as-is exact text
@@ -102,6 +108,7 @@ print("\n")
 
 #Category:  Lists
 players = [29, 58, 66, 71, 87]
+print(list(map(str, players))) #print ['29', '58', '66', '71', '87']
 print(players[2]) #print 66
 players[2] = 68
 print(players[2]) #print 68
@@ -113,6 +120,8 @@ print(players) #print [90, 91, 98, 29, 58, 68, 71, 87, 120]
 players[7:] = [-1, -2, -3]
 print(players) #print [90, 91, 98, 29, 58, 68, 71, -1, -2, -3]
 items = ["cat","dog","moon","shoe"]
+print(min(items)) #print cat
+print(max(items)) #print shoe
 print(items[1]) #print dog
 print(items.index("cat")) #print 0
 items[1] = "parrot"
@@ -135,6 +144,8 @@ print(tryit) #print ['cat']
 duplicateitems = ["cat","dog","moon","shoe","cat","dog","cat"]
 print(duplicateitems.count("cat")) #print 3
 print(duplicateitems.count("dog")) #print 2
+print(sorted(duplicateitems)) #print ['cat', 'cat', 'cat', 'dog', 'dog', 'moon', 'shoe']
+print(sorted(duplicateitems, reverse=True)) #print ['shoe', 'moon', 'dog', 'dog', 'cat', 'cat', 'cat']
 duplicateitems.sort()
 print(duplicateitems) #print ['cat', 'cat', 'cat', 'dog', 'dog', 'moon', 'shoe']
 duplicateitems.reverse()
@@ -173,6 +184,8 @@ print(singleadoubleb) #print [11, 13, 15, 17, 19]
 import heapq
 grades = [32, 43, 654, 34, 132, 66, 99, 532]
 print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
+print(min(grades)) #print 32
+print(max(grades)) #print 654
 print(heapq.nlargest(1, grades)) #print [654]
 print(heapq.nlargest(3, grades)) #print [654, 532, 132]
 print(heapq.nsmallest(2, grades)) #print [32, 34]
@@ -191,6 +204,10 @@ print(squareslistcomprehension) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 #Reuven Lerner:  For loops perform an action a number of times; e.g. delete files, submit scrabble score for each word in a sentence, ping IP addresses, and copy a file to a server up to five times.  List comprehension get a list back for direct use as a list or input to create a different data structure; e.g. get usernames from Unix's, turning a configuration file a list of lists, and summing a bunch of hex numbers into integers. 
 firstname = ["Bucky","Tom","Taylor"]
 lastname = ["Roberts","Hanks","Swift"]
+print(enumerate(firstname)) #print <enumerate object at 0x7f01d25b5708>
+print(list(enumerate(firstname))) #print [(0, 'Bucky'), (1, 'Tom'), (2, 'Taylor')]
+print(list(enumerate(lastname))) #print [(0, 'Roberts'), (1, 'Hanks'), (2, 'Swift')]
+print(tuple(enumerate(firstname))) #print ((0, 'Bucky'), (1, 'Tom'), (2, 'Taylor'))
 names = zip(firstname, lastname)
 print(names) #print <zip object at 0x7f7c3a3eeb48>
 for a, b in names:
@@ -208,6 +225,10 @@ nameslistcomprehension = list(zip(names))
 print(nameslistcomprehension) #print []
 nameslistcomprehension = list(zip(firstname, lastname))
 print(nameslistcomprehension) #print [('Bucky', 'Roberts'), ('Tom', 'Hanks'), ('Taylor', 'Swift')]
+print(list(zip(firstname, lastname))) #print [('Bucky', 'Roberts'), ('Tom', 'Hanks'), ('Taylor', 'Swift')]
+print(list(zip(firstname, lastname))[1]) #print ('Tom', 'Hanks')
+print(list(zip(firstname, lastname))[1][1]) #print Hanks
+print(tuple(zip(firstname, lastname))) #print (('Bucky', 'Roberts'), ('Tom', 'Hanks'), ('Taylor', 'Swift'))
 list1 = [n for n in range(1,7)]
 print(list1) #print [1, 2, 3, 4, 5, 6]
 print(len(list1)) #print 6
@@ -500,7 +521,18 @@ print(combinestrings("Ed","Al","Winry","Riza","Roy","Mei Chang")) #print EdAlWin
 def printcombinestrings(functionname, *args):
 	return functionname(*args)
 print(printcombinestrings(combinestrings,"red","green","blue","yellow")) #print redgreenblueyellow
-
+def greaterthantenfilterlist(numberlist):
+	return numberlist > 10
+thenumberlist = [5,7,345,78,34,5]
+print(filter(greaterthantenfilterlist, thenumberlist)) #print <filter object at 0x7f5bce4d7128>
+print(list(filter(greaterthantenfilterlist, thenumberlist))) #print [345, 78, 34]
+print(list(map(greaterthantenfilterlist,thenumberlist))) #print [False, False, True, True, True, False]
+def beginswithletterfilterlist(wordlist, prefix="e"):
+	return wordlist.startswith(prefix)
+thewordlist = ["earth","unicycle","moose","beed","eradicate"]
+#print(filter(beginswithletterfilterlist, thewordlist,"e")) #error message filter expected 2 arguments
+print(filter(beginswithletterfilterlist, thewordlist)) #print <filter object at 0x7f7ca0627828>
+print(list(filter(beginswithletterfilterlist, thewordlist))) #print ['earth', 'eradicate']
 
 #Category open file write file
 filewrite = open("thenewbostontextfile.txt","w")
@@ -513,6 +545,68 @@ print(printtextfile) #print Writing some stuff in my text file.\n I like bacon.
 fileread.close()
 import os
 os.remove("thenewbostontextfile.txt")
+filename = "createnewfile.txt"
+createnewfile = open(filename,"w")
+try:
+	createnewfile.write("Write this sentence")
+except BaseException:
+	print("BaseException error")
+finally:
+	createnewfile.close()
+os.remove(filename)
+filename = "tempexample.txt"
+examplefile = open(filename,"w")
+try:
+	examplefile.write("Blue goose on the loose\n")
+	examplefile.write("Honeycomb cereal\n")
+except Exception as aserror:
+	print("Problem handling file.  Error was %s" % aserror)
+finally:
+	examplefile.close()
+os.remove(filename)
+filename = "openfilewritefile.txt"
+with open(filename,"w") as variableforfilename:
+	lineslist = ["Line 1 happy whale on parade!\n","Line 2 red bee dancing\n","Line 3 the great git in the sky\n"]
+	variableforfilename.write(lineslist[0])
+	variableforfilename.write(lineslist[1])
+	variableforfilename.write(lineslist[2])
+os.remove(filename)
+with open(filename,"w") as betterwritetofilename:
+	lineslist = ["Line 1 happy whale on parade!\n","Line 2 red bee dancing\n","Line 3 the great git in the sky\n"]
+	betterwritetofilename.writelines(lineslist)
+filenameread = open(filename,"r")
+readtextfile = filenameread.read()
+print(readtextfile)
+'''
+Line 1 happy whale on parade!
+Line 2 red bee dancing
+Line 3 the great git in the sky
+
+'''
+with open(filename,"r") as anotherwayreadfile:
+	for anotherwayreadfilereadlines in anotherwayreadfile.readlines():
+		print(anotherwayreadfilereadlines)
+'''
+Line 1 happy whale on parade!
+
+Line 2 red bee dancing
+
+Line 3 the great git in the sky
+
+'''
+with open(filename,"a") as appendexistingtextfile:
+	appendexistingtextfile.write("Append the sentence\n")
+with open(filename,"r") as anotherwayreadfile2:
+	readfunction = anotherwayreadfile2.read()
+	print(readfunction)
+'''
+Line 1 happy whale on parade!
+Line 2 red bee dancing
+Line 3 the great git in the sky
+Append the sentence
+
+'''
+os.remove(filename)
 print("\n")
 
 
@@ -528,7 +622,16 @@ except ZeroDivisionError:
 except:
 	print("The number = 50/100 is valid code.  No error messages in except:.")
 finally:
-	print("The finally is printed not matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed not matter if the code works or doesn't work.  Finally always activates.
+	print("The finally is printed no matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed no matter if the code works or doesn't work.  Finally always activates.
+age = 199
+if age > 135:
+	raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
+'''
+Traceback (most recent call last):
+  File "yywork.py", line 15, in <module>
+    raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
+Exception: You're supposed to be dead.  You're older than 135 years old.
+'''
 
 #Category:  Lambda
 answer = lambda x: x*7
