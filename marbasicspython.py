@@ -1,10 +1,20 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Math, Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, Lambda, import statement
+#Categories:  Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, Lambda, import statement
 #Classes at marbasicspythonclasses.py.
 #Modules at marcommonmodulespython.py.  Math.
 #thenewbostonallvideos
 #williamfisetallvideos
+
+#Category:  Boolean
+print(bool(1>3)) #print False
+print(bool("a"<"v")) #print True
+print(bool(1==1)) #print True
+print(any([True, False, 0, 1 < 0])) #print True
+print(any([False])) #print False
+print(any([])) #print False
+print(all([True, True])) #print True
+print(all([True, 34<5])) #print False
 
 #Category:  Math
 print(18/5) #print 3.6
@@ -15,6 +25,10 @@ print(18//8) #print 2
 print(abs(-100)) #print 100
 print(pow(4,2)) #print 16
 print(4**2) #print 16
+#eval evalulates a string like a math equation
+foo = 34
+bar = 3
+print(eval("foo * bar")) #print 102.  34*3=102
 
 #Category:  Strings
 print(r"this story is \nokday d'kay") #print this story is \nokday d'kay. RM:  print as-is exact text
@@ -104,9 +118,22 @@ d
 !
 '''
 print("\h".join(escapecharacters)) #print H\he\hl\hl\ho\h \hW\ho\hr\hl\hd\h!
+#a string is considered True if it's not empty.  If it's empty, then it's considered False.
+itemslist = ["bread","chocolate","apple","peanuts"]
+if itemslist:
+	print("itemslist has items.  itemslist is True") #print itemslist has items.  itemslist is True
+blankitemslist = []
+if not blankitemslist:
+	print("blankitemslist is empty.  blankitemslist is False.") #print blankitemslist is empty.  blankitemslist is False.
+#eval evalulates a string like a math equation
+foo = 34
+bar = 3
+print(eval("foo * bar")) #print 102.  34*3=102
 print("\n")
 
 #Category:  Lists
+print(list("logitech")) #print ['l', 'o', 'g', 'i', 't', 'e', 'c', 'h']
+print(list("123456")) #print ['1', '2', '3', '4', '5', '6']
 players = [29, 58, 66, 71, 87]
 print(list(map(str, players))) #print ['29', '58', '66', '71', '87']
 print(players[2]) #print 66
@@ -255,6 +282,10 @@ for eachnumber in range(100,-51,-25):
 	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
 
 #Category:  Tuples
+print(tuple("My Python")) #print ('M', 'y', ' ', 'P', 'y', 't', 'h', 'o', 'n')
+print(tuple((1,2,3))) #print (1, 2, 3)
+print(tuple(["g","n","u"])) #print ('g', 'n', 'u')
+print(tuple(list("GNU"))) #print ('G', 'N', 'U')
 lettertuple = ("a","b","c")
 print(lettertuple[2]) #print c
 numbertuple = (1,2,3,4,5,6,7,8)
@@ -295,6 +326,16 @@ print(sorted(users, key=itemgetter("fname","lname"))) #print [{'fname': 'Amanda'
 print("\n")
 
 #Category:  Sets
+duplicatenumberslist = [1,1,1,2,3,4,4,4,5]
+print(set(duplicatenumberslist)) #print {1, 2, 3, 4, 5}
+print(list(set(duplicatenumberslist))) #print [1, 2, 3, 4, 5]
+newset = set()
+newset.add(5)
+newset.add(1)
+newset.add(2)
+print(newset) #print {1, 2, 5}
+newset.update([11,1,2,5,6,8])
+print(newset) #print {1, 2, 5, 6, 8, 11}
 groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
 print(groceryset) #print {'duct tape', 'milk', 'lotion', 'starcrunch', 'beer', 'cereal'}
 if "milk" in groceryset:
@@ -634,25 +675,67 @@ Exception: You're supposed to be dead.  You're older than 135 years old.
 '''
 
 #Category:  Lambda
+def square(x):
+	return x*x
+print(square(99)) #print 9801
+squarelambda = lambda x: x*x
+print(squarelambda(99)) #print 9801
+def sumrgb(r, g, b):
+	return r+g+b
+print(sumrgb(45,56,87)) #print 188
+sumrgblambda = lambda r, g, b: r+g+b
+print(sumrgblambda(45,56,87)) #print 188
+def typetwostrings(yes, no):
+	#return yes+" today is a good day "+no+".  Have a good day."
+	return "{} today is a good day {}.  Have a good day.".format(yes,no)
+print(typetwostrings("hi","beering")) #print hi today is a good day beering.  Have a good day.
+typetwostringslambda = lambda yes, no: "{} today is a good day {}.  Have a good day.".format(yes,no)
+print(typetwostringslambda("hi","beering")) #print hi today is a good day beering.  Have a good day.
+removeduplicateslambda = lambda givemeduplicates:  list(set(givemeduplicates))
+print(removeduplicateslambda("roooot")) #print["r","o","t"]
+print(removeduplicateslambda(["roooot"])) #print ['roooot']
+print(removeduplicateslambda(["roooot","roooot"])) #print ['roooot']
+def square(x):
+	return x*x
+print(square(99)) #print 9801
+squarelambda = lambda x: x*x
+print(squarelambda(99)) #print 9801
+def sumrgb(r, g, b):
+	return r+g+b
+print(sumrgb(45,56,87)) #print 188
+sumrgblambda = lambda r, g, b: r+g+b
+print(sumrgblambda(45,56,87)) #print 188
+def typetwostrings(yes, no):
+	#return yes+" today is a good day "+no+".  Have a good day."
+	return "{} today is a good day {}.  Have a good day.".format(yes,no)
+print(typetwostrings("hi","beering")) #print hi today is a good day beering.  Have a good day.
+typetwostringslambda = lambda yes, no: "{} today is a good day {}.  Have a good day.".format(yes,no)
+print(typetwostringslambda("hi","beering")) #print hi today is a good day beering.  Have a good day.
+removeduplicateslambda = lambda givemeduplicates:  list(set(givemeduplicates))
+print(removeduplicateslambda("roooot")) #print["r","o","t"]
+print(removeduplicateslambda(["roooot"])) #print ['roooot']
+print(removeduplicateslambda(["roooot","roooot"])) #print ['roooot']
+def evenslist(numberslist):
+	evenslist = []
+	for eachnumberslist in numberslist:
+		if eachnumberslist % 2 == 0:
+			evenslist.append(eachnumberslist)
+	return evenslist
+print(evenslist(range(0,51))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
+def evenslistlambda(numberslist):
+	isevenlambda = lambda number: number % 2 == 0
+	evenslist = []
+	for eachnumberlist in numberslist:
+		if isevenlambda(eachnumberlist):
+			evenslist.append(eachnumberlist)
+	return evenslist
+print(evenslistlambda(range(0,51))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
+isevenlambda = lambda number: number % 2 == 0
+evenslambda = lambda numberslist: list(filter(isevenlambda, numberslist))
+print(evenslambda(range(0,51))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
 answer = lambda x: x*7
 print(answer(5)) #print 35
-#Lambda separates creating a new function object and assigning a name to the function object; e.g. def functionobjectnamedhello(name).  Lambda creates the function object; e.g. a list [10, 20, 30] and a dictionary{"a":1, "b":2}.
-mynumberlist = [10, 3, -5, -7, -15, 17]
-mynumberlist.sort()
-print(mynumberlist) #print [-15, -7, -5, 3, 10, 17]
-#sort mynumberlist according to string length 1 is before -1.  -1 is before -10.
-#list.sort() allows us to pass a "key" parameter which is a function.  The function is invoked once for every element in the list.  The result invoking the "key" function is used for comparison purposes.  Ordering of the reslting list is affected by the "key" function.  The elements themselves are unaffected.
-def stringlength(x):
-	print("x",x) #print x 10\n x 3\n x -5\n x -7\n x -15\n x 17
-	print(len(str(x))) #print 2\n 1\n 2\n 2\n 3\n 2\n
-	return len(str(x))
-mynumberlist = [10, 3, -5, -7, -15, 17]
-mynumberlist.sort(key=stringlength)
-print(mynumberlist) #print [3, 10, -5, -7, 17, -15]
-#lambda comes in handy.  def stringlength() used once.  No need to create a new function.  Pass the "key" value of an anonymous function object.  We don't define a program used once.
-mynumberlist = [10, 3, -5, -7, -15, 17]
-mynumberlist.sort(key=lambda x: len(str(x)))
-print(mynumberlist) #print [3, 10, -5, -7, 17, -15]
+#Lambda separates creating a new function object and assigning a name to the function object; e.g. def functionobjectnamedhello(name).
 
 love = "check"
 print("{}".format(love))
