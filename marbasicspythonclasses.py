@@ -1,6 +1,7 @@
 #Basics Python Classes Combine All Lessons Learned One Stop Book One Stop Documentation
 #thenewbostonallvideos
 #williamfisetallvideos
+#next video
 
 class Thenewbostonenemy:
 	life = 3
