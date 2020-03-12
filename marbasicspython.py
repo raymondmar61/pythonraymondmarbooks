@@ -5,6 +5,7 @@
 #Modules at marcommonmodulespython.py.  Math.
 #thenewbostonallvideos
 #williamfisetallvideos
+#Python Crash Course take two
 
 #Category:  Boolean
 print(bool(1>3)) #print False
@@ -40,7 +41,14 @@ print(user[-1]) #print h
 print(user[-1::-1]) #print hsiFcM anuT
 helloworld = "Hello world!"
 print(helloworld[::-1]) #print !dlrow olleH
+fiveexcessesspace = "     PYTHON     "
+print(fiveexcessesspace.rstrip()) #print      PYTHON
+print(fiveexcessesspace.lstrip()) #print PYTHON     
+print(fiveexcessesspace.strip()) #print PYTHON
+print(fiveexcessesspace.lower()) #print      python    
 splitstring = "do goat sheep boat"
+print(splitstring.title()) #print Do Goat Sheep Boat
+print(splitstring.upper()) #print DO GOAT SHEEP BOAT
 print(list(splitstring)) #print ['d', 'o', ' ', 'g', 'o', 'a', 't', ' ', 's', 'h', 'e', 'e', 'p', ' ', 'b', 'o', 'a', 't']
 print(splitstring.split()) #print ['do', 'goat', 'sheep', 'boat']
 print(splitstring.split(" ")) #print ['do goat sheep boat']
@@ -151,6 +159,22 @@ print(min(items)) #print cat
 print(max(items)) #print shoe
 print(items[1]) #print dog
 print(items.index("cat")) #print 0
+items = ["cat","dog","moon","shoe"]
+if items in ("cat","dog"):
+	print("There are animals in the list.")
+else:
+	print("What's going on here.") #print What's going on here.
+for eachitems in items:
+	if eachitems in ("cat","dog"):
+		print("There are animals in the list.")
+	else:
+		print("What's going on here.")
+'''
+There are animals in the list.
+There are animals in the list.
+What's going on here.
+What's going on here.
+'''
 items[1] = "parrot"
 print(items) #print ['cat', 'parrot', 'moon', 'shoe']
 items.append("door")
@@ -161,20 +185,24 @@ items.remove("door beginning at index zero")
 print(items) #print ['cat', 'parrot', 'moon', 'shoe', 'door']
 items.pop()
 print(items) #print ['cat', 'parrot', 'moon', 'shoe']
-items.pop(2)
+savemooninvariable = items.pop(2)
 print(items) #print ['cat', 'parrot', 'shoe']
+print(savemooninvariable) #print moon
 tryit = ['cat', 'parrot', 'shoe']
 del tryit[2]
 print(tryit) #print ['cat', 'parrot']
 tryit.remove("parrot")
 print(tryit) #print ['cat']
 duplicateitems = ["cat","dog","moon","shoe","cat","dog","cat"]
+print(len(duplicateitems)) #print 7
 print(duplicateitems.count("cat")) #print 3
 print(duplicateitems.count("dog")) #print 2
 print(sorted(duplicateitems)) #print ['cat', 'cat', 'cat', 'dog', 'dog', 'moon', 'shoe']
 print(sorted(duplicateitems, reverse=True)) #print ['shoe', 'moon', 'dog', 'dog', 'cat', 'cat', 'cat']
 duplicateitems.sort()
 print(duplicateitems) #print ['cat', 'cat', 'cat', 'dog', 'dog', 'moon', 'shoe']
+duplicateitems.sort(reverse = True)
+print(duplicateitems) #print ['shoe', 'moon', 'dog', 'dog', 'cat', 'cat', 'cat']
 duplicateitems.reverse()
 print(duplicateitems) #print ['shoe', 'moon', 'dog', 'dog', 'cat', 'cat', 'cat']
 duplicateitems = []
@@ -198,6 +226,9 @@ print(numberslist[2:5]) #print [33, 44, 55]
 print(numberslist[0::2]) #print [11, 33, 55, 77]
 print(numberslist[-1]) #print 88
 print(numberslist[-1::-2]) #print [88, 66, 44, 22]
+print(numberslist[-4::-2]) #print [55, 33, 11]
+print(numberslist[:4]) #print [11, 22, 33, 44]
+print(numberslist[-3:]) #print [66, 77, 88] #a negative index returns an element a certain distance from the end of a list
 print(list(range(1,11))) #print [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(list(range(10,101,10))) #print [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 date, name, price = ["December 31, 2015","Bread Gloves",8.51]
@@ -213,6 +244,7 @@ grades = [32, 43, 654, 34, 132, 66, 99, 532]
 print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
 print(min(grades)) #print 32
 print(max(grades)) #print 654
+print(sum(grades)) #print 1592
 print(heapq.nlargest(1, grades)) #print [654]
 print(heapq.nlargest(3, grades)) #print [654, 532, 132]
 print(heapq.nsmallest(2, grades)) #print [32, 34]
@@ -256,9 +288,9 @@ print(list(zip(firstname, lastname))) #print [('Bucky', 'Roberts'), ('Tom', 'Han
 print(list(zip(firstname, lastname))[1]) #print ('Tom', 'Hanks')
 print(list(zip(firstname, lastname))[1][1]) #print Hanks
 print(tuple(zip(firstname, lastname))) #print (('Bucky', 'Roberts'), ('Tom', 'Hanks'), ('Taylor', 'Swift'))
-list1 = [n for n in range(1,7)]
-print(list1) #print [1, 2, 3, 4, 5, 6]
-print(len(list1)) #print 6
+listsquared = [n**2 for n in range(1,7)] #list comprehension
+print(listsquared) #print [1, 4, 9, 16, 25, 36]
+print(len(listsquared)) #print 6
 numbersa = [1, 5, 10, 79]
 numbersb = [2, 3, 42, 79]
 numbersab = zip(numbersa, numbersb)
@@ -280,6 +312,61 @@ for eachplayers in players[0:3]:
 	print(eachplayers, end=" ") #print 29 58 66
 for eachnumber in range(100,-51,-25):
 	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
+bikes = "A trek is a bike"
+if "trek" in bikes:
+	print("Yes") #print Yes
+if "surly" not in bikes:
+	print("not in") #print not in
+bikes = ["trek","bobby","alamo","surly"]
+if "trek" in bikes:
+	print("Yes") #print Yes
+print("alamo" in bikes) #print True
+#Sometimes it’s important to check all of the conditions of interest. Use a series of simple if statements with no elif or else blocks. This technique makes sense when more than one condition could be True, and you want to act on every condition that is True.
+requested_toppings = ["mushrooms","extra cheese"]
+if "mushrooms" in requested_toppings:
+	print("Adding mushrooms") #print Adding mushrooms
+if "pepperoni" in requested_toppings:
+	print("Adding pepperoni")
+if "extra cheese" in requested_toppings:
+	print("Adding extra cheese") #print Adding extra cheese
+requested_toppings = ["there is something here"]
+if requested_toppings:
+	print("Okay what do I do") #print Okay what do I do
+ordinalnumbers = list(range(1,10))
+for eachordinalnumbers in ordinalnumbers:
+	if eachordinalnumbers == 1: #in (1) error message
+		print(str(eachordinalnumbers)+"st")
+	elif eachordinalnumbers in (2, 3):
+		print(str(eachordinalnumbers)+"nd")
+	else:
+		print(str(eachordinalnumbers)+"th")
+'''
+1st
+2nd
+3nd
+4th
+5th
+6th
+7th
+8th
+9th
+'''
+randomnumbers = [5,8,9,1]
+if randomnumbers in (5,9):
+	print("There are fives and nines")
+else:
+	print("What's going on here.") #print What's going on here.
+for eachrandomnumbers in randomnumbers:
+	if eachrandomnumbers in (5,9):
+		print("There are fives and nines")
+	else:
+		print("What's going on here.")
+'''
+There are fives and nines
+What's going on here.
+There are fives and nines
+What's going on here.
+'''
 
 #Category:  Tuples
 print(tuple("My Python")) #print ('M', 'y', ' ', 'P', 'y', 't', 'h', 'o', 'n')
@@ -736,6 +823,24 @@ print(evenslambda(range(0,51))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 2
 answer = lambda x: x*7
 print(answer(5)) #print 35
 #Lambda separates creating a new function object and assigning a name to the function object; e.g. def functionobjectnamedhello(name).
+
+#iterator manual counter
+for n in range(0,10):
+	print(n,end=", ") #print 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+generateanumber = iter(range(0,10))
+print(generateanumber) #print <range_iterator object at 0x7f676de74870>
+print(next(generateanumber)) #print 0
+print(next(generateanumber)) #print 1
+print(next(generateanumber)) #print 2
+letters = "abcdefghijkl"
+print(letters[next(generateanumber)]) #print d
+print(letters[next(generateanumber)]) #print e
+print(letters[next(generateanumber)]) #print f
+print(next(generateanumber)) #print 6
+print(letters[next(generateanumber)]) #print h
+print(next(generateanumber)) #print 8
+print(letters[next(generateanumber)]) #print j
+#print(next(generateanumber)) #return StopIteration
 
 love = "check"
 print("{}".format(love))

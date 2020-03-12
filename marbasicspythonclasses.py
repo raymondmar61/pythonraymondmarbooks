@@ -164,8 +164,8 @@ class Human():
 		print("\n".join(multiplenouns))
 raymond = Human("nameraymond","gendermale")
 print(raymond) #print <__main__.Human object at 0x7ff84eb23278>
-print("print init variables "+raymond.initializevariable1name) #print print init variables nameraymond
-print("print init variables "+raymond.initializevariable2gender) #print print init variables gendermale
+print("print the class init variables "+raymond.initializevariable1name) #print print the class init variables nameraymond
+print("print the class init variables "+raymond.initializevariable2gender) #print print the class init variables gendermale
 print(raymond.printname()) #print nameraymond
 print(raymond.printgender()) #print gendermale
 raymond.speaksomething("sentence for the textvariable for speaksomething()") #print nameraymond said sentence for the textvariable for speaksomething()
