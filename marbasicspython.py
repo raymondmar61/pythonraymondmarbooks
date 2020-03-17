@@ -126,6 +126,9 @@ d
 !
 '''
 print("\h".join(escapecharacters)) #print H\he\hl\hl\ho\h \hW\ho\hr\hl\hd\h!
+onelinestring = "Okay let's review the information again. "
+onelinestring += "Practice, repeat, repetition."
+print(onelinestring) #print Okay let's review the information again. Practice, repeat, repetition.
 #a string is considered True if it's not empty.  If it's empty, then it's considered False.
 itemslist = ["bread","chocolate","apple","peanuts"]
 if itemslist:
@@ -133,6 +136,10 @@ if itemslist:
 blankitemslist = []
 if not blankitemslist:
 	print("blankitemslist is empty.  blankitemslist is False.") #print blankitemslist is empty.  blankitemslist is False.
+gerald = "This sentence is true"
+while gerald:
+	print("Keep printing the truth")
+	gerald = input("Do you want the truth again?  If no, then press enter for gerald variable to be null and False")
 #eval evalulates a string like a math equation
 foo = 34
 bar = 3
@@ -183,7 +190,7 @@ items.insert(0,"door beginning at index zero")
 print(items) #print ['door beginning at index zero', 'cat', 'parrot', 'moon', 'shoe', 'door']
 items.remove("door beginning at index zero")
 print(items) #print ['cat', 'parrot', 'moon', 'shoe', 'door']
-items.pop()
+items.pop()  #.pop() removes the last item in a list
 print(items) #print ['cat', 'parrot', 'moon', 'shoe']
 savemooninvariable = items.pop(2)
 print(items) #print ['cat', 'parrot', 'shoe']
@@ -367,6 +374,16 @@ What's going on here.
 There are fives and nines
 What's going on here.
 '''
+unconfirmedusers = ["Alice","Brian","Candace"]
+confirmedusers = []
+while unconfirmedusers:
+	moveunconfirmeduserstoconfirmed = unconfirmedusers.pop()  #.pop() removes the last items in the list
+	confirmedusers.append(moveunconfirmeduserstoconfirmed)
+print("Confirmedusers list populated",confirmedusers) #print Confirmedusers list populated ['Candace', 'Brian', 'Alice']
+pets = ["dog", "cat", "dog", "goldfish", "cat", "rabbit", "cat"]
+while "cat" in pets:
+	pets.remove("cat")
+print("Cat is removed",pets) #print Cat is removed ['dog', 'dog', 'goldfish', 'rabbit']
 
 #Category:  Tuples
 print(tuple("My Python")) #print ('M', 'y', ' ', 'P', 'y', 't', 'h', 'o', 'n')
@@ -384,16 +401,57 @@ print(numbertuple) #print ()
 classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
 print(classmatesdictionary["Emma"]) #print sits behind me
+for keysonly in classmatesdictionary.keys():
+	print(keysonly) #print Tony\n Emma\n Lucy
+for valuesonly in classmatesdictionary.values():
+	print(valuesonly) #print cool but smells\n sits behind me\n asks too many questions
 for key, value in classmatesdictionary.items():
 	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
 classmatesdictionary["Lucy"] = "I'm from Peanuts"
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
 classmatesdictionary.update({"Lucy":"Psychiatric Help $0.05"})
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'Psychiatric Help $0.05'}
+classmatesdictionary["Zoe"] = "I'm the new person"
+print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "Psychiatric Help $0.05", 'Zoe': "I'm the new person"}
+for sortedkeys in sorted(classmatesdictionary.keys()):
+	print(sortedkeys,end=",") #print Emma,Lucy,Tony,Zoe,
+pizzadictionarylist = {"crust":"thick", "toppings":["mushrooms","cheese","salami","pepperoni","bell peppers","meatballs","onions"]}
+for eachpizzadictionarylisttoppings in pizzadictionarylist["toppings"]:
+	print(eachpizzadictionarylisttoppings) #print mushrooms\n cheese\n salami\n pepperoni\n bell peppers\n meatballs\n onions
+for eachvalues in pizzadictionarylist.values():
+	print(eachvalues) #print thick\n ['mushrooms', 'cheese', 'salami', 'pepperoni', 'bell peppers', 'meatballs', 'onions']
+for eachvalues in pizzadictionarylist.values():
+	for eachvaluesindividual in eachvalues:
+		print(eachvaluesindividual,end="\\") #print t\h\i\c\k\mushrooms\cheese\salami\pepperoni\bell peppers\meatballs\onions\
+#nested dictionary
+nesteddictionarycities = {"springdale": {"country": "usa","population": 3000,"fact": "zion national park",}, "anaheim": {"country": "usa","population": 50000,"fact": "disneyland"}, "london": {"country": "great britian","population": 500000, "fact": "london bridge"}}
+for city, information in nesteddictionarycities.items():
+	print("City: " +city)
+	print("Country: " +information["country"]+ " population: " ,information["population"])
+	print("fact: " +information["fact"])
+'''
+Country: usa population:  3000
+fact: zion national park
+City: anaheim
+Country: usa population:  50000
+fact: disneyland
+City: london
+Country: great britian population:  500000
+fact: london bridge
+'''
+nameandhobby = {}
+while True:
+	name = input("What is your name? ")
+	hobby = input("What is your hobby? ")
+	nameandhobby[name] = hobby
+	exit = input("Do you want to exit? Y or N? ")
+	if exit == "Y":
+		break
+	else:
+		continue
+print(nameandhobby) #print {'Raymond': 'Read books', 'James': 'Video games', 'Michelle': 'Cooking'}
 stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
 print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
-for eachvalue in stocks.values():
-	print(eachvalue) #print 520.54\n76.45\n39.28\n306.21\n99.76
 print(zip(stocks.values(), stocks.keys())) #print <zip object at 0x7f56392f8b48>
 print(min(stocks)) #print AAPL
 print(zip(stocks.keys(),stocks.values())) #print <zip object at 0x7f85f40ac648>
