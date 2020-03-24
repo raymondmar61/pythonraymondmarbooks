@@ -16,6 +16,12 @@ print(any([False])) #print False
 print(any([])) #print False
 print(all([True, True])) #print True
 print(all([True, 34<5])) #print False
+print(True and True) #print True
+print(True and False) #print False
+print(False and False) #print False
+print(True, True) #print True, True
+print(True, False) #print True, False
+print(False, False) #print False, False
 
 #Category:  Math
 print(18/5) #print 3.6
@@ -520,7 +526,6 @@ print("\n")
 #Category:  Functions
 def functionobjectnamedhello(name):
 	return "The function object named hello returns {}".format(name)
-print(functionobjectnamedhello("Return red")) #print The function object named hello returns Return red
 print(functionobjectnamedhello("Python calls or invokes the object attached to functionobjectnamedhello")) #print The function object named hello returns Python calls or invokes the object attached to functionobjectnamedhello
 def helloreuvenlerner(name):
 	"This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute."
@@ -535,6 +540,9 @@ def helloreuvenlernerbetterdocstring(name):
 	"""
 	return "Hello, {}".format(name)
 help(helloreuvenlernerbetterdocstring)  #return Help on function helloreuvenlernerbetterdocstring in module __main__: helloreuvenlernerbetterdocstring(name) This is the better docstring. Write multiple lines. Docstring tells user what the function does, how to run the function, and what it returns. (END)
+def functionmultiplepasses(variable1, variable2):
+	return "I make a rhyme "+variable1+" and " +variable2+"."
+print(functionmultiplepasses("blue","clue")) #return I make a rhyme blue and clue.
 def functionname(number=17):
 	return number
 print(functionname(150)) #print 150
@@ -543,32 +551,27 @@ def functionname2(name="Raymond", action="jump", braincells=500000000, item="glu
 	print(name+" "+action+" "+item, braincells)
 functionname2(action="run") #return Raymond run glue 500000000
 functionname2(action="sleep", braincells=100000000) #return Raymond sleep glue 100000000
-def removevowels(string):
-	vowels = "aeiou"
-	consonantstring = ""
-	for eachstring in string:
-		if eachstring not in vowels:
-			consonantstring += eachstring
-	return consonantstring
-print(removevowels("abcdefghij")) #print bcdfghj
-def commonstartendlists(list1, list2):
-	startsmatch = list1[0] == list2[0]
-	endsmatch = list1[-1] == list2[-1]
-	return startsmatch and endsmatch
-print(commonstartendlists([1,4,6,3],[1,57,3])) #print True
-print(commonstartendlists([1,4,6,3],[1,57,9])) #print False
-print(True and True) #print True
-print(True and False) #print False
-print(False and False) #print False
-print(True, True) #print True, True
-print(True, False) #print True, False
-print(False, False) #print False, False
-def commonstartendlistscomma(list1, list2):
-	startsmatch = list1[0] == list2[0]
-	endsmatch = list1[-1] == list2[-1]
-	return startsmatch, endsmatch
-print(commonstartendlistscomma([1,4,6,3],[1,57,3])) #print (True, True)
-print(commonstartendlistscomma([1,4,6,3],[1,57,9])) #print (True, False)
+def anoptionalargument(hobby, show, location=""):
+	return "%s hobby, %s show, location is %s" %(hobby,show,location)
+print(anoptionalargument("cook","Breaking Bad","New Mexico")) #print cook hobby, Breaking Bad show, location is New Mexico
+print(anoptionalargument("bake","Simpsons")) #print bake hobby, Simpsons show, location is 
+def dropfirstlast(grades):
+	first, *middle, last = grades #first index is saved in first, last index is saved in last, the rest are saved in *middle
+	avg = sum(middle)/len(middle)
+	return avg
+print(dropfirstlast([65, 76, 98, 54, 21])) #print 76.0.  65 saved in first, 21 saved in last, averaged 76, 98, 54 is 76.0
+print(dropfirstlast([65, 76, 98, 54, 21, 54, 65, 99, 88, 78])) #print 69.375.  65 saved in first, 78 saved in last, averaged 76, 98, 54, 21, 54, 65, 99, 88 is 69.375.
+def combinestrings(*strings):
+	return "".join(strings)
+print(combinestrings("Ed","Al","Winry","Riza","Roy","Mei Chang")) #print EdAlWinryRizaRoyMei Chang
+def printcombinestrings(functionname, *args):
+	return functionname(*args)
+print(printcombinestrings(combinestrings,"red","green","blue","yellow")) #print redgreenblueyellow
+def multiplevalues(anynumber, *words):
+	print(anynumber)
+	print(words)
+multiplevalues(5,"yum","boo","black") #print 5\n ('yum', 'boo', 'black')
+#parent and child functions
 def addnumbers(*numbers, ray="sunshine"):
 	total = 0
 	print(numbers)
@@ -601,12 +604,30 @@ rainy
 <class 'tuple'>
 35
 '''
-def dropfirstlast(grades):
-	first, *middle, last = grades #first index is saved in first, last index is saved in last, the rest are saved in *middle
-	avg = sum(middle)/len(middle)
-	return avg
-print(dropfirstlast([65, 76, 98, 54, 21])) #print 76.0.  65 saved in first, 21 saved in last, averaged 76, 98, 54 is 76.0
-print(dropfirstlast([65, 76, 98, 54, 21, 54, 65, 99, 88, 78])) #print 69.375.  65 saved in first, 78 saved in last, averaged 76, 98, 54, 21, 54, 65, 99, 88 is 69.375.
+def parentfunction(parentlist, givetochildlist):
+	while parentlist:
+		parenttochildlist = parentlist.pop()
+		print(parenttochildlist+" is popped.") #print need is popped.\n I is popped.\n all is popped.
+		givetochildlist.append(parenttochildlist)
+	print("parentfunction givetochildlist list",givetochildlist)	
+def childfunction(childlist):
+	print("I now have the childlist",childlist)
+list1 = ["all","I","need"]
+list2 = []
+parentfunction(list1, list2) #print parentfunction givetochildlist list ['need', 'I', 'all']
+print(list2) #print ['need', 'I', 'all']
+childfunction(list2) #print I now have the childlist ['need', 'I', 'all']
+#double asterisks before the parameter **userinfo cause Python to create an empty dictionary called user_info and pack whatever name-value pairs it receives into this dictionary.  Function works no matter how many additional key-value pairs are provided in the function call.
+def buildprofile(first, last, **userinfo):
+	profile = {}
+	profile["firstname"] = first
+	profile["lastname"] = last
+	for key, value in userinfo.items():
+		profile[key] = value
+	return profile
+print(buildprofile("albert","einstein",location="princeton",field="physics")) #print {'location': 'princeton', 'field': 'physics', 'lastname': 'einstein', 'firstname': 'albert'}
+print(buildprofile("Jackie","Chan",hobbies="books, karate, chow mein",favorite_color="red",car="audi")) #print {'lastname': 'Chan', 'firstname': 'Jackie', 'hobbies': 'books, karate, chow mein', 'car': 'audi', 'favorite_color': 'red'}
+#parent and child functions
 def peopleinformation(**peopleages):
 	averageage = 0
 	print(peopleages) #print {'susan': 88, 'ryan': 345, 'roxanne': 45
@@ -623,6 +644,18 @@ def peopleinformation2(peopleages2):
 		averageage2 += age2
 	return averageage2/len(peopleages2)
 print(peopleinformation2(passdictionary)) #print 159.33333333333334
+def commonstartendlists(list1, list2):
+	startsmatch = list1[0] == list2[0]
+	endsmatch = list1[-1] == list2[-1]
+	return startsmatch and endsmatch
+print(commonstartendlists([1,4,6,3],[1,57,3])) #print True
+print(commonstartendlists([1,4,6,3],[1,57,9])) #print False
+def commonstartendlistscomma(list1, list2):
+	startsmatch = list1[0] == list2[0]
+	endsmatch = list1[-1] == list2[-1]
+	return startsmatch, endsmatch
+print(commonstartendlistscomma([1,4,6,3],[1,57,3])) #print (True, True)
+print(commonstartendlistscomma([1,4,6,3],[1,57,9])) #print (True, False)
 #inefficient way to print largestnumber global variable
 largestnumber2 = 0
 def setlargestnumber2(list_):
@@ -701,12 +734,6 @@ def doubleaddfunction():
 	return addtwonumbers
 functionvariable = doubleaddfunction()
 print(functionvariable(4,5)) #print 18
-def combinestrings(*strings):
-	return "".join(strings)
-print(combinestrings("Ed","Al","Winry","Riza","Roy","Mei Chang")) #print EdAlWinryRizaRoyMei Chang
-def printcombinestrings(functionname, *args):
-	return functionname(*args)
-print(printcombinestrings(combinestrings,"red","green","blue","yellow")) #print redgreenblueyellow
 def greaterthantenfilterlist(numberlist):
 	return numberlist > 10
 thenumberlist = [5,7,345,78,34,5]
