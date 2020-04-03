@@ -1,27 +1,92 @@
 #Basics Python Classes Combine All Lessons Learned One Stop Book One Stop Documentation
 #thenewbostonallvideos
 #williamfisetallvideos
-#next video
+#pythoncrashcourse
 
-class Thenewbostonenemy:
-	life = 3
-	def attack(self):		
-		print("Ouch.  def attack(self) attacked me.  Minus one life.")
-		self.life -= 1
-	def checklife(self):
-		if self.life <=0:
-			print("I'm dead.  def checklife(self) see the number of life.")
-		else:
-			print("{} is the number of life remaining.  def checklife(self) see the number of life.".format(self.life))
-defineobjectforThenewbostonenemy1 = Thenewbostonenemy()
-defineobjectforThenewbostonenemy1.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
-defineobjectforThenewbostonenemy1.checklife() #return 2 is the number of life remaining.  def checklife(self) see the number of life.
-defineobjectforThenewbostonenemy2 = Thenewbostonenemy()
-defineobjectforThenewbostonenemy2.checklife() #return 3 is the number of life remaining.  def checklife(self) see the number of life.
-defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
-defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
-defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
-defineobjectforThenewbostonenemy2.checklife() #return I'm dead.  def checklife(self) see the number of life.
+class Dog():
+	def __init__(self, name, age):
+		self.name = name
+		self.age = age
+	def dogsit(self):
+		print("Call dotsit() inside class Dog()-->Dog sit "+self.name)
+	def dogrollover(self):
+		print("%s is rolling over."%self.name)
+	def dogage(self):
+		print("The age of {} is {}.".format(self.age, self.name))
+identifyself1 = Dog("Willie",6)
+print("Identify the identifyself1 name outside class Dog() "+identifyself1.name) #print Identify the identifyself1 name outside class Dog() Willie
+print("The age of identifyself1 is",identifyself1.age) #print The age of identifyself1 is 6
+identifyself1.dogsit() #return Call dotsit() inside class Dog()-->Dog sit Willie
+identifyself1.dogrollover() #return Willie is rolling over.
+identifyself1.dogage() #return The age of 6 is Willie.
+identifyself2 = Dog("Lucy",3)
+print("Identify the identifyself2 name outside class Dog() "+identifyself2.name) #print Identify the identifyself2 name outside class Dog() Lucy
+print("The age of identifyself2 is",identifyself2.age) #print The age of identifyself2 is 3
+identifyself2.dogsit() #return Call dotsit() inside class Dog()-->Dog sit Lucy
+identifyself2.dogrollover() #return Lucy is rolling over.
+identifyself2.dogage() #return The age of 3 is Lucy.
+anotherlucy3 = Dog("Lucy",3)
+print("Identify the anotherlucy3 name outside class Dog() "+identifyself2.name) #print Identify the anotherlucy3 name outside class Dog() Lucy
+print("The age of anotherlucy3 is",anotherlucy3.age) #print The age of anotherlucy3 is 3
+anotherlucy3.dogsit() #return Call dotsit() inside class Dog()-->Dog sit Lucy
+anotherlucy3.dogrollover() #return Lucy is rolling over.
+anotherlucy3.dogage() #return The age of 3 is Lucy.
+class Restaurant():
+	def __init__(self, restaurantname, cuisinetype):
+		self.restaurantname = restaurantname
+		self.cuisinetype = cuisinetype
+		self.needselfchangenumbercustomers = 0
+	#print the number of customers method below __init__
+	def printchangenumbercustomers(self):
+		print("The number of customers changed is",self.needselfchangenumbercustomers)
+	def describerestaurant(self):
+		print(self.restaurantname+ " serves the kind of food "+self.cuisinetype+" inside the class Restaurant().")
+	def setnumberserved(self, initialcustomersserved):
+		self.customersserved = initialcustomersserved
+	def readsetnumberserved(self):
+		print(self.customersserved,"customers have been served at "+self.restaurantname)
+	def changesetnumberserved(self, changenumbercustomers):
+		self.customersserved+=changenumbercustomers
+		self.needselfchangenumbercustomers = changenumbercustomers
+mingchinese = Restaurant("Ming River Restaurant","Chinese")
+print(mingchinese.restaurantname + " services the kind of food "+ mingchinese.cuisinetype+ "outside the class Restaurant().") #print Ming River Restaurant services the kind of food Chineseoutside the class Restaurant().
+mingchinese.describerestaurant() #return Ming River Restaurant serves the kind of food Chinese inside the class Restaurant().
+mingchinese.printchangenumbercustomers() #return The number of customers changed is 0
+mingchinese.setnumberserved(500)
+mingchinese.readsetnumberserved() #return 500 customers have been served at Ming River Restaurant
+mingchinese.changesetnumberserved(100)
+mingchinese.readsetnumberserved() #return 600 customers have been served at Ming River Restaurant
+mingchinese.printchangenumbercustomers() #return The number of customers changed is 100
+sanjayindian = Restaurant("Indian Curry","Indian")
+print("What's the self.restaurantname outside Restaurant()? "+sanjayindian.restaurantname) #print What's the self.restaurantname outside Restaurant()? Indian Curry
+print("What's the self.cuisinetype for "+sanjayindian.restaurantname+" outside Restaurant()? "+sanjayindian.cuisinetype) #print What's the self.cuisinetype for Indian Curry outside Restaurant()? Indian
+sanjayindian.describerestaurant() #print Indian Curry serves the kind of food Indian inside the class Restaurant().
+sanjayindian.printchangenumbercustomers() #print The number of customers changed is 0
+sanjayindian.setnumberserved(500)
+sanjayindian.readsetnumberserved() #print 500 customers have been served at Indian Curry
+sanjayindian.changesetnumberserved(-100)
+sanjayindian.readsetnumberserved() #print 400 customers have been served at Indian Curry
+sanjayindian.printchangenumbercustomers() #print The number of customers changed is -100
+class Playwithnumbers():
+	def __init__(self):
+		self.initialize = 0
+	def printresult(self):
+		print(self.initialize)
+	def add(self, increment):
+		self.initialize += increment
+	def subtract(self, decrement):
+		self.initialize -= decrement
+firstattempt = Playwithnumbers()
+firstattempt.printresult() #return 0
+firstattempt.initialize = 1000
+firstattempt.printresult() #return 1000
+firstattempt.add(1000)
+firstattempt.printresult() #return 2000
+firstattempt.add(2000)
+firstattempt.printresult() #return 4000
+firstattempt.subtract(5555)
+firstattempt.printresult() #return -1555
+
 class Thenewbostontuna:
 	def __init__(self):
 		print("Blrrblrlbrlbrbr")
@@ -75,6 +140,25 @@ print(stanky.gender) #print female
 print(rachel.name) #print Rachel
 print(stanky.name) #print Stanky
 rachel.favoritehobby("chess") #return Rachel's favorite hobby is chess.
+class Thenewbostonenemy:
+	life = 3
+	def attack(self):
+		print("Ouch.  def attack(self) attacked me.  Minus one life.")
+		self.life -= 1
+	def checklife(self):
+		if self.life <=0:
+			print("I'm dead.  def checklife(self) see the number of life.")
+		else:
+			print("{} is the number of life remaining.  def checklife(self) see the number of life.".format(self.life))
+defineobjectforThenewbostonenemy1 = Thenewbostonenemy()
+defineobjectforThenewbostonenemy1.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
+defineobjectforThenewbostonenemy1.checklife() #return 2 is the number of life remaining.  def checklife(self) see the number of life.
+defineobjectforThenewbostonenemy2 = Thenewbostonenemy()
+defineobjectforThenewbostonenemy2.checklife() #return 3 is the number of life remaining.  def checklife(self) see the number of life.
+defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
+defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
+defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
+defineobjectforThenewbostonenemy2.checklife() #return I'm dead.  def checklife(self) see the number of life.
 class Thenewbostonparent():
 	def printlastname(self):
 		print("Roberts")
