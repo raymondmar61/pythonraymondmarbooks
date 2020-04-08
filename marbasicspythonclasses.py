@@ -159,45 +159,6 @@ defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attac
 defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
 defineobjectforThenewbostonenemy2.attack() #return Ouch.  def attack(self) attacked me.  Minus one life.
 defineobjectforThenewbostonenemy2.checklife() #return I'm dead.  def checklife(self) see the number of life.
-class Thenewbostonparent():
-	def printlastname(self):
-		print("Roberts")
-class Thenewbostonchild(Thenewbostonparent):  #class Thenewbostonchild(Thenewbostonparent) inherits def printlastname(self) from class Thenewbostonparent
-	def printfirstname(self):
-		print("Bucky")
-	# def printlastname(self):
-	# 	print("Snitzleberg")
-defineobjectThenewbostonchildbucky = Thenewbostonchild()
-defineobjectThenewbostonchildbucky.printfirstname() #return Bucky
-defineobjectThenewbostonchildbucky.printlastname() #return Roberts; however, if def printlastname(self): print("Snitzleberg") is uncommented, then return Snitzleberg because Thenewbostonchild(Thenewbostonparent)'s def printlastname(self) overrides Thenewbostonparent() def printlastname(self)
-defineobjectThenewbostonchildraymond = Thenewbostonchild()
-defineobjectThenewbostonchildraymond.printfirstname() #return Bucky
-defineobjectThenewbostonchildraymond.printlastname() #return Roberts; however, if def printlastname(self): print("Snitzleberg") is uncommented, then return Snitzleberg because Thenewbostonchild(Thenewbostonparent)'s def printlastname(self) overrides Thenewbostonparent() def printlastname(self)
-class Mario():
-	def __init__(self, playername):
-		self.playername = playername
-	def move(self):
-		print("{} is moving Mario".format(self.playername))
-class Shroom(Mario):
-	def eatshroom(self):
-		print("{} made Mario eat the shroom".format(self.playername))
-class BigMario(Shroom):  
-#class BigMario(Mario, Shroom):  #error message TypeError: Cannot create a consistent method resolution order (MRO) for bases Mario, Shroom
-	def fireflower(self):
-		print("{} took the fireflower.  I can fire.".format(self.playername))
-raymond = Mario("Raymond")
-raymond.move() #return Raymond is moving Mario
-edward = Shroom("Edward")
-edward.move() #return Edward is moving Mario
-edward.eatshroom() #return Edward made Mario eat the shroom
-kathy = BigMario("Kathy")
-kathy.move() #return Kathy is moving Mario
-kathy.eatshroom() #return Kathy made Mario eat the shroom
-kathy.fireflower() #return Kathy took the fireflower.  I can fire.
-kathy.move() #return Kathy is moving Mario
-#raymond.fireflower() #error message AttributeError: 'Mario' object has no attribute 'fireflower'
-edward.eatshroom() #return Edward made Mario eat the shroom
-edward.move() #return Edward is moving Mario
 
 class Boat():
 	def __init__(self):
@@ -285,3 +246,94 @@ print(c.publicMethod()) #print 5
 print(c._privatevariable) #print private
 print(c.publicvariable) #print public
 
+#Parent child class
+class Thenewbostonparent():
+	def printlastname(self):
+		print("Roberts")
+class Thenewbostonchild(Thenewbostonparent):  #class Thenewbostonchild(Thenewbostonparent) inherits def printlastname(self) from class Thenewbostonparent
+	def printfirstname(self):
+		print("Bucky")
+	# def printlastname(self):
+	# 	print("Snitzleberg")
+defineobjectThenewbostonchildbucky = Thenewbostonchild()
+defineobjectThenewbostonchildbucky.printfirstname() #return Bucky
+defineobjectThenewbostonchildbucky.printlastname() #return Roberts; however, if def printlastname(self): print("Snitzleberg") is uncommented, then return Snitzleberg because Thenewbostonchild(Thenewbostonparent)'s def printlastname(self) overrides Thenewbostonparent() def printlastname(self)
+defineobjectThenewbostonchildraymond = Thenewbostonchild()
+defineobjectThenewbostonchildraymond.printfirstname() #return Bucky
+defineobjectThenewbostonchildraymond.printlastname() #return Roberts; however, if def printlastname(self): print("Snitzleberg") is uncommented, then return Snitzleberg because Thenewbostonchild(Thenewbostonparent)'s def printlastname(self) overrides Thenewbostonparent() def printlastname(self)
+class Mario():
+	def __init__(self, playername):
+		self.playername = playername
+	def move(self):
+		print("{} is moving Mario".format(self.playername))
+class Shroom(Mario):
+	def eatshroom(self):
+		print("{} made Mario eat the shroom".format(self.playername))
+class BigMario(Shroom):  
+#class BigMario(Mario, Shroom):  #error message TypeError: Cannot create a consistent method resolution order (MRO) for bases Mario, Shroom
+	def fireflower(self):
+		print("{} took the fireflower.  I can fire.".format(self.playername))
+raymond = Mario("Raymond")
+raymond.move() #return Raymond is moving Mario
+edward = Shroom("Edward")
+edward.move() #return Edward is moving Mario
+edward.eatshroom() #return Edward made Mario eat the shroom
+kathy = BigMario("Kathy")
+kathy.move() #return Kathy is moving Mario
+kathy.eatshroom() #return Kathy made Mario eat the shroom
+kathy.fireflower() #return Kathy took the fireflower.  I can fire.
+kathy.move() #return Kathy is moving Mario
+#raymond.fireflower() #error message AttributeError: 'Mario' object has no attribute 'fireflower'
+edward.eatshroom() #return Edward made Mario eat the shroom
+edward.move() #return Edward is moving Mario
+class Parentclasscar():
+	def __init__(self, make, model, year):
+		self.make = make
+		self.model = model
+		self.year = year
+	def displaycar(self):
+		thecar = "The car is {} {} {}.".format(str(self.year),self.make,self.model)
+		return thecar
+raymondscar = Parentclasscar("Toyota","Camry",2005)
+print(raymondscar.displaycar()) #print The car is 2005 Toyota Camry.
+class Childclasscargas(Parentclasscar):
+	def __init__(self, make, model, year, gasbrand):
+		super().__init__(make, model, year)
+		self.gasbrand = gasbrand
+	def driveswithwhatgas(self):
+		thegascar = "The gas car is {} {} {} driving with {} gas.".format(str(self.year),self.make,self.model,self.gasbrand)
+		print(thegascar)
+raymonsgascar = Childclasscargas("Toyota","Camry",2005,"Chevron")
+print(raymonsgascar.displaycar()) #print The car is 2005 Toyota Camry.
+raymonsgascar.driveswithwhatgas() #return The gas car is 2005 Toyota Camry driving with Chevron gas.
+class Childclasselectric(Parentclasscar):
+	def __init__(self, make, model, year, batterysize):
+		super().__init__(make, model, year)
+		self.batterysize = batterysize
+	def carbatterysize(self):
+		thebatterycar = "The battery car is {} {} {} driving with {} battery size.".format(str(self.year),self.make,self.model,self.batterysize)
+		print(thebatterycar)
+raymondsbatterycar = Childclasselectric("Toyota","Prius","2018",1000)
+print(raymondsbatterycar.displaycar()) #print The car is 2018 Toyota Prius.
+raymondsbatterycar.carbatterysize() #return The battery car is 2018 Toyota Prius driving with 1000 battery size.
+#Instances as attributes or a class is a child to two parent classes
+class Batterysize2():
+	def __init__(self, batterysize2=702):
+		self.batterysize2 = batterysize2
+	def displaycarbatterysize(self):
+		print("The car has a "+str(self.batterysize2)+ "-kWh battery.")
+	def updatedisplaycarbatterysize(self, newbattersize2):
+		self.batterysize2 = newbattersize2
+class Childclasselectricandbatterysize(Parentclasscar):
+	def __init__(self, make, model, year):
+		super().__init__(make, model, year)
+		self.batterysize2 = Batterysize2()
+raymondsbatterycar2 = Childclasselectricandbatterysize("Nissan","Leaf",2019)
+print(raymondsbatterycar2.displaycar()) #print The car is 2019 Nissan Leaf.
+raymondsbatterycar2.batterysize2.displaycarbatterysize() #return The car has a 702-kWh battery.
+raymondsbatterycaraudi = Childclasselectricandbatterysize("Audi","e-tron",2020)
+raymondsbatterycaraudi.batterysize2 = Batterysize2(2000)
+print(raymondsbatterycaraudi.displaycar()) #print The car is 2019 Nissan Leaf.
+raymondsbatterycaraudi.batterysize2.displaycarbatterysize() #return The car has a 2000-kWh battery.
+raymondsbatterycaraudi.batterysize2.updatedisplaycarbatterysize(12345)
+raymondsbatterycaraudi.batterysize2.displaycarbatterysize() #return The car has a 12345-kWh battery.
