@@ -456,6 +456,16 @@ while True:
 	else:
 		continue
 print(nameandhobby) #print {'Raymond': 'Read books', 'James': 'Video games', 'Michelle': 'Cooking'}
+#order list order dictionary keep track of order
+from collections import OrderedDict
+favorite_languages = OrderedDict()
+favorite_languages["jen"] = "python"
+favorite_languages["sarah"] = "c"
+favorite_languages["edward"] = "ruby"
+favorite_languages["phil"] = "python"
+print(favorite_languages) #print OrderedDict([('jen', 'python'), ('sarah', 'c'), ('edward', 'ruby'), ('phil', 'python')])
+for name, language in favorite_languages.items():
+	print(name+ "'s favorite language is " +language+ ".") #print jen's favorite language is python.\n sarah's favorite language is c.\n edward's favorite language is ruby.\n phil's favorite language is python.
 stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
 print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 print(zip(stocks.values(), stocks.keys())) #print <zip object at 0x7f56392f8b48>
