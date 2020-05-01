@@ -758,6 +758,8 @@ print(filter(beginswithletterfilterlist, thewordlist)) #print <filter object at 
 print(list(filter(beginswithletterfilterlist, thewordlist))) #print ['earth', 'eradicate']
 
 #Category open file write file
+#To get Python to open files from a directory other than the one where your program file is stored, you need to provide a file path, which tells Python to look in a specific location on your system.  Here are relative paths.  with open('text_files/filename.txt') as fileobject: on Linux and OS X.  with open('text_files\filename.txt') as fileobject: on Windows.
+#"r" read mode, "w" write mode, "a" append mode, "r+" read and write mode, default is read mode.
 filewrite = open("thenewbostontextfile.txt","w")
 filewrite.write("Writing some stuff in my text file.\n")
 filewrite.write("I like bacon.\n")
@@ -766,6 +768,11 @@ fileread = open("thenewbostontextfile.txt","r")
 printtextfile = fileread.read()
 print(printtextfile) #print Writing some stuff in my text file.\n I like bacon.
 fileread.close()
+#Python can only write strings to a text file. If you want to store numerical data in a text file, you’ll have to convert the data to string format first using the str() function.
+filenamevariable = "joejamesdata.txt"
+with open(filenamevariable,"a") as appendnumbersvariable:
+	appendnumbersvariable.write(str(55)) #number 55 is written at the end of filenamevariable.  It doesn't necessarily append 55 at a new line
+	appendnumbersvariable.write("\n"+str(999)) #number 999 is written at a new line
 import os
 os.remove("thenewbostontextfile.txt")
 filename = "createnewfile.txt"
@@ -817,8 +824,13 @@ Line 2 red bee dancing
 Line 3 the great git in the sky
 
 '''
+#No need for readlines()
+with open(filenamevariable) as fileobjectvariable:
+	for eachfileobjectvariable in fileobjectvariable:
+		print(eachfileobjectvariable)
 with open(filename,"a") as appendexistingtextfile:
 	appendexistingtextfile.write("Append the sentence\n")
+#The blank line appears because read() returns an empty string when it reaches the end of the file; this empty string shows up as a blank line. If you want to remove the extra blank line, you can use rstrip() in the print statement print(variablename.rstrip())
 with open(filename,"r") as anotherwayreadfile2:
 	readfunction = anotherwayreadfile2.read()
 	print(readfunction)
@@ -830,10 +842,25 @@ Append the sentence
 
 '''
 os.remove(filename)
+with open(filenamevariable,"r") as fileobjectvariable:
+	readlinesinlist = fileobjectvariable.readlines()
+print(readlinesinlist) #print ['column1,c2,c3,c4,c5,c6,c7,c8,c9,c10\n', '9,3,8,7,6,1,0,4,2,5\n', '1,7,4,9,2,6,8,3,5,0\n', '4,8,3,9,5,7,2,6,0,1\n', '1,7,4,2,5,9,6,8,0,3\n', '0,7,5,2,8,6,3,4,1,9\n', '5,9,1,4,7,0,3,6,8,2']
+oneline = ""
+for eachreadlinesinlist in readlinesinlist:
+	print("rstrip "+eachreadlinesinlist.rstrip())
+	oneline += eachreadlinesinlist.rstrip()
+print(oneline) #print column1,c2,c3,c4,c5,c6,c7,c8,c9,c109,3,8,7,6,1,0,4,2,51,7,4,9,2,6,8,3,5,04,8,3,9,5,7,2,6,0,11,7,4,2,5,9,6,8,0,30,7,5,2,8,6,3,4,1,95,9,1,4,7,0,3,6,8,2
 print("\n")
 
-
 #Category:  try except
+filename = "alices.txt"
+try:
+	with open(filename,"r") as fileobject:
+		contents = fileobject.read()
+except FileNotFoundError:
+	print(filename+" file doesn't exist.")
+else:
+	print(contents)
 try:
 	number = int("I'm a string")
 	#number = (5/0)
