@@ -756,6 +756,23 @@ thewordlist = ["earth","unicycle","moose","beed","eradicate"]
 #print(filter(beginswithletterfilterlist, thewordlist,"e")) #error message filter expected 2 arguments
 print(filter(beginswithletterfilterlist, thewordlist)) #print <filter object at 0x7f7ca0627828>
 print(list(filter(beginswithletterfilterlist, thewordlist))) #print ['earth', 'eradicate']
+#Call functions from another file.  Also call classes from another file
+from functionsfile import formattedname  #RM:  functionsfile is functionsfile.py file in the same directory
+firstname = input("Enter your first name in lowercase? ")
+lastname = input("Enter your last name in lowercase? ")
+outputformattedname = formattedname(firstname, lastname)
+print("{} is your name formatted.".format(outputformattedname)) #print Joe Johnson is your name formatted.
+from functionsfile import AnonymousSurvey #RM:  functionsfile is functionsfile.py file in the same directory
+question = "What computer languages do you know?"
+survey = AnonymousSurvey(question)
+survey.displayquestion()
+while True:
+    response = input("Language?  Press q to quit. ")
+    if response == "q":
+        break
+    else:
+        survey.saveresponse(response)
+survey.showresponse() #return The list ['HTML', 'Python', 'SQL', 'CSS', 'JavaScript', 'DAX']\n Your languages are HTML, Python, SQL, CSS, JavaScript, DAX\n HTML, Python, SQL, CSS, JavaScript, DAX
 
 #Category open file write file
 #To get Python to open files from a directory other than the one where your program file is stored, you need to provide a file path, which tells Python to look in a specific location on your system.  Here are relative paths.  with open('text_files/filename.txt') as fileobject: on Linux and OS X.  with open('text_files\filename.txt') as fileobject: on Windows.
