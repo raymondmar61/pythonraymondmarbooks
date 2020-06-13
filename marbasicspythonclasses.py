@@ -2,6 +2,7 @@
 #thenewbostonallvideos
 #williamfisetallvideos
 #pythoncrashcourse
+#https://www.geeksforgeeks.org/python-isinstance-method/
 
 class Dog():
 	def __init__(self, name, age):
@@ -337,3 +338,40 @@ print(raymondsbatterycaraudi.displaycar()) #print The car is 2019 Nissan Leaf.
 raymondsbatterycaraudi.batterysize2.displaycarbatterysize() #return The car has a 2000-kWh battery.
 raymondsbatterycaraudi.batterysize2.updatedisplaycarbatterysize(12345)
 raymondsbatterycaraudi.batterysize2.displaycarbatterysize() #return The car has a 12345-kWh battery.
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+class Person:
+    def __init__(self, name, sex):
+        self.name = name
+        self.sex = sex
+emmaemployee = Employee("Emma",11000)
+brentperson = Person("Brent","Male")
+if isinstance(emmaemployee,Employee):
+    print("Yes "+emmaemployee.name+" is an Employee") #print Yes Emma is an Employee
+if isinstance(brentperson,Employee):
+    print("Yes "+brentperson.name+" is an Employee")
+else:
+    print("No "+brentperson.name+" is not an Employee") #print No Brent is not an Employee
+class Developer(object):
+    # Constructor 
+    def __init__(self, name): 
+        self.name = name
+    def display(self): 
+        print("Developer:", self.name, "-")
+class PythonDeveloper(Developer):
+    # Constructor 
+    def __init__(self, name, language):
+        self.name = name
+        self.language = language   
+    def display(self): 
+        print("Python Developer:", self.name, "language:", self.language, "-")   
+dev = Developer("Jhon")  # An Object of Developer 
+dev.display()
+result = isinstance(dev, Developer)
+print("is an instance of a Developer Class? ", result, "\n")  #print Developer: Jhon - is an instance of a Developer Class?  True  
+pythonDev = PythonDeveloper("Eric", "Python") # An Object of PythonDeveloper 
+pythonDev.display(), 
+result = isinstance(pythonDev, Developer)
+print("is an instance of a Developer Class? ", result) #print Python Developer: Eric language: Python - is an instance of a Developer Class?  True

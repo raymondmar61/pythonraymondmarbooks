@@ -22,6 +22,12 @@ print(False and False) #print False
 print(True, True) #print True, True
 print(True, False) #print True, False
 print(False, False) #print False, False
+firstnumber = 80
+secondnumber = 55.70
+resultfirst = isinstance(firstnumber, (int, float))
+print(resultfirst) #print True
+resultsecond = isinstance(secondnumber, (int, float))
+print(resultsecond) #print True
 
 #Category:  Math
 print(18/5) #print 3.6
@@ -526,6 +532,12 @@ if 10 <= apples <=20:
 location = "home"
 if location is "home" or location is "Vegas":
 	print("I'm {}".format(location)) #print I'm home
+number = 90
+result = isinstance(number, int)
+if result:
+    print(number,"is an integer int.") #print 90 is an integer int.
+else:
+    print(number,"is not an inteer int.")
 
 
 print("")
