@@ -252,6 +252,10 @@ print(list(range(1,11))) #print [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(list(range(10,101,10))) #print [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 date, name, price = ["December 31, 2015","Bread Gloves",8.51]
 print(name) #print Bread Gloves
+randomnumbers = [1, 5676, 30943]
+chrisfamilyguyfriends = ["Chandler", "Fonz", "Elmo"]
+alistoflists = [randomnumbers, chrisfamilyguyfriends]
+print(alistoflists) #print [[1, 5676, 30943], ['Chandler', 'Fonz', 'Elmo']]
 singlea = [1, 2, 3, 4, 5]
 doubleb = [10, 11, 12, 13, 14]
 singleadoubleb = []
@@ -408,6 +412,21 @@ numbertuple = (1,2,3,4,5,6,7,8)
 print(numbertuple[1:5]) #print (2, 3, 4, 5)
 numbertuple = ()
 print(numbertuple) #print ()
+randomnumbers = (1, 5676, 30943)
+chrisfamilyguyfriends = ("Chandler", "Fonz", "Elmo")
+alistoftuples = [randomnumbers, chrisfamilyguyfriends]
+print(alistoftuples) #print [(1, 5676, 30943), ('Chandler', 'Fonz', 'Elmo')]
+atupleoftuples = (randomnumbers, chrisfamilyguyfriends)
+print(atupleoftuples) #print ((1, 5676, 30943), ('Chandler', 'Fonz', 'Elmo'))
+randomnumbers = (1, 5676, 30943)
+chrisfamilyguyfriends = ("Chandler", "Fonz", "Elmo")
+from itertools import product
+alltuples = product(randomnumbers, chrisfamilyguyfriends)
+print(alltuples) #print <itertools.product object at 0x7f602789fea0>
+print(tuple(alltuples)) #print ((1, 'Chandler'), (1, 'Fonz'), (1, 'Elmo'), (5676, 'Chandler'), (5676, 'Fonz'), (5676, 'Elmo'), (30943, 'Chandler'), (30943, 'Fonz'), (30943, 'Elmo'))
+print(list(alltuples)) #print []
+alistoftuples = list(product(randomnumbers, chrisfamilyguyfriends))
+print(alistoftuples) #print [(1, 'Chandler'), (1, 'Fonz'), (1, 'Elmo'), (5676, 'Chandler'), (5676, 'Fonz'), (5676, 'Elmo'), (30943, 'Chandler'), (30943, 'Fonz'), (30943, 'Elmo')]
 
 #Category:  Dictionaries
 classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
