@@ -375,3 +375,59 @@ pythonDev = PythonDeveloper("Eric", "Python") # An Object of PythonDeveloper
 pythonDev.display(), 
 result = isinstance(pythonDev, Developer)
 print("is an instance of a Developer Class? ", result) #print Python Developer: Eric language: Python - is an instance of a Developer Class?  True
+
+#Python With Statement Classes.pdf
+#The the __exit__ method as the except in the try except which traps exceptions.  Simple exception is include return True in mycontextmanagertrue class.
+#Defining "__enter__" and "__exit__" on your classes, you can give them the ability to work inside of "with" blocks, doing things automatically at the start and finish.  And you can even have them trap exceptions in a semi-automated way, without needing "try" and "except" anywhere around.
+class mycontextmanager(object):
+	def __enter__(self):
+		print("I'm in enter!")
+	def __exit__(self, type, value, traceback):
+		print("I'm in exit!")
+with mycontextmanager() as variablename:
+	print("Hello") #print I'm in enter!\n Hello\n I'm in exit!
+# with mycontextmanager() as errormessage:
+# 	print(10/0) #print I'm in enter!\n I'm in exit!\n ZeroDivisionError: division by zero
+class mycontextmanager2(object):
+	def __enter__(self):
+		print("I'm in enter!")
+	def __exit__(self, type, value, traceback):
+		print("I'm in exit!")
+		print(self)
+		print("type={}".format(type))
+		print("value={}".format(value))
+		print("traceback={}".format(traceback))
+# with mycontextmanager2() as errormessage:
+# 	print(10/0)
+	'''
+	I'm in enter!
+	I'm in exit!
+	<__main__.mycontextmanager2 object at 0x7f9c092ff8d0>
+	type=<class 'ZeroDivisionError'>
+	value=division by zero
+	traceback=<traceback object at 0x7f41748a6588>
+	Traceback (most recent call last):
+	  File "yywork.py", line 19, in <module>
+	    print(10/0) #print I'm in enter!\n I'm in exit!\n ZeroDivisionError: division by zero
+	ZeroDivisionError: division by zero
+	'''
+class mycontextmanagertrue(object):
+	def __enter__(self):
+		print("I'm in enter!")
+	def __exit__(self, type, value, traceback):		
+		print("I'm in exit!")
+		print(self)
+		print("type={}".format(type))
+		print("value={}".format(value))
+		print("traceback={}".format(traceback))
+		return True
+with mycontextmanagertrue() as errormessage:
+	print(10/0)
+	'''
+	I'm in enter!
+	I'm in exit!
+	<__main__.mycontextmanagertrue object at 0x7f828c04a470>
+	type=<class 'ZeroDivisionError'>
+	value=division by zero
+	traceback=<traceback object at 0x7f828c053988>
+	'''
