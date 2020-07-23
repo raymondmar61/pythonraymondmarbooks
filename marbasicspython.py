@@ -87,6 +87,15 @@ print(inputcolors.split()) #print ['black', 'white', 'red']
 splitinputcolors = inputcolors.split()
 print(" ".join(splitinputcolors)) #print black white red
 print(", ".join(splitinputcolors)) #print black, white, red
+sortlistofstrings = "It is a nice day today, isn't it?"
+sortlistofstrings.split()
+print(sortlistofstrings) #print It is a nice day today, isn't it?
+#sortlistofstrings.sort() #AttributeError: 'str' object has no attribute 'sort'
+#print(sortlistofstrings) #print AttributeError: 'str' object has no attribute 'sort'
+sortlistofstrings = "It is a nice day today, isn't it?".split()
+print(sortlistofstrings) #print ['It', 'is', 'a', 'nice', 'day', 'today,', "isn't", 'it?']
+sortlistofstrings.sort()
+print(sortlistofstrings) #print ['It', 'a', 'day', 'is', "isn't", 'it?', 'nice', 'today,']
 from collections import Counter
 topwords = Counter(splittext)
 topthree = topwords.most_common(3)
@@ -230,6 +239,22 @@ backwarditems = ["mop","hop","cat","dog","moon","shoe","dog","cat"]
 print(backwarditems) #print ['mop', 'hop', 'cat', 'dog', 'moon', 'shoe', 'dog', 'cat']
 backwarditems.reverse()
 print(backwarditems) #print ['cat', 'dog', 'shoe', 'moon', 'dog', 'cat', 'hop', 'mop']
+mylist = [10,31,20]
+mylist.sort() #listvariable.sort() doesn't return a sorted list.
+print(mylist) #print [10, 20, 31]
+sortabsolutevalue = [10, -5, 3, -2, 30, -20]
+sortabsolutevalue.sort(key=abs)
+print(sortabsolutevalue) #print [-2, 3, -5, 10, -20, 30]
+sortcaseinsensitive = "This is a bunch of words in a Python string".split()
+print(sortcaseinsensitive) #print ['This', 'is', 'a', 'bunch', 'of', 'words', 'in', 'a', 'Python', 'string']
+sortcaseinsensitive.sort(key=str.lower)
+print(sortcaseinsensitive) #print ['a', 'a', 'bunch', 'in', 'is', 'of', 'Python', 'string', 'This', 'words']
+def functionsortbackwards(word):
+	return word[::-1]
+sortlastletteroftheword = "This is a bunch of words in a Python string".split()
+sortlastletteroftheword.sort(key=functionsortbackwards)
+print(sortlastletteroftheword) #print ['a', 'a', 'of', 'string', 'bunch', 'in', 'Python', 'words', 'is', 'This']
+#sortlastletteroftheword.sort(key=lambda word: word[::-1]) #use lamboda
 llist = ["candy","cookie","cracker","chips"]
 print("-".join(llist)) #print candy-cookie-cracker-chips
 print(" ".join(llist)) #print candy cookie cracker chips
@@ -401,6 +426,7 @@ while "cat" in pets:
 	pets.remove("cat")
 print("Cat is removed",pets) #print Cat is removed ['dog', 'dog', 'goldfish', 'rabbit']
 
+
 #Category:  Tuples
 print(tuple("My Python")) #print ('M', 'y', ' ', 'P', 'y', 't', 'h', 'o', 'n')
 print(tuple((1,2,3))) #print (1, 2, 3)
@@ -427,6 +453,10 @@ print(tuple(alltuples)) #print ((1, 'Chandler'), (1, 'Fonz'), (1, 'Elmo'), (5676
 print(list(alltuples)) #print []
 alistoftuples = list(product(randomnumbers, chrisfamilyguyfriends))
 print(alistoftuples) #print [(1, 'Chandler'), (1, 'Fonz'), (1, 'Elmo'), (5676, 'Chandler'), (5676, 'Fonz'), (5676, 'Elmo'), (30943, 'Chandler'), (30943, 'Fonz'), (30943, 'Elmo')]
+numberletter = [("c",3),("a",1),("b",2)]
+print(numberletter) #print [('c', 3), ('a', 1), ('b', 2)]
+numberletter.sort()
+print(numberletter) #print [('a', 1), ('b', 2), ('c', 3)]
 
 #Category:  Dictionaries
 classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
