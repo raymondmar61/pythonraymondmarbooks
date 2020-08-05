@@ -1,6 +1,6 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, try except, open file write file, Functions, Lambda, import statement
+#Categories:  Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, If Elif Else If then, try except, open file write file, Functions, Lambda, import statement
 #Classes at marbasicspythonclasses.py.
 #Modules at marcommonmodulespython.py.  Math.
 #thenewbostonallvideos
@@ -552,14 +552,62 @@ newset.add(2)
 print(newset) #print {1, 2, 5}
 newset.update([11,1,2,5,6,8])
 print(newset) #print {1, 2, 5, 6, 8, 11}
-groceryset = {"cereal","milk","starcrunch","beer","duct tape","lotion","beer"}
-print(groceryset) #print {'duct tape', 'milk', 'lotion', 'starcrunch', 'beer', 'cereal'}
-if "milk" in groceryset:
-	print("Yes I have milk") #print Yes I have milk
-for eachgroceryset in groceryset:
-	print(eachgroceryset,end=",") #print duct tape,milk,lotion,starcrunch,beer,cereal,
-print("\n")
+setvariable = set()
+print(setvariable) #print set()
+setnumbers = set([10,20,30])
+print(setnumbers) #print {10, 20, 30}
+setnumbers = set([10,20,30,10,20,30,40])
+print(setnumbers) #print {40, 10, 20, 30}
+setletters = set("abc")
+print(setletters) #print {'b', 'c', 'a'}
+setletters = set("abcabcabc")
+print(setletters) #print {'b', 'c', 'a'}
+print("a" in setletters) #print True
+setletterslist = set(["abc"])
+print(setletterslist) #print {'abc'}
+setlettersdictionary = set({"a","b","c","a","b","c","a","b","c",})
+print(setlettersdictionary) #print {'a', 'b', 'c'}
+setonetwothree = {1,2,3}
+print(type(setonetwothree)) #print <class 'set'>
+setonetwothree.add(4)
+print(setonetwothree) #print {1, 2, 3, 4}
+frozensetvariable = frozenset([10, 20,30,40,50])
+print(frozensetvariable) #print frozenset({40, 10, 50, 20, 30})
+#frozensetvariable.add(60) #return AttributeError: 'frozenset' object has no attribute 'add'
+setupdatevariable = {1,2,3}
+setupdatevariable.update([10, 20, 30])
+print(setupdatevariable) #print {1, 2, 3, 10, 20, 30}
+setupdatevariable.update([20, 30, 40, 50])
+print(setupdatevariable) #print {1, 2, 3, 40, 10, 50, 20, 30}
+setaddupdatevariable = {1,2,3}
+setaddupdatevariable.add("abc")
+print(setaddupdatevariable) #print {1, 2, 3, 'abc'}
+setaddupdatevariable.update("abc")
+print(setaddupdatevariable) #print {1, 2, 3, 'a', 'b', 'abc', 'c'}
+setremovevariable = {1,2,3}
+setremovevariable.remove(2)
+print(setremovevariable) #print {1, 3}
+setone = {1,2,3,4,1000}
+settwo = {3,4,5,6,2222}
+setonetwounion = setone | settwo
+print(setonetwounion) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
+print(setone.union(settwo)) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
+setonetwointersect = setone & settwo
+print(setonetwointersect) #print {3, 4}
+print(setone.intersection(settwo)) #print {3, 4}
+setonetwodifference = setone ^ settwo
+print(setonetwodifference) #print {1, 2, 5, 6, 1000, 2222}
+print(setone.symmetric_difference(settwo)) #print {1, 2, 5, 6, 1000, 2222}
+print(setone < settwo) #print False is setone a subset of settwo
+print({3,4} < settwo) #print True is {3,4} a subset of settwo
+print(settwo > {3,4}) #print True is settwo a superset of {3,4}
+usernumbers = "1 2 3 1 2 3 1 2 3 4"
+usernumberslistcomprehensionsum = sum([int(eachusernumbers) for eachusernumbers in usernumbers.split()])
+print(usernumberslistcomprehensionsum) #print 22
+usernumberssetcomprehensionsum = sum({int(eachusernumbers) for eachusernumbers in usernumbers.split()})
+print(usernumberssetcomprehensionsum) #print 10
 
+#Category:  If Elif Else If then
 name = "Bucky"
 if name == "Bucky":
 	print("Hey there Bucky") #print Hey there Bucky
@@ -587,12 +635,6 @@ if result:
     print(number,"is an integer int.") #print 90 is an integer int.
 else:
     print(number,"is not an inteer int.")
-
-
-print("")
-print("\n")
-
-print("\n")
 
 #Category:  Functions
 def functionobjectnamedhello(name):
