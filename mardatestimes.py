@@ -20,6 +20,74 @@ print(convertstringtodatetime) #print 2020-07-15 19:06:17+00:00
 mystringtodatetime = convertstringtodatetime.strftime("%A %B %d, %Y")
 print(mystringtodatetime) #print Wednesday July 15, 2020
 
+now = datetime.datetime.now()
+print(now) #print 2020-08-21 14:51:46.004478
+print(now.year) #print 2020
+print(now.month) #print 8
+print(now.day) #print 21
+print(type(now)) #print <class 'datetime.datetime'>
+print(now.strftime("%m/%d/%Y")) #print 08/21/2020
+print("%s/%s/%s" % (now.month, now.day, now.year)) #print 8/21/2020
+print(now.strftime("%m-%d-%y")) #print 08-21-20
+print(now.strftime("%D")) #print 08/21/20
+print("%s/%s/%s %s:%s:%s" % (now.month, now.day, now.year, now.hour, now.minute, now.second)) #print 8/21/2020 14:51:46
+nowdatetostring = now.strftime("%a %b %d, %Y")
+print(nowdatetostring) #print Fri Aug 21, 2020
+print(type(nowdatetostring)) #print <class 'str'>
+nowtoday = datetime.datetime.today()
+print(nowtoday) #print 2020-08-21 14:51:46.004533
+print(type(nowtoday)) #print <class 'datetime.datetime'>
+print(nowtoday.strftime("%Y-%m-%d")) #print 2020-08-21
+month = 8
+day = 21
+year = 2020
+variablesdate = datetime.date(year, month, day)
+print(variablesdate) #print 2020-08-21
+#variablesdateerror = datetime.date(month, day, year)
+#print(variablesdateerror) #print ValueError: month must be in 1..12 #print 
+variablesdatetostring = variablesdate.strftime("%A %B %d, %Y")
+print(variablesdatetostring) #print Friday August 21, 2020
+print(type(variablesdatetostring)) #print <class 'str'>
+variablesdatetostringd = variablesdate.strftime("%D")
+print(variablesdatetostringd) #print 08/21/20
+print(type(variablesdatetostringd)) #print <class 'str'>
+
+a = datetime.date(2011,11,24)
+b = datetime.date(2011,11,17)
+print(a-b) #print 7 days, 0:00:00
+print((a-b).days) #print 7
+
+#datetime.strptime() is used for converting a string to a datetime object , when using strptime() you have to specify the correct format in which the date/time in the string exists.
+stringdatemmddyy = "08/21/20"
+print(datetime.datetime.strptime(stringdatemmddyy,"%m/%d/%y")) #print 2020-08-21 00:00:00
+print(type(datetime.datetime.strptime(stringdatemmddyy,"%m/%d/%y"))) #print <class 'datetime.datetime'>
+stringdatemmddyyyy = "08-21-2020"
+stringdatemmddyyyyvariable = datetime.datetime.strptime(stringdatemmddyyyy, "%m-%d-%Y")
+print(stringdatemmddyyyyvariable) #print 2020-08-21 00:00:00
+print(type(stringdatemmddyyyyvariable)) #print <class 'datetime.datetime'>
+print(stringdatemmddyyyyvariable.strftime("%D")) #print 08/21/20
+stringdatemmddyyyymilitarytime = "2020-08-21 14:36:27"
+print(datetime.datetime.strptime(stringdatemmddyyyymilitarytime,"%Y-%m-%d %H:%M:%S")) #print 2020-08-21 14:36:27
+converttoreadablefirststep = datetime.datetime.strptime(stringdatemmddyyyymilitarytime,"%Y-%m-%d %H:%M:%S")
+converttoreadablesecondstep = datetime.datetime.strftime(converttoreadablefirststep, "%m/%d/%y %I:%M:%S %p")
+print(converttoreadablesecondstep) #print 08/21/20 02:36:27 PM
+print(type(converttoreadablesecondstep)) #print <class 'str'>
+twitterstringdate = datetime.datetime.strftime(converttoreadablefirststep, "%m/%d/%y")
+twitterstringtime = datetime.datetime.strftime(converttoreadablefirststep, "%I:%M:%S %p")
+print(twitterstringdate) #print 08/21/20
+print(type(twitterstringdate)) #print <class 'str'>
+print(twitterstringtime) #print 02:36:27 PM
+print(type(twitterstringtime)) #print <class 'str'>
+#Use strftime to extract time and convert the 24 hour time from now() to 12 hour time
+nowtime = datetime.datetime.now()
+print(nowtime) #print 2020-08-21 14:51:46.010397
+print(type(nowtime)) #print <class 'datetime.datetime'>
+print(datetime.datetime.strftime(nowtime, "%I:%M:%S %p")) #print 02:51:46 PM
+print(type(nowtime)) #print <class 'datetime.datetime'>
+nowtime = datetime.datetime.strftime(nowtime, "%I:%M:%S %P")
+print(nowtime) #print 02:51:46 pm
+print(type(nowtime)) #print <class 'str'>
+
 #UTC
 #Convert UTC to local date
 #twittercreatedate = "Wed Jul 15 19:06:17 +0000 2020"
