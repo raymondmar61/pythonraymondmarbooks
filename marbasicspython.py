@@ -287,6 +287,31 @@ singleadoubleb = []
 for eachsinglea, eachdoubleb in zip(singlea, doubleb):
 	singleadoubleb.append(eachsinglea+eachdoubleb)
 print(singleadoubleb) #print [11, 13, 15, 17, 19]
+listinformation1 = []
+imagename = "three"
+imageulr = "https"
+listinformation1.append([imagename, imageulr])
+print(listinformation1) #print [['three', 'https']]
+imagename = "top"
+imageulr = "https"
+listinformation1.append([imagename, imageulr])
+print(listinformation1) #print [['three', 'https'], ['top', 'https']]
+for x in listinformation1:
+    print(x[0], x[1])
+    '''
+    three https
+    top https
+    '''
+tuplelist = [[1, "run"], [2, "shoe"], [3, "three"], [4, "four"]]
+print(tuplelist) #print [[1, 'run'], [2, 'shoe'], [3, 'three'], [4, 'four']]
+for eachtuplelist in tuplelist:
+    print(eachtuplelist[0], eachtuplelist[1])
+    '''
+    1 run
+    2 shoe
+    3 three
+    4 four
+    '''
 import heapq
 grades = [32, 43, 654, 34, 132, 66, 99, 532]
 print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
