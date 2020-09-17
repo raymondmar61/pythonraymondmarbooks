@@ -6,7 +6,7 @@ print(firstdate) #print 2017-01-30
 print(firstdate.strftime("%A %B %d, %Y")) #print Monday January 30, 2017
 strftimevariable = firstdate.strftime("%A %B %d, %Y")
 print(strftimevariable) #print Monday January 30, 2017
-secondate = datetime.date(2017,2,1)
+secondate = datetime.date(2017, 2, 1)
 print(secondate) #print 2017-02-01
 print(secondate - firstdate) #print 2 days, 0:00:00
 print((secondate - firstdate).days) #print 2
@@ -14,7 +14,7 @@ print(datetime.datetime.now()) #print 2020-07-29 23:07:46.661061
 print(datetime.datetime.now().strftime("%a %b %d, %Y")) #print Wed Jul 29, 2020
 twittercreatedate = "Wed Jul 15 19:06:17 +0000 2020"
 #twittercreatedate = "Wed Jul 15 19:06:17 2020"
-convertstringtodatetime = datetime.datetime.strptime(twittercreatedate,"%a %b %d %H:%M:%S %z %Y")
+convertstringtodatetime = datetime.datetime.strptime(twittercreatedate, "%a %b %d %H:%M:%S %z %Y")
 print(twittercreatedate) #print Wed Jul 15 19:06:17 +0000 2020
 print(convertstringtodatetime) #print 2020-07-15 19:06:17+00:00
 mystringtodatetime = convertstringtodatetime.strftime("%A %B %d, %Y")
@@ -44,7 +44,7 @@ year = 2020
 variablesdate = datetime.date(year, month, day)
 print(variablesdate) #print 2020-08-21
 #variablesdateerror = datetime.date(month, day, year)
-#print(variablesdateerror) #print ValueError: month must be in 1..12 #print 
+#print(variablesdateerror) #print ValueError: month must be in 1..12 #print
 variablesdatetostring = variablesdate.strftime("%A %B %d, %Y")
 print(variablesdatetostring) #print Friday August 21, 2020
 print(type(variablesdatetostring)) #print <class 'str'>
@@ -52,23 +52,23 @@ variablesdatetostringd = variablesdate.strftime("%D")
 print(variablesdatetostringd) #print 08/21/20
 print(type(variablesdatetostringd)) #print <class 'str'>
 
-a = datetime.date(2011,11,24)
-b = datetime.date(2011,11,17)
-print(a-b) #print 7 days, 0:00:00
-print((a-b).days) #print 7
+a = datetime.date(2011, 11, 24)
+b = datetime.date(2011, 11, 17)
+print(a - b) #print 7 days, 0:00:00
+print((a - b).days) #print 7
 
 #datetime.strptime() is used for converting a string to a datetime object , when using strptime() you have to specify the correct format in which the date/time in the string exists.
 stringdatemmddyy = "08/21/20"
-print(datetime.datetime.strptime(stringdatemmddyy,"%m/%d/%y")) #print 2020-08-21 00:00:00
-print(type(datetime.datetime.strptime(stringdatemmddyy,"%m/%d/%y"))) #print <class 'datetime.datetime'>
+print(datetime.datetime.strptime(stringdatemmddyy, "%m/%d/%y")) #print 2020-08-21 00:00:00
+print(type(datetime.datetime.strptime(stringdatemmddyy, "%m/%d/%y"))) #print <class 'datetime.datetime'>
 stringdatemmddyyyy = "08-21-2020"
 stringdatemmddyyyyvariable = datetime.datetime.strptime(stringdatemmddyyyy, "%m-%d-%Y")
 print(stringdatemmddyyyyvariable) #print 2020-08-21 00:00:00
 print(type(stringdatemmddyyyyvariable)) #print <class 'datetime.datetime'>
 print(stringdatemmddyyyyvariable.strftime("%D")) #print 08/21/20
 stringdatemmddyyyymilitarytime = "2020-08-21 14:36:27"
-print(datetime.datetime.strptime(stringdatemmddyyyymilitarytime,"%Y-%m-%d %H:%M:%S")) #print 2020-08-21 14:36:27
-converttoreadablefirststep = datetime.datetime.strptime(stringdatemmddyyyymilitarytime,"%Y-%m-%d %H:%M:%S")
+print(datetime.datetime.strptime(stringdatemmddyyyymilitarytime, "%Y-%m-%d %H:%M:%S")) #print 2020-08-21 14:36:27
+converttoreadablefirststep = datetime.datetime.strptime(stringdatemmddyyyymilitarytime, "%Y-%m-%d %H:%M:%S")
 converttoreadablesecondstep = datetime.datetime.strftime(converttoreadablefirststep, "%m/%d/%y %I:%M:%S %p")
 print(converttoreadablesecondstep) #print 08/21/20 02:36:27 PM
 print(type(converttoreadablesecondstep)) #print <class 'str'>
@@ -92,7 +92,7 @@ print(type(nowtime)) #print <class 'str'>
 #Convert UTC to local date
 #twittercreatedate = "Wed Jul 15 19:06:17 +0000 2020"
 twittercreatedate = "Wed Jul 15 00:06:17 +0000 2020"
-twittercreatedatestrptime = datetime.datetime.strptime(twittercreatedate,"%a %b %d %H:%M:%S %z %Y")
+twittercreatedatestrptime = datetime.datetime.strptime(twittercreatedate, "%a %b %d %H:%M:%S %z %Y")
 print(twittercreatedatestrptime) #print 2020-07-15 00:06:17+00:00
 convertutctolocal = twittercreatedatestrptime.replace(tzinfo=pytz.utc).astimezone(localtimezone)
 print(convertutctolocal) #print 2020-07-14 17:06:17-07:00
@@ -138,4 +138,39 @@ tozone = tz.gettz('America/New York')
 print(tozone) #print tzfile('/usr/share/zoneinfo/America/New_York')
 utctozone = strptimeutcdatetimenow.astimezone(tozone)
 print(utctozone) #print 2020-08-05 06:26:35.787015-04:00
+#You don't want to average times on hours, minutes, and seconds.  Convert all times into seconds, calculate the average, and convert back to hours, minutes, and seconds.
+from datetime import timedelta
+def averagetime(timelist):
+    timelistinseconds = []
+    for eachtimelist in timelist:
+        print(eachtimelist) #print 1:23:54
+        print(eachtimelist.split(":")) #print ['1', '23', '54']
+        hour, minute, second = map(int, eachtimelist.split(":"))
+        print(hour) #print 1
+        print(minute) #print 23
+        print(second) #print 54
+        print((hour * 3600) + (minute * 60) + (second)) #print 5034
+        eachtimelistinseconds = (hour * 3600) + (minute * 60) + (second)
+        timelistinseconds.append(eachtimelistinseconds)
+    print(timelistinseconds) #print [3540, 3660, 5034]
+    print(sum(timelistinseconds) / len(timelistinseconds)) #print 4078.0
+    averagetime = sum(timelistinseconds) / len(timelistinseconds)
+    hours = divmod(averagetime, 3600)
+    print(hours) #print (1.0, 478.0)
+    minutes = divmod(hours[1], 60)
+    print(minutes) #print (7.0, 58.0)
+    seconds = divmod(minutes[1], 1)
+    print(seconds) #print (58.0, 0.0)
+    return ("Average time is {} hours, {} minutes, and {} seconds.".format(int(hours[0]), int(minutes[0]), int(seconds[0])))
 
+
+print(averagetime(["00:59:00", "1:1:00", "1:23:54"])) #print Average time is 1 hours, 7 minutes, and 58 seconds.
+
+#abbreviate datetime as dt
+from datetime import datetime as dt
+print(dt.now()) #print 2020-09-16 19:57:12.772079
+print(dt.now().year) #print 2020
+print("%s/%s/%s" % (dt.now().month, dt.now().day, dt.now().year)) #print 9/16/2020
+print("{}/{}/{}" .format(dt.now().month, dt.now().day, dt.now().year)) #print 9/16/2020
+now = dt.now()
+print("{}:{}:{}" .format(now.hour, now.minute, now.second)) #print 19:57:12
