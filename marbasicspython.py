@@ -1,11 +1,9 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, If Elif Else If then, try except, open file write file, Functions, Lambda, import statement
+#Categories:  Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, If Elif Else If then, try except, open file write file, Functions, Function Iterators, Lambda, import statement
 #Classes at marbasicspythonclasses.py.
 #Modules at marcommonmodulespython.py.  Math.
-#thenewbostonallvideos
-#williamfisetallvideos
-#Python Crash Course take two
+#YouTube and book tutorials:  thenewbostonallvideos, williamfisetallvideos, Python Crash Course take two
 
 #Category:  Boolean
 print(bool(1>3)) #print False
@@ -60,7 +58,6 @@ print(fiveexcessesspace.strip()) #print PYTHON
 print(fiveexcessesspace.lower()) #print      python    
 splitstring = "do goat sheep boat"
 print(splitstring.title()) #print Do Goat Sheep Boat
-print(splitstring.upper()) #print DO GOAT SHEEP BOAT
 print(list(splitstring)) #print ['d', 'o', ' ', 'g', 'o', 'a', 't', ' ', 's', 'h', 'e', 'e', 'p', ' ', 'b', 'o', 'a', 't']
 print(splitstring.split()) #print ['do', 'goat', 'sheep', 'boat']
 print(splitstring.split(" ")) #print ['do goat sheep boat']
@@ -484,6 +481,16 @@ numberletter.sort()
 print(numberletter) #print [('a', 1), ('b', 2), ('c', 3)]
 
 #Category:  Dictionaries
+menu = {}
+menu["Chicken Alfredo"] = 14.50
+print(menu) #print {'Chicken Alfredo': 14.5}
+menu['Hamburger'] = 10.00 #add key: item to menu dictionary
+menu['BBQ Chicken'] = 7.50 #add key: item to menu dictionary
+menu['Ham Sandwich'] = 6.25 #add key: item to menu dictionary
+print(len(menu)) #print 4
+print(menu) #print {'Ham Sandwich': 6.25, 'Chicken Alfredo': 14.5, 'BBQ Chicken': 7.5, 'Hamburger': 10.0}
+del menu["Chicken Alfredo"]
+print(menu) #print {'Ham Sandwich': 6.25, 'BBQ Chicken': 7.5, 'Hamburger': 10.0}
 classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
 print(classmatesdictionary["Emma"]) #print sits behind me
@@ -501,6 +508,15 @@ classmatesdictionary["Zoe"] = "I'm the new person"
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "Psychiatric Help $0.05", 'Zoe': "I'm the new person"}
 for sortedkeys in sorted(classmatesdictionary.keys()):
 	print(sortedkeys,end=",") #print Emma,Lucy,Tony,Zoe,
+mydictionary = {"fish": ["c", "a", "r", "p"], "cash": -4483, "luck":"good"}
+print(mydictionary["fish"]) #print ['c', 'a', 'r', 'p']
+print(mydictionary["fish"][2]) #print r
+mydictionary["inventory"] = ["rations","flashlight","sleeping bag"]
+print(mydictionary) #print {'cash': -4483, 'fish': ['c', 'a', 'r', 'p'], 'luck': 'good', 'inventory': ['rations', 'flashlight', 'sleeping bag']}
+mydictionary["fish"].sort() #sort key fish's list in dictionary mydictionary
+print(mydictionary) #print {'luck': 'good', 'inventory': ['rations', 'flashlight', 'sleeping bag'], 'fish': ['a', 'c', 'p', 'r'], 'cash': -4483}
+mydictionary["fish"].remove("p")
+print(mydictionary) #print {'luck': 'good', 'inventory': ['rations', 'flashlight', 'sleeping bag'], 'fish': ['a', 'c', 'r'], 'cash': -4483}
 pizzadictionarylist = {"crust":"thick", "toppings":["mushrooms","cheese","salami","pepperoni","bell peppers","meatballs","onions"]}
 for eachpizzadictionarylisttoppings in pizzadictionarylist["toppings"]:
 	print(eachpizzadictionarylisttoppings) #print mushrooms\n cheese\n salami\n pepperoni\n bell peppers\n meatballs\n onions
@@ -742,6 +758,21 @@ rainy
 <class 'tuple'>
 35
 '''
+def callmyownfunction(number):
+    print(number)
+    if number == 5:
+        print("You won")
+    else:
+        number = int(input("Enter a number between one and ten "))
+        callmyownfunction(number)
+firstinput = int(input("Enter a number between one and ten "))
+callmyownfunction(firstinput)
+def onegoodturn(n):
+  return n + 1
+def deservesanother(n):
+  return onegoodturn(n) + 2
+print(onegoodturn(10)) #return 11
+print(deservesanother(10)) #return 13
 def parentfunction(parentlist, givetochildlist):
 	while parentlist:
 		parenttochildlist = parentlist.pop()
@@ -901,6 +932,52 @@ while True:
     else:
         survey.saveresponse(response)
 survey.showresponse() #return The list ['HTML', 'Python', 'SQL', 'CSS', 'JavaScript', 'DAX']\n Your languages are HTML, Python, SQL, CSS, JavaScript, DAX\n HTML, Python, SQL, CSS, JavaScript, DAX
+
+#Category:  Function Iterators
+numbers = [1, 2, 3, 4, 5]
+def square(x):
+	return x**2
+print(map(square,numbers)) #print <map object at 0x7fa402f9f470>
+print(list(map(square,numbers))) #print [1, 4, 9, 16, 25]
+print(map(lambda x: x**2,numbers)) #print <map object at 0x7fd294e77470>
+print(list(map(lambda x: x**2,numbers))) #print [1, 4, 9, 16, 25]
+def uppercase(string):
+	return string.upper()
+letters = ["abc","def","ghi"]
+print(list(map(uppercase,letters))) #print ['ABC', 'DEF', 'GHI']
+firsta, firstd, firstg = list(map(uppercase, letters))
+print(firsta) #print ABC
+print(firstd) #print DEF
+print(firstg) #print GHI
+numbersfilter = [1, 2, 3, 4, 5, 6]
+print(list(filter(lambda x: x>3,numbersfilter))) #print [4, 5, 6]
+def greaterthanthree(x):
+	return x > 3
+print(list(filter(greaterthanthree,numbersfilter))) #print [4, 5, 6]
+from functools import reduce #Guido van Rossum says 99% of the time an explicit for loop is more readable.
+print(reduce(lambda x, y: x+y,numbersfilter)) #print 21
+stringsentence = ["This","is","a","sentence"]
+print(reduce(lambda x, y: x+" "+y,stringsentence)) #print This is a sentence
+from random import shuffle
+def jumble(word):
+	anagram = list(word)
+	shuffle(anagram)
+	return "".join(anagram)
+words = ["beetroot","carrots","potatoes"]
+print(map(jumble,words)) #print <map object at 0x7fbc09ee02e8>
+print(list(map(jumble,words))) #print ['etetboro', 'scrrtoa', 'oaptsoet']
+#list comprehension
+listcomprehension = [jumble(eachwords) for eachwords in words]
+print(listcomprehension) #print ['rtooeteb', 'rstcaro', 'tespoato']
+countries = ["","Argentina","","Brazil","Chile","","Colombia","","Ecuador","","","Venezuela"]
+print(list(filter(None,countries))) #print ['Argentina', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Venezuela']
+numberdata = [1.3,2.7,0.8,4.1,4.3,-0.1]
+averagedata = sum(numberdata)/len(numberdata)
+print(averagedata) #print 2.183333333333333
+numberdatagreaterthanaverage = list(filter(lambda x: x>averagedata,numberdata))
+print(numberdatagreaterthanaverage) #print [2.7, 4.1, 4.3]
+numberdatalessthanaverage = list(filter(lambda x: x<averagedata,numberdata))
+print(numberdatalessthanaverage) #print [1.3, 0.8, -0.1]
 
 #Category open file write file
 #To get Python to open files from a directory other than the one where your program file is stored, you need to provide a file path, which tells Python to look in a specific location on your system.  Here are relative paths.  with open('text_files/filename.txt') as fileobject: on Linux and OS X.  with open('text_files\filename.txt') as fileobject: on Windows.
