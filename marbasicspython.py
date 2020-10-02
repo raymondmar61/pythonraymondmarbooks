@@ -218,6 +218,9 @@ del tryit[2]
 print(tryit) #print ['cat', 'parrot']
 tryit.remove("parrot")
 print(tryit) #print ['cat']
+removespecificnumber = [43, 2983, 128794, 732897, 18374801, 583909873, 1003874, 9]
+giveme18374801savehere = removespecificnumber.remove(18374801)
+print(giveme18374801savehere) #None
 duplicateitems = ["cat","dog","moon","shoe","cat","dog","cat"]
 print(len(duplicateitems)) #print 7
 print(duplicateitems.count("cat")) #print 3
@@ -280,6 +283,14 @@ alistoflists = [randomnumbers, chrisfamilyguyfriends]
 print(alistoflists) #print [[1, 5676, 30943], ['Chandler', 'Fonz', 'Elmo']]
 singlea = [1, 2, 3, 4, 5]
 doubleb = [10, 11, 12, 13, 14]
+for eachsinglea, eachdoubleb in zip(singlea, doubleb):
+    print(eachsinglea) #print 1\n 2\n 3\n 4\n 5
+for eachsinglea, eachdoubleb in zip(singlea, doubleb):
+    print(eachdoubleb) #print 10\n 11\n 12\n 13\n 14
+for eachsinglea, eachdoubleb in zip(singlea, doubleb):
+    print(eachsinglea, eachdoubleb) #print 1 10\n 2 11\n 3 12\n 4 13\n 5 14
+singlea = [1, 2, 3, 4, 5]
+doubleb = [10, 11, 12, 13, 14]
 singleadoubleb = []
 for eachsinglea, eachdoubleb in zip(singlea, doubleb):
 	singleadoubleb.append(eachsinglea+eachdoubleb)
@@ -331,6 +342,7 @@ print(squares) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 squareslistcomprehension = [onenumber*onenumber for onenumber in numbers]
 print(squareslistcomprehension) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 #Reuven Lerner:  For loops perform an action a number of times; e.g. delete files, submit scrabble score for each word in a sentence, ping IP addresses, and copy a file to a server up to five times.  List comprehension get a list back for direct use as a list or input to create a different data structure; e.g. get usernames from Unix's, turning a configuration file a list of lists, and summing a bunch of hex numbers into integers. 
+#enumerate works by supplying a corresponding index to each element in the list that you pass it. Each time you go through the loop, index will be one greater, and item will be the next item in the sequence. It's very similar to using a normal for loop with a list, except this gives us an easy way to count how many items we've seen so far.
 firstname = ["Bucky","Tom","Taylor"]
 lastname = ["Roberts","Hanks","Swift"]
 print(enumerate(firstname)) #print <enumerate object at 0x7f01d25b5708>
@@ -508,6 +520,20 @@ classmatesdictionary["Zoe"] = "I'm the new person"
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "Psychiatric Help $0.05", 'Zoe': "I'm the new person"}
 for sortedkeys in sorted(classmatesdictionary.keys()):
 	print(sortedkeys,end=",") #print Emma,Lucy,Tony,Zoe,
+dictionary = {"a": "apple", "b": "berry", "c": "cherry"}
+for defaultgetkeyindictionary in dictionary:
+    print("key " + defaultgetkeyindictionary) #print key a\n key b\n key c
+for defaultgetkeyindictionary in dictionary:
+    print("key " + defaultgetkeyindictionary)
+    print("print the value " + dictionary[defaultgetkeyindictionary])
+    '''
+    key a
+    print the value apple
+    key b
+    print the value berry
+    key c
+    print the value cherry
+    '''
 mydictionary = {"fish": ["c", "a", "r", "p"], "cash": -4483, "luck":"good"}
 print(mydictionary["fish"]) #print ['c', 'a', 'r', 'p']
 print(mydictionary["fish"][2]) #print r
@@ -580,6 +606,17 @@ print(users) #print [{'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Tom', 'l
 from operator import itemgetter
 print(sorted(users, key=itemgetter("fname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Tom', 'lname': 'Jones'}]
 print(sorted(users, key=itemgetter("fname","lname"))) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}]
+#Individual dictionaries, variable dictionaries, assigned dictionaries
+lloyd = {"name": "Lloyd", "homework": [0.0, 97.0, 75.0, 92.0], "quizzes": [88.0, 40.0, 94.0], "tests": [75.0, 90.0]}
+alice = {"name": "Alice", "homework": [100.0, 92.0, 98.0, 100.0], "quizzes": [82.0, 83.0, 91.0], "tests": [89.0, 97.0]}
+tyler = {"name": "Tyler", "homework": [0.0, 87.0, 75.0, 22.0], "quizzes": [0.0, 75.0, 78.0], "tests": [100.0, 100.0]}
+print(lloyd) #print {'name': 'Lloyd', 'homework': [0.0, 97.0, 75.0, 92.0], 'quizzes': [88.0, 40.0, 94.0], 'tests': [75.0, 90.0]}
+students = [lloyd, alice, tyler]
+print(students) #print [{'name': 'Lloyd', 'homework': [0.0, 97.0, 75.0, 92.0], 'quizzes': [88.0, 40.0, 94.0], 'tests': [75.0, 90.0]}, {'name': 'Alice', 'homework': [100.0, 92.0, 98.0, 100.0], 'quizzes': [82.0, 83.0, 91.0], 'tests': [89.0, 97.0]}, {'name': 'Tyler', 'homework': [0.0, 87.0, 75.0, 22.0], 'quizzes': [0.0, 75.0, 78.0], 'tests': [100.0, 100.0]}]
+print(students[1]) #print {'name': 'Alice', 'homework': [100.0, 92.0, 98.0, 100.0], 'quizzes': [82.0, 83.0, 91.0], 'tests': [89.0, 97.0]}
+print(students[1]["name"]) #print Alice
+print(students[1]["quizzes"]) #print [82.0, 83.0, 91.0]
+print(students[1]["quizzes"][2]) #print 91
 print("\n")
 
 #Category:  Sets
@@ -725,6 +762,14 @@ def multiplevalues(anynumber, *words):
 	print(anynumber)
 	print(words)
 multiplevalues(5,"yum","boo","black") #print 5\n ('yum', 'boo', 'black')
+#Nested function
+def averagefunction(numbers):
+    sumnumbers = sum(numbers)
+    average = (sumnumbers / len(numbers))
+    return average
+def notafunction():
+    return [1, 35, 61, 92]
+print(averagefunction(notafunction())) #print 47.25
 #parent and child functions
 def addnumbers(*numbers, ray="sunshine"):
 	total = 0
