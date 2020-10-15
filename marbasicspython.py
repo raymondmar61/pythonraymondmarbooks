@@ -40,6 +40,10 @@ print(4**2) #print 16
 foo = 34
 bar = 3
 print(eval("foo * bar")) #print 102.  34*3=102
+isthenumberrounded = 80.654 #round numbers
+print("%.3f" % isthenumberrounded) #print 80.654
+print("%.2f" % isthenumberrounded) #print 80.65
+print("%.1f" % isthenumberrounded) #print 80.7
 
 #Category:  Strings
 print(r"this story is \nokday d'kay") #print this story is \nokday d'kay. RM:  print as-is exact text
@@ -264,15 +268,23 @@ print(fourpipelists) #print ['|||', '|||', '|||', '|||']
 joinfourpipelists = "".join(fourpipelists)
 print(joinfourpipelists) #print ||||||||||||
 numberslist = [11,22,33,44,55,66,77,88]
-print(numberslist) #print [11, 22, 33, 44, 55, 66, 77, 88] 
+print(numberslist) #print [11, 22, 33, 44, 55, 66, 77, 88]
+print(numberslist[2:7]) #print [33, 44, 55, 66, 77]
+print(numberslist[:4]) #print [11, 22, 33, 44]
+print(numberslist[-1]) #print 88
+print(numberslist[-3:]) #print [66, 77, 88] #a negative index returns an element a certain distance from the end of a list
 print(numberslist[::-1]) #print [88, 77, 66, 55, 44, 33, 22, 11]
+print(numberslist[::-3]) #print [88, 55, 22]
 print(numberslist[2:5]) #print [33, 44, 55]
 print(numberslist[0::2]) #print [11, 33, 55, 77]
-print(numberslist[-1]) #print 88
 print(numberslist[-1::-2]) #print [88, 66, 44, 22]
 print(numberslist[-4::-2]) #print [55, 33, 11]
-print(numberslist[:4]) #print [11, 22, 33, 44]
-print(numberslist[-3:]) #print [66, 77, 88] #a negative index returns an element a certain distance from the end of a list
+print(numberslist[0::-3]) #print [11]
+print(numberslist[3::-3]) #print [44, 11]
+print(numberslist[3::3]) #print [44, 77]
+print(numberslist[5:9:-3]) #print []
+print(numberslist[5:9:-1]) #print []
+print(numberslist[1:4:-1]) #print []
 print(list(range(1,11))) #print [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(list(range(10,101,10))) #print [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 date, name, price = ["December 31, 2015","Bread Gloves",8.51]
@@ -503,6 +515,27 @@ print(len(menu)) #print 4
 print(menu) #print {'Ham Sandwich': 6.25, 'Chicken Alfredo': 14.5, 'BBQ Chicken': 7.5, 'Hamburger': 10.0}
 del menu["Chicken Alfredo"]
 print(menu) #print {'Ham Sandwich': 6.25, 'BBQ Chicken': 7.5, 'Hamburger': 10.0}
+medictionary = {"Name": "Raymond Mar", "Age": 46, "Board Games": True, "Attributes": ["strong", "high self-esteem", "self-trained genius"], "Favorite Color": "White"}
+print(medictionary) #print {'Name': 'Raymond Mar', 'Age': 46, 'Board Games': True, 'Attributes': ['strong', 'high self-esteem', 'self-trained genius'], 'Favorite Color': 'White'}
+#items() returns an array of tuples with each tuple consisting of a key/value pair from the dictionary
+print(medictionary.items()) #print dict_items([('Name', 'Raymond Mar'), ('Age', 46), ('Board Games', True), ('Attributes', ['strong', 'high self-esteem', 'self-trained genius']), ('Favorite Color', 'White')])
+print(medictionary.keys()) #print dict_keys(['Name', 'Age', 'Board Games', 'Attributes', 'Favorite Color'])
+print(type(medictionary.keys())) #print <class 'dict_keys'>
+print(medictionary.values()) #print dict_values(['Raymond Mar', 46, True, ['strong', 'high self-esteem', 'self-trained genius'], 'White'])
+print(type(medictionary.values())) #print <class 'dict_values'>
+print(list(medictionary.values())) #print ['Raymond Mar', 46, True, ['strong', 'high self-esteem', 'self-trained genius'], 'White']
+print(type(list(medictionary.values()))) #print <class 'list'>
+medictionarylist = list(medictionary.values())
+print(medictionarylist[4]) #print White
+for key in medictionary:
+    print(key, medictionary[key])
+    '''
+    Name Raymond Mar
+    Age 46
+    Board Games True
+    Attributes ['strong', 'high self-esteem', 'self-trained genius']
+    Favorite Color White
+    '''
 classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":"asks too many questions"}
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
 print(classmatesdictionary["Emma"]) #print sits behind me
