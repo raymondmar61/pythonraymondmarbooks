@@ -26,6 +26,109 @@ resultfirst = isinstance(firstnumber, (int, float))
 print(resultfirst) #print True
 resultsecond = isinstance(secondnumber, (int, float))
 print(resultsecond) #print True
+#ValueError: too many values to unpack (expected 4)
+#variable1, variable2, variable3, variable4 = "robert"
+#print(variable1) #print robert
+#print(variable2) #print robert
+#print(variable3) #print robert
+#print(variable4) #print robert
+variable1, variable2, variable3, variable4 = "robert", "robert", "robert", "robert"
+print(variable1) #print robert
+print(variable2) #print robert
+print(variable3) #print robert
+print(variable4) #print robert
+print(variable1 is variable4) #print True
+variable1, variable2, variable3, variable4 = ["roberttimesfour"] * 4
+print(variable1) #print roberttimesfour
+print(variable2) #print roberttimesfour
+print(variable3) #print roberttimesfour
+print(variable4) #print roberttimesfour
+print(type(variable4)) #print <class 'str'>
+variable1, variable2, variable3, variable4 = "jake", "snake", "blake", "cake"
+print(variable1) #print jake
+print(variable2) #print snake
+print(variable3) #print blake
+print(variable4) #print cake
+print(variable1 is variable4) #print False
+[variable1, variable2, variable3, variable4] = ["jake", "snake", "blake", "cake"]
+print(variable1) #print jake
+print(variable2) #print snake
+print(variable3) #print blake
+print(variable4) #print cake
+(variable1, variable2, variable3, variable4) = ("jaketuple", "snaketuple", "blaketuple", "caketuple")
+print(variable1) #print jaketuple
+print(variable2) #print snaketuple
+print(variable3) #print blaketuple
+print(variable4) #print caketuple
+variable1 = variable2 = variable3 = variable4 = "robertfourequals"
+print(variable1) #print robertfourequals
+print(variable2) #print robertfourequals
+print(variable3) #print robertfourequals
+print(variable4) #print robertfourequals
+xvariable = None
+yvariable = None
+print(xvariable) #print None
+print(yvariable) #print None
+xvariable = yvariable = "something"
+print(xvariable) #print something
+print(yvariable) #print something
+a = b = c = [1, 3, 5]
+print(a) #print [1, 3, 5]
+print(b) #print [1, 3, 5]
+print(c) #print [1, 3, 5]
+print(a is b) #print True
+print(b is c) #print True
+print(c is b) #print True
+b = 3333
+print(b) #print 3333
+print(a is b) #print False
+print(b is c) #print False
+print(c is b) #print False
+a, b, c = 1, 3, 5
+print(a) #print 1
+print(b) #print 3
+print(c) #print 5
+print(a is b) #print False
+print(b is c) #print False
+print(c is b) #print False
+b = 3333
+print(b) #print 3333
+print(a is b) #print False
+a, b, c = ({"test": "a"}, {"test": "b"}, {"test": "c"})
+print(a) #print {"test":"a"}
+print(b) #print {"test":"b"}
+print(c) #print {"test":"c"}
+#A stackoverflow says don't do the following any other object
+dontdothis = {}
+dontdothistoo = {}
+dontdothis = dontdothistoo = {} #same dictionary object assigned to dontdothis, dontdothistoo.  Should not do this.
+#Anacoda removed my lamda--> fiveletters = lambda n: ["five letters" for _ in range(n)]
+def fivelettersvariables(n):
+    return ["five letters" for _ in range(n)]
+v, w, z, y, z = fivelettersvariables(5)
+print(v) #print five letters
+print(z) #print five letters
+#However . . . 
+lista = listb = []
+lista.append("x")
+print(lista) #print x
+print(listb) #print x
+listc = listd = [[], []]
+listc.append("xc")
+print(listc) #print x
+print(listd) #print x
+liste, listf, listg = ([] for _ in range(0, 3)) #liste, listf, listg = [[] for _ in range(0, 3)] using lists also works
+print(liste) #print []
+print(listf) #print []
+print(listg) #print []
+liste.append("xe")
+print(liste) #print ['xe']
+print(listf) #print []
+print(listg) #print []
+listg.append("xg")
+print(liste) #print ['xe']
+print(listf) #print []
+print(listg) #print ['xg']
 
 #Category:  Math
 print(18/5) #print 3.6
@@ -204,6 +307,20 @@ There are animals in the list.
 What's going on here.
 What's going on here.
 '''
+numbersxlist = [1, 2, 3]
+print(numbersxlist)
+numbersxlist.append(4)
+print(numbersxlist)
+#numbersxlist.append(5, 6) #TypeError: append() takes exactly one argument (2 given)
+numbersxlist.append([5, 6])
+print(numbersxlist) #print [1, 2, 3, 4, [5, 6]]
+numbersxlist.pop()
+print(numbersxlist) #print [1, 2, 3, 4]
+#extend extends list by appending elements from the iterable; concatenates the first list with another list or another iterable not necessarily a list.  Iterates over its argument adding each element to the list and extending the length of the list.
+numbersxlist.extend([5, 6])
+print(numbersxlist) #print [1, 2, 3, 4, 5, 6]
+numbersxlist.insert(3, 987)
+print(numbersxlist) #print [1, 2, 3, 987, 4, 5, 6]
 items[1] = "parrot"
 print(items) #print ['cat', 'parrot', 'moon', 'shoe']
 items.append("door")
