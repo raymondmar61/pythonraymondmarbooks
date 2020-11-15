@@ -431,3 +431,150 @@ with mycontextmanagertrue() as errormessage:
 	value=division by zero
 	traceback=<traceback object at 0x7f828c053988>
 	'''
+#Calling the class and a function
+class Chooseafunction():
+    def __init__(self, name, singer=""):
+        self.name = name
+        self.singer = singer
+    def runfunctioninsideclass(self, number=""):
+        print("runfunctioninsideclass is ran.  self. is the prefix before the functionname.")
+        if number:
+            print("runfunctioninsideclass is ran has function04 entered {}.".format(number))
+    def function04(self):
+        print(self.name + " choose function04 fourth function.")
+        number = int(input("Choose a number? "))
+        print(number)
+        self.runfunctioninsideclass(number)
+    def function03(self):
+        print(self.name + " choose function03 third function.")
+        toyvariable = "stickers"
+        print("{}'s toy for today is {}.".format(self.name, toyvariable))
+    def function02(self):
+        print(self.name + " choose function02 second function.")
+    def function01(self):
+        print(self.name + " choose function01 first function.")
+        self.runfunctioninsideclass()
+    def function05(self):
+        print(self.name + " choose function05 fifth function.")
+        self.singerfunction()
+    def singerfunction(self):
+        print(self.name + " included a singer's name in function05.  self.singerfunction is ran.")
+        print(self.singer + " is the singer.")
+
+
+raymondfunction = Chooseafunction("Raymond")
+raymondfunction.function01() #return Raymond choose function01 first function.\n  runfunctioninsideclass is ran.  self. is the prefix before the functionname.
+jamesfunction = Chooseafunction("James") #return James choose function02 second function.
+jamesfunction.function02()
+michellefunction = Chooseafunction("Michelle")
+michellefunction.function03() #return Michelle choose function03 third function.\n Michelle's toy for today is stickers.
+dadfunction = Chooseafunction("Dad")
+dadfunction.function04()
+'''
+Dad choose function04 fourth function.
+Choose a number? 4897
+4897
+runfunctioninsideclass is ran.  self. is the prefix before the functionname.
+runfunctioninsideclass is ran has function04 entered 4897.
+'''
+momfunction = Chooseafunction("Mom", "Celine Dion")
+momfunction.function05() #return Mom choose function05 fifth function.\n Mom included a singer's name in function05.  self.singerfunction is ran.\n Celine Dion is the singer.
+paulfunction = Chooseafunction(name="", singer="Paul McCartney")
+paulfunction.singerfunction() #return  included a singer's name in function05.  self.singerfunction is ran.\n Paul McCartney is the singer.
+
+class Fruit():
+    """A class that makes various tasty fruits."""
+    def __init__(self, fruitname, color, flavor, poisonous):
+        self.name = fruitname
+        self.color = color
+        self.flavor = flavor
+        self.poisonous = poisonous
+    def description(self):
+        print("I'm a %s %s and I taste %s." % (self.color, self.name, self.flavor))
+        print("I'm a {} {} and I taste {}.".format(self.color, self.name, self.flavor))
+        print("I'm a " + self.color + " " + self.name + " and I taste " + self.flavor)
+    def isedible(self):
+        if self.poisonous:
+            print("Don't eat me!  I'm super poisonous.")
+        else:
+            print("Yep! I'm edible.")
+
+
+lemon = Fruit("lemon", "yellow", "sour", False)
+lemon.description()
+'''
+I'm a yellow lemon and I taste sour.
+I'm a yellow lemon and I taste sour.
+I'm a yellow lemon and I taste sour
+'''
+lemon.isedible() #return Yep! I'm edible.
+
+class Animal():
+    isalive = True
+    addlovescale = 5
+    health = "good"
+    def __init__(self, name, age, ishungry):
+        self.name = name
+        self.age = age
+        self.ishungry = ishungry
+    def classvariables(self):
+        print("The lovescale is {} and the health is {} for which self. is required in variables defined in class".format(self.addlovescale, self.health))
+    def description(self):
+        print(self.name + " is age", self.age)
+
+
+classvariables = Animal(age=14, ishungry=True, name="Arthur")
+classvariables.classvariables() #print The lovescale is 5 and the health is good for which self. is required in variables defined in class
+zebra = Animal("Jeffry", 2, True)
+zebra.description() #return Jeffry is age 2
+print(zebra.name) #print Jeffry
+print(zebra.age) #print 2
+giraffe = Animal("Bruce", ishungry=False, age=2)
+giraffe.description() #return Bruce is age 2
+print(giraffe.ishungry) #print False
+hippo = Animal("Rebecca", 3, False)
+hippo.description() #return Rebecca is age 3
+print("Class Animal local variables", hippo.isalive) #print Class Animal local variables True
+print("Class Animal local variables", hippo.addlovescale) #print Class Animal local variables 5
+print("Class Animal local variables " + hippo.health) #print Class Animal local variables good
+
+class AddItemsInShoppingCart():
+    itemsincart = {}
+    def __init__(self, customername):
+        self.customername = customername
+    def additem(self, product, price):
+        self.itemsincart[product] = price
+
+
+rockycart = AddItemsInShoppingCart("Rocky")
+rockycart.additem("broccoli", 50)
+rockycart.additem("coffee", 10.20)
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2}
+mapopcart = AddItemsInShoppingCart("Ma")
+mapopcart.additem("chocolate", 10)
+mapopcart.additem("peas and carrots", 15)
+mapopcart = AddItemsInShoppingCart("Pa")
+mapopcart.additem("comic book", 1)
+print(mapopcart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'chocolate': 10, 'peas and carrots': 15, 'comic book': 1}
+
+class AddItemsInShoppingCart2():
+    def __init__(self, customername):
+        self.customername = customername
+        self.itemsincart = {}
+    def additem(self, product, price):
+        self.itemsincart[product] = price
+
+
+rockycart = AddItemsInShoppingCart2("Rocky")
+rockycart.additem("broccoli", 50)
+rockycart.additem("coffee", 10.20)
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2}
+mapopcart = AddItemsInShoppingCart2("Ma")
+mapopcart.additem("chocolate", 10)
+mapopcart.additem("peas and carrots", 15)
+print(mapopcart.itemsincart) #print {'chocolate': 10, 'peas and carrots': 15}
+mapopcart = AddItemsInShoppingCart2("Pa")
+mapopcart.additem("comic book", 1)
+print(mapopcart.itemsincart) #print {'comic book': 1}
+
+#Inheritance
