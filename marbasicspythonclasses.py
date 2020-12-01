@@ -686,4 +686,64 @@ mapopcart = AddItemsInShoppingCart2("Pa")
 mapopcart.additem("comic book", 1)
 print(mapopcart.itemsincart) #print {'comic book': 1}
 
+class FunctionOutsideClass():
+    def choosemathoperation(self, tellmemathoperationfunction, *numbers):
+        print("{}".format(tellmemathoperationfunction(*numbers)))
+def mathoperationsadd(a, b):
+    return a + b
+def mathoperationsmultiply(a, b):
+    return a * b
+
+
+defineobjectadd1 = FunctionOutsideClass()
+defineobjectadd1.choosemathoperation(mathoperationsadd, 3, 5) #print 8
+defineobjectmultiply1 = FunctionOutsideClass()
+defineobjectmultiply1.choosemathoperation(mathoperationsmultiply, 4, 8) #print 32
+defineobjectadd2 = FunctionOutsideClass()
+defineobjectadd2.choosemathoperation(mathoperationsadd, 100, 333) #print 433
+
+class ClassStaticVariable():
+    theclassvariable = "Raymond Mar"
+    def __init__(self):
+        #print(theclassvariable) #print NameError: name 'theclassvariable' is not defined
+        ClassStaticVariable.theclassvariable
+    def returntheclassvariable(self):
+        return ClassStaticVariable.theclassvariable
+
+
+instanceone = ClassStaticVariable()
+print(instanceone) #print <__main__.ClassStaticVariable object at 0x7f0b9b8c8978>
+#print(instanceone.ClassStaticVariable()) #print AttributeError: 'ClassStaticVariable' object has no attribute 'ClassStaticVariable'
+instancetwo = ClassStaticVariable()
+print(instancetwo.returntheclassvariable()) #print Raymond Mar
+
+class CharacterClassVariable():
+    #class variables or static variables
+    totalnumberofcharacters = 0
+    maximumhealth = 150
+    lastname = "Potter"
+    def __init__(self, firstname, lastname):
+        #instance variables
+        self.firstname = firstname
+        self.lastname = lastname
+        self.health = CharacterClassVariable.maximumhealth
+        CharacterClassVariable.totalnumberofcharacters += 1
+    def changelastnamepotter(self):
+        self.lastname = CharacterClassVariable.lastname
+    def changelastnamepottertryagain(self):
+        self.lastname = CharacterClassVariable.lastname
+        return self.lastname
+
+
+bob = CharacterClassVariable(firstname="Bob", lastname="")
+ryan = CharacterClassVariable("Ryan", "Willow")
+print(ryan) #print <__main__.CharacterClassVariable object at 0x7f959e2beda0>
+print(CharacterClassVariable.totalnumberofcharacters) #print 2
+print(ryan.totalnumberofcharacters) #print 2
+print(ryan.lastname) #print Willow
+print(ryan.changelastnamepotter()) #return None
+print(ryan.changelastnamepottertryagain()) #return Potter
+print(CharacterClassVariable.maximumhealth) #print 150
+print(ryan.maximumhealth) #print 150
+
 #Inheritance
