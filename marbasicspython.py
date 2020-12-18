@@ -1173,6 +1173,21 @@ numberdatagreaterthanaverage = list(filter(lambda x: x>averagedata,numberdata))
 print(numberdatagreaterthanaverage) #print [2.7, 4.1, 4.3]
 numberdatalessthanaverage = list(filter(lambda x: x<averagedata,numberdata))
 print(numberdatalessthanaverage) #print [1.3, 0.8, -0.1]
+abunchofnames = ["raymond1", "harry", "raymond2", "edward", "raymond3", "peach tree", "raymond4", "raymond5", "kenny rogers", "raymond6", "wolverine"]
+extractraymonds = [eachabunchofnames for eachabunchofnames in abunchofnames if "raymond" in eachabunchofnames]
+print(extractraymonds) #print ['raymond1', 'raymond2', 'raymond3', 'raymond4', 'raymond5', 'raymond6']
+extractraymondselselove = [eachabunchofnames if "raymond" in eachabunchofnames else "love" for eachabunchofnames in abunchofnames]
+print(extractraymondselselove) #print ['raymond1', 'love', 'raymond2', 'love', 'raymond3', 'love', 'raymond4', 'raymond5', 'love', 'raymond6', 'love']
+value = 123
+print(value, "is", "even." if value % 2 == 0 else "odd.") #print 123 is odd.
+x = [1.5, 2.3, 4.4, 5.4, "n", 1.5, 5.1, "a"]
+xnotstring = [element for element in x if not isinstance(element, str)]
+print(xnotstring) #print [1.5, 2.3, 4.4, 5.4, 1.5, 5.1]
+xallstringstob = ["b" if isinstance(element, str) else element for element in x]
+print(xallstringstob) #print [1.5, 2.3, 4.4, 5.4, 'b', 1.5, 5.1, 'b']
+list45 = [22, 13, 45, 50, 98, 69, 43, 44, 1]
+add1add5 = [(eachlist45 + 1) if eachlist45 >= 45 else (eachlist45 + 5) for eachlist45 in list45]
+print(add1add5) #print [27, 18, 46, 51, 99, 70, 48, 49, 6]
 
 #Category open file write file
 #To get Python to open files from a directory other than the one where your program file is stored, you need to provide a file path, which tells Python to look in a specific location on your system.  Here are relative paths.  with open('text_files/filename.txt') as fileobject: on Linux and OS X.  with open('text_files\filename.txt') as fileobject: on Windows.
