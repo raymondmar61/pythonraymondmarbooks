@@ -1283,6 +1283,54 @@ for eachreadlinesinlist in readlinesinlist:
 	oneline += eachreadlinesinlist.rstrip()
 print(oneline) #print column1,c2,c3,c4,c5,c6,c7,c8,c9,c109,3,8,7,6,1,0,4,2,51,7,4,9,2,6,8,3,5,04,8,3,9,5,7,2,6,0,11,7,4,2,5,9,6,8,0,30,7,5,2,8,6,3,4,1,95,9,1,4,7,0,3,6,8,2
 print("\n")
+#Open a text file ignore blank lines
+filename = "tempdelete.txt"
+testlist = []
+#https://codereview.stackexchange.com/questions/145126/open-a-text-file-and-remove-any-blank-lines
+with open(filename, "r") as openfilename:
+    for eachopenfilename in openfilename:
+        lines = eachopenfilename.strip()
+        if lines:
+            testlist.append(lines)
+print(testlist) #print ['csvalltutorials.py', 'csvfiles', 'developer_survey_2019', 'divclassitemcontainersample.html', 'downloadimages.py', ...]
+#https://stackoverflow.com/questions/40647881/skipping-blank-lines-in-read-file-python
+filename = "tempdelete.txt"
+testlist = []
+file = open(filename)
+lines = [line for line in file if line.strip()]
+file.close()
+print(lines)  #print ['csvalltutorials.py\n', 'csvfiles\n', 'developer_survey_2019\n', 'divclassitemcontainersample.html\n', ...]
+filename = "tempdelete.txt"
+testlist = []
+with open(filename) as file:
+    for line in file:
+        if line.strip():
+            testlist.append(line)
+print(testlist)  #print ['csvalltutorials.py\n', 'csvfiles\n', 'developer_survey_2019\n', 'divclassitemcontainersample.html\n', ...]
+linkslist = ["apple", "bananna", "orange", "bread", "apple", "strawberry", "grape", "apple", "bananna"]
+with open("tempdeletelinks.txt", "w") as testwritelinks:
+    for eachlinkslist in linkslist:
+        testwritelinks.write(eachlinkslist)
+        testwritelinks.write("\n")
+'''
+tempdeletelinks.txt
+apple
+bananna
+orange
+bread
+apple
+strawberry
+grape
+apple
+bananna
+'''
+newlinkslist = []
+with open("tempdeletelinks.txt", "r") as testreadlinks:
+    for eachtestreadlinks in testreadlinks:
+        eachline = eachtestreadlinks.strip()
+        if eachline not in newlinkslist:
+            newlinkslist.append(eachline)
+print(newlinkslist) #print ['apple', 'bananna', 'orange', 'bread', 'strawberry', 'grape']
 
 #Category:  try except
 filename = "alices.txt"
