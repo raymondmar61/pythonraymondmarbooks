@@ -1331,6 +1331,18 @@ with open("tempdeletelinks.txt", "r") as testreadlinks:
         if eachline not in newlinkslist:
             newlinkslist.append(eachline)
 print(newlinkslist) #print ['apple', 'bananna', 'orange', 'bread', 'strawberry', 'grape']
+filename = "stringintextfile.txt"
+prelist = ["apple", "orange", "bananna", "grape", "kiwi", "apple", "melon", "strawberry", "orange", "mango"]
+for eachprelist in prelist:
+    print(eachprelist)
+    with open(filename, "r") as filenameobjectvariable:
+        readcheckininfilename = filenameobjectvariable.read()
+    if eachprelist in readcheckininfilename:
+        print("true")
+    else:
+        with open(filename, "a") as checkifinfilename:
+            checkifinfilename.write(eachprelist + "\n")
+        print("false")
 
 #Category:  try except
 filename = "alices.txt"
