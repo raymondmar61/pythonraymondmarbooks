@@ -1343,6 +1343,84 @@ for eachprelist in prelist:
         with open(filename, "a") as checkifinfilename:
             checkifinfilename.write(eachprelist + "\n")
         print("false")
+filename = "testlinks.txt"
+os.remove(filename)
+createnewfile = open(filename, "w")
+createnewfile.close()
+
+abunchofnames = ["raymond1", "harry", "raymond2", "edward", "raymond3", "peach tree", "raymond4", "raymond5", "kenny rogers", "raymond6", "wolverine"]
+for eachabunchofnames in abunchofnames:
+    with open(filename, "a") as abunchofnameswritefile:
+        abunchofnameswritefile.write(eachabunchofnames)
+        abunchofnameswritefile.write("\n")
+newabunchofnames = ["harry", "kenny rogers"]
+with open(filename, "r") as abunchofnamesreadfile:
+    for eachabuncofnamesreadfile in abunchofnamesreadfile:
+        eachline = eachabuncofnamesreadfile.strip()
+        if eachline in newabunchofnames:
+            print(eachline + " is in the list.")
+        else:
+            print(eachline + " is not in the list.")
+            newabunchofnames.append(eachline)
+'''
+raymond1 is not in the list.
+harry is in the list.
+raymond2 is not in the list.
+edward is not in the list.
+raymond3 is not in the list.
+peach tree is not in the list.
+raymond4 is not in the list.
+raymond5 is not in the list.
+kenny rogers is in the list.
+raymond6 is not in the list.
+wolverine is not in the list.
+'''
+print(newabunchofnames) #print ['harry', 'kenny rogers', 'raymond1', 'raymond2', 'edward', 'raymond3', 'peach tree', 'raymond4', 'raymond5', 'raymond6', 'wolverine']
+#generate 20 random numbers between 1 and 21 inclusive
+counter = 0
+abunchofnumbers = []
+while counter < 20:
+    number = random.randint(1, 21)
+    abunchofnumbers.append(number)
+    counter += 1
+print(abunchofnumbers) #print [20, 9, 11, 13, 18, 15, 16, 7, 12, 19, 6, 5, 7, 20, 18, 2, 3, 9, 13, 12]
+#write the 20 random numbers as a string in filename variable
+for eachabunchofnumbers in abunchofnumbers:
+    with open(filename, "a") as abunchofnumbersfile:
+        abunchofnumbersfile.write(str(eachabunchofnumbers)) #write() only takes a single string argument
+        abunchofnumbersfile.write("\n")
+#read the 20 random numbers as a string; add any of the 20 random numbers as a string to a list newabunchofnumbers
+newabunchofnumbers = []
+with open(filename, "r") as abunchofnumbersfile:
+    for eachabuncofnamesreadfile in abunchofnumbersfile:
+        eachline = eachabuncofnamesreadfile.strip()
+        if eachline in newabunchofnumbers:
+            print(eachline, " is in the list.")
+        else:
+            print(eachline, " is not in the list.")
+            newabunchofnumbers.append(eachline)
+'''
+20  is not in the list.
+9  is not in the list.
+11  is not in the list.
+13  is not in the list.
+18  is not in the list.
+15  is not in the list.
+16  is not in the list.
+7  is not in the list.
+12  is not in the list.
+19  is not in the list.
+6  is not in the list.
+5  is not in the list.
+7  is in the list.
+20  is in the list.
+18  is in the list.
+...
+'''
+print(newabunchofnumbers) #print ['20', '9', '11', '13', '18', '15', '16', '7', '12', '19', '6', '5', '2', '3']
+#convert the numbers as a string to numbers as an integer
+tointegersnewabunchofnumbers = list(map(int, newabunchofnumbers))
+print(tointegersnewabunchofnumbers) #print [20, 9, 11, 13, 18, 15, 16, 7, 12, 19, 6, 5, 2, 3]
 
 #Category:  try except
 filename = "alices.txt"
