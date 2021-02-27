@@ -1452,6 +1452,25 @@ Traceback (most recent call last):
     raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
 Exception: You're supposed to be dead.  You're older than 135 years old.
 '''
+anythingvariable = "were"
+print(anythingvariable)
+try:
+    anythingvariable = "was"
+    print(anythingvariable)
+except ZeroDivisionError:
+    print("Can't divide by zero")
+except NameError:
+    print("String must be enclosed in quotations")
+#An except clause may name multiple exceptions as a parenthesized tuple
+try:
+    anythingvariable = was
+    print(anythingvariable)
+except (ZeroDivisionError, NameError) as combineexcept:
+    print("You need to relearn Python basics")
+except (RuntimeError, TypeError, NameError) as threeerrors:
+    print("You acheived three common Errors")
+else:
+	print("I give up")
 
 #Category:  Lambda
 def square(x):
