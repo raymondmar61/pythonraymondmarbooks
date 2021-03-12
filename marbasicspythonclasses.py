@@ -746,4 +746,14 @@ print(ryan.changelastnamepottertryagain()) #return Potter
 print(CharacterClassVariable.maximumhealth) #print 150
 print(ryan.maximumhealth) #print 150
 
+class Fool():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+callclassfool = Fool(10, [100, 200, 300])
+print(callclassfool) #print <__main__.Fool object at 0x7fcefa4ccb00>
+print(vars(callclassfool)) #print {'x': 10, 'y': [100, 200, 300]}
+
 #Inheritance
