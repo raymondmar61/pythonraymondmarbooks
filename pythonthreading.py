@@ -542,3 +542,35 @@ for i in range(5):
 for eachthreadslist in threadslist:
     threadingvariable.join()
 print(mylist) #print [10, 20, 30, 0, 1, 2, 3, 4]
+
+import threading
+
+def showresults(number, letter="default"):
+    print("print statement " + str(number) + " " + letter)
+    answer = str(number) + " " + letter
+    print("answer variable " + answer)
+    return answer
+
+
+numberlist = [1, 2, 3, 4, 5]
+letterlist = ["a", "b", "c", "d", "e"]
+for n in range(0, len(numberlist)):
+    result = threading.Thread(target=showresults, args=(numberlist[n], letterlist[n])).start()
+    print(result)
+    '''
+    print statement 1 a
+    answer variable 1 a
+    None
+    print statement 2 b
+    answer variable 2 b
+    None
+    print statement 3 c
+    answer variable 3 c
+    None
+    print statement 4 d
+    answer variable 4 d
+    None
+    print statement 5 e
+    answer variable 5 e
+    None
+    '''
