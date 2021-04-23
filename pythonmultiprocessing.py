@@ -439,3 +439,706 @@ def filesizepoolprocessing(filename):
 with Pool(processes=8) as pool:
     result = pool.map(filesizepoolprocessing, glob.glob("*.txt"))
     print(sum(result)) #print 307197
+
+#Python Multiprocessing Tutorial Run Code in Parallel Using the Multiprocessing Module
+import time
+start = time.perf_counter()
+
+def dosomethingnonmultiprocessing():
+    print("Sleeping 1 second...")
+    time.sleep(1)
+    print("Done sleeping")
+
+
+dosomethingnonmultiprocessing()
+dosomethingnonmultiprocessing()
+finish = time.perf_counter()
+print(f"dosomethingnomultiprocessing Finished in {round(finish-start,2)} second(s)")
+'''
+RM:  without multiprocessing
+Sleeping 1 second...
+Done sleeping
+Sleeping 1 second...
+Done sleeping
+dosomethingnomultiprocessing Finished in 2.08 second(s)
+'''
+
+import multiprocessing
+import time
+start = time.perf_counter()
+
+def dosomething():
+    print("Sleeping 1 second...")
+    time.sleep(1)
+    print("Done sleeping")
+
+
+process01 = multiprocessing.Process(target=dosomething)
+process02 = multiprocessing.Process(target=dosomething)
+process01.start()
+process02.start()
+finish = time.perf_counter()
+print(f"multiprocessing Finished in {round(finish-start,2)} second(s)")
+'''
+RM:  with multiprocessing
+multiprocessing Finished in 0.0 second(s)
+Sleeping 1 second...
+Sleeping 1 second...
+Done sleeping
+Done sleeping
+'''
+
+start = time.perf_counter()
+def dosomethinginorder():
+    print("Sleeping 1 second...")
+    time.sleep(1)
+    print("Done sleeping")
+
+
+process01 = multiprocessing.Process(target=dosomethinginorder)
+process02 = multiprocessing.Process(target=dosomethinginorder)
+process01.start()
+process02.start()
+process01.join() #join a process means wait to finish to continue with rest of script.
+process02.join() #join a process means wait to finish to continue with rest of script.
+finish = time.perf_counter()
+print(f"multiprocessing processed in order Finished in {round(finish-start,2)} second(s)")
+'''
+RM:  with multiprocessing
+Sleeping 1 second...
+Sleeping 1 second...
+Done sleeping
+Done sleeping
+multiprocessing processed in order Finished in 1.0 second(s)
+'''
+
+start = time.perf_counter()
+def dosomethingforloop():
+    print("Sleeping wait and order 1 second...")
+    time.sleep(1)
+    print("Done wait and order sleeping")
+
+
+processseslist = []
+for _ in range(10):
+    process = multiprocessing.Process(target=dosomethingforloop)
+    process.start()
+    processseslist.append(process)
+for eachprocesseslist in processseslist:
+    process.join() #join a process means wait to finish to continue with rest of script.  Finish the multiprocess script before going to finish = time.perf_counter()
+
+finish = time.perf_counter()
+print(f"multiprocessing processing and waiting in order Finished in {round(finish-start,2)} second(s)")
+'''
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Sleeping wait and order 1 second...
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+Done wait and order sleeping
+multiprocessing processing and waiting in order Finished in 1.01 second(s)
+'''
+
+start = time.perf_counter()
+def dosomethingforloopargument(seconds):
+    print(f"Sleeping argument {seconds} second(s)...")
+    time.sleep(seconds)
+    print("Done argument sleeping")
+
+
+processseslist = []
+for _ in range(10):
+    process = multiprocessing.Process(target=dosomethingforloopargument, args=[1.5])
+    process.start()
+    processseslist.append(process)
+for eachprocesseslist in processseslist:
+    process.join() #join a process means wait to finish to continue with rest of script.  Finish the multiprocess script before going to finish = time.perf_counter()
+
+finish = time.perf_counter()
+print(f"multiprocessing processing and waiting in order arguments Finished in {round(finish-start,2)} second(s)")
+'''
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Sleeping argument 1.5 second(s)...
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+Done argument sleeping
+multiprocessing processing and waiting in order arguments Finished in 1.51 second(s)
+'''
+
+import concurrent.futures
+
+start = time.perf_counter()
+def dosomethingmanual(seconds):
+    print(f"Sleeping concurrent.futures {seconds} second(s)...")
+    time.sleep(seconds)
+    return "Return done concurrent.futures sleeping"
+
+
+with concurrent.futures.ProcessPoolExecutor() as executor: #ProcessPoolExecutor is in concurrent.futures module.  Use with context text manager.
+    executefunction1 = executor.submit(dosomethingmanual, 1)
+    print(executefunction1.result())
+    executefunction2 = executor.submit(dosomethingmanual, 2)
+    print(executefunction2.result())
+    '''
+    Sleeping concurrent.futures 1 second(s)...
+    Return done concurrent.futures sleeping
+    Sleeping concurrent.futures 2 second(s)...
+    Return done concurrent.futures sleeping
+    '''
+
+finish = time.perf_counter()
+print(f"multiprocessing concurent.futures Finished in {round(finish-start,2)} second(s)") #print multiprocessing concurent.futures Finished in 3.01 second(s)
+
+import concurrent.futures
+
+start = time.perf_counter()
+def dosomethinglistcomprehensiontorunmultipletimes(seconds):
+    print(f"Sleeping concurrent.futures list comprehension run multiple times {seconds} second(s)...")
+    time.sleep(seconds)
+    return "Return done concurrent.futures list comprehension run multiple times sleeping"
+
+
+with concurrent.futures.ProcessPoolExecutor() as executor: #ProcessPoolExecutor is in concurrent.futures module.  Use with context text manager.
+    results = [executor.submit(dosomethinglistcomprehensiontorunmultipletimes, 1) for _ in range(10)]  #RM:  for loop instead of list comprehension is valid
+    for f in concurrent.futures.as_completed(results):
+        print(f.result())
+        '''
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Sleeping concurrent.futures list comprehension run multiple times 1 second(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        Return done concurrent.futures list comprehension run multiple times sleeping
+        '''
+finish = time.perf_counter()
+print(f"multiprocessing concurent.futures list comprehension run multiple times Finished in {round(finish-start,2)} second(s)") #print multiprocessing concurent.futures list comprehension run multiple times Finished in 3.05 second(s)
+
+start = time.perf_counter()
+def dosomethinglistcomprehensiontorunmultipletimesvariousseconds(nseconds):
+    print(f"Sleeping concurrent.futures list comprehension run multiple times nseconds {nseconds} nsecond(s)...")
+    time.sleep(nseconds)
+    return f"Return done concurrent.futures list comprehension run multiple times sleeping {nseconds} nseconds(s)"
+
+
+with concurrent.futures.ProcessPoolExecutor() as executor: #ProcessPoolExecutor is in concurrent.futures module.  Use with context text manager. The end result printed in order starting with Return done concurrent.futures . . .
+    results = [executor.submit(dosomethinglistcomprehensiontorunmultipletimesvariousseconds, nseconds) for nseconds in range(10)]  #RM:  for loop instead of list comprehension is valid
+    for f in concurrent.futures.as_completed(results):
+        print(f.result())
+        '''
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 0 nsecond(s)...
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 1 nsecond(s)...
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 3 nsecond(s)...
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 4 nsecond(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping 0 nseconds(s)
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 2 nsecond(s)...
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 5 nsecond(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping 1 nseconds(s)
+        Return done concurrent.futures list comprehension run multiple times sleeping 2 nseconds(s)
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 6 nsecond(s)...
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 7 nsecond(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping 3 nseconds(s)
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 8 nsecond(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping 4 nseconds(s)
+        Sleeping concurrent.futures list comprehension run multiple times nseconds 9 nsecond(s)...
+        Return done concurrent.futures list comprehension run multiple times sleeping 5 nseconds(s)
+        Return done concurrent.futures list comprehension run multiple times sleeping 6 nseconds(s)
+        Return done concurrent.futures list comprehension run multiple times sleeping 7 nseconds(s)
+        Return done concurrent.futures list comprehension run multiple times sleeping 8 nseconds(s)
+        Return done concurrent.futures list comprehension run multiple times sleeping 9 nseconds(s)
+        '''
+finish = time.perf_counter()
+print(f"multiprocessing concurent.futures list comprehension run multiple times nseconds Finished in {round(finish-start,2)} second(s)") #print multiprocessing concurent.futures list comprehension run multiple times nseconds Finished in 15.03 second(s)
+
+start = time.perf_counter()
+def dosomethinglistcomprehensiontorunmultipletimesmapmethod(nseconds):
+    print(f"Sleeping concurrent.futures map method run multiple times nseconds {nseconds} nsecond(s)...")
+    time.sleep(nseconds)
+    return f"Return done concurrent.futures map method run multiple times sleeping {nseconds} nseconds(s)"
+
+
+with concurrent.futures.ProcessPoolExecutor() as executor: #ProcessPoolExecutor is in concurrent.futures module.  Use with context text manager. The end result printed in order starting with Return done concurrent.futures . . .
+    secondslist = [n for n in range(10)]
+    results = executor.map(dosomethinglistcomprehensiontorunmultipletimesmapmethod, secondslist)
+    for eachresult in results:
+        print(eachresult)
+        '''
+        Sleeping concurrent.futures map method run multiple times nseconds 0 nsecond(s)...
+        Sleeping concurrent.futures map method run multiple times nseconds 1 nsecond(s)...
+        Sleeping concurrent.futures map method run multiple times nseconds 2 nsecond(s)...
+        Sleeping concurrent.futures map method run multiple times nseconds 4 nsecond(s)...
+        Sleeping concurrent.futures map method run multiple times nseconds 3 nsecond(s)...
+        Return done concurrent.futures map method run multiple times sleeping 0 nseconds(s)
+        Sleeping concurrent.futures map method run multiple times nseconds 5 nsecond(s)...
+        Return done concurrent.futures map method run multiple times sleeping 1 nseconds(s)
+        Sleeping concurrent.futures map method run multiple times nseconds 6 nsecond(s)...
+        Return done concurrent.futures map method run multiple times sleeping 2 nseconds(s)
+        Sleeping concurrent.futures map method run multiple times nseconds 7 nsecond(s)...
+        Return done concurrent.futures map method run multiple times sleeping 3 nseconds(s)
+        Sleeping concurrent.futures map method run multiple times nseconds 8 nsecond(s)...
+        Return done concurrent.futures map method run multiple times sleeping 4 nseconds(s)
+        Sleeping concurrent.futures map method run multiple times nseconds 9 nsecond(s)...
+        Return done concurrent.futures map method run multiple times sleeping 5 nseconds(s)
+        Return done concurrent.futures map method run multiple times sleeping 6 nseconds(s)
+        Return done concurrent.futures map method run multiple times sleeping 7 nseconds(s)
+        Return done concurrent.futures map method run multiple times sleeping 8 nseconds(s)
+        Return done concurrent.futures map method run multiple times sleeping 9 nseconds(s)
+        '''
+finish = time.perf_counter()
+print(f"multiprocessing concurent.futures map method run multiple times nseconds Finished in {round(finish-start,2)} second(s)") #print multiprocessing concurent.futures map method run multiple times nseconds Finished in 15.05 second(s)
+
+start = time.perf_counter()
+def dosomethinglistcomprehensiontorunmultipletimesmapmethod(nseconds):
+    print(f"Sleeping concurrent.futures map method run multiple times no for loop results nseconds {nseconds} nsecond(s)...")
+    time.sleep(nseconds)
+
+
+with concurrent.futures.ProcessPoolExecutor() as executor: #ProcessPoolExecutor is in concurrent.futures module.  Use with context text manager. The end result printed in order
+    secondslist = [n for n in range(10)]
+    results = executor.map(dosomethinglistcomprehensiontorunmultipletimesmapmethod, secondslist)
+    '''
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 0 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 1 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 2 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 3 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 4 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 5 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 6 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 7 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 8 nsecond(s)...
+    Sleeping concurrent.futures map method run multiple times no for loop results nseconds 9 nsecond(s)...
+    '''
+finish = time.perf_counter()
+print(f"multiprocessing concurent.futures map method run multiple times no for loop results nseconds Finished in {round(finish-start,2)} second(s)") #print multiprocessing concurent.futures map method run multiple times no for loop results nseconds Finished in 15.03 second(s)
+
+#Multiprocessing in Python - Introduction (Part 1)-RR4SoktDQAw
+# def square(number):
+#     result = number * number
+#     print(f"The number {number} squares to {result}.")
+
+
+# if __name__ == "__main__":
+#     numbers = [1, 2, 3, 4]
+#     for number in numbers:
+#         square(number)
+#         '''
+#         The number 1 squares to 1.
+#         The number 2 squares to 4.
+#         The number 3 squares to 9.
+#         The number 4 squares to 16.
+#         '''
+
+import os
+def squareprocess(number):
+    result = number * number
+    #OS module to print out the Process ID assigned to the call of squareprocess function assigned by the operating system
+    processid = os.getpid()
+    print(f"Process ID:  {processid}")
+    #Get the name of the Process object
+    processname = current_process().name
+    print(f"Process Name: {processname}")
+    print(f"squareprocess functionn The number {number} squares to {result}.")
+    '''
+    Process ID:  2090
+    Process Name: Process-1
+    squareprocess functionn The number 1 squares to 1.
+    Process ID:  2091
+    Process Name: Process-2
+    squareprocess functionn The number 2 squares to 4.
+    Process ID:  2093
+    Process Name: Process-4
+    squareprocess functionn The number 4 squares to 16.
+    Process ID:  2092
+    Process Name: Process-3
+    squareprocess functionn The number 3 squares to 9.
+    '''
+
+
+from multiprocessing import Process, current_process
+if __name__ == "__main__":
+    processes = []
+    numbers = [1, 2, 3, 4]
+    for number in numbers:
+        #Processes are spawned by creating a Process object
+        process = Process(target=squareprocess, args=(number,)) #stylistically one argument to function end the args with a comma inside the tuple
+        processes.append(process)
+        #Call its start() method
+        process.start()
+
+#Multiprocessing in Python - Introduction (Part 2)-itbx_hDX7z8
+
+import os
+import time
+from multiprocessing import Process, current_process
+def squareprocess(numberslist):
+    for eachnumberslist in numberslist:
+        time.sleep(3)
+        result = eachnumberslist * eachnumberslist
+        processid = os.getpid()
+        print(f"Process ID:  {processid}")
+        #Get the name of the Process object
+        processname = current_process().name
+        print(f"Process Name: {processname}")
+        print(f"squareprocess functionn The number {eachnumberslist} squares to {result}.")
+        '''
+        Process ID:  2194
+        Process Name: Process-1
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2199
+        Process Name: Process-6
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2196
+        Process Name: Process-3
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2197
+        Process Name: Process-4
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2195
+        Process ID:  2198
+        Process ID:  2200
+        Process ID:  2201
+        Process ID:  2202
+        Process Name: Process-8
+        Process Name: Process-7
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-5
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-2
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-9
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2204
+        Process Name: Process-11
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2203
+        Process ID:  2205
+        Process ID:  2206
+        Process ID:  2208
+        Process ID:  2209
+        Process ID:  2210
+        Process Name: Process-15
+        Process Name: Process-16
+        Process Name: Process-13
+        Process Name: Process-17
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-12
+        Process Name: Process-10
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2212
+        Process ID:  2213
+        Process ID:  2207
+        Process ID:  2217
+        Process Name: Process-24
+        Process Name: Process-14
+        Process Name: Process-20
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-19
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2223
+        Process Name: Process-30
+        Process ID:  2211
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2219
+        Process Name: Process-18
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-26
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2214
+        Process Name: Process-21
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2218
+        Process Name: Process-25
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2220
+        Process Name: Process-27
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2215
+        Process Name: Process-22
+        Process ID:  2216
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-23
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2225
+        Process Name: Process-32
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2224
+        Process Name: Process-31
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2226
+        Process Name: Process-33
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2233
+        Process Name: Process-40
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2227
+        Process Name: Process-34
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2235
+        Process ID:  2228
+        Process Name: Process-42
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-35
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2222
+        Process ID:  2229
+        Process Name: Process-29
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-36
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2221
+        Process ID:  2230
+        Process Name: Process-28
+        squareprocess functionn The number 0 squares to 0.
+        Process Name: Process-37
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2231
+        Process Name: Process-38
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2232
+        Process Name: Process-39
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2234
+        Process Name: Process-41
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2236
+        Process Name: Process-43
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2238
+        Process Name: Process-45
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2237
+        Process Name: Process-44
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2239
+        Process Name: Process-46
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2240
+        Process Name: Process-47
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2241
+        Process Name: Process-48
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2243
+        Process Name: Process-50
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2242
+        Process Name: Process-49
+        squareprocess functionn The number 0 squares to 0.
+        Process ID:  2197
+        Process Name: Process-4
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2196
+        Process Name: Process-3
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2204
+        Process Name: Process-11
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2194
+        Process Name: Process-1
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2199
+        Process Name: Process-6
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2198
+        Process ID:  2201
+        Process ID:  2195
+        Process Name: Process-8
+        Process ID:  2200
+        Process Name: Process-7
+        Process Name: Process-2
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2202
+        Process Name: Process-9
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-5
+        squareprocess functionn The number 1 squares to 1.
+        squareprocess functionn The number 1 squares to 1.
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2218
+        Process Name: Process-25
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2214
+        Process Name: Process-21
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2211
+        Process Name: Process-18
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2220
+        Process Name: Process-27
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2215
+        Process Name: Process-22
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2216
+        Process Name: Process-23
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2209
+        Process Name: Process-16
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2208
+        Process Name: Process-15
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2206
+        Process Name: Process-13
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2210
+        Process Name: Process-17
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2207
+        Process ID:  2226
+        Process ID:  2217
+        Process ID:  2203
+        Process Name: Process-33
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-10
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2213
+        Process ID:  2235
+        Process Name: Process-42
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2229
+        Process Name: Process-36
+        Process ID:  2205
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-12
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-20
+        Process ID:  2227
+        Process Name: Process-34
+        Process ID:  2224
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-24
+        Process ID:  2219
+        Process Name: Process-26
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2222
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2233
+        Process ID:  2223
+        Process Name: Process-40
+        squareprocess functionn The number 1 squares to 1.
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2228
+        Process Name: Process-35
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2231
+        Process Name: Process-38
+        Process ID:  2232
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-39
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-14
+        Process ID:  2234
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-41
+        Process ID:  2212
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-19
+        Process ID:  2225
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-32
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-31
+        Process Name: Process-29
+        squareprocess functionn The number 1 squares to 1.
+        Process Name: Process-30
+        squareprocess functionn The number 1 squares to 1.
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2230
+        Process Name: Process-37
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2221
+        Process Name: Process-28
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2238
+        Process Name: Process-45
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2236
+        Process Name: Process-43
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2237
+        Process Name: Process-44
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2239
+        Process Name: Process-46
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2240
+        Process Name: Process-47
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2241
+        Process Name: Process-48
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2243
+        Process Name: Process-50
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2242
+        Process Name: Process-49
+        squareprocess functionn The number 1 squares to 1.
+        Process ID:  2196
+        Process Name: Process-3
+        squareprocess functionn The number 2 squares to 4.
+        '''
+
+
+if __name__ == "__main__":
+    processes = []
+    numbers = range(100)
+    for _ in range(50):
+        #Processes are spawned by creating a Process object
+        process = Process(target=squareprocess, args=(numbers,)) #stylistically one argument to function end the args with a comma inside the tuple
+        processes.append(process)
+        #Call its start() method
+        process.start()
+    #Wait for all processes started to be completed before we run any subsequent code
+    for process in processes:
+        process.join()
+    print("Multiprocessing complete")
