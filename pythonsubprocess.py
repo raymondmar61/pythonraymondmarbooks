@@ -74,14 +74,14 @@ print(capturevariable.stdout) #print None
 
 #code run on Python3.8
 capturevariableforprinting = subprocess.run(["ls", "-la"], capture_output=True)
-print(capturevariableforprinting) #print CompletedProcess(args=['ls', '-la'], returncode=0, stdout=b'total 4204\ndrwxrwxr-x  4 mar mar     593920 May  1 13:03 .\ndrwxr-xr-x 20 mar mar       4096 May  3 14:53 ..\n-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppicsxxx.py\n-rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py\n-rw-rw-r--  1 mar mar . . .
-print(capturevariableforprinting.stdout) #print b'total 4204\ndrwxrwxr-x  4 mar mar     593920 May  1 13:03 .\ndrwxr-xr-x 20 mar mar       4096 May  3 14:53 ..\n-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppicsxxx.py\n-rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py\n-rw-rw-r--  1 mar mar . . .
+print(capturevariableforprinting) #print CompletedProcess(args=['ls', '-la'], returncode=0, stdout=b'total 4204\ndrwxrwxr-x  4 mar mar     593920 May  1 13:03 .\ndrwxr-xr-x 20 mar mar       4096 May  3 14:53 ..\n-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppics.py\n-rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py\n-rw-rw-r--  1 mar mar . . .
+print(capturevariableforprinting.stdout) #print b'total 4204\ndrwxrwxr-x  4 mar mar     593920 May  1 13:03 .\ndrwxr-xr-x 20 mar mar       4096 May  3 14:53 ..\n-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppics.py\n-rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py\n-rw-rw-r--  1 mar mar . . .
 print(capturevariableforprinting.stdout.decode())
 '''
 total 4204
 drwxrwxr-x  4 mar mar     593920 May  1 13:03 .
 drwxr-xr-x 20 mar mar       4096 May  3 14:53 ..
--rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppicsxxx.py
+-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppics.py
 -rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py
 '''
 capturevariableforprintingtext = subprocess.run(["ls", "-la"], capture_output=True, text=True)
@@ -90,11 +90,11 @@ print(capturevariableforprintingtext.stdout)
 total 4204
 drwxrwxr-x  4 mar mar     593920 May  1 13:03 .
 drwxr-xr-x 20 mar mar       4096 May  3 14:53 ..
--rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppicsxxx.py
+-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppics.py
 -rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py
 '''
 capturevariableforprintingtext = subprocess.run(["ls", "-la"], shell=True, capture_output=True, text=True)
-print(capturevariableforprintingtext.stdout) #print beautifulsouppicsxxx.py\n beautifulsouptutorial.py . . .
+print(capturevariableforprintingtext.stdout) #print beautifulsouppics.py\n beautifulsouptutorial.py . . .
 capturevariableforprintingtext = subprocess.run(["ls", "-la"], shell=True, text=True) #return list files with option -la in present directory
 print(capturevariableforprintingtext.stdout) #print None
 capturevariableforprintingtextpipe = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE, text=True)
@@ -112,7 +112,7 @@ print(unsuccessfulcommanddevnull.stderr) #print None
 readtextfilereturnbytes = subprocess.run(["cat", "temptext.txt"], capture_output=True)
 print(readtextfilereturnbytes.stdout)
 '''
-b'total 4204\ndrwxrwxr-x  4 mar mar     593920 May  3 15:05 .\ndrwxr-xr-x 20 mar mar       4096 May  3 14:53 ..\n-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppicsxxx.py\n-rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py\n-rw-rw-r--  1 mar mar . . .
+b'total 4204\ndrwxrwxr-x  4 mar mar     593920 May  3 15:05 .\ndrwxr-xr-x 20 mar mar       4096 May  3 14:53 ..\n-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppics.py\n-rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py\n-rw-rw-r--  1 mar mar . . .
 '''
 readtextfile = subprocess.run(["cat", "temptext.txt"], capture_output=True, text=True)
 print(readtextfile.stdout)
@@ -120,7 +120,7 @@ print(readtextfile.stdout)
 total 4204
 drwxrwxr-x  4 mar mar     593920 May  3 15:05 .
 drwxr-xr-x 20 mar mar       4096 May  3 14:53 ..
--rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppicsxxx.py
+-rw-rw-r--  1 mar mar     137172 May  1 13:33 beautifulsouppics.py
 -rw-rw-r--  1 mar mar      85875 Jan 31 14:36 beautifulsouptutorial.py
 -rw-rw-r--  1 mar mar 
 ...
