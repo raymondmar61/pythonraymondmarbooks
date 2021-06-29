@@ -140,3 +140,136 @@ Our names don't match
 mar@mar-VirtualBox:~/python$ echo $?
 0
 '''
+
+#Python [sys] 06 Streams-C6CfFNsJ0Sg
+import sys
+import string
+
+name = input("What is your name? ")
+print(name)
+for digit in string.digits:
+    if digit in name:
+        sys.stderr.write("You have numbers in your name.\n")
+        sys.stderr.flush()  #flush standard error
+        exit(2)
+        '''
+        Type echo $? to get the exit code or error status:
+        mar@mar-VirtualBox:~/python$ python3.8 yytest.py
+        What is your name? 23
+        23
+        You have numbers in your name.
+        mar@mar-VirtualBox:~/python$ echo $?
+        2
+        '''
+print(name + ", you have a good name")
+exit(0)
+#exit("Zero is a number I see if a string is error outputted")  #RM:  it seems if exit is a string, then the string is outputted immediately.
+'''
+Type echo $? to get the exit code or error status:
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py
+What is your name? Raymond
+Raymond
+Raymond, you have a good name
+mar@mar-VirtualBox:~/python$ echo $?
+0
+'''
+
+#Python [sys] 07 Command-line Arguments-DCxYAYzTWOI
+#arg is arguments. v is values.
+print(sys.argv) #print [yytest.py]  RM:  print filename
+print(type(sys.argv)) #print <class 'list'>
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py what youtube
+['yytest.py', 'what', 'youtube']
+<class 'list'>
+'''
+if len(sys.argv) < 3:
+    sys.stderr.write("Error:  usage " + sys.argv[0] + " <input filename> <input word to search in filename>\n")
+    sys.stderr.flush() #flush standard error
+    exit(22)
+    '''
+    mar@mar-VirtualBox:~/python$ python3.8 yytest.py findtheneedle.txt
+    ['yytest.py', 'findtheneedle.txt']
+    <class 'list'>
+    Error:  usage yytest.py <input filename> <input word to search in filename>
+    mar@mar-VirtualBox:~/python$ echo $?
+    22
+    '''
+else:
+    filename = sys.argv[1]
+    needleorfindtheword = sys.argv[2]
+counter = 0
+filehandle = open(filename)
+for line in filehandle.readlines():
+    line = line.replace("\n", " ") #replace paragraph mark with single space
+    words = line.split(" ")
+    for eachwords in words:
+        if eachwords == needleorfindtheword:
+            counter += 1
+print(counter)
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py findtheneedle.txt done
+['yytest.py', 'findtheneedle.txt', 'done']
+<class 'list'>
+3
+'''
+
+#Python [sys] 08 Conclusion-OmngfOjyzJc
+'''
+Instructor says I taught the basics.  Rest user can learn.
+The sys module is getting information, learning your environment, knowing where you code is actually running, platform running executed, python version being used, where modules stored, python interpreter is located.
+'''
+
+#Command Line Arguments in Python programming language (sys module, sys.argv[] string list)-R2_beoINHe4
+number = 1
+if len(sys.argv) == 2:
+    print("Python file name first argument " + sys.argv[0])
+    print("Number inputted second argument " + sys.argv[1])
+    number = int(sys.argv[1])
+for i in range(number):
+    print("Hello world " + str(i))
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py
+Hello world 0
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 3
+Python file name first argument yytest.py
+Number inputted second argument 3
+Hello world 0
+Hello world 1
+Hello world 2
+'''
+
+#01 sys argv-K0gEgFy3Q9A
+print(sys.argv)
+print(type(sys.argv))
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 1 2 3
+['yytest.py', '1', '2', '3']
+<class 'list'>
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py
+['yytest.py']
+<class 'list'>
+'''
+year = sys.argv[1]
+sortdirection = sys.argv[2]
+print(year)
+print(sortdirection)
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 1927 ascending
+['yytest.py', '1927', 'ascending']
+<class 'list'>
+1927
+ascending
+'''
+#error message arguments are null #return IndexError: list index out of range
+#year = sys.argv[1]
+#sortdirection = sys.argv[2]
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py
+['yytest.py']
+<class 'list'>
+Traceback (most recent call last):
+  File "yytest.py", line 14, in <module>
+    year = sys.argv[1]
+IndexError: list index out of range
+'''
