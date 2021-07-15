@@ -273,3 +273,198 @@ Traceback (most recent call last):
     year = sys.argv[1]
 IndexError: list index out of range
 '''
+
+#28 - Command Line Arguments ( sys.argv ) _ Python Tutorials-jhki0o54_xY
+import sys
+
+print(sys.argv)
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 
+['yytest.py']
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 1, "multiple words in quotes", 256, "<--number 256 as string"
+['yytest.py', '1,', 'multiple words in quotes,', '256,', '<--number 256 as string']
+'''
+if len(sys.argv) > 1:
+    for eachargv in sys.argv[1:]: #sys.argv is a list.  Ignore the first item in list which is the filename
+        print(eachargv)
+else:
+    print("No arguments provided")
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 1, "multiple words in quotes", 256, "<--number 256 as string"
+['yytest.py', '1,', 'multiple words in quotes,', '256,', '<--number 256 as string']
+1,
+multiple words in quotes,
+256,
+<--number 256 as string
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 
+['yytest.py']
+No arguments provided
+'''
+#add numbers
+if len(sys.argv) > 1:
+    total = 0
+    for eachargv in sys.argv[1:]:
+        if eachargv.isdigit():
+            total = total + int(eachargv)
+    print("Total is", total)
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 1, "111", 2 3 4 5
+['yytest.py', '1,', '111,', '2', '3', '4', '5']
+1,
+111,
+2
+3
+4
+5
+Total is 14
+'''
+
+import sys
+
+#stdin _ stdout _ stderr (beginner - intermediate) anthony explains #050-5za6eRdHjpw
+#RM:  Update Ubuntu from command line.  Type update-manager &
+'''
+mar@mar-VirtualBox:~/python$ update-manager &
+[2] 3691
+[1]   Done                    update-manager
+'''
+#stdin Standard In input stream to read from the keyboard
+print(sys.stdin.read()) #read the entire file at once.  Press Ctrl+D to signal end of file.
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 
+Press entered.  Terminal is hanging while I type the sentences.
+Press entered.  Press Ctrl+D to return all input.Press entered.  Terminal is hanging while I type the sentences.
+Press entered.  Press Ctrl+D to return all input.
+'''
+#Redirect stdin.  Read another file and return on the terminal.  temptest.txt has one sentence The quick brown fox jumped over the lazy dog.
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py < temptest.txt
+The quick brown fox jumped over the lazy dog.
+'''
+#stout Standard Out default to produce output usually make some useful output.  Takes all arguments and prints them to standard output.
+print("Print function going to stdout")
+sys.stdout.write("sys.stdout.write also going to stdout")
+sys.stdout.write("\n")
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 
+Print function going to stdout
+sys.stdout.write also going to stdout
+'''
+#Redirect stout.  Send terminal output to another file.  Programs primary output.
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py > temptext.txt
+mar@mar-VirtualBox:~/python$ cat temptext.txt
+Print function going to stdout
+sys.stdout.write also going to stdout
+RM:  the text file temptext.txt didn't have Print function going to stdout and sys.stdout.write also going to stdout
+'''
+#stderr Standard Error.  Logging, error messages, problem statements, or nothing related to the output.
+print("Print function stderr", file=sys.stderr)
+sys.stderr.write("sys.stderr.write also going to stderr")
+sys.stderr.write("\n")
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 
+Print function stderr
+sys.stderr.write also going to stderr
+'''
+#RM  I run Python with stout and stderr Python code
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py 
+Print function going to stdout
+sys.stdout.write also going to stdout
+Print function stderr
+sys.stderr.write also going to stderr
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py >& ffile
+mar@mar-VirtualBox:~/python$ cat ffile
+Print function stderr
+sys.stderr.write also going to stderr
+Print function going to stdout
+sys.stdout.write also going to stdout
+'''
+
+import sys
+
+#Python - The Sys Module-HhVQ5iy7H0w
+#We invoke a command in terminal by passing command-line arguments.  For example, python3.8 commandlineargument.py.  The python file commandlineargument.py tells the Python interpreter which script to run.
+#The built-in Python module sys provides access to system parameters and functions.  import sys is the Python code.
+#sys.argv stands for system.argument vector.  It prints the command-line arguments as a list.  The first position is the python file or script name.  Thereafter are the command-line arguments.
+print(sys.argv)
+'''
+mar@mar-VirtualBox:~/python$ python3.8 yytest.py  one two three "string" "two words between quotes" 355 961
+['yytest.py', 'one', 'two', 'three', 'string', 'two words between quotes', '355', '961']
+'''
+i = 0
+while i < len(sys.argv):
+    print(sys.argv[i])
+    i += 1
+    '''
+    yytest.py
+    one
+    two
+    three
+    string
+    two words between quotes
+    355
+    961
+    '''
+returncommandlineargumentsonly = sys.argv[1:]
+print(returncommandlineargumentsonly) #print ['one', 'two', 'three', 'string', 'two words between quotes', '355', '961']
+#sys is a better method for reading from standard input.  sys.stdin is a file object to read from standard input.  It's a lower-level interface than input() or raw_input().
+#The three most useful sys.stdin methods.  sys.stdin.readline() which reads a single line from standard input and return it; returns the empty string on end of file.  sys.stdin.read() which reads all standard input and return it.  sys.stdin.readlines() which reads all standard input into a list of lines.
+#sys.stdin.readline() reads one line from standard input.  Each sys.stdin.readline() yields the next line of input.  Any trailing newline character is retained within the resulting string.  The empty string is returned if there is no more input to read.
+typeone = sys.stdin.readline()
+typetwospacethree = sys.stdin.readline()
+typefour = sys.stdin.readline()
+pressreturn = sys.stdin.readline()
+'''
+...
+one
+two three
+four
+
+mar@mar-VirtualBox:~/python$ 
+'''
+print(typeone) #print one
+print(typefour) #print four
+print(len(pressreturn)) #print 1
+#sys.stdin.read() inputs a string containing the entire input in one input.  Use to input everything at once.  Press Ctrl+D to end inputting.
+typethequickbrownfoxpressreturnjumpedoverpressreturnthelazydog = sys.stdin.read()
+print(typethequickbrownfoxpressreturnjumpedoverpressreturnthelazydog)
+'''
+...
+the quick brown fox
+jumped over
+the lazy dog
+the quick brown fox
+jumped over
+the lazy dog
+
+mar@mar-VirtualBox:~/python$ 
+'''
+print(type(typethequickbrownfoxpressreturnjumpedoverpressreturnthelazydog)) #print <class 'str'>
+print(typethequickbrownfoxpressreturnjumpedoverpressreturnthelazydog.split()) #print ['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'lazy', 'dog']
+#sys.stdin.readlines() inputs a string containing the entire input in one input as a list of strings.  One list for each input line.  The return character or new line \n is included.
+astringlistofinput = sys.stdin.readlines()
+print(astringlistofinput)
+print(type(astringlistofinput))
+for eachastringlistofinput in astringlistofinput:
+    print(eachastringlistofinput)
+'''
+full metal alchemist edward elric al elric roy mustang riza hawkeye
+Press enter.           
+Press ctrl+D to stop input.['full metal alchemist edward elric al elric roy mustang riza hawkeye\n', 'Press enter.\n', 'Press ctrl+D to stop input.']
+<class 'list'>
+full metal alchemist edward elric al elric roy mustang riza hawkeye
+
+Press enter.
+
+Press ctrl+D to stop input.
+'''
+#Use str.strip() method to remove the new line \n
+
+import sys
+
+#Python Basics Sys Module-ZKKs4DK36ak
+print(dir(sys))
+'''
+['__breakpointhook__', '__displayhook__', '__doc__', '__excepthook__', '__interactivehook__', '__loader__', '__name__', '__package__', '__spec__', '__stderr__', '__stdin__', '__stdout__', '__unraisablehook__', '_base_executable', '_clear_type_cache', '_current_frames', '_debugmallocstats', '_framework', '_getframe', '_git', '_home', '_xoptions', 'abiflags', 'addaudithook', 'api_version', 'argv', 'audit', 'base_exec_prefix', 'base_prefix', 'breakpointhook', 'builtin_module_names', 'byteorder', 'call_tracing', 'callstats', 'copyright', 'displayhook', 'dont_write_bytecode', 'exc_info', 'excepthook', 'exec_prefix', 'executable', 'exit', 'flags', 'float_info', 'float_repr_style', 'get_asyncgen_hooks', 'get_coroutine_origin_tracking_depth', 'getallocatedblocks', 'getcheckinterval', 'getdefaultencoding', 'getdlopenflags', 'getfilesystemencodeerrors', 'getfilesystemencoding', 'getprofile', 'getrecursionlimit', 'getrefcount', 'getsizeof', 'getswitchinterval', 'gettrace', 'hash_info', 'hexversion', 'implementation', 'int_info', 'intern', 'is_finalizing', 'maxsize', 'maxunicode', 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache', 'platform', 'prefix', 'pycache_prefix', 'set_asyncgen_hooks', 'set_coroutine_origin_tracking_depth', 'setcheckinterval', 'setdlopenflags', 'setprofile', 'setrecursionlimit', 'setswitchinterval', 'settrace', 'stderr', 'stdin', 'stdout', 'thread_info', 'unraisablehook', 'version', 'version_info', 'warnoptions']
