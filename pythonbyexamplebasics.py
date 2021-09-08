@@ -82,3 +82,45 @@ bonussixrandomintegersincrementsoffive = [random.randrange(0, 100, 5) for x in r
 print(bonussixrandomintegersincrementsoffive) #print [85, 55, 85, 95, 90, 10]
 chooseacolor = random.choice(["red", "yellow", "blue", "green"])
 print(chooseacolor) #print "blue"
+
+#Python By Example By Nicholas Lacey Challenges 69-79: Tuples, Lists And Dictionaries
+fruittuplecantchange = ("apple", "bananna", "strawberry", "orange")
+print(fruittuplecantchange.index("strawberry")) #print 2
+print(fruittuplecantchange[2]) #print strawberry
+namelist = ["John", "Tim", "Sam"]
+del namelist[1]
+namelist.append("Roger")
+print(namelist) #print ['John', 'Sam', 'Roger']
+namelist.sort()
+print(namelist) #print ['John', 'Roger', 'Sam']
+namelist.remove("John")
+print(namelist) #print ["Roger', 'Sam']
+colordictionary = {1: "red", 2: "blue", 3: "green"}
+colordictionary[2] = "yellow"
+print(colordictionary) #print {1: 'red', 2: 'yellow', 3: 'green'}
+numberlist = [154, 634, 892, 345, 341, 43]
+print(len(numberlist)) #print 6
+print(numberlist[1:4]) #print [634, 892, 345]
+number = 892
+print(number in numberlist) #print True
+number = 1
+print(number in numberlist) #print False
+numberlist.insert(0, 987)
+print(numberlist) #print [987, 154, 634, 892, 345, 341, 43]
+numberlist.remove(341)
+print(numberlist) #print [987, 154, 634, 892, 345, 43]
+numberlist.append(-390)
+print(numberlist) #print [987, 154, 634, 892, 345, 43, -390]
+numberlist.pop(3)
+print(numberlist) #print [987, 154, 634, 345, 43, -390]
+
+#Python By Example By Nicholas Lacey Challenges 80-87: More String Manipulation
+message = "The quick brown fox jumped over the lazy dog."
+print(message.isupper()) #print False
+print(message.islower()) #print False
+print(message.istitle()) #print False
+uppercasemessage = message.upper() #print THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG.
+print(uppercasemessage)
+print(uppercasemessage.isupper()) #print False
+print(uppercasemessage.lower()) #print the quick brown fox jumped over the lazy dog.
+print(uppercasemessage.title()) #print The Quick Brown Fox Jumped Over The Lazy Dog.
