@@ -266,3 +266,257 @@ class ClassGetInputMultipleIterators(object):
 multipleiterator1 = ClassGetInput("abcd") #return Now in ClassGetInput.__init__ self,stringinput.  Class initiation create the instance.
 multipleiterator2 = ClassGetInput("abcd") #return Now in ClassGetInput.__init__ self,stringinput.  Class initiation create the instance.
 print(multipleiterator1 is multipleiterator2) #print False
+
+#Python Two Class Iterators.pdf
+class ClassIterationMultipleIterations(object):
+    def __init__(self, stringinput):
+        print("Now in ClassIterationMultipleIterations.__init__ self,stringinput.  Class initiation create the instance.")
+        self.stringinput = stringinput
+        self.index = 0
+        print("Starting index number", str(self.index))
+    def __iter__(self):
+        print("Now in ClassIterationMultipleIterations.__iter__ self.  Iterator method like an iterator function.  Object iterator gets a different object back.  Check instance is iterable.")
+        self.index = 0
+        return self
+    def __next__(self):
+        print("Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.")
+        if self.index >= len(self.stringinput):
+            print("End of iterations")
+            print("self.index value is", str(self.index))
+            raise StopIteration
+        value = self.stringinput[self.index]
+        self.index += 1
+        return value, str(self.index)
+
+
+letters = ClassIterationMultipleIterations("abcd")
+for eachletters in letters:
+    print(eachletters)
+    '''
+    Now in ClassIterationMultipleIterations.__init__ self,stringinput.  Class initiation create the instance.
+    Starting index number 0
+    Now in ClassIterationMultipleIterations.__iter__ self.  Iterator method like an iterator function.  Object iterator gets a different object back.  Check instance is iterable.
+    Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.
+    ('a', '1')
+    Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.
+    ('b', '2')
+    Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.
+    ('c', '3')
+    Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.
+    ('d', '4')
+    Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.
+    End of iterations
+    self.index value is 4
+    '''
+
+objectlettersforloop1 = iter(letters)
+print(next(objectlettersforloop1)) #print Now in ClassIterationMultipleIterations.__iter__ self.  Iterator method like an iterator function.  Object iterator gets a different object back.  Check instance is iterable.\n Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration. ('a', '1')
+print(next(objectlettersforloop1)) #print Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration. ('b', '2')
+objectlettersforloop2 = iter(letters)
+print(next(objectlettersforloop2)) #print Now in ClassIterationMultipleIterations.__iter__ self.  Iterator method like an iterator function.  Object iterator gets a different object back.  Check instance is iterable.\n Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration. ('a', '1')
+print(next(objectlettersforloop2)) #print Now in ClassIterationMultipleIterations.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration. ('b', '2')
+print(objectlettersforloop1 is objectlettersforloop2) #print True RM:  objectlettersforloop1 and objectlettersforloop2 are aliases for each other.  objectlettersforloop2 sets self.index to zero also sets objectlettersforloop1 to zero.  We're unable to have the same object in multiple for loops simultaneously.
+print(objectlettersforloop1 == objectlettersforloop2) #print True RM:  objectlettersforloop1 and objectlettersforloop2 are aliases for each other.  objectlettersforloop2 sets self.index to zero also sets objectlettersforloop1 to zero.  We're unable to have the same object in multiple for loops simultaneously.
+
+class ClassIterationMultipleIterationsBringObject(object):
+    def __init__(self, stringinput):
+        print("Now in ClassIterationMultipleIterationsBringObject.__init__ self,stringinput.  Class initiation create the instance.")
+        self.stringinput = stringinput
+    def __iter__(self):
+        print("Now in ClassIterationMultipleIterationsBringObject.__iter__ self.  Create and return a new instance ClassIterationMultipleIterationsBringObjectIterator.")
+        return ClassIterationMultipleIterationsBringObjectIterator(self.stringinput)
+class ClassIterationMultipleIterationsBringObjectIterator(object):
+    def __init__(self, stringinput):
+        print("Now in ClassIterationMultipleIterationsBringObjectIterator.__init__ self,stringinput.")
+        self.stringinput = stringinput
+        self.index = 0
+        print("Starting index number", str(self.index))
+    def __next__(self):
+        print("Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self.")
+        if self.index >= len(self.stringinput):
+            print("End of iterations")
+            print("self.index value is", str(self.index))
+            raise StopIteration
+        value = self.stringinput[self.index]
+        self.index += 1
+        return value, str(self.index)
+
+
+lettersiterator = ClassIterationMultipleIterationsBringObject("abcd") #return Now in ClassIterationMultipleIterationsBringObject.__init__ self,stringinput.  Class initiation create the instance.
+print("\n")
+for eachlettersiterator in lettersiterator:
+    print(eachlettersiterator)
+    '''
+    Now in ClassIterationMultipleIterationsBringObject.__iter__ self.  Create and return a new instance ClassIterationMultipleIterationsBringObjectIterator.
+    Now in ClassIterationMultipleIterationsBringObjectIterator.__init__ self,stringinput.
+    Starting index number 0
+    Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self.
+    ('a', '1')
+    Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self.
+    ('b', '2')
+    Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self.
+    ('c', '3')
+    Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self.
+    ('d', '4')
+    Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self.
+    End of iterations
+    self.index value is 4
+    '''
+objectlettersiteratorforloop1 = iter(lettersiterator)
+print(next(objectlettersiteratorforloop1)) #print Starting index number 0\n Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self. ('a', '1')
+print(next(objectlettersiteratorforloop1)) #print Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self. ('b', '2')
+objectlettersiteratorforloop2 = iter(lettersiterator)
+print(next(objectlettersiteratorforloop2)) #print Starting index number 0\n Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self. ('a', '1')
+print(next(objectlettersiteratorforloop2)) #print Now in ClassIterationMultipleIterationsBringObjectIterator.__next__ self. ('b', '2')
+print(objectlettersiteratorforloop1 is objectlettersiteratorforloop2) #print False RM:  objectlettersiteratorforloop1 and objectlettersiteratorforloop2 are independent.  Two differente objects.
+print(objectlettersiteratorforloop1 == objectlettersiteratorforloop2) #print False RM:  objectlettersiteratorforloop1 and objectlettersiteratorforloop2 are independent.  Two differente objects.
+
+#Python Iteration Iterators Protocol.pdf
+class FibonacciImplementIterationProtocol(object):
+    def __iter__(self):
+        print("Now in FibonacciImplementIterationProtocol.__iter__.  Send object to FibonacciIterator")
+class FibonacciIterator(object):
+    def __init__(self):
+        print("Now in FibonacciIterator.__init__ self.  Define the first two numbers to add.")
+        self.firstnumber = 0
+        self.secondnumber = 1
+    def __next__(self):
+        print("Now in FibonacciIterator.__next__ self.")
+        answer = self.firstnumber
+        self.firstnumber, self.secondnumber = self.secondnumber, self.firstnumber + self.secondnumber
+        return answer
+
+
+#print(list(FibonacciImplementIterationProtocol()))
+print("The above code creates a new instance of FibonacciImplementIterationProtocol, and then hands that to list. In order to create a list, the list class invokes the iteration protocol, stopping when it sees StopIteration. The FibonacciIterator class never raises StopIteration, so it'll continue forever. It's less good if you want your computer to do something else.")
+
+class BookSingleClassObjectNorepr(object):
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+    def titleandbook(self):
+        return self.title + " wrote the book " + self.author + "."
+class BookSingleClassObject(object):
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+    def __repr__(self):
+        return f"{self.title}, by {self.author}"
+class Bookshelf(object):
+    def __init__(self):
+        print("Now in Bookshelf__init__ self.  Class initiation create the instance.")
+        self.books = []
+        print("Print self.books ", self.books)
+    def add_books(self, *books):
+        print("Now in Bookshelf add_books.")
+        self.books += books
+        print("Print self.books ", self.books)
+    def __iter__(self):
+        print("Now in Bookshelf__iter.  Create and return a new instance BookshelfIterator.  Go to BookshelfIterator.")
+        return BookshelfIterator(self.books)
+class BookshelfIterator(object):
+    def __init__(self, books):
+        print("Now in BookshelfIterator__init__ self, books.")
+        self.books = books
+        self.index = 0
+        print("__init__ self.books", self.books)
+        print("__init__ self.index", self.index)
+    def __next__(self):
+        print("Now in BookshelfIterator.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.")
+        if self.index >= len(self.books):
+            print("End of iterations")
+            print("self.index books is", str(self.index))
+            raise StopIteration
+        books = self.books[self.index]
+        self.index += 1
+        return books, str(self.index)
+
+
+harrypotter = BookSingleClassObjectNorepr("JK Rowling", "HP")
+print(harrypotter) #print <__main__.BookSingleClassObjectNorepr object at 0x7fcb86e7b668>
+print(harrypotter.titleandbook()) #print JK Rowling wrote the book HP.
+stevejobs = BookSingleClassObject("Walter Isaacson", "Steve Jobs")
+print(stevejobs) #print Walter Isaacson, by Steve Jobs
+harperlee = BookSingleClassObject("Harper Lee", "To Kill A Mockingbird")
+shelf = Bookshelf()
+shelf.add_books(stevejobs, harperlee)
+'''
+Now in Bookshelf__init__ self.  Class initiation create the instance.
+Print self.books  []
+Now in Bookshelf add_books.
+Print self.books  [Walter Isaacson, by Steve Jobs, Harper Lee, by To Kill A Mockingbird]
+'''
+for iterateshelf in shelf:
+    print(iterateshelf)
+    '''
+    Now in Bookshelf__iter.  Create and return a new instance BookshelfIterator.  Go to BookshelfIterator.
+    Now in BookshelfIterator__init__ self, books.
+    __init__ self.books [Walter Isaacson, by Steve Jobs, Harper Lee, by To Kill A Mockingbird]
+    __init__ self.index 0
+    Now in BookshelfIterator.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.
+    (Walter Isaacson, by Steve Jobs, '1')
+    Now in BookshelfIterator.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.  Start the iteration.
+    (Harper Lee, by To Kill A Mockingbird, '2')
+    Now in BookshelfIterator.__next__ self.  Object next function gets the next item from the iterator which should return a value.  __next__ is invoked.
+    End of iterations
+    self.index books is 2
+    '''
+
+#Python Being Creative With Iteration Protocol.pdf
+import time
+import random
+class FibonacciImplementIterationProtocol(object):
+    def __iter__(self):
+        print("Now in FibonacciImplementIterationProtocol.__iter__.  Send object to FibonacciIterator")
+        return FibonacciIterator()
+class FibonacciIterator(object):
+    def __init__(self):
+        print("Now in FibonacciIterator.__init__ self.  Define the first two numbers to add and previous_time.")
+        self.firstnumber = 0
+        self.secondnumber = 1
+        self.previous_time = None
+    def __next__(self):
+        print("Now in FibonacciIterator.__next__ self.")
+        value = self.firstnumber
+        self.firstnumber, self.secondnumber = self.secondnumber, self.firstnumber + self.secondnumber
+        current_time = time.time()
+        if self.previous_time is None:
+            time_value = current_time
+            self.previous_time = current_time
+        else:
+            time_value = current_time - self.previous_time
+            self.previous_time = current_time
+        return value, time_value
+
+
+fibonacciinstance = FibonacciImplementIterationProtocol()
+for number, time_since in fibonacciinstance:
+    print(f"{number}, {time_since} elapsed since previous value")
+    time.sleep(random.randint(0, 3))
+    '''
+    Now in FibonacciImplementIterationProtocol.__iter__.  Send object to FibonacciIterator
+    Now in FibonacciIterator.__init__ self.  Define the first two numbers to add and previous_time.
+    Now in FibonacciIterator.__next__ self.
+    0, 1631133535.5123522 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    1, 2.007510185241699 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    1, 3.002793788909912 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    2, 2.0027008056640625 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    3, 3.0034291744232178 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    5, 2.0026378631591797 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    8, 2.002868413925171 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    13, 3.0067427158355713 elapsed since previous value
+    Now in FibonacciIterator.__next__ self.
+    21, 1.0015947818756104 elapsed since previous value
+    ^CTraceback (most recent call last):
+      File "yywork.py", line 31, in <module>
+        time.sleep(random.randint(0, 3))
+    KeyboardInterrupt
+    '''
+#The enumerate function tracks the current index of the object over which it's iterating, and returning the index along with the element itself.
