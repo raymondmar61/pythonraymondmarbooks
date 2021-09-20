@@ -124,3 +124,75 @@ print(uppercasemessage)
 print(uppercasemessage.isupper()) #print False
 print(uppercasemessage.lower()) #print the quick brown fox jumped over the lazy dog.
 print(uppercasemessage.title()) #print The Quick Brown Fox Jumped Over The Lazy Dog.
+
+#Python By Example By Nicholas Lacey Challenges 96-103: 2D Lists And Dictionaries
+twodimensionlistgrades = [[45, 37, 54], [62, 58, 59], [49, 47, 60], [78, 83, 62]]
+print(twodimensionlistgrades) #print [[45, 37, 54], [62, 58, 59], [49, 47, 60], [78, 83, 62]]
+print(twodimensionlistgrades[1]) #print [62, 58, 59]
+grades = [{"Ma": 45, "En": 37, "Fr": 54}, {"Ma": 62, "En": 58, "Fr": 59}, {"Ma": 49, "En": 47, "Fr": 60}, {"Ma": 78, "En": 83, "Fr": 62}]
+print(grades) #print [{'Ma': 45, 'En': 37, 'Fr': 54}, {'Ma': 62, 'En': 58, 'Fr': 59}, {'Ma': 49, 'En': 47, 'Fr': 60}, {'Ma': 78, 'En': 83, 'Fr': 62}]
+print(grades[0]["En"]) #print 37
+gradesstudents = {"Susan": {"Ma": 45, "En": 37, "Fr": 54}, "Peter": {"Ma": 62, "En": 58, "Fr": 59}, "George": {"Ma": 49, "En": 47, "Fr": 60}, "Mary": {"Ma": 78, "En": 83, "Fr": 62}}
+print(gradesstudents) #print gradesstudents
+print(gradesstudents["Susan"]["En"]) #print 37
+print(gradesstudents["Peter"]["En"]) #print 58
+twodimensionlistsimplearray = [[2, 5, 8], [3, 7, 4], [1, 6, 9]]
+print(twodimensionlistsimplearray) #print [[2, 5, 8], [3, 7, 4], [1, 6, 9]]
+print(twodimensionlistsimplearray[1]) #print [3, 7, 4]
+print(twodimensionlistsimplearray[1][2]) #print 4
+twodimensionlistsimplearray.append(33)
+print(twodimensionlistsimplearray) #print [[2, 5, 8], [3, 7, 4], [1, 6, 9], 33]
+dictionarydataset = {"row1": {"col1": 54, "col2": 82, "col3": 91}, "row2": {"col1": 75, "col2": 29, "col3": 80}}
+print(dictionarydataset) #print {'row1': {'col1': 54, 'col2': 82, 'col3': 91}, 'row2': {'col1': 75, 'col2': 29, 'col3': 80}}
+print(dictionarydataset["row1"]) #print {'col1': 54, 'col2': 82, 'col3': 91}
+print(dictionarydataset["row2"]["col2"]) #print 29
+for eachnumber in dictionarydataset:
+    print(dictionarydataset[eachnumber]["col2"])
+    '''
+    82
+    29
+    '''
+dictionarydataset["row2"]["col2"] = 929 #change row2 and col2 to 929
+print(dictionarydataset) #print {'row1': {'col1': 54, 'col2': 82, 'col3': 91}, 'row2': {'col1': 75, 'col2': 929, 'col3': 80}}
+gradesstudents["New student Becky"] = {"Ma": 66, "En": 77, "Fr": 88}
+print(gradesstudents) #print {'Susan': {'Ma': 45, 'En': 37, 'Fr': 54}, 'Peter': {'Ma': 62, 'En': 58, 'Fr': 59}, 'George': {'Ma': 49, 'En': 47, 'Fr': 60}, 'Mary': {'Ma': 78, 'En': 83, 'Fr': 62}, 'New student Becky': {'Ma': 66, 'En': 77, 'Fr': 88}}
+for eachname in gradesstudents:
+    print(gradesstudents[eachname])
+    '''
+    {'Ma': 45, 'En': 37, 'Fr': 54}
+    {'Ma': 62, 'En': 58, 'Fr': 59}
+    {'Ma': 49, 'En': 47, 'Fr': 60}
+    {'Ma': 78, 'En': 83, 'Fr': 62}
+    {'Ma': 66, 'En': 77, 'Fr': 88}
+    '''
+for eachname in gradesstudents:
+    print(eachname, gradesstudents[eachname])
+    '''
+    Susan {'Ma': 45, 'En': 37, 'Fr': 54}
+    Peter {'Ma': 62, 'En': 58, 'Fr': 59}
+    George {'Ma': 49, 'En': 47, 'Fr': 60}
+    Mary {'Ma': 78, 'En': 83, 'Fr': 62}
+    New student Becky {'Ma': 66, 'En': 77, 'Fr': 88}
+    '''
+for eachnameengrades in gradesstudents:
+    print(eachnameengrades, gradesstudents[eachnameengrades]["En"])
+    '''
+    Susan 37
+    Peter 58
+    George 47
+    Mary 83
+    New student Becky 77
+    '''
+del gradesstudents["New student Becky"]
+print(gradesstudents) #print {'Susan': {'Ma': 45, 'En': 37, 'Fr': 54}, 'Peter': {'Ma': 62, 'En': 58, 'Fr': 59}, 'George': {'Ma': 49, 'En': 47, 'Fr': 60}, 'Mary': {'Ma': 78, 'En': 83, 'Fr': 62}}
+fourrowsthreecolumns2dlist = [[2, 5, 8], [3, 7, 4], [1, 6, 9], [4, 2, 0]]  #not dictionary with row headers and column headers
+print(fourrowsthreecolumns2dlist) #print [[2, 5, 8], [3, 7, 4], [1, 6, 9], [4, 2, 0]]
+selectrow = 2
+selectcolumn = 1
+print(fourrowsthreecolumns2dlist[selectrow][selectcolumn]) #print 6
+print(fourrowsthreecolumns2dlist[selectrow]) #print [1, 6, 9]
+fourrowsfourcolumnsdictionary = {"John": {"N": 3056, "S": 8463, "E": 8441, "W": 2694}, "Tom": {"N": 4832, "S": 6786, "E": 4737, "W": 3612}, "Anne": {"N": 5239, "S": 4802, "E": 5820, "W": 1859}, "John": {"N": 3904, "S": 3645, "E": 8821, "W": 2451}}
+print(fourrowsfourcolumnsdictionary) #print {'John': {'N': 3904, 'S': 3645, 'E': 8821, 'W': 2451}, 'Tom': {'N': 4832, 'S': 6786, 'E': 4737, 'W': 3612}, 'Anne': {'N': 5239, 'S': 4802, 'E': 5820, 'W': 1859}}
+salesname = "John"
+salesregion = "N"
+print(fourrowsfourcolumnsdictionary[salesname][salesregion]) #print 3904
