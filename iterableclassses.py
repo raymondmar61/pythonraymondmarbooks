@@ -520,3 +520,235 @@ for number, time_since in fibonacciinstance:
     KeyboardInterrupt
     '''
 #The enumerate function tracks the current index of the object over which it's iterating, and returning the index along with the element itself.
+
+#Python Generator Functions Iteration Iterators.pdf
+def functionthreereturnstatements():
+    return "First return statement"
+    return "Second return statement"
+    return "Third return statement"
+
+
+print(functionthreereturnstatements()) #print First return statement
+
+def functionthreeyieldstatements():
+    yield "First return statement"
+    yield "Second return statement"
+    yield "Third return statement"
+
+
+print(functionthreeyieldstatements()) #print <generator object functionthreeyieldstatements at 0x7f79f81ec360>
+generatoriterableobjecttrueorfalse = functionthreeyieldstatements()
+print(iter(generatoriterableobjecttrueorfalse) == generatoriterableobjecttrueorfalse) #print True
+print(next(generatoriterableobjecttrueorfalse)) #print First return statement
+print(next(generatoriterableobjecttrueorfalse)) #print Second return statement
+print(next(generatoriterableobjecttrueorfalse)) #print Third return statement
+print(next(generatoriterableobjecttrueorfalse))
+'''
+Traceback (most recent call last):
+  File "yywork.py", line 23, in <module>
+    print(next(generatoriterableobjecttrueorfalse)) #print *nothing*
+StopIteration
+'''
+
+#Python More On Generators Generator.pdf
+def fibonaccigeneratorfunction():
+    firstnumber = 0
+    secondnumber = 1
+    #infinite while loop
+    while True:
+        yield firstnumber
+        firstnumber, secondnumber = secondnumber, firstnumber + secondnumber
+        if firstnumber == 1000:
+            yield ("fibonaccigeneratorfunction while loop firstnumber==1000 break")
+            break
+
+
+print(fibonaccigeneratorfunction()) #print <generator object fibonaccigeneratorfunction at 0x7f01342c5a98>
+print(next(fibonaccigeneratorfunction())) #print 0
+print(next(fibonaccigeneratorfunction())) #print 0
+print(next(fibonaccigeneratorfunction())) #print 0
+for i in fibonaccigeneratorfunction():
+    print(i, end=" ") #print 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393
+    if i > 100000:
+        break
+print("\n")
+print(fibonaccigeneratorfunction.__code__.co_flags) #print 99 which means fibonaccigeneratorfunction is a generator function
+def fibonaccifunction():
+    firstnumber = 0
+    secondnumber = 1
+    #infinite while loop
+    while True:
+        return firstnumber
+        firstnumber, secondnumber = secondnumber, firstnumber + secondnumber
+        if firstnumber == 1000:
+            return ("fibonaccifunction while loop firstnumber==1000 break")
+            break
+
+
+print(fibonaccifunction.__code__.co_flags) #print 67 which means fibonaccifunction is a function
+
+#Python Generator Functions Iteration Iterators.pdf
+def functionthreereturnstatements():
+    return "First return statement"
+    return "Second return statement"
+    return "Third return statement"
+
+
+print(functionthreereturnstatements()) #print First return statement
+
+def functionthreeyieldstatements():
+    yield "First return statement"
+    yield "Second return statement"
+    yield "Third return statement"
+
+
+print(functionthreeyieldstatements()) #print <generator object functionthreeyieldstatements at 0x7f79f81ec360>
+generatoriterableobjecttrueorfalse = functionthreeyieldstatements()
+print(iter(generatoriterableobjecttrueorfalse) == generatoriterableobjecttrueorfalse) #print True
+print(next(generatoriterableobjecttrueorfalse)) #print First return statement
+print(next(generatoriterableobjecttrueorfalse)) #print Second return statement
+print(next(generatoriterableobjecttrueorfalse)) #print Third return statement
+# print(next(generatoriterableobjecttrueorfalse))
+'''
+Traceback (most recent call last):
+  File "yywork.py", line 23, in <module>
+    print(next(generatoriterableobjecttrueorfalse)) #print *nothing*
+StopIteration
+'''
+
+#Python More On Generators Generator.pdf
+def fibonaccigeneratorfunction():
+    firstnumber = 0
+    secondnumber = 1
+    #infinite while loop
+    while True:
+        yield firstnumber
+        firstnumber, secondnumber = secondnumber, firstnumber + secondnumber
+        if firstnumber == 1000:
+            yield ("fibonaccigeneratorfunction while loop firstnumber==1000 break")
+            break
+
+
+print(fibonaccigeneratorfunction()) #print <generator object fibonaccigeneratorfunction at 0x7f01342c5a98>
+print(next(fibonaccigeneratorfunction())) #print 0
+print(next(fibonaccigeneratorfunction())) #print 0
+print(next(fibonaccigeneratorfunction())) #print 0
+for i in fibonaccigeneratorfunction():
+    print(i, end=" ") #print 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393
+    if i > 100000:
+        break
+print("\n")
+print(fibonaccigeneratorfunction.__code__.co_flags) #print 99 which means fibonaccigeneratorfunction is a generator function
+def fibonaccifunction():
+    firstnumber = 0
+    secondnumber = 1
+    #infinite while loop
+    while True:
+        return firstnumber
+        firstnumber, secondnumber = secondnumber, firstnumber + secondnumber
+        if firstnumber == 1000:
+            return ("fibonaccifunction while loop firstnumber==1000 break")
+            break
+
+
+print(fibonaccifunction.__code__.co_flags) #print 67 which means fibonaccifunction is a function
+
+#Python Implementing Enumerate With A Generator.pdf
+for index, item in enumerate("abcd"):
+    print(f"{index}: {item}")
+    '''
+    0: a
+    1: b
+    2: c
+    3: d
+    '''
+def enumerategeneratorfunction(data):
+    index = 0
+    for eachdata in data:
+        print(f"eachdata in enumerategeneratorfunction {eachdata}, index number {index}")
+        yield index, eachdata
+        index += 1
+
+
+for index, item in enumerategeneratorfunction("abcd"):
+    print(f"{index}:{item}")
+    '''
+    eachdata in enumerategeneratorfunction a, index number 0
+    0:a
+    eachdata in enumerategeneratorfunction b, index number 1
+    1:b
+    eachdata in enumerategeneratorfunction c, index number 2
+    2:c
+    eachdata in enumerategeneratorfunction d, index number 3
+    3:d
+    '''
+def notreallyenumeratefunction(data):
+    index = 111
+    for eachdata in data:
+        print(f"eachdata in notreallyenumeratefunction {eachdata}, index number {index}")
+        return index, eachdata
+        index += 1
+
+
+for item in notreallyenumeratefunction("abcd"):
+    print(item)
+    '''
+    eachdata in notreallyenumeratefunction a, index number 111
+    111
+    a
+    '''
+def notreallyenumeratefunction2(data):
+    index = 111
+    returninlistformat = []
+    for eachdata in data:
+        print(f"eachdata in notreallyenumeratefunction2 {eachdata}, index number {index}")
+        returninlistformat.append(eachdata + ":" + str(index))
+        print(returninlistformat)
+        index += 1
+    return returninlistformat
+
+
+for item in notreallyenumeratefunction2("abcd"):
+    print(item)
+    '''
+    eachdata in notreallyenumeratefunction2 a, index number 111
+    ['a:111']
+    eachdata in notreallyenumeratefunction2 b, index number 112
+    ['a:111', 'b:112']
+    eachdata in notreallyenumeratefunction2 c, index number 113
+    ['a:111', 'b:112', 'c:113']
+    eachdata in notreallyenumeratefunction2 d, index number 114
+    ['a:111', 'b:112', 'c:113', 'd:114']
+    a:111
+    b:112
+    c:113
+    d:114
+    '''
+
+for index, item in enumerate("abcd", 111):
+    print(f"{index}:{item}")
+    '''
+    111:a
+    112:b
+    113:c
+    114:d
+    '''
+def enumerategeneratorfunction2(data, index=0):
+    for eachdata in data:
+        print(f"eachdata in enumerategeneratorfunction2 {eachdata}, index number {index}")
+        yield eachdata, index
+        index += 1
+
+
+for item, index in enumerategeneratorfunction2("abcd", 111):
+    print(f"{item}:{index}")
+    '''
+    eachdata in enumerategeneratorfunction2 a, index number 111
+    a:111
+    eachdata in enumerategeneratorfunction2 b, index number 112
+    b:112
+    eachdata in enumerategeneratorfunction2 c, index number 113
+    c:113
+    eachdata in enumerategeneratorfunction2 d, index number 114
+    d:114
+    '''
