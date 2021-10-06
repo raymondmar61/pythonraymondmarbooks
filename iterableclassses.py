@@ -752,3 +752,212 @@ for item, index in enumerategeneratorfunction2("abcd", 111):
     eachdata in enumerategeneratorfunction2 d, index number 114
     d:114
     '''
+
+#Python Generator Functions Iteration Iterators.pdf
+def functionreturnstatement():
+    return 1
+    return 2
+    return 3
+
+
+print(functionreturnstatement()) #print 1 #The return 2 statement and return 3 statement are ignored
+print(functionreturnstatement()) #print 1 #The return 2 statement and return 3 statement are ignored
+
+def functionyieldstatement():
+    yield 1
+    yield 2
+    yield 3
+
+
+print(functionyieldstatement()) #print <generator object functionyieldstatement at 0x7f0653f67360>
+generatorfunctionvariable = functionyieldstatement()
+print(iter(generatorfunctionvariable) == generatorfunctionvariable) #print True
+print(next(generatorfunctionvariable)) #print 1
+print(next(generatorfunctionvariable)) #print 2
+print(next(generatorfunctionvariable)) #print 3
+print(next(generatorfunctionvariable))
+'''
+Traceback (most recent call last):
+  File "yywork.py", line 23, in <module>
+    print(next(generatorfunctionvariable))
+StopIteration
+'''
+
+#Python More On Generators Generator.pdf
+def fibonaccigeneratorfunction():
+    firstnumber = 0
+    secondnumber = 1
+    #infinite while loop
+    while True:
+        yield firstnumber
+        firstnumber, secondnumber = secondnumber, firstnumber + secondnumber
+        if firstnumber == 1000:
+            yield ("fibonaccigeneratorfunction while loop firstnumber==1000 break")
+            break
+
+
+for i in fibonaccigeneratorfunction():
+    print(i, end=" ") #print 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393
+    if i > 100000:
+        break
+print(fibonaccigeneratorfunction.__code__.co_flags) #print 99
+
+def returnfunction(anumber):
+    return anumber + 2
+
+
+print(returnfunction(5)) #print 7
+print(returnfunction.__code__.co_flags) #print 67
+
+#Python Implementing Enumerate With A Generator.pdf
+for index, item in enumerate("abcd"):  #The for loop is actually a generator function
+    print(f"{index}: {item}")
+    '''
+    0: a
+    1: b
+    2: c
+    3: d
+    '''
+def enumerategeneratorfunction(data):
+    index = 0
+    for eachdata in data:
+        yield index, eachdata
+        index += 1
+
+
+for index, item in enumerategeneratorfunction("abcd"):
+    print(f"{index}: {item}")
+    '''
+    0: a
+    1: b
+    2: c
+    3: d
+    '''
+#If we had implemented enumerategeneratorfunction as a regular, non-generator function, then we would havehad to build and return a list containing all of the index-data tuples.
+for index, item in enumerate("abcd", 17):  #The for loop is actually a generator function
+    print(f"{index}: {item}")
+    '''
+    17: a
+    18: b
+    19: c
+    20: d
+    '''
+def enumerategeneratorfunction2(data, index=0):
+    for eachdata in data:
+        yield index, eachdata
+        index += 1
+
+
+for index, item in enumerategeneratorfunction2("abcd", 17):
+    print(f"{index}: {item}")
+    '''
+    17: a
+    18: b
+    19: c
+    20: d
+    '''
+
+#Python Generators Enumerate.pdf
+#Reverse each word in a text document.  For loop inefficient.
+for oneword in open("textfileforpractice.txt").read().split():
+    print(oneword[::-1], end=" ")
+    '''
+    meroL muspi rolod tis ,tema rutetcesnoc gnicisipida ,tile des od domsuie ropmet tnudidicni tu erobal te erolod angam .auqila tU mine da minim ,mainev siuq durtson noitaticrexe ocmallu sirobal isin tu piuqila xe ae odommoc .tauqesnoc siuD etua eruri rolod ni tiredneherper ni etatpulov tilev esse mullic erolod ue taiguf allun .rutairap ruetpecxE tnis taceacco tatadipuc non ,tnediorp tnus ni apluc iuq aiciffo tnuresed tillom mina di tse .murobal
+    '''
+#Reverse each word in a text document.  A file object is a generator itself.  If the text document contains very long lines, then the split results in a long list of strings.
+for oneline in open("textfileforpractice.txt"):
+    for oneword in oneline.split():
+        print(oneword[::-1], end=" ")
+        '''
+        meroL muspi rolod tis ,tema rutetcesnoc gnicisipida ,tile des od domsuie ropmet tnudidicni tu erobal te erolod angam .auqila tU mine da minim ,mainev siuq durtson noitaticrexe ocmallu sirobal isin tu piuqila xe ae odommoc .tauqesnoc siuD etua eruri rolod ni tiredneherper ni etatpulov tilev esse mullic erolod ue taiguf allun .rutairap ruetpecxE tnis taceacco tatadipuc non ,tnediorp tnus ni apluc iuq aiciffo tnuresed tillom mina di tse .murobal
+        '''
+print("\n")
+#Create a new generator to perform the split.  The split elements are returned one at a time.
+def wordbyword(oneline):
+    for oneword in oneline.split():
+        print("In function " + oneword) #print In function Lorem . . . In function ipsum. . . In function dolor . . . In function sit . . . In function amet . . .
+        yield oneword
+
+
+for oneline in open("textfileforpractice.txt"):
+    for oneword in wordbyword(oneline):
+        print(oneword[::-1], end=" ")
+        '''
+        meroL muspi rolod tis ,tema rutetcesnoc gnicisipida ,tile des od domsuie ropmet tnudidicni tu erobal te erolod angam .auqila tU mine da minim ,mainev siuq durtson noitaticrexe ocmallu sirobal isin tu piuqila xe ae odommoc .tauqesnoc siuD etua eruri rolod ni tiredneherper ni etatpulov tilev esse mullic erolod ue taiguf allun .rutairap ruetpecxE tnis taceacco tatadipuc non ,tnediorp tnus ni apluc iuq aiciffo tnuresed tillom mina di tse .murobal
+        '''
+
+#Generator Expressions Python.pdf
+tentwentythirty = ["30", "10", "20", "30"]
+listcomprehensionstringtointeger = [int(x) for x in tentwentythirty]
+print(listcomprehensionstringtointeger) #print [30, 10, 20, 30]
+setcomprehensionstringtointeger = {int(x) for x in tentwentythirty}
+print(setcomprehensionstringtointeger) #print {10, 20, 30}
+tentwentythirty = ["10", "20", "30"]
+dictionarycomprehensionstringtointeger = {int(x): int(x) * 2 for x in tentwentythirty}
+print(dictionarycomprehensionstringtointeger) #print {10: 20, 20: 40, 30: 60}
+tuplecomprenshionstringtointeger = (int(x) for x in tentwentythirty)
+print(tuplecomprenshionstringtointeger) #print <generator object <genexpr> at 0x7f451feada98>
+#It's often better to use a generator which returns one item at a time instead of a function returning a long list.  A generator expression returns one item at a time.  It has become increasingly acceptable to usegenerator expressions instead of list comprehensions in many situations -- not justwhere you'll get a lot of data, but where you want to minimize potential memory usage.
+tentwentythirtyinteger = [10, 20, 30]
+joinasterisklistcomprehension = "*".join([str(x) for x in tentwentythirtyinteger])
+print(joinasterisklistcomprehension) #print 10*20*30
+joinasteriskgeneratorexpression = "*".join((str(x) for x in tentwentythirtyinteger))
+print(joinasteriskgeneratorexpression) #print 10*20*30
+joinasteriskgeneratorexpression2 = "*".join(str(x) for x in tentwentythirtyinteger) #removed one of two layers of parentheses.  If you are invoking a function or method that can take a generator, you can justdescribe the values you're passing with a generator expression, without even adding asecond set of parentheses.
+print(joinasteriskgeneratorexpression2) #print 10*20*30
+
+#Python Generator Expressions Examples.pdf
+loremipsumfirstwordeachline = [oneline.split()[0] for oneline in open("textfileforpractice.txt")]
+print(loremipsumfirstwordeachline) #print ['Lorem', 'tempor', 'quis', 'consequat.', 'cillum', 'proident,']
+loremipsumsecondwordeachline = [oneline.split()[1] for oneline in open("textfileforpractice.txt")]
+print(loremipsumsecondwordeachline) #print ['ipsum', 'incididunt', 'nostrud', 'Duis', 'dolore', 'sunt']
+loremipsumfourthwordeachline = [oneline.split()[3] for oneline in open("textfileforpractice.txt")]
+print(loremipsumfourthwordeachline) #print ['sit', 'labore', 'ullamco', 'irure', 'fugiat', 'culpa']
+loremipsum = [oneline.split() for oneline in open("textfileforpractice.txt")]
+print(loremipsum)
+'''
+[['Lorem', 'ipsum', 'dolor', 'sit', 'amet,', 'consectetur', 'adipisicing', 'elit,', 'sed', 'do', 'eiusmod'], ['tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua.', 'Ut', 'enim', 'ad', 'minim', 'veniam,'], ['quis', 'nostrud', 'exercitation', 'ullamco', 'laboris', 'nisi', 'ut', 'aliquip', 'ex', 'ea', 'commodo'], ['consequat.', 'Duis', 'aute', 'irure', 'dolor', 'in', 'reprehenderit', 'in', 'voluptate', 'velit', 'esse'], ['cillum', 'dolore', 'eu', 'fugiat', 'nulla', 'pariatur.', 'Excepteur', 'sint', 'occaecat', 'cupidatat', 'non'], ['proident,', 'sunt', 'in', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum.']]
+'''
+#Extract information from a file
+loremipsumgeneratorexpression = (oneline.split()[0] for oneline in open("textfileforpractice.txt"))
+print(loremipsumgeneratorexpression) #print <generator object <genexpr> at 0x7fd82a7edb48>
+loremipsumgeneratorexpression = (oneline.split() for oneline in open("textfileforpractice.txt"))
+print(loremipsumgeneratorexpression) #print <generator object <genexpr> at 0x7fb00d5dfba0>
+#Filter or rewrite the output from an iterator
+extractlineif = (oneline.split() for oneline in open("textfileforpractice.txt") if oneline.startswith("Lorem"))
+print(extractlineif) #print <generator object <genexpr> at 0x7f8ae1ac7b48>
+#Now consider what happens: The above returns a generator. Whether we hand the generator to a method like str.join, or a class like Counter, or just a plain "for" loop' each iteration will read as many lines as needed from the file until encountering one that starts with "Lorem".  When it finds that line, it'll perform the split, return the line... and then wait for the next request. We're effectively reading only those lines from the file that are of interest to us, rather than all of them. A 1 terabyte file mightcontain 10 million, 1 million, or just 10 lines that are of interest to us; since we don'tknow how many we'll get, a generator expression is better than a list comprehension.
+#love2 = " ".join(oneline.split() for oneline in open("textfileforpractice.txt") if oneline.startswith("Lorem"))
+#print(love2) #print TypeError: sequence item 0: expected str instance, list found
+for eachextractlineif in extractlineif:
+    print(eachextractlineif) #print ['Lorem', 'ipsum', 'dolor', 'sit', 'amet,', 'consectetur', 'adipisicing', 'elit,', 'sed', 'do', 'eiusmod']
+print(eachextractlineif) #print ['Lorem', 'ipsum', 'dolor', 'sit', 'amet,', 'consectetur', 'adipisicing', 'elit,', 'sed', 'do', 'eiusmod']
+print(" ".join(eachextractlineif)) #print Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+print(" ".join(extractlineif)) #print *null*
+
+def wordbyword(oneline):
+    for oneword in oneline.split():
+        yield oneword
+
+
+answer = []
+for oneline in open("textfileforpractice.txt"):
+    if oneline.startswith("Lorem"):
+        for oneword in wordbyword(oneline):
+            answer.append(oneword)
+            print(oneword, end=" ") #print Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+print("\n")
+print(" ".join(answer)) #print Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+#RM:  if return oneword instead of yield oneword in wordbyword function, then answers are L o r e m.
+loremipsumgeneratorexpression = (oneline.split() for oneline in open("textfileforpractice.txt"))
+#print(loremipsumgeneratorexpression) #print <generator object <genexpr> at 0x7fb00d5dfba0>
+for eachloremipsumgeneratorexpression in loremipsumgeneratorexpression:
+    print(" ".join(eachloremipsumgeneratorexpression))
+    '''
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    '''
