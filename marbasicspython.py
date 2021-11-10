@@ -1,9 +1,24 @@
 #Basics Python Combine All Lessons Learned One Stop Book One Stop Documentation
 #Category:  *topic*
-#Categories:  Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, If Elif Else If then, try except, open file write file, Functions, Function Iterators, Lambda, import statement
+#Categories:  Variables Attributes, Boolean, Math, Strings, Lists, Tuples, Dictionaries, Sets, If Elif Else If then, try except, open file write file, Functions, Function Iterators, Lambda, import statement
 #Classes at marbasicspythonclasses.py.
 #Modules at marcommonmodulespython.py.  Math.
 #YouTube and book tutorials:  thenewbostonallvideos, williamfisetallvideos, Python Crash Course take two
+
+#Category:  Variables Attributes
+x = 100
+print(x) #print 100
+print(globals()["x"]) #print 100
+print(globals())
+'''
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x7f61e15ef048>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': 'yywork.py', '__cached__': None, 'x': 100}
+'''
+print(globals()["__loader__"]) #print <_frozen_importlib_external.SourceFileLoader object at 0x7f9526fea048>
+
+variableabcd = "abcd"
+print(variableabcd) #print abcd
+upperattribute = variableabcd.upper() #Python looks for the upper() attribute on variableabcd.  Python finds the method and executes upper thanks to the parentheses
+print(upperattribute) #print ABCD
 
 #Category:  Boolean
 print(bool(1>3)) #print False
@@ -234,8 +249,8 @@ H
           d
            !
 '''
-print("\t".join(escapecharacters)) #H	e	l	l	o	 	W	o	r	l	d!
-print("\n".join(escapecharacters)) #H	e	l	l	o	 	W	o	r	l	d!
+print("\t".join(escapecharacters)) #H   e   l   l   o       W   o   r   l   d!
+print("\n".join(escapecharacters)) #H   e   l   l   o       W   o   r   l   d!
 '''
 H
 e
@@ -257,14 +272,14 @@ print(onelinestring) #print Okay let's review the information again. Practice, r
 #a string is considered True if it's not empty.  If it's empty, then it's considered False.
 itemslist = ["bread","chocolate","apple","peanuts"]
 if itemslist:
-	print("itemslist has items.  itemslist is True") #print itemslist has items.  itemslist is True
+    print("itemslist has items.  itemslist is True") #print itemslist has items.  itemslist is True
 blankitemslist = []
 if not blankitemslist:
-	print("blankitemslist is empty.  blankitemslist is False.") #print blankitemslist is empty.  blankitemslist is False.
+    print("blankitemslist is empty.  blankitemslist is False.") #print blankitemslist is empty.  blankitemslist is False.
 gerald = "This sentence is true"
 while gerald:
-	print("Keep printing the truth")
-	gerald = input("Do you want the truth again?  If no, then press enter for gerald variable to be null and False")
+    print("Keep printing the truth")
+    gerald = input("Do you want the truth again?  If no, then press enter for gerald variable to be null and False")
 #eval evalulates a string like a math equation
 foo = 34
 bar = 3
@@ -293,14 +308,14 @@ print(items[1]) #print dog
 print(items.index("cat")) #print 0
 items = ["cat","dog","moon","shoe"]
 if items in ("cat","dog"):
-	print("There are animals in the list.")
+    print("There are animals in the list.")
 else:
-	print("What's going on here.") #print What's going on here.
+    print("What's going on here.") #print What's going on here.
 for eachitems in items:
-	if eachitems in ("cat","dog"):
-		print("There are animals in the list.")
-	else:
-		print("What's going on here.")
+    if eachitems in ("cat","dog"):
+        print("There are animals in the list.")
+    else:
+        print("What's going on here.")
 '''
 There are animals in the list.
 There are animals in the list.
@@ -371,7 +386,7 @@ print(sortcaseinsensitive) #print ['This', 'is', 'a', 'bunch', 'of', 'words', 'i
 sortcaseinsensitive.sort(key=str.lower)
 print(sortcaseinsensitive) #print ['a', 'a', 'bunch', 'in', 'is', 'of', 'Python', 'string', 'This', 'words']
 def functionsortbackwards(word):
-	return word[::-1]
+    return word[::-1]
 sortlastletteroftheword = "This is a bunch of words in a Python string".split()
 sortlastletteroftheword.sort(key=functionsortbackwards)
 print(sortlastletteroftheword) #print ['a', 'a', 'of', 'string', 'bunch', 'in', 'Python', 'words', 'is', 'This']
@@ -422,7 +437,7 @@ singlea = [1, 2, 3, 4, 5]
 doubleb = [10, 11, 12, 13, 14]
 singleadoubleb = []
 for eachsinglea, eachdoubleb in zip(singlea, doubleb):
-	singleadoubleb.append(eachsinglea+eachdoubleb)
+    singleadoubleb.append(eachsinglea+eachdoubleb)
 print(singleadoubleb) #print [11, 13, 15, 17, 19]
 listinformation1 = []
 imagename = "three"
@@ -466,7 +481,7 @@ print(heapq.nlargest(2, stocks, key=lambda anyvariable:anyvariable["Ticker"])) #
 numbers = list(range(0,10))
 squares = []
 for onenumber in numbers:
-	squares.append(onenumber*onenumber)
+    squares.append(onenumber*onenumber)
 print(squares) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 squareslistcomprehension = [onenumber*onenumber for onenumber in numbers]
 print(squareslistcomprehension) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
@@ -481,9 +496,9 @@ print(tuple(enumerate(firstname))) #print ((0, 'Bucky'), (1, 'Tom'), (2, 'Taylor
 names = zip(firstname, lastname)
 print(names) #print <zip object at 0x7f7c3a3eeb48>
 for a, b in names:
-	print(a,end=",")
-	print(b,end=",")
-	print(a, b)
+    print(a,end=",")
+    print(b,end=",")
+    print(a, b)
 '''
 Bucky,Roberts,Bucky Roberts
 Tom,Hanks,Tom Hanks
@@ -506,12 +521,12 @@ numbersa = [1, 5, 10, 79]
 numbersb = [2, 3, 42, 79]
 numbersab = zip(numbersa, numbersb)
 for numbersa, numbersb in numbersab:
-	if numbersa > numbersb:
-		print(numbersa)
-	elif numbersa < numbersb:
-		print(numbersb)
-	else:
-		print(numbersa,"two equal numbers.")
+    if numbersa > numbersb:
+        print(numbersa)
+    elif numbersa < numbersb:
+        print(numbersb)
+    else:
+        print(numbersa,"two equal numbers.")
 """
 2
 5
@@ -520,37 +535,37 @@ for numbersa, numbersb in numbersab:
 """
 players = [29, 58, 66, 71, 87]
 for eachplayers in players[0:3]:
-	print(eachplayers, end=" ") #print 29 58 66
+    print(eachplayers, end=" ") #print 29 58 66
 for eachnumber in range(100,-51,-25):
-	print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
+    print(eachnumber, end=", ") #print 100, 75, 50, 25, 0, -25, -50,
 bikes = "A trek is a bike"
 if "trek" in bikes:
-	print("Yes") #print Yes
+    print("Yes") #print Yes
 if "surly" not in bikes:
-	print("not in") #print not in
+    print("not in") #print not in
 bikes = ["trek","bobby","alamo","surly"]
 if "trek" in bikes:
-	print("Yes") #print Yes
+    print("Yes") #print Yes
 print("alamo" in bikes) #print True
 #Sometimes it’s important to check all of the conditions of interest. Use a series of simple if statements with no elif or else blocks. This technique makes sense when more than one condition could be True, and you want to act on every condition that is True.
 requested_toppings = ["mushrooms","extra cheese"]
 if "mushrooms" in requested_toppings:
-	print("Adding mushrooms") #print Adding mushrooms
+    print("Adding mushrooms") #print Adding mushrooms
 if "pepperoni" in requested_toppings:
-	print("Adding pepperoni")
+    print("Adding pepperoni")
 if "extra cheese" in requested_toppings:
-	print("Adding extra cheese") #print Adding extra cheese
+    print("Adding extra cheese") #print Adding extra cheese
 requested_toppings = ["there is something here"]
 if requested_toppings:
-	print("Okay what do I do") #print Okay what do I do
+    print("Okay what do I do") #print Okay what do I do
 ordinalnumbers = list(range(1,10))
 for eachordinalnumbers in ordinalnumbers:
-	if eachordinalnumbers == 1: #in (1) error message
-		print(str(eachordinalnumbers)+"st")
-	elif eachordinalnumbers in (2, 3):
-		print(str(eachordinalnumbers)+"nd")
-	else:
-		print(str(eachordinalnumbers)+"th")
+    if eachordinalnumbers == 1: #in (1) error message
+        print(str(eachordinalnumbers)+"st")
+    elif eachordinalnumbers in (2, 3):
+        print(str(eachordinalnumbers)+"nd")
+    else:
+        print(str(eachordinalnumbers)+"th")
 '''
 1st
 2nd
@@ -564,14 +579,14 @@ for eachordinalnumbers in ordinalnumbers:
 '''
 randomnumbers = [5,8,9,1]
 if randomnumbers in (5,9):
-	print("There are fives and nines")
+    print("There are fives and nines")
 else:
-	print("What's going on here.") #print What's going on here.
+    print("What's going on here.") #print What's going on here.
 for eachrandomnumbers in randomnumbers:
-	if eachrandomnumbers in (5,9):
-		print("There are fives and nines")
-	else:
-		print("What's going on here.")
+    if eachrandomnumbers in (5,9):
+        print("There are fives and nines")
+    else:
+        print("What's going on here.")
 '''
 There are fives and nines
 What's going on here.
@@ -581,12 +596,12 @@ What's going on here.
 unconfirmedusers = ["Alice","Brian","Candace"]
 confirmedusers = []
 while unconfirmedusers:
-	moveunconfirmeduserstoconfirmed = unconfirmedusers.pop()  #.pop() removes the last items in the list
-	confirmedusers.append(moveunconfirmeduserstoconfirmed)
+    moveunconfirmeduserstoconfirmed = unconfirmedusers.pop()  #.pop() removes the last items in the list
+    confirmedusers.append(moveunconfirmeduserstoconfirmed)
 print("Confirmedusers list populated",confirmedusers) #print Confirmedusers list populated ['Candace', 'Brian', 'Alice']
 pets = ["dog", "cat", "dog", "goldfish", "cat", "rabbit", "cat"]
 while "cat" in pets:
-	pets.remove("cat")
+    pets.remove("cat")
 print("Cat is removed",pets) #print Cat is removed ['dog', 'dog', 'goldfish', 'rabbit']
 
 
@@ -657,11 +672,11 @@ classmatesdictionary = {"Tony":"cool but smells","Emma":"sits behind me","Lucy":
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': 'asks too many questions'}
 print(classmatesdictionary["Emma"]) #print sits behind me
 for keysonly in classmatesdictionary.keys():
-	print(keysonly) #print Tony\n Emma\n Lucy
+    print(keysonly) #print Tony\n Emma\n Lucy
 for valuesonly in classmatesdictionary.values():
-	print(valuesonly) #print cool but smells\n sits behind me\n asks too many questions
+    print(valuesonly) #print cool but smells\n sits behind me\n asks too many questions
 for key, value in classmatesdictionary.items():
-	print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
+    print(key+" "+value,end="/") #print Tony cool but smells/Emma sits behind me/Lucy asks too many questions/
 classmatesdictionary["Lucy"] = "I'm from Peanuts"
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "I'm from Peanuts"}
 classmatesdictionary.update({"Lucy":"Psychiatric Help $0.05"})
@@ -669,7 +684,7 @@ print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits beh
 classmatesdictionary["Zoe"] = "I'm the new person"
 print(classmatesdictionary) #print {'Tony': 'cool but smells', 'Emma': 'sits behind me', 'Lucy': "Psychiatric Help $0.05", 'Zoe': "I'm the new person"}
 for sortedkeys in sorted(classmatesdictionary.keys()):
-	print(sortedkeys,end=",") #print Emma,Lucy,Tony,Zoe,
+    print(sortedkeys,end=",") #print Emma,Lucy,Tony,Zoe,
 dictionary = {"a": "apple", "b": "berry", "c": "cherry"}
 for defaultgetkeyindictionary in dictionary:
     print("key " + defaultgetkeyindictionary) #print key a\n key b\n key c
@@ -695,18 +710,18 @@ mydictionary["fish"].remove("p")
 print(mydictionary) #print {'luck': 'good', 'inventory': ['rations', 'flashlight', 'sleeping bag'], 'fish': ['a', 'c', 'r'], 'cash': -4483}
 pizzadictionarylist = {"crust":"thick", "toppings":["mushrooms","cheese","salami","pepperoni","bell peppers","meatballs","onions"]}
 for eachpizzadictionarylisttoppings in pizzadictionarylist["toppings"]:
-	print(eachpizzadictionarylisttoppings) #print mushrooms\n cheese\n salami\n pepperoni\n bell peppers\n meatballs\n onions
+    print(eachpizzadictionarylisttoppings) #print mushrooms\n cheese\n salami\n pepperoni\n bell peppers\n meatballs\n onions
 for eachvalues in pizzadictionarylist.values():
-	print(eachvalues) #print thick\n ['mushrooms', 'cheese', 'salami', 'pepperoni', 'bell peppers', 'meatballs', 'onions']
+    print(eachvalues) #print thick\n ['mushrooms', 'cheese', 'salami', 'pepperoni', 'bell peppers', 'meatballs', 'onions']
 for eachvalues in pizzadictionarylist.values():
-	for eachvaluesindividual in eachvalues:
-		print(eachvaluesindividual,end="\\") #print t\h\i\c\k\mushrooms\cheese\salami\pepperoni\bell peppers\meatballs\onions\
+    for eachvaluesindividual in eachvalues:
+        print(eachvaluesindividual,end="\\") #print t\h\i\c\k\mushrooms\cheese\salami\pepperoni\bell peppers\meatballs\onions\
 #nested dictionary
 nesteddictionarycities = {"springdale": {"country": "usa","population": 3000,"fact": "zion national park",}, "anaheim": {"country": "usa","population": 50000,"fact": "disneyland"}, "london": {"country": "great britian","population": 500000, "fact": "london bridge"}}
 for city, information in nesteddictionarycities.items():
-	print("City: " +city)
-	print("Country: " +information["country"]+ " population: " ,information["population"])
-	print("fact: " +information["fact"])
+    print("City: " +city)
+    print("Country: " +information["country"]+ " population: " ,information["population"])
+    print("fact: " +information["fact"])
 '''
 Country: usa population:  3000
 fact: zion national park
@@ -719,14 +734,14 @@ fact: london bridge
 '''
 nameandhobby = {}
 while True:
-	name = input("What is your name? ")
-	hobby = input("What is your hobby? ")
-	nameandhobby[name] = hobby
-	exit = input("Do you want to exit? Y or N? ")
-	if exit == "Y":
-		break
-	else:
-		continue
+    name = input("What is your name? ")
+    hobby = input("What is your hobby? ")
+    nameandhobby[name] = hobby
+    exit = input("Do you want to exit? Y or N? ")
+    if exit == "Y":
+        break
+    else:
+        continue
 print(nameandhobby) #print {'Raymond': 'Read books', 'James': 'Video games', 'Michelle': 'Cooking'}
 #order list order dictionary keep track of order
 from collections import OrderedDict
@@ -737,7 +752,7 @@ favorite_languages["edward"] = "ruby"
 favorite_languages["phil"] = "python"
 print(favorite_languages) #print OrderedDict([('jen', 'python'), ('sarah', 'c'), ('edward', 'ruby'), ('phil', 'python')])
 for name, language in favorite_languages.items():
-	print(name+ "'s favorite language is " +language+ ".") #print jen's favorite language is python.\n sarah's favorite language is c.\n edward's favorite language is ruby.\n phil's favorite language is python.
+    print(name+ "'s favorite language is " +language+ ".") #print jen's favorite language is python.\n sarah's favorite language is c.\n edward's favorite language is ruby.\n phil's favorite language is python.
 stocks = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN":306.21, "AAPL": 99.76}
 print(stocks) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 print(zip(stocks.values(), stocks.keys())) #print <zip object at 0x7f56392f8b48>
@@ -838,25 +853,25 @@ print(usernumberssetcomprehensionsum) #print 10
 #Category:  If Elif Else If then
 name = "Bucky"
 if name == "Bucky":
-	print("Hey there Bucky") #print Hey there Bucky
+    print("Hey there Bucky") #print Hey there Bucky
 elif name == "Lucky":
-	print("You're lucky")
+    print("You're lucky")
 else:
-	print("No name")
+    print("No name")
 apples = 20
 if apples > 3:
-	print("First if statement independent greater than three apples.") #print First if statement independent greater than three apples.
+    print("First if statement independent greater than three apples.") #print First if statement independent greater than three apples.
 if apples > 5:
-	print("Second if statement independent greater than five apples.") #print Second if statement independent greater than five apples.
+    print("Second if statement independent greater than five apples.") #print Second if statement independent greater than five apples.
 if apples > 50:
-	print("Third if statement independent greater than fifty apples")
+    print("Third if statement independent greater than fifty apples")
 else:
-	print("Third if statement independent greater than fifty apples else:  is like elif True:") #print Third if statement independent greater than fifty apples else:  is like elif True:
+    print("Third if statement independent greater than fifty apples else:  is like elif True:") #print Third if statement independent greater than fifty apples else:  is like elif True:
 if 10 <= apples <=20:
-	print("Fourth if statement independent between 10 and 20 apples inclusive.") #print Fourth if statement independent between 10 and 20 apples inclusive.
+    print("Fourth if statement independent between 10 and 20 apples inclusive.") #print Fourth if statement independent between 10 and 20 apples inclusive.
 location = "home"
 if location is "home" or location is "Vegas":
-	print("I'm {}".format(location)) #print I'm home
+    print("I'm {}".format(location)) #print I'm home
 number = 90
 result = isinstance(number, int)
 if result:
@@ -866,51 +881,51 @@ else:
 
 #Category:  Functions
 def functionobjectnamedhello(name):
-	return "The function object named hello returns {}".format(name)
+    return "The function object named hello returns {}".format(name)
 print(functionobjectnamedhello("Python calls or invokes the object attached to functionobjectnamedhello")) #print The function object named hello returns Python calls or invokes the object attached to functionobjectnamedhello
 def helloreuvenlerner(name):
-	"This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute."
-	return "Hello, {}".format(name)
+    "This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute."
+    return "Hello, {}".format(name)
 print(helloreuvenlerner("Raymond")) #print Hello, Raymond
 help(helloreuvenlerner) #return Help on function helloreuvenlerner in module __main__: helloreuvenlerner(name) This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute.  (END)
 def helloreuvenlernerbetterdocstring(name):
-	"""
-	This is the better docstring.
-	Write multiple lines.
-	Docstring tells user what the function does, how to run the function, and what it returns.
-	"""
-	return "Hello, {}".format(name)
+    """
+    This is the better docstring.
+    Write multiple lines.
+    Docstring tells user what the function does, how to run the function, and what it returns.
+    """
+    return "Hello, {}".format(name)
 help(helloreuvenlernerbetterdocstring)  #return Help on function helloreuvenlernerbetterdocstring in module __main__: helloreuvenlernerbetterdocstring(name) This is the better docstring. Write multiple lines. Docstring tells user what the function does, how to run the function, and what it returns. (END)
 def functionmultiplepasses(variable1, variable2):
-	return "I make a rhyme "+variable1+" and " +variable2+"."
+    return "I make a rhyme "+variable1+" and " +variable2+"."
 print(functionmultiplepasses("blue","clue")) #return I make a rhyme blue and clue.
 def functionname(number=17):
-	return number
+    return number
 print(functionname(150)) #print 150
 print(functionname()) #print 17
 def functionname2(name="Raymond", action="jump", braincells=500000000, item="glue"):
-	print(name+" "+action+" "+item, braincells)
+    print(name+" "+action+" "+item, braincells)
 functionname2(action="run") #return Raymond run glue 500000000
 functionname2(action="sleep", braincells=100000000) #return Raymond sleep glue 100000000
 def anoptionalargument(hobby, show, location=""):
-	return "%s hobby, %s show, location is %s" %(hobby,show,location)
+    return "%s hobby, %s show, location is %s" %(hobby,show,location)
 print(anoptionalargument("cook","Breaking Bad","New Mexico")) #print cook hobby, Breaking Bad show, location is New Mexico
 print(anoptionalargument("bake","Simpsons")) #print bake hobby, Simpsons show, location is 
 def dropfirstlast(grades):
-	first, *middle, last = grades #first index is saved in first, last index is saved in last, the rest are saved in *middle
-	avg = sum(middle)/len(middle)
-	return avg
+    first, *middle, last = grades #first index is saved in first, last index is saved in last, the rest are saved in *middle
+    avg = sum(middle)/len(middle)
+    return avg
 print(dropfirstlast([65, 76, 98, 54, 21])) #print 76.0.  65 saved in first, 21 saved in last, averaged 76, 98, 54 is 76.0
 print(dropfirstlast([65, 76, 98, 54, 21, 54, 65, 99, 88, 78])) #print 69.375.  65 saved in first, 78 saved in last, averaged 76, 98, 54, 21, 54, 65, 99, 88 is 69.375.
 def combinestrings(*strings):
-	return "".join(strings)
+    return "".join(strings)
 print(combinestrings("Ed","Al","Winry","Riza","Roy","Mei Chang")) #print EdAlWinryRizaRoyMei Chang
 def printcombinestrings(functionname, *args):
-	return functionname(*args)
+    return functionname(*args)
 print(printcombinestrings(combinestrings,"red","green","blue","yellow")) #print redgreenblueyellow
 def multiplevalues(anynumber, *words):
-	print(anynumber)
-	print(words)
+    print(anynumber)
+    print(words)
 multiplevalues(5,"yum","boo","black") #print 5\n ('yum', 'boo', 'black')
 #Nested function
 def averagefunction(numbers):
@@ -922,23 +937,23 @@ def notafunction():
 print(averagefunction(notafunction())) #print 47.25
 #parent and child functions
 def addnumbers(*numbers, ray="sunshine"):
-	total = 0
-	print(numbers)
-	for eachnumbers in numbers:
-		total+= eachnumbers
-	return total, ray
+    total = 0
+    print(numbers)
+    for eachnumbers in numbers:
+        total+= eachnumbers
+    return total, ray
 print(addnumbers(3, 32)) #print (3, 32)\n (35, 'sunshine')
 print(addnumbers(-30, 30, 32, ray="moon")) #print (-30, 30, 32)\n (32, 'moon')
 players = [29, 58, 66, 71, 87]
 print(addnumbers(*players)) #print (29, 58, 66, 71, 87)\n (311, 'sunshine')
 def addnumbers2(ray2="sunshine", *numbers2):
-	total2 = 0
-	print(ray2)
-	print(numbers2)
-	print(type(numbers2))
-	for eachnumbers in numbers2:
-		total2 += eachnumbers
-	return ray2 and total2
+    total2 = 0
+    print(ray2)
+    print(numbers2)
+    print(type(numbers2))
+    for eachnumbers in numbers2:
+        total2 += eachnumbers
+    return ray2 and total2
 print(addnumbers2())
 '''
 sunshine
@@ -969,13 +984,13 @@ def deservesanother(n):
 print(onegoodturn(10)) #return 11
 print(deservesanother(10)) #return 13
 def parentfunction(parentlist, givetochildlist):
-	while parentlist:
-		parenttochildlist = parentlist.pop()
-		print(parenttochildlist+" is popped.") #print need is popped.\n I is popped.\n all is popped.
-		givetochildlist.append(parenttochildlist)
-	print("parentfunction givetochildlist list",givetochildlist)	
+    while parentlist:
+        parenttochildlist = parentlist.pop()
+        print(parenttochildlist+" is popped.") #print need is popped.\n I is popped.\n all is popped.
+        givetochildlist.append(parenttochildlist)
+    print("parentfunction givetochildlist list",givetochildlist)    
 def childfunction(childlist):
-	print("I now have the childlist",childlist)
+    print("I now have the childlist",childlist)
 list1 = ["all","I","need"]
 list2 = []
 parentfunction(list1, list2) #print parentfunction givetochildlist list ['need', 'I', 'all']
@@ -983,92 +998,197 @@ print(list2) #print ['need', 'I', 'all']
 childfunction(list2) #print I now have the childlist ['need', 'I', 'all']
 #double asterisks before the parameter **userinfo cause Python to create an empty dictionary called user_info and pack whatever name-value pairs it receives into this dictionary.  Function works no matter how many additional key-value pairs are provided in the function call.
 def buildprofile(first, last, **userinfo):
-	profile = {}
-	profile["firstname"] = first
-	profile["lastname"] = last
-	for key, value in userinfo.items():
-		profile[key] = value
-	return profile
+    profile = {}
+    profile["firstname"] = first
+    profile["lastname"] = last
+    for key, value in userinfo.items():
+        profile[key] = value
+    return profile
 print(buildprofile("albert","einstein",location="princeton",field="physics")) #print {'location': 'princeton', 'field': 'physics', 'lastname': 'einstein', 'firstname': 'albert'}
 print(buildprofile("Jackie","Chan",hobbies="books, karate, chow mein",favorite_color="red",car="audi")) #print {'lastname': 'Chan', 'firstname': 'Jackie', 'hobbies': 'books, karate, chow mein', 'car': 'audi', 'favorite_color': 'red'}
 #parent and child functions
 def peopleinformation(**peopleages):
-	averageage = 0
-	print(peopleages) #print {'susan': 88, 'ryan': 345, 'roxanne': 45
-	for age in peopleages.values():
-		averageage += age
-	return averageage/len(peopleages)
+    averageage = 0
+    print(peopleages) #print {'susan': 88, 'ryan': 345, 'roxanne': 45
+    for age in peopleages.values():
+        averageage += age
+    return averageage/len(peopleages)
 print(peopleinformation(susan=88, ryan=345, roxanne=45)) #print 159.33333333333334
 passdictionary = {'susan': 88, 'ryan': 345, 'roxanne': 45}
 print(passdictionary) #print {'susan': 88, 'ryan': 345, 'roxanne': 45}
 def peopleinformation2(peopleages2):
-	averageage2 = 0
-	print(peopleages2) #print {'susan': 88, 'ryan': 345, 'roxanne': 45}
-	for age2 in peopleages2.values():
-		averageage2 += age2
-	return averageage2/len(peopleages2)
+    averageage2 = 0
+    print(peopleages2) #print {'susan': 88, 'ryan': 345, 'roxanne': 45}
+    for age2 in peopleages2.values():
+        averageage2 += age2
+    return averageage2/len(peopleages2)
 print(peopleinformation2(passdictionary)) #print 159.33333333333334
 def commonstartendlists(list1, list2):
-	startsmatch = list1[0] == list2[0]
-	endsmatch = list1[-1] == list2[-1]
-	return startsmatch and endsmatch
+    startsmatch = list1[0] == list2[0]
+    endsmatch = list1[-1] == list2[-1]
+    return startsmatch and endsmatch
 print(commonstartendlists([1,4,6,3],[1,57,3])) #print True
 print(commonstartendlists([1,4,6,3],[1,57,9])) #print False
 def commonstartendlistscomma(list1, list2):
-	startsmatch = list1[0] == list2[0]
-	endsmatch = list1[-1] == list2[-1]
-	return startsmatch, endsmatch
+    startsmatch = list1[0] == list2[0]
+    endsmatch = list1[-1] == list2[-1]
+    return startsmatch, endsmatch
 print(commonstartendlistscomma([1,4,6,3],[1,57,3])) #print (True, True)
 print(commonstartendlistscomma([1,4,6,3],[1,57,9])) #print (True, False)
 #inefficient way to print largestnumber global variable
 largestnumber2 = 0
 def setlargestnumber2(list_):
-	largest = 0
-	for number in list_:
-		if number > largest:
-			largest = number
-	largestnumber = largest
-	return largestnumber	
+    largest = 0
+    for number in list_:
+        if number > largest:
+            largest = number
+    largestnumber = largest
+    return largestnumber    
 largestnumber2 = setlargestnumber2([45,3,67,357,33])
 print(largestnumber2) #print 357
 #efficient way to print largestnumber global variable
 largestnumber3 = 0
 def setlargestnumber3(list_):
-	global largestnumber3
-	largest = 0
-	for number in list_:
-		if number > largest:
-			largest = number
-	largestnumber3 = largest
-	print(largestnumber3)
+    global largestnumber3
+    largest = 0
+    for number in list_:
+        if number > largest:
+            largest = number
+    largestnumber3 = largest
+    print(largestnumber3)
 setlargestnumber3([45,3,67,3357,33]) #return 3357
 income = [10, 30, 75]
 def doublemoney(dollars):
-	return dollars*2
+    return dollars*2
 print(map(doublemoney, income)) #print <map object at 0x7fc2d7dcb278>
 print(list(map(doublemoney, income))) #print [20, 60, 150]
 #Recursion
 def doublenorecursion(x):
-	print("x variable {}".format(x))
-	x -=1
-	return x
+    print("x variable {}".format(x))
+    x -=1
+    return x
 doublenorecursion(4) #return x variable 4
 print(doublenorecursion(4)) #return x variable 4\n 3
 def doubleyesrecursion(x):
-	print("x yes recursion variable {}".format(x))
-	if x == 0:
-		return "x is zero is the base case"
-	return doubleyesrecursion(x-1)
+    print("x yes recursion variable {}".format(x))
+    if x == 0:
+        return "x is zero is the base case"
+    return doubleyesrecursion(x-1)
 doubleyesrecursion(4) #return x yes recursion variable 4\n x yes recursion variable 3\n x yes recursion variable 2\n x yes recursion variable 1\n x yes recursion variable 0
 print(doubleyesrecursion(4)) #return x yes recursion variable 4\n x yes recursion variable 3\n x yes recursion variable 2\n x yes recursion variable 1\n x yes recursion variable 0\n x is zero is the base case
 print("\n")
+#global variable and local variable
+x = 100
+def localvariable():
+    print("Local variable which is none.  Check if x is a global variable.", x)
+
+
+print("1 global variable", x) #1 global variable 100
+localvariable() #return Local variable which is none.  Check if x is a global variable. 100
+print("2 global variable", x) #2 global variable 100
+
+if "x" in globals():
+    print("Check variable x is a global variable.  RM:  wow, it works.") #print Check variable x is a global variable.  RM:  wow, it works.
+if "noxvariable" in globals():
+    print("p")
+x = 100
+def returnlocalvariable():
+    x = 200
+    print("Print returnlocalvariable() function x", x)
+
+
+returnlocalvariable() #return Print returnlocalvariable() function x 200
+
+#parent and child functions expanded or outer function and inner function
+def firstfunction():
+    def secondfunction():
+        return "secondfunction() as a string"
+
+
+firstfunction()
+print(firstfunction()) #print None
+
+def firstfunction():
+    def secondfunction():
+        return "secondfunction() as a string"
+    return firstfunction
+
+
+firstfunction()
+print(firstfunction()) #print <function firstfunction at 0x7f4e73101620>
+#secondfunction() #return NameError: name 'secondfunction' is not defined
+
+def firstfunction():
+    #Create a new function object assigned to variable secondfunction.  secondfunction is a local variable local to firstfunction.
+    def secondfunction():
+        return "secondfunction() as a string"
+        print("Did I print?")
+    return secondfunction
+
+
+firstfunction()
+print(firstfunction()) #print <function firstfunction.<locals>.secondfunction at 0x7ff0a5d58620>.  RM:  The return value from firstfunction is the function secondfunction
+#secondfunction() #return NameError: name 'secondfunction' is not defined
+print(type(firstfunction())) #print <class 'function'>
+x = firstfunction()
+print(x()) #print secondfunction() as a string
+
+def outerfunction(number):
+    #Create a new function object assigned to variable innerfunction.  innerfunction is a local variable local to firstfunction.
+    def innerfunction():
+        return f"Inner function number {number}"
+    return innerfunction
+
+
+x = outerfunction(111)
+print(x()) #print Inner function number 111
+variablex = outerfunction(222)
+print(variablex) #print <function outerfunction.<locals>.innerfunction at 0x7f5653a4e620>
+print(variablex()) #print Inner function number 222
+variabley = outerfunction(333)
+print(variabley) #print <function outerfunction.<locals>.innerfunction at 0x7f5653a4e9d8>
+print(variabley()) #print Inner function number 333
+#There is a new and different stack frame with a new and different local variable number with each run.  variablex and variabley do different things becuase they were defined in different environments.
+#nonlocal variable
+def outerfunction5points(name):
+    remainingpoints = 5
+
+    def innerfunctionrun():
+        nonlocal remainingpoints
+        while True:
+            print(remainingpoints)
+            if remainingpoints <= 0:
+                raise TypeError("No more points")
+            else:
+                remainingpoints -= 1
+                print(f"Hello {name}")
+    return innerfunctionrun
+
+
+x = outerfunction5points("Raymond")
+print(x())
+'''
+5
+Hello Raymond
+4
+Hello Raymond
+3
+Hello Raymond
+2
+Hello Raymond
+1
+Hello Raymond
+0
+...
+TypeError: No more points
+'''
 #Embed Function Calls
 def addten(num):
-	return num+10
+    return num+10
 def double(num):
-	return num*2
+    return num*2
 def triple(num):
-	return num*3
+    return num*3
 number = 3
 tripled = triple(number)
 print(tripled) #print 9
@@ -1080,32 +1200,32 @@ number = 3
 result = addten(double(triple(number)))
 print(result) #print 28
 def assignvariable():
-	#print("Assigned variable to function")
-	return "Assigned variable to function"
+    #print("Assigned variable to function")
+    return "Assigned variable to function"
 functionvariable = assignvariable()
 print(functionvariable) #print Assigned variable to function
 def addfunction():
-	def addtwonumbers(a, b):
-		return a+b
-	return addtwonumbers
+    def addtwonumbers(a, b):
+        return a+b
+    return addtwonumbers
 functionvariable = addfunction()
 print(functionvariable(4,5)) #print 9
 def doubleaddfunction():
-	def addtwonumbers(a,b):
-		def double(n):
-			return n*2
-		return double(a) + double(b)
-	return addtwonumbers
+    def addtwonumbers(a,b):
+        def double(n):
+            return n*2
+        return double(a) + double(b)
+    return addtwonumbers
 functionvariable = doubleaddfunction()
 print(functionvariable(4,5)) #print 18
 def greaterthantenfilterlist(numberlist):
-	return numberlist > 10
+    return numberlist > 10
 thenumberlist = [5,7,345,78,34,5]
 print(filter(greaterthantenfilterlist, thenumberlist)) #print <filter object at 0x7f5bce4d7128>
 print(list(filter(greaterthantenfilterlist, thenumberlist))) #print [345, 78, 34]
 print(list(map(greaterthantenfilterlist,thenumberlist))) #print [False, False, True, True, True, False]
 def beginswithletterfilterlist(wordlist, prefix="e"):
-	return wordlist.startswith(prefix)
+    return wordlist.startswith(prefix)
 thewordlist = ["earth","unicycle","moose","beed","eradicate"]
 #print(filter(beginswithletterfilterlist, thewordlist,"e")) #error message filter expected 2 arguments
 print(filter(beginswithletterfilterlist, thewordlist)) #print <filter object at 0x7f7ca0627828>
@@ -1127,17 +1247,30 @@ while True:
     else:
         survey.saveresponse(response)
 survey.showresponse() #return The list ['HTML', 'Python', 'SQL', 'CSS', 'JavaScript', 'DAX']\n Your languages are HTML, Python, SQL, CSS, JavaScript, DAX\n HTML, Python, SQL, CSS, JavaScript, DAX
+#Stack frames, keep local variables
+import inspect
+def functionobject(x, y):
+    z = x + y
+    print(f"x+y={z}") #print x+y=21; print x+y=210
+    return z, inspect.currentframe()
+
+
+print(functionobject(10, 11)) #print (21, <frame object at 0x153c5a8>)
+keeplocalvariable = functionobject(100, 110)
+print(keeplocalvariable) #print (210, <frame object at 0x15a25a8>)
+print(keeplocalvariable[0]) #print 210
+print(keeplocalvariable[0] + 1000) #print 1210
 
 #Category:  Function Iterators
 numbers = [1, 2, 3, 4, 5]
 def square(x):
-	return x**2
+    return x**2
 print(map(square,numbers)) #print <map object at 0x7fa402f9f470>
 print(list(map(square,numbers))) #print [1, 4, 9, 16, 25]
 print(map(lambda x: x**2,numbers)) #print <map object at 0x7fd294e77470>
 print(list(map(lambda x: x**2,numbers))) #print [1, 4, 9, 16, 25]
 def uppercase(string):
-	return string.upper()
+    return string.upper()
 letters = ["abc","def","ghi"]
 print(list(map(uppercase,letters))) #print ['ABC', 'DEF', 'GHI']
 firsta, firstd, firstg = list(map(uppercase, letters))
@@ -1147,7 +1280,7 @@ print(firstg) #print GHI
 numbersfilter = [1, 2, 3, 4, 5, 6]
 print(list(filter(lambda x: x>3,numbersfilter))) #print [4, 5, 6]
 def greaterthanthree(x):
-	return x > 3
+    return x > 3
 print(list(filter(greaterthanthree,numbersfilter))) #print [4, 5, 6]
 from functools import reduce #Guido van Rossum says 99% of the time an explicit for loop is more readable.
 print(reduce(lambda x, y: x+y,numbersfilter)) #print 21
@@ -1155,9 +1288,9 @@ stringsentence = ["This","is","a","sentence"]
 print(reduce(lambda x, y: x+" "+y,stringsentence)) #print This is a sentence
 from random import shuffle
 def jumble(word):
-	anagram = list(word)
-	shuffle(anagram)
-	return "".join(anagram)
+    anagram = list(word)
+    shuffle(anagram)
+    return "".join(anagram)
 words = ["beetroot","carrots","potatoes"]
 print(map(jumble,words)) #print <map object at 0x7fbc09ee02e8>
 print(list(map(jumble,words))) #print ['etetboro', 'scrrtoa', 'oaptsoet']
@@ -1203,39 +1336,39 @@ fileread.close()
 #Python can only write strings to a text file. If you want to store numerical data in a text file, you’ll have to convert the data to string format first using the str() function.
 filenamevariable = "joejamesdata.txt"
 with open(filenamevariable,"a") as appendnumbersvariable:
-	appendnumbersvariable.write(str(55)) #number 55 is written at the end of filenamevariable.  It doesn't necessarily append 55 at a new line
-	appendnumbersvariable.write("\n"+str(999)) #number 999 is written at a new line
+    appendnumbersvariable.write(str(55)) #number 55 is written at the end of filenamevariable.  It doesn't necessarily append 55 at a new line
+    appendnumbersvariable.write("\n"+str(999)) #number 999 is written at a new line
 import os
 os.remove("thenewbostontextfile.txt")
 filename = "createnewfile.txt"
 createnewfile = open(filename,"w")
 try:
-	createnewfile.write("Write this sentence")
+    createnewfile.write("Write this sentence")
 except BaseException:
-	print("BaseException error")
+    print("BaseException error")
 finally:
-	createnewfile.close()
+    createnewfile.close()
 os.remove(filename)
 filename = "tempexample.txt"
 examplefile = open(filename,"w")
 try:
-	examplefile.write("Blue goose on the loose\n")
-	examplefile.write("Honeycomb cereal\n")
+    examplefile.write("Blue goose on the loose\n")
+    examplefile.write("Honeycomb cereal\n")
 except Exception as aserror:
-	print("Problem handling file.  Error was %s" % aserror)
+    print("Problem handling file.  Error was %s" % aserror)
 finally:
-	examplefile.close()
+    examplefile.close()
 os.remove(filename)
 filename = "openfilewritefile.txt"
 with open(filename,"w") as variableforfilename:
-	lineslist = ["Line 1 happy whale on parade!\n","Line 2 red bee dancing\n","Line 3 the great git in the sky\n"]
-	variableforfilename.write(lineslist[0])
-	variableforfilename.write(lineslist[1])
-	variableforfilename.write(lineslist[2])
+    lineslist = ["Line 1 happy whale on parade!\n","Line 2 red bee dancing\n","Line 3 the great git in the sky\n"]
+    variableforfilename.write(lineslist[0])
+    variableforfilename.write(lineslist[1])
+    variableforfilename.write(lineslist[2])
 os.remove(filename)
 with open(filename,"w") as betterwritetofilename:
-	lineslist = ["Line 1 happy whale on parade!\n","Line 2 red bee dancing\n","Line 3 the great git in the sky\n"]
-	betterwritetofilename.writelines(lineslist)
+    lineslist = ["Line 1 happy whale on parade!\n","Line 2 red bee dancing\n","Line 3 the great git in the sky\n"]
+    betterwritetofilename.writelines(lineslist)
 filenameread = open(filename,"r")
 readtextfile = filenameread.read()
 print(readtextfile)
@@ -1246,8 +1379,8 @@ Line 3 the great git in the sky
 
 '''
 with open(filename,"r") as anotherwayreadfile:
-	for anotherwayreadfilereadlines in anotherwayreadfile.readlines():
-		print(anotherwayreadfilereadlines)
+    for anotherwayreadfilereadlines in anotherwayreadfile.readlines():
+        print(anotherwayreadfilereadlines)
 '''
 Line 1 happy whale on parade!
 
@@ -1258,14 +1391,14 @@ Line 3 the great git in the sky
 '''
 #No need for readlines()
 with open(filenamevariable) as fileobjectvariable:
-	for eachfileobjectvariable in fileobjectvariable:
-		print(eachfileobjectvariable)
+    for eachfileobjectvariable in fileobjectvariable:
+        print(eachfileobjectvariable)
 with open(filename,"a") as appendexistingtextfile:
-	appendexistingtextfile.write("Append the sentence\n")
+    appendexistingtextfile.write("Append the sentence\n")
 #The blank line appears because read() returns an empty string when it reaches the end of the file; this empty string shows up as a blank line. If you want to remove the extra blank line, you can use rstrip() in the print statement print(variablename.rstrip())
 with open(filename,"r") as anotherwayreadfile2:
-	readfunction = anotherwayreadfile2.read()
-	print(readfunction)
+    readfunction = anotherwayreadfile2.read()
+    print(readfunction)
 '''
 Line 1 happy whale on parade!
 Line 2 red bee dancing
@@ -1275,12 +1408,12 @@ Append the sentence
 '''
 os.remove(filename)
 with open(filenamevariable,"r") as fileobjectvariable:
-	readlinesinlist = fileobjectvariable.readlines()
+    readlinesinlist = fileobjectvariable.readlines()
 print(readlinesinlist) #print ['column1,c2,c3,c4,c5,c6,c7,c8,c9,c10\n', '9,3,8,7,6,1,0,4,2,5\n', '1,7,4,9,2,6,8,3,5,0\n', '4,8,3,9,5,7,2,6,0,1\n', '1,7,4,2,5,9,6,8,0,3\n', '0,7,5,2,8,6,3,4,1,9\n', '5,9,1,4,7,0,3,6,8,2']
 oneline = ""
 for eachreadlinesinlist in readlinesinlist:
-	print("rstrip "+eachreadlinesinlist.rstrip())
-	oneline += eachreadlinesinlist.rstrip()
+    print("rstrip "+eachreadlinesinlist.rstrip())
+    oneline += eachreadlinesinlist.rstrip()
 print(oneline) #print column1,c2,c3,c4,c5,c6,c7,c8,c9,c109,3,8,7,6,1,0,4,2,51,7,4,9,2,6,8,3,5,04,8,3,9,5,7,2,6,0,11,7,4,2,5,9,6,8,0,30,7,5,2,8,6,3,4,1,95,9,1,4,7,0,3,6,8,2
 print("\n")
 #Open a text file ignore blank lines
@@ -1425,27 +1558,27 @@ print(tointegersnewabunchofnumbers) #print [20, 9, 11, 13, 18, 15, 16, 7, 12, 19
 #Category:  try except
 filename = "alices.txt"
 try:
-	with open(filename,"r") as fileobject:
-		contents = fileobject.read()
+    with open(filename,"r") as fileobject:
+        contents = fileobject.read()
 except FileNotFoundError:
-	print(filename+" file doesn't exist.")
+    print(filename+" file doesn't exist.")
 else:
-	print(contents)
+    print(contents)
 try:
-	number = int("I'm a string")
-	#number = (5/0)
-	#number = 50/100
+    number = int("I'm a string")
+    #number = (5/0)
+    #number = 50/100
 except ValueError:
-	print(r"number = int(\"I'm a string\") is a ValueError") #print number = int(\"I'm a string\") is a ValueError
+    print(r"number = int(\"I'm a string\") is a ValueError") #print number = int(\"I'm a string\") is a ValueError
 except ZeroDivisionError:
-	print("number = (5/0) can't divide by zero is a ZeroDivisionError")
+    print("number = (5/0) can't divide by zero is a ZeroDivisionError")
 except:
-	print("The number = 50/100 is valid code.  No error messages in except:.")
+    print("The number = 50/100 is valid code.  No error messages in except:.")
 finally:
-	print("The finally is printed no matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed no matter if the code works or doesn't work.  Finally always activates.
+    print("The finally is printed no matter if the code works or doesn't work.  Finally always activates.") #print The finally is printed no matter if the code works or doesn't work.  Finally always activates.
 age = 199
 if age > 135:
-	raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
+    raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
 '''
 Traceback (most recent call last):
   File "yywork.py", line 15, in <module>
@@ -1470,22 +1603,22 @@ except (ZeroDivisionError, NameError) as combineexcept:
 except (RuntimeError, TypeError, NameError) as threeerrors:
     print("You acheived three common Errors")
 else:
-	print("I give up")
+    print("I give up")
 
 #Category:  Lambda
 def square(x):
-	return x*x
+    return x*x
 print(square(99)) #print 9801
 squarelambda = lambda x: x*x
 print(squarelambda(99)) #print 9801
 def sumrgb(r, g, b):
-	return r+g+b
+    return r+g+b
 print(sumrgb(45,56,87)) #print 188
 sumrgblambda = lambda r, g, b: r+g+b
 print(sumrgblambda(45,56,87)) #print 188
 def typetwostrings(yes, no):
-	#return yes+" today is a good day "+no+".  Have a good day."
-	return "{} today is a good day {}.  Have a good day.".format(yes,no)
+    #return yes+" today is a good day "+no+".  Have a good day."
+    return "{} today is a good day {}.  Have a good day.".format(yes,no)
 print(typetwostrings("hi","beering")) #print hi today is a good day beering.  Have a good day.
 typetwostringslambda = lambda yes, no: "{} today is a good day {}.  Have a good day.".format(yes,no)
 print(typetwostringslambda("hi","beering")) #print hi today is a good day beering.  Have a good day.
@@ -1494,18 +1627,18 @@ print(removeduplicateslambda("roooot")) #print["r","o","t"]
 print(removeduplicateslambda(["roooot"])) #print ['roooot']
 print(removeduplicateslambda(["roooot","roooot"])) #print ['roooot']
 def square(x):
-	return x*x
+    return x*x
 print(square(99)) #print 9801
 squarelambda = lambda x: x*x
 print(squarelambda(99)) #print 9801
 def sumrgb(r, g, b):
-	return r+g+b
+    return r+g+b
 print(sumrgb(45,56,87)) #print 188
 sumrgblambda = lambda r, g, b: r+g+b
 print(sumrgblambda(45,56,87)) #print 188
 def typetwostrings(yes, no):
-	#return yes+" today is a good day "+no+".  Have a good day."
-	return "{} today is a good day {}.  Have a good day.".format(yes,no)
+    #return yes+" today is a good day "+no+".  Have a good day."
+    return "{} today is a good day {}.  Have a good day.".format(yes,no)
 print(typetwostrings("hi","beering")) #print hi today is a good day beering.  Have a good day.
 typetwostringslambda = lambda yes, no: "{} today is a good day {}.  Have a good day.".format(yes,no)
 print(typetwostringslambda("hi","beering")) #print hi today is a good day beering.  Have a good day.
@@ -1514,19 +1647,19 @@ print(removeduplicateslambda("roooot")) #print["r","o","t"]
 print(removeduplicateslambda(["roooot"])) #print ['roooot']
 print(removeduplicateslambda(["roooot","roooot"])) #print ['roooot']
 def evenslist(numberslist):
-	evenslist = []
-	for eachnumberslist in numberslist:
-		if eachnumberslist % 2 == 0:
-			evenslist.append(eachnumberslist)
-	return evenslist
+    evenslist = []
+    for eachnumberslist in numberslist:
+        if eachnumberslist % 2 == 0:
+            evenslist.append(eachnumberslist)
+    return evenslist
 print(evenslist(range(0,51))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
 def evenslistlambda(numberslist):
-	isevenlambda = lambda number: number % 2 == 0
-	evenslist = []
-	for eachnumberlist in numberslist:
-		if isevenlambda(eachnumberlist):
-			evenslist.append(eachnumberlist)
-	return evenslist
+    isevenlambda = lambda number: number % 2 == 0
+    evenslist = []
+    for eachnumberlist in numberslist:
+        if isevenlambda(eachnumberlist):
+            evenslist.append(eachnumberlist)
+    return evenslist
 print(evenslistlambda(range(0,51))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
 isevenlambda = lambda number: number % 2 == 0
 evenslambda = lambda numberslist: list(filter(isevenlambda, numberslist))
@@ -1537,7 +1670,7 @@ print(answer(5)) #print 35
 
 #iterator manual counter
 for n in range(0,10):
-	print(n,end=", ") #print 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    print(n,end=", ") #print 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 generateanumber = iter(range(0,10))
 print(generateanumber) #print <range_iterator object at 0x7f676de74870>
 print(next(generateanumber)) #print 0
