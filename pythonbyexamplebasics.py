@@ -83,7 +83,7 @@ print(bonussixrandomintegersincrementsoffive) #print [85, 55, 85, 95, 90, 10]
 chooseacolor = random.choice(["red", "yellow", "blue", "green"])
 print(chooseacolor) #print "blue"
 
-#Python By Example By Nicholas Lacey Challenges 69-79: Tuples, Lists And Dictionaries
+#Python By Example By Nicholas Lacey Challenges 69-79:  Tuples, Lists And Dictionaries
 fruittuplecantchange = ("apple", "bananna", "strawberry", "orange")
 print(fruittuplecantchange.index("strawberry")) #print 2
 print(fruittuplecantchange[2]) #print strawberry
@@ -114,7 +114,7 @@ print(numberlist) #print [987, 154, 634, 892, 345, 43, -390]
 numberlist.pop(3)
 print(numberlist) #print [987, 154, 634, 345, 43, -390]
 
-#Python By Example By Nicholas Lacey Challenges 80-87: More String Manipulation
+#Python By Example By Nicholas Lacey Challenges 80-87:  More String Manipulation
 message = "The quick brown fox jumped over the lazy dog."
 print(message.isupper()) #print False
 print(message.islower()) #print False
@@ -125,7 +125,7 @@ print(uppercasemessage.isupper()) #print False
 print(uppercasemessage.lower()) #print the quick brown fox jumped over the lazy dog.
 print(uppercasemessage.title()) #print The Quick Brown Fox Jumped Over The Lazy Dog.
 
-#Python By Example By Nicholas Lacey Challenges 96-103: 2D Lists And Dictionaries
+#Python By Example By Nicholas Lacey Challenges 96-103:  2D Lists And Dictionaries
 twodimensionlistgrades = [[45, 37, 54], [62, 58, 59], [49, 47, 60], [78, 83, 62]]
 print(twodimensionlistgrades) #print [[45, 37, 54], [62, 58, 59], [49, 47, 60], [78, 83, 62]]
 print(twodimensionlistgrades[1]) #print [62, 58, 59]
@@ -196,3 +196,207 @@ print(fourrowsfourcolumnsdictionary) #print {'John': {'N': 3904, 'S': 3645, 'E':
 salesname = "John"
 salesregion = "N"
 print(fourrowsfourcolumnsdictionary[salesname][salesregion]) #print 3904
+
+#Python By Example By Nicholas Lacey Challenges 105-110:  Reading And Writing To A Text File
+createnewtextfile = open("countries.txt", "w")
+createnewtextfile.write("Italy\n")
+createnewtextfile.write("Germany\n")
+createnewtextfile.write("Spain\n")
+createnewtextfile.close() #close file and save changes
+readtextfile = open("countries.txt", "r")
+print(readtextfile.read())
+'''
+Italy
+Germany
+Spain
+
+'''
+addtotextfile = open("countries.txt", "a")
+addtotextfile.write("France\n")
+addtotextfile.close() #close file and save changes
+writetextfile = open("numbers.txt", "w")
+for n in range(1, 6):
+    writetextfile.write(str(n) + ", ")
+writetextfile.close()
+readthewritetextfile = open("numbers.txt", "r")
+print(readthewritetextfile.read()) #print 1, 2, 3, 4, 5,
+nameslist = ["Bob", "Tom", "Gemma", "Sarah", "Timothy"]
+namestextfile = open("names.txt", "w")
+for eachnameslist in nameslist:
+    namestextfile.write(eachnameslist + "\n")
+namestextfile.close()
+readnamestextfile = open("names.txt", "r")
+print(readnamestextfile.read())
+'''
+Bob
+Tom
+Gemma
+Sarah
+Timothy
+
+'''
+inputnewname = input("Enter a new name: ")
+addnewname = open("names.txt", "a")
+addnewname.write(inputnewname + "\n")
+addnewname.close()
+readnamestextfile = open("names.txt", "r")
+print(readnamestextfile.read())
+'''
+Enter a new name: robert
+Bob
+Tom
+Gemma
+Sarah
+Timothy
+robert
+
+'''
+menuinput = 0
+while menuinput != 4:
+    menuinput = int(input("""
+1. Create a new file
+2. Display the file
+3. Add a new item to the file
+4. Exit
+Make a selection 1, 2, 3, or 4: """))
+    if menuinput == 1:
+        schoolsubject = open("subject.txt", "w")
+        inputschoolsubject = input("Enter a school subject: ")
+        schoolsubject.write(inputschoolsubject + "\n")
+        schoolsubject.close()
+    elif menuinput == 2:
+        schoolsubject = open("subject.txt", "r")
+        print(schoolsubject.read())
+    elif menuinput == 3:
+        schoolsubject = open("subject.txt", "a")
+        inputanotherschoolsubject = input("Enter another school subject: ")
+        schoolsubject.write(inputanotherschoolsubject + "\n")
+        schoolsubject.close()
+    elif menuinput == 4:
+        break
+    else:
+        print("Incorrect input.  Try again.")
+
+
+#Python By Example By Nicholas Lacey Challenges 111-117:  Reading And Writing To A .CSV File
+import csv
+
+writefile = open("starspythoncsv.csv", "w")
+newrecord = "Brian,73,Taurus\n"
+writefile.write(str(newrecord))
+writefile.close()
+appendfile = open("starspythoncsv.csv", "a")
+name = "Name"
+age = "Age"
+starsign = "Star sign"
+newrecord = name + "," + age + "," + starsign + "\n"
+appendfile.write(str(newrecord))
+name = "Sandra"
+age = 48
+starsign = "Virgo"
+newrecord = name + "," + str(age) + "," + starsign + "\n"
+appendfile.write(str(newrecord))
+name = "Zoe"
+age = 25
+starsign = "Scorpio"
+newrecord = name + "," + str(age) + "," + starsign + "\n"
+appendfile.write(str(newrecord))
+name = "Keith"
+age = 43
+starsign = "Leo"
+newrecord = name + "," + str(age) + "," + starsign + "\n"
+appendfile.write(str(newrecord))
+name = "Raymond"
+age = 74
+starsign = "Leo"
+newrecord = name + "," + str(age) + "," + starsign + "\n"
+appendfile.write(str(newrecord))
+appendfile.close()
+openfile = open("starspythoncsv.csv", "r")
+for eachrow in openfile:
+    print(eachrow)
+    '''
+    Brian,73,Taurus
+
+    Sandra,48,Virgo
+
+    Zoe,25,Scorpio
+
+    Keith,43,Leo
+
+    Raymond,74,Leo
+    '''
+openfile.close()
+openfiletosearch = open("starspythoncsv.csv", "r")
+search = "Taurus"
+for eachrow in openfiletosearch:
+    if search in eachrow:
+        print("I found " + search + ": " + eachrow) #print I found Taurus: Brian,73,Taurus
+openfiletosearch.close()
+openfiletolist = list(csv.reader(open("starspythoncsv.csv")))
+nameslist = []
+for eachrow in openfiletolist:
+    nameslist.append(eachrow)
+print(nameslist) #print [['Brian', '73', 'Taurus'], ['Sandra', '48', 'Virgo'], ['Zoe', '25', 'Scorpio'], ['Keith', '43', 'Leo'], ['Raymond', '74', 'Leo']]
+opencreatenewfile = open("starspythoncsvnewfile.csv", "w")
+for eachnameslist in nameslist:
+    listtostring = ",".join(map(str, eachnameslist))
+    opencreatenewfile.write(str(listtostring) + "\n")
+opencreatenewfile.close()
+import csv
+
+writebookfile = open("books.csv", "w")
+newrecord = "Book,Author,Year Released\n"
+writebookfile.write(str(newrecord))
+newrecord = "To Kill A Mockingbird,Harper Lee,1960\n"
+writebookfile.write(str(newrecord))
+newrecord = "A Brief History Of Time,Stephen Hawking,1988\n"
+writebookfile.write(str(newrecord))
+newrecord = "The Great Gatsby,F. Scott Fitzgerald,1922\n"
+writebookfile.write(str(newrecord))
+newrecord = "The Man Who Mistook His Wife For A Hat,Oliver Sacks,1985\n"
+writebookfile.write(str(newrecord))
+newrecord = "Pride And Prejudice,Jane Austen,1813\n"
+writebookfile.write(str(newrecord))
+writebookfile.close()
+appendbookfile = open("books.csv", "a")
+booktitle = "The Beatles"
+bookauthor = "Peter Jackson"
+bookyearreleased = 2021
+newrecord = booktitle + "," + bookauthor + "," + str(bookyearreleased) + "\n"
+appendbookfile.write(newrecord)
+appendbookfile.close()
+searchauthor = "Harper Lee"
+searchbookfile = open("books.csv", "r")
+for eachsearchbookfile in searchbookfile:
+    if searchauthor in eachsearchbookfile:
+        print(eachsearchbookfile) #print To Kill A Mockingbird,Harper Lee,1960
+startyear = 1980
+endyear = 1989
+searchbookfile = list(csv.reader(open("books.csv")))
+listofbooksforsearching = []
+for eachsearchbookfile in searchbookfile:
+    listofbooksforsearching.append(eachsearchbookfile)
+print(listofbooksforsearching) #print [['Book', 'Author', 'Year Released'], ['To Kill A Mockingbird', 'Harper Lee', '1960'], ['A Brief History Of Time', 'Stephen Hawking', '1988'], ['The Great Gatsby', 'F. Scott Fitzgerald', '1922'], ['The Man Who Mistook His Wife For A Hat', 'Oliver Sacks', '1985'], ['Pride And Prejudice', 'Jane Austen', '1813'], ['The Beatles', 'Peter Jackson', '2021']]
+rownumber = 0
+for eachlistofbooksforsearching in listofbooksforsearching:
+    print(str(rownumber) + " " + ",".join(map(str, eachlistofbooksforsearching)))
+    '''
+    0 Book,Author,Year Released
+    1 To Kill A Mockingbird,Harper Lee,1960
+    2 A Brief History Of Time,Stephen Hawking,1988
+    3 The Great Gatsby,F. Scott Fitzgerald,1922
+    4 The Man Who Mistook His Wife For A Hat,Oliver Sacks,1985
+    5 Pride And Prejudice,Jane Austen,1813
+    6 The Beatles,Peter Jackson,2021
+    '''
+    try:
+        if int(eachlistofbooksforsearching[2]) >= startyear and int(eachlistofbooksforsearching[2]) <= endyear:
+            print("Year between " + str(startyear) + " and " + str(endyear) + ": " + ",".join(map(str, eachlistofbooksforsearching)))
+            '''
+            Year between 1980 and 1989: A Brief History Of Time,Stephen Hawking,1988
+            Year between 1980 and 1989: The Man Who Mistook His Wife For A Hat,Oliver Sacks,1985
+            '''
+    except ValueError:
+        pass
+    rownumber += 1
