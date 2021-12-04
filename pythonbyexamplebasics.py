@@ -114,7 +114,7 @@ print(numberlist) #print [987, 154, 634, 892, 345, 43, -390]
 numberlist.pop(3)
 print(numberlist) #print [987, 154, 634, 345, 43, -390]
 
-#Python By Example By Nicholas Lacey Challenges 80-87:  More String Manipulation
+#Challenges 80-87:  More String Manipulation
 message = "The quick brown fox jumped over the lazy dog."
 print(message.isupper()) #print False
 print(message.islower()) #print False
@@ -125,7 +125,7 @@ print(uppercasemessage.isupper()) #print False
 print(uppercasemessage.lower()) #print the quick brown fox jumped over the lazy dog.
 print(uppercasemessage.title()) #print The Quick Brown Fox Jumped Over The Lazy Dog.
 
-#Python By Example By Nicholas Lacey Challenges 96-103:  2D Lists And Dictionaries
+#Challenges 96-103:  2D Lists And Dictionaries
 twodimensionlistgrades = [[45, 37, 54], [62, 58, 59], [49, 47, 60], [78, 83, 62]]
 print(twodimensionlistgrades) #print [[45, 37, 54], [62, 58, 59], [49, 47, 60], [78, 83, 62]]
 print(twodimensionlistgrades[1]) #print [62, 58, 59]
@@ -197,7 +197,7 @@ salesname = "John"
 salesregion = "N"
 print(fourrowsfourcolumnsdictionary[salesname][salesregion]) #print 3904
 
-#Python By Example By Nicholas Lacey Challenges 105-110:  Reading And Writing To A Text File
+#Challenges 105-110:  Reading And Writing To A Text File
 createnewtextfile = open("countries.txt", "w")
 createnewtextfile.write("Italy\n")
 createnewtextfile.write("Germany\n")
@@ -277,10 +277,8 @@ Make a selection 1, 2, 3, or 4: """))
     else:
         print("Incorrect input.  Try again.")
 
-
-#Python By Example By Nicholas Lacey Challenges 111-117:  Reading And Writing To A .CSV File
+#Challenges 111-117:  Reading And Writing To A .CSV File
 import csv
-
 writefile = open("starspythoncsv.csv", "w")
 newrecord = "Brian,73,Taurus\n"
 writefile.write(str(newrecord))
@@ -344,7 +342,6 @@ for eachnameslist in nameslist:
     opencreatenewfile.write(str(listtostring) + "\n")
 opencreatenewfile.close()
 import csv
-
 writebookfile = open("books.csv", "w")
 newrecord = "Book,Author,Year Released\n"
 writebookfile.write(str(newrecord))
@@ -400,3 +397,85 @@ for eachlistofbooksforsearching in listofbooksforsearching:
     except ValueError:
         pass
     rownumber += 1
+
+#Challenges 118-123:  Subprograms
+def subprogramgetname():
+    username = input("Enter your name ")
+    return username #Return statement returns value of variable username to be used in another subprogram.  If there's no return statement, the values of the variables in usbprogramgetname can't be used elsewhere.
+def subprogramprintmessage(username):
+    print("Hello", username)
+def subprogrammain():
+    username = subprogramgetname()
+    subprogramprintmessage(username)
+
+
+subprogrammain() #The actual program itself.  It starts subprogrammain subprogram running.
+'''
+Enter your name Raymond
+Hello Raymond
+'''
+
+def message(usernameinsubprogram, userageinsubprogram):
+    if userageinsubprogram <= 10:
+        print("Hi young person", usernameinsubprogram)
+    else:
+        print("Hello", usernameinsubprogram)
+
+def getdatareturntuple():
+    username = input("Enter your name: ")
+    userage = int(input("Enter your age: "))
+    datatuple = (username, userage)
+    return datatuple
+def main():
+    username, userage = getdatareturntuple()
+    message(username, userage)
+
+
+savefunctionvariable = getdatareturntuple()
+print(savefunctionvariable[0])
+print(savefunctionvariable[1])
+'''
+Enter your name: Raymond
+Enter your age: 12
+Raymond
+12
+'''
+message(savefunctionvariable[0], savefunctionvariable[1]) #return Hello Raymond
+main()
+'''
+Enter your name: Raymond
+Enter your age: 9
+Hi young person Raymond
+'''
+def counter(endingnumber):
+    for n in range(1, endingnumber + 1):
+        print(n)
+
+def requestnumber():
+    usernumber = int(input("Enter a number: "))
+    return usernumber
+def useafunction():
+    usernumber = requestnumber()
+    counter(usernumber)
+
+
+usernumber = requestnumber()
+counter(usernumber)
+'''
+Enter a number: 4
+1
+2
+3
+4
+'''
+useafunction()
+'''
+Enter a number: 7
+1
+2
+3
+4
+5
+6
+7
+'''
