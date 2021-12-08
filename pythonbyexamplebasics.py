@@ -479,3 +479,136 @@ Enter a number: 7
 6
 7
 '''
+from random import randint
+def userlowhighnumber():
+    lownumber = int(input("Enter a low number "))
+    highnumber = int(input("Enter a high number greater than " + str(lownumber) + " "))
+    betweenlowhighnumber = randint(lownumber, highnumber)
+    return "%d is between your low number %d and your high number %d inclusive." % (betweenlowhighnumber, lownumber, highnumber)
+
+
+print(userlowhighnumber())
+'''
+Enter a low number 5
+Enter a high number greater than 5 10
+6 is between your low number 5 and your high number 10 inclusive.
+'''
+def guessmynumber(guessnumber):
+    print("Cheat", guessnumber)
+    usernumber = int(input("I am thinking of a number between 1 and 100.  Guess my number? "))
+    while True:
+        if usernumber == guessnumber:
+            returnanswer = "Correct, you win"
+            return returnanswer
+        elif usernumber > guessnumber:
+            print("You too high")
+            usernumber = int(input("Try again.  Guess my number beween 1 and 100? "))
+        elif usernumber < guessnumber:
+            print("You're too low")
+            usernumber = int(input("Try again.  Guess my number beween 1 and 100? "))
+
+
+computernumber = randint(1, 100)
+print(guessmynumber(computernumber))
+'''
+Cheat 85
+I am thinking of a number between 1 and 100.  Guess my number? -5
+You're too low
+Try again.  Guess my number beween 1 and 100? 1000
+You too high
+Try again.  Guess my number beween 1 and 100? 84
+You're too low
+Try again.  Guess my number beween 1 and 100? 86
+You too high
+Try again.  Guess my number beween 1 and 100? 87
+You too high
+Try again.  Guess my number beween 1 and 100? 83
+You're too low
+Try again.  Guess my number beween 1 and 100? 80
+You're too low
+Try again.  Guess my number beween 1 and 100? 78
+You're too low
+Try again.  Guess my number beween 1 and 100? 85
+Correct, you win
+'''
+
+from random import randint
+def add():
+    firstnumber = randint(5, 20)
+    secondnumber = randint(5, 20)
+    correctanswer = firstnumber + secondnumber
+    answer = int(input("Add the numbers %d and %d: " % (firstnumber, secondnumber)))
+    return "You answered %d.  The correct answer is %d." % (answer, correctanswer)
+
+def subtract():
+    firstnumber = randint(25, 50)
+    secondnumber = randint(1, 25)
+    correctanswer = firstnumber - secondnumber
+    answer = int(input("Subtract the numbers %d and %d: " % (firstnumber, secondnumber)))
+    return "You answered %d.  The correct answer is %d." % (answer, correctanswer)
+
+
+def chooseaddorsubtract():
+    while True:
+        print("1) Addition\n2) Subtraction")
+        userchoice = int(input("Enter 1 or 2: "))
+        if userchoice == 1:
+            print(add())
+            break
+        elif userchoice == 2:
+            print(subtract())
+            break
+        else:
+            print("Incorrect choice")
+            continue
+
+
+chooseaddorsubtract()
+'''
+1) Addition
+2) Subtraction
+Enter 1 or 2: 1
+Add the number 20 and 7: 27
+You answered 27.  The correct answer is 27.
+1) Addition
+2) Subtraction
+Enter 1 or 2: 2
+Subtract the numbers 32 and 10: 22
+You answered 22.  The correct answer is 22.
+'''
+nameslist = []
+
+def addname():
+    name = input("Enter a name to the list ")
+    nameslist.append(name)
+
+def changename():
+    name = input("Enter a name to be changed ")
+    nameindex = nameslist.index(name)
+    changename = input("Enter the new name ")
+    nameslist[nameindex] = changename
+
+def deletename():
+    name = input("Enter a name to be deleted ")
+    nameslist.remove(name)
+
+
+def program121():
+    while True:
+        option = int(input("1) Add name\n2) Change name\n3) Delete name\n4) View names\n5) Exit\n"))
+        if option == 1:
+            addname()
+        elif option == 2:
+            changename()
+        elif option == 3:
+            deletename()
+        elif option == 4:
+            print(nameslist)
+        elif option == 5:
+            break
+        else:
+            print("Incorrect choice.  Try again.")
+
+
+program121()
+print(nameslist)
