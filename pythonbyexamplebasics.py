@@ -612,3 +612,118 @@ def program121():
 
 program121()
 print(nameslist)
+
+
+#RM:  Create writing functions.
+'''
+Create the following menu
+1) Add to file
+2) View all records
+3) Quit program
+
+Enter the number of your selection:
+
+If the user selects 1, allow them to add to a file called Salaries.csv which will store their name and salary. If they select 2 it should display all records in the Salaries.csv file. If they select 3 it should stop the program. If they select an incorrect option they should see an error message. They should keep returning to the menu until they select option 3.  RM:  The file salaries.csv can be created with appendfile = open("salaries.csv", "a") instead of writefile = open("salaries.csv", "w").
+'''
+import csv
+
+def addemployee():
+    inputname = input("Enter a name: ")
+    inputsalary = str(input("Enter a salary: "))
+    inputemployee = inputname + ", " + inputsalary + "\n"
+    appendfile = open("salaries.csv", "a")
+    print(inputname + " " + inputsalary + " is added.")
+    appendfile.write(str(inputemployee))
+    appendfile.close()
+
+def viewemployees():
+    openfile = open("salaries.csv", "r")
+    for eachrow in openfile:
+        print(eachrow)
+    openfile.close()
+
+
+inputnumber = ""
+while inputnumber != 3:
+    print("""
+    1) Add to file
+    2) View all records
+    3) Quit program
+    """)
+    inputnumber = int(input("Enter the number of your selection: "))
+    if inputnumber == 1:
+        addemployee()
+    elif inputnumber == 2:
+        viewemployees()
+    elif inputnumber == 3:
+        break
+    else:
+        print("Error message.  Try again.")
+
+#RM:  Create writing functions.
+'''
+In Python, it is not technically possible to directly delete a record from a .csv file. Instead you need to save the file to a temporary list in Python, make the changes to the list and then overwrite the original file with the temporary list. Change the previous program to allow you to do this. Your menu should now look like this:
+1) Add to file
+2) View all records
+3) Delete a record
+4) Quit program
+
+Enter the number of your selection:
+'''
+import csv
+
+def addemployee():
+    inputname = input("Enter a name: ")
+    inputsalary = str(input("Enter a salary: "))
+    inputemployee = inputname + ", " + inputsalary + "\n"
+    appendfile = open("salaries.csv", "a")
+    print(inputname + " " + inputsalary + " is added.")
+    appendfile.write(str(inputemployee))
+    appendfile.close()
+
+def viewemployees():
+    openfile = open("salaries.csv", "r")
+    for eachrow in openfile:
+        print(eachrow)
+    openfile.close()
+def deleteemployee():
+    temporarylist = []
+    openfile = open("salaries.csv", "r")
+    for eachrow in openfile:
+        temporarylist.append(eachrow[:-1])
+    openfile.close()
+    print(temporarylist)
+    inputdeletename = input("Enter a name: ")
+    inputdeletesalary = str(input("Enter a salary: "))
+    deletenamesalary = inputdeletename + ", " + inputdeletesalary
+    print(deletenamesalary)
+    try:
+        temporarylist.remove(deletenamesalary)
+    except ValueError:
+        print(deletenamesalary + " doesn't exist.")
+    print(temporarylist)
+    writefile = open("salaries.csv", "w")
+    for eachrow in temporarylist:
+        writefile.write(str(eachrow) + "\n")
+    writefile.close()
+
+
+inputnumber = ""
+while inputnumber != 4:
+    print("""
+    1) Add to file
+    2) View all records
+    3) Delete a record
+    4) Quit program
+    """)
+    inputnumber = int(input("Enter the number of your selection: "))
+    if inputnumber == 1:
+        addemployee()
+    elif inputnumber == 2:
+        viewemployees()
+    elif inputnumber == 3:
+        deleteemployee()
+    elif inputnumber == 4:
+        break
+    else:
+        print("Error message.  Try again.")
