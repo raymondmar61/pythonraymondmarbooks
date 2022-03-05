@@ -148,3 +148,170 @@ def spam4():
 eggs = "eggs global variable"
 spam4()
 print(eggs) #print spam4 function eggs global variable
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 04 Lists
+animallist = ["cat", "bat", "rat", "elephant"]
+print(animallist) #print ['cat', 'bat', 'rat', 'elephant']
+print(animallist[0]) #print cat
+print(animallist[3]) #print elephant
+print(animallist[-1]) #print elephant
+print(animallist[-3]) #print bat
+print("The " + animallist[1] + " ate the " + animallist[0]) #print The bat ate the cat
+print("The " + animallist[-3] + " ate the " + animallist[-4]) #print The bat ate the cat
+print(animallist[0:4]) #print ['cat', 'bat', 'rat', 'elephant']
+print(animallist[:]) #print ['cat', 'bat', 'rat', 'elephant']
+print(animallist[0:]) #print ['cat', 'bat', 'rat', 'elephant']
+print(animallist[1:3]) #print ['bat', 'rat']
+print(animallist[:2]) #print ['cat', 'bat']
+print(animallist[0:-1]) #print ['cat', bat', 'rat']
+print(len(animallist)) #print 4
+animallist = ["cat", "bat", "rat", "elephant"]
+animallist[1] = "aardvark"
+print(animallist) #print ['cat', 'aardvark', 'rat', 'elephant']
+animallist[-1] = "parrot"
+print(animallist) #print ['cat', 'aardvark', 'rat', 'parrot']
+animalnumberlist = [["cat", "bat"], [10, 20, 30, 40, 50]]
+print(animalnumberlist[1]) #print [10, 20, 30, 40, 50]
+print(animalnumberlist[1][2]) #print 30
+concatenatelist = [1, 2, 3] + ["a", "b", "c"]
+print(concatenatelist) #print [1, 2, 3, 'a', 'b', 'c']
+replicatelist = ["x", "y", "z"] * 3
+print(replicatelist) #print ['x', 'y', 'z', 'x', 'y', 'z', 'x', 'y', 'z']
+animallist = ["cat", "bat", "rat", "elephant"]
+del(animallist[2])
+print(animallist) #print ['cat', 'bat', 'elephant']
+# catnames = []
+# userinputcatname = input("Enter a cat name ")
+# catnames = catnames + [userinputcatname]
+# print(catnames) #print ['pooka']
+# catnames2 = []
+# userinputcatname = input("Enter a cat name ")
+# catnames2.append(userinputcatname)
+# print(catnames2) #print ['akoop']
+animallist = ["cat", "bat", "rat", "elephant"]
+for eachanimallist in animallist:
+    print(eachanimallist)
+    '''
+    cat
+    bat
+    rat
+    elephant
+    '''
+for i in range(0, len(animallist)):
+    print(i, "is the index number for " + animallist[i])
+    '''
+    0 is the index number for cat
+    1 is the index number for bat
+    2 is the index number for rat
+    3 is the index number for elephant
+    '''
+print("cat" in animallist) #print True
+print("dog" in animallist) #print False
+print("dog" not in animallist) #print True
+multipleassignments = ["blue", "red", "black", "white"]
+ocean, danger, night, paint = multipleassignments
+print(multipleassignments)
+print(ocean) #print blue
+print(night) #print black
+#A method is like a function.  A method is "called on" a value.  The method part comes after the value separated by a period.
+animallist = ["cat", "bat", "rat", "elephant"]
+print(animallist.index("cat")) #print 0
+print(animallist.index("elephant")) #print 3
+animallist.append("bear")
+print(animallist) #print ['cat', 'bat', 'rat', 'elephant', 'bear']
+animallist.insert(2, "eagle")
+print(animallist) #print ['cat', 'bat', 'eagle', 'rat', 'elephant', 'bear']
+animallist.remove("bat") #If an item appears multiple times, the remove method removes the first instance.
+print(animallist) #print ['cat', 'eagle', 'rat', 'elephant', 'bear']
+animallist = ["cat", "bat", "rat", "elephant"]
+animallist.sort()
+print(animallist) #print ['bat', 'cat', 'elephant', 'rat']
+animallist = ["cat", "bat", "rat", "elephant"]
+animallist.sort(reverse=True)
+print(animallist) #print ['rat', 'elephant', 'cat', 'bat']
+#sort uses ASCIIbetical order.  Uppercase letters are before lowercase letters.
+uppercaselowercase = ["Alice", "ants", "Bob", "badgers", "Carol", "cats"]
+uppercaselowercase.sort()
+print(uppercaselowercase) #print ['Alice', 'Bob', 'Carol', 'ants', 'badgers', 'cats']
+#sort regular order pass str.lower in the key argument
+uppercaselowercase = ["Alice", "ants", "Bob", "badgers", "Carol", "cats"]
+uppercaselowercase.sort(key=str.lower)
+print(uppercaselowercase) #print ['Alice', 'ants', 'badgers', 'Bob', 'Carol', 'cats']
+stringasalist = "Zophie"
+print(stringasalist[0]) #print Z
+print(stringasalist[-2]) #print i
+print(stringasalist[:4]) #print Zoph
+print(stringasalist[-4:]) #print phie
+print(stringasalist[-4:-1]) #print phi
+print(stringasalist[-4:0]) #print *null*
+print("Zo" in stringasalist) #print True
+print("a" in stringasalist) #print False
+for letter in stringasalist:
+    print(letter)
+    '''
+    Z
+    o
+    p
+    h
+    i
+    e
+    '''
+mutableastring = "Zophie a cat"
+print(mutableastring[0:6] + " the " + mutableastring[9:12]) #print Zophie the cat
+print(mutableastring[0:6] + " the " + mutableastring[-3:]) #print Zophie the cat
+eggtuple = ("hello", 42, 0.5)
+print(eggtuple) #print ('hello', 42, 0.5)
+print(eggtuple[0]) #print hello
+print(eggtuple[1:3]) #print (42, 0.5)
+print(len(eggtuple)) #print 3
+animallist = ["cat", "bat", "rat", "elephant"]
+print(tuple(animallist)) #print ('cat', 'bat', 'rat', 'elephant')
+eggtuple = ("hello", 42, 0.5)
+print(list(eggtuple)) #print ['hello', 42, 0.5]
+print(list(mutableastring)) #print ['Z', 'o', 'p', 'h', 'i', 'e', ' ', 'a', ' ', 'c', 'a', 't']
+import copy
+letterslist = ["a", "b", "c", "d"]
+print(letterslist) #print ['a', 'b', 'c', 'd']
+cheeseletterslist = copy.copy(letterslist) #copy.copy makes a duplicate copy of a mutable value such as a list or dictionary
+print(cheeseletterslist) #print ['a', 'b', 'c', 'd']
+cheeseletterslist[1] = "cheese"
+print(cheeseletterslist) #print ['a', 'cheese', 'c', 'd']
+print(letterslist) #print ['a', 'b', 'c', 'd']
+def commacodefunction(inputlist):
+    answer = ""
+    for indexnumber in range(len(inputlist)):
+        if indexnumber == len(inputlist) - 1:
+            answer = answer + "and " + inputlist[indexnumber]
+        else:
+            answer = answer + inputlist[indexnumber] + ", "
+    return answer
+
+
+commacode = ["apples", "bananas", "tofu", "cats"]
+print(commacodefunction(commacode)) #print apples, bananas, tofu, and cats
+grid = [['.', '.', '.', '.', '.', '.'], ['.', 'O', 'O', '.', '.', '.'], ['O', 'O', 'O', 'O', '.', '.'], ['O', 'O', 'O', 'O', 'O', '.'], ['.', 'O', 'O', 'O', 'O', 'O'], ['O', 'O', 'O', 'O', 'O', '.'], ['O', 'O', 'O', 'O', '.', '.'], ['.', 'O', 'O', '.', '.', '.'], ['.', '.', '.', '.', '.', '.']]
+for eachgrid in grid:
+    print("".join(eachgrid)) #RM:  incorrect.  Want the grid to print vertically, not horizontally.
+    '''
+    ......
+    .OO...
+    OOOO..
+    OOOOO.
+    .OOOOO
+    OOOOO.
+    OOOO..
+    .OO...
+    ......
+    '''
+for x in range(0, len(grid[0])):
+    for y in range(0, len(grid)):
+        print(grid[y][x], end="")
+    print("")
+    '''
+    ..OO.OO..
+    .OOOOOOO.
+    .OOOOOOO.
+    ..OOOOO..
+    ...OOO...
+    ....O....
+    '''
