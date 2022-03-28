@@ -315,3 +315,170 @@ for x in range(0, len(grid[0])):
     ...OOO...
     ....O....
     '''
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 05 Dictionaries And Structuring Data
+mycat = {"size": "fat", "color": "gray", "disposition": "loud"}
+print(mycat) #print {'size': 'fat', 'color': 'gray', 'disposition': 'loud'}
+print(mycat["color"]) #print gray
+numberdictionary = {12345: "lock combination", 42: "Jackie Robinson"}
+print(numberdictionary) #print {12345: 'lock combination', 42: 'Jackie Robinson'}
+print(numberdictionary[12345]) #print lock combination
+listordermatters1 = ["cats", "dogs", "moose"]
+listordermatters2 = ["dogs", "moose", "cats"]
+print(listordermatters1 == listordermatters2) #print False
+dictionaryordernotmatters1 = {"name": "Zophie", "species": "cat", "age": 8}
+dictionaryordernotmatters2 = {"species": "cat", "age": 8, "name": "Zophie"}
+print(dictionaryordernotmatters1 == dictionaryordernotmatters2) #print True
+birthdays = {"Alice": "Apr 1", "Bob": "Dec 12", "Carol": "Mar 4"}
+print(birthdays) #print {'Alice': 'Apr 1', 'Bob': 'Dec 12', 'Carol': 'Mar 4'}
+birthdays["add Ron"] = "add date May 4"
+print(birthdays) #print {'Alice': 'Apr 1', 'Bob': 'Dec 12', 'Carol': 'Mar 4', 'add Ron': 'add date May 4'}
+for loopvalues in birthdays.values():
+    print(loopvalues)
+    '''
+    Apr 1
+    Dec 12
+    Mar 4
+    add date May 4
+    '''
+for loopkeys in birthdays.keys():
+    print(loopkeys)
+    '''
+    Alice
+    Bob
+    Carol
+    add Ron
+    '''
+for loopkeysvalues in birthdays.items():
+    print(loopkeysvalues)
+    '''
+    ('Alice', 'Apr 1')
+    ('Bob', 'Dec 12')
+    ('Carol', 'Mar 4')
+    ('add Ron', 'add date May 4')
+    '''
+birthdayskeyslist = list(birthdays.keys())
+print(birthdayskeyslist) #print ['Alice', 'Bob', 'Carol', 'add Ron']
+birthdayvalueslist = list(birthdays.values())
+print(birthdayvalueslist) #print ['Apr 1', 'Dec 12', 'Mar 4', 'add date May 4']
+print("Alice" in birthdays.keys()) #print True
+print("Dec 25" in birthdays.values()) #print False
+print("get() method get value for Alice's birthday " + str(birthdays.get("Alice", "default value if there's no Alice birthday")) + ".") #print get() method get value for Alice's birthday Apr 1.
+print("get() method get value for Sam's birthday " + str(birthdays.get("Sam", "default value if there's no Sam Birthday")) + ".") #print get() method get value for Sam's birthday default value if there's no Sam Birthday.
+missingvalue = {"name": "Pooka", "age": 5}
+print(missingvalue) #print {'name': 'Pooka', 'age': 5}
+missingvalue.setdefault("color", "add key and default value if key and value doesn't exist")
+print(missingvalue) #print {'name': 'Pooka', 'age': 5, 'color': "add key and default value if key and value doesn't exist"}
+missingvalue.setdefault("color", "I want to change the default value.  I actually can't change because color key is already in missingvalue dictionary")
+print(missingvalue) #print {'name': 'Pooka', 'age': 5, 'color': "add key and default value if key and value doesn't exist"}
+message = "It was a bright cold day in April, and the clocks were striking thirteen."
+countletters = {}
+for eachcharacter in message:
+    countletters.setdefault(eachcharacter, 0) #if eachcharacter not in countletters, then set eachcharacter key to 0 value
+    countletters[eachcharacter] = countletters[eachcharacter] + 1
+print(countletters) #print {'I': 1, 't': 6, ' ': 13, 'w': 2, 'a': 4, 's': 3, 'b': 1, 'r': 5, 'i': 6, 'g': 2, 'h': 3, 'c': 3, 'o': 2, 'l': 3, 'd': 3, 'y': 1, 'n': 4, 'A': 1, 'p': 1, ',': 1, 'e': 5, 'k': 2, '.': 1}
+import pprint
+pprint.pprint(countletters)
+'''
+{' ': 13,
+ ',': 1,
+ '.': 1,
+ 'A': 1,
+ 'I': 1,
+ 'a': 4,
+ 'b': 1,
+ 'c': 3,
+ 'd': 3,
+ 'e': 5,
+ 'g': 2,
+ 'h': 3,
+ 'i': 6,
+ 'k': 2,
+ 'l': 3,
+ 'n': 4,
+ 'o': 2,
+ 'p': 1,
+ 'r': 5,
+ 's': 3,
+ 't': 6,
+ 'w': 2,
+ 'y': 1}
+'''
+print(type(pprint.pprint(countletters))) #print <class 'NoneType'>
+print(pprint.pformat(countletters))
+'''
+{' ': 13,
+ ',': 1,
+ '.': 1,
+ 'A': 1,
+ 'I': 1,
+ 'a': 4,
+ 'b': 1,
+ 'c': 3,
+ 'd': 3,
+ 'e': 5,
+ 'g': 2,
+ 'h': 3,
+ 'i': 6,
+ 'k': 2,
+ 'l': 3,
+ 'n': 4,
+ 'o': 2,
+ 'p': 1,
+ 'r': 5,
+ 's': 3,
+ 't': 6,
+ 'w': 2,
+ 'y': 1}
+'''
+print(type(pprint.pformat(countletters))) #print <class 'str'>
+stuff = {"rope": 1, "torch": 6, "gold coin": 42, "dagger": 1, "arrow": 12}
+def displayinventory(inventory):
+    print("Inventory:")
+    itemsum = 0
+    for key, value in inventory.items():
+        print(value, key)
+        itemsum = itemsum + value
+    print("Total number of items:", itemsum)
+
+
+displayinventory(stuff)
+'''
+Inventory:
+1 rope
+6 torch
+42 gold coin
+1 dagger
+12 arrow
+Total number of items: 62
+'''
+def addtoinventory(inventory, addtoinventory):
+    for eachaddtoinventory in addtoinventory:
+        print(eachaddtoinventory)
+        inventory.setdefault(eachaddtoinventory, 0) #if eachcharacter not in countletters, then set eachcharacter key to 0 value
+        inventory[eachaddtoinventory] = inventory[eachaddtoinventory] + 1
+    print(inventory)
+    return(inventory)
+    '''
+    gold coin
+    dagger
+    gold coin
+    gold coin
+    ruby
+    {'gold coin': 45, 'rope': 1, 'dagger': 1, 'ruby': 1}
+    '''
+
+
+presentinventory = {"gold coin": 42, "rope": 1}
+dragonloot = ["gold coin", "dagger", "gold coin", "gold coin", "ruby"]
+presentinventory = addtoinventory(presentinventory, dragonloot)
+print(presentinventory) #print {'gold coin': 45, 'rope': 1, 'dagger': 1, 'ruby': 1}
+displayinventory(presentinventory)
+'''
+Inventory:
+45 gold coin
+1 rope
+1 ruby
+1 dagger
+Total number of items: 48
+'''
