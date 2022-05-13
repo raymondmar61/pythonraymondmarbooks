@@ -187,3 +187,187 @@ def searchfolder(path, keyword):
 
 directorytosearchword()
 print(listfilescontainsearchword) #print ['youtube-dl.txt', 'youtube-dllistextractorswebsites.txt']
+
+#Extract Text from PDF with Python [0B5N6Xt5K8Q]  #RM:  doesn't work
+# from PyPDF2 import PdfFileReader
+from PyPDF4 import PdfFileReader
+
+pdffileobject = PdfFileReader("magnummaniamaddogsandenglishmen.pdf")
+pdffilepageoneobject = pdffileobject.getPage(0)  #Index starts at zero.  Page one index 0.  Page ten index 9.
+print(pdffilepageoneobject) #print {'/Type': '/Page', '/Resources': {'/ProcSet': ['/PDF', '/Text', '/ImageB', '/ImageC', '/ImageI'], '/ExtGState': {'/G3': IndirectObject(3, 0), '/G8': IndirectObject(8, 0)}, '/XObject': {'/X5': IndirectObject(5, 0), '/X6': IndirectObject(6, 0), '/X7': IndirectObject(7, 0), '/X9': IndirectObject(9, 0)}, '/Font': {'/F4': IndirectObject(4, 0), '/F10': IndirectObject(10, 0), '/F11': IndirectObject(11, 0)}}, '/MediaBox': [0, 0, 612, 792], '/Annots': [IndirectObject(12, 0), IndirectObject(13, 0), IndirectObject(14, 0), IndirectObject(15, 0), IndirectObject(16, 0), IndirectObject(17, 0), IndirectObject(18, 0), IndirectObject(19, 0), IndirectObject(20, 0), IndirectObject(21, 0), IndirectObject(22, 0), IndirectObject(23, 0), IndirectObject(24, 0), IndirectObject(25, 0), IndirectObject(26, 0), IndirectObject(27, 0), IndirectObject(28, 0), IndirectObject(29, 0), IndirectObject(30, 0), IndirectObject(31, 0), IndirectObject(32, 0), IndirectObject(33, 0), IndirectObject(34, 0), IndirectObject(35, 0), IndirectObject(36, 0), IndirectObject(37, 0), IndirectObject(38, 0), IndirectObject(39, 0), IndirectObject(40, 0)], '/Contents': IndirectObject(41, 0), '/StructParents': 0, '/Parent': IndirectObject(55, 0)}  RM:  StructParents is the index position of the page which the object is representing.  '/StructParents': 0 is pdf page 1.  '/StructParents': 1 is pdf page 2.
+pdffilepageonetext = pdffilepageoneobject.extractText()
+print(pdffilepageonetext)
+
+
+pdffile = open("lynaldenmay2022.pdf", "rb")
+pdfread = PdfFileReader(pdffile)
+print(pdfread.getNumPages()) #print {'/Type': '/Page', '/Resources': {'/ProcSet': ['/PDF', '/Text', '/ImageB', '/ImageC', '/ImageI'], '/ExtGState': {'/G3': IndirectObject(3, 0), '/G8': IndirectObject(8, 0)}, '/XObject': {'/X5': IndirectObject(5, 0), '/X6': IndirectObject(6, 0), '/X7': IndirectObject(7, 0), '/X9': IndirectObject(9, 0)}, '/Font': {'/F4': IndirectObject(4, 0), '/F10': IndirectObject(10, 0), '/F11': IndirectObject(11, 0)}}, '/MediaBox': [0, 0, 612, 792], '/Annots': [IndirectObject(12, 0), IndirectObject(13, 0), IndirectObject(14, 0), IndirectObject(15, 0), IndirectObject(16, 0), IndirectObject(17, 0), IndirectObject(18, 0), IndirectObject(19, 0), IndirectObject(20, 0), IndirectObject(21, 0), IndirectObject(22, 0), IndirectObject(23, 0), IndirectObject(24, 0), IndirectObject(25, 0), IndirectObject(26, 0), IndirectObject(27, 0), IndirectObject(28, 0), IndirectObject(29, 0), IndirectObject(30, 0), IndirectObject(31, 0), IndirectObject(32, 0), IndirectObject(33, 0), IndirectObject(34, 0), IndirectObject(35, 0), IndirectObject(36, 0), IndirectObject(37, 0), IndirectObject(38, 0), IndirectObject(39, 0), IndirectObject(40, 0)], '/Contents': IndirectObject(41, 0), '/StructParents': 0, '/Parent': IndirectObject(55, 0)}
+pageinfo = pdfread.getPage(0)
+print(pageinfo.extractText()) #print 39
+pageinfopage1 = pageinfo.extractText()
+print(pageinfopage1)
+
+#Python File Handling - How to Read & Write Files With 5 Examples [b9rSczloSeA]
+fileobjectoldway = open("findtheneedle.txt", "r")
+fileobjectoldway.close()
+with open("findtheneedle.txt", "r") as fileobjectoneline:
+    #print(type(fileobjectoneline.read())) #print <class 'str'>
+    print(fileobjectoneline.read())
+    '''
+    This is the sys module series
+    and it is almost done
+
+    we are nearly done
+    just a few more videos
+    that I need to get done
+    '''
+with open("findtheneedle.txt", "r") as fileobjectlist:
+    print(fileobjectlist.readlines()) #print ['This is the sys module series\n', 'and it is almost done\n', '\n', 'we are nearly done\n', 'just a few more videos\n', 'that I need to get done']
+with open("findtheneedle.txt", "r") as fileobjectprintonelineperreadline:
+    print(fileobjectprintonelineperreadline.readline()) #print This is the sys module series\n
+    print(fileobjectprintonelineperreadline.readline()) #print and it is almost done\n
+    print(fileobjectprintonelineperreadline.readline()) #print \n
+    print(fileobjectprintonelineperreadline.readline()) #print we are nearly done\n
+with open("findtheneedle.txt", "r") as fileobjectnumberoflines:
+    print(len(fileobjectnumberoflines.readlines())) #print 6
+#Count words in a file
+with open("findtheneedle.txt", "r") as fileobjectsplit:
+    print(fileobjectsplit.read().split()) #print ['This', 'is', 'the', 'sys', 'module', 'series', 'and', 'it', 'is', 'almost', 'done', 'we', 'are', 'nearly', 'done', 'just', 'a', 'few', 'more', 'videos', 'that', 'I', 'need', 'to', 'get', 'done']
+with open("findtheneedle.txt", "r") as fileobjectwordcounter:
+    print(len(fileobjectwordcounter.read().split())) #print 26
+#Format a file
+with open("utopiayoutubedl.txt", "r") as yesblanklines, open("utopiayoutubedlnoblanklines", "w") as noblanklines:
+    yesblanklinesvariable = yesblanklines.readlines()
+    #print(yesblanklinesvariable) #print ['youtube-dl --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=Eg7yCvc0yGI.  youtube-dl --write-auto-sub https://www.youtube.com/watch?v=VD-fBj4d9Ck.\n', '\n', 'Download all the videos in the YouTube playlist youtube-dl -f best -ciw --playlist-start 1 *playlist URL*.  Select a range of playlist videos youtube-dl  -f best -ciw --playlist-items startnumber-endnumber *playlist URL*\n', '\n', '\n', 'youtube-dl -f best -u inin611@gmail.com -p hitsugayamatsumoto --write-auto-sub --sub-lang en --playlist-start 1 https://www.youtube.com/playlist?list=PL_jIDr2tZiuRHlp-bLwYNgWaFAp6dR7_\n', '\n', 'youtube-dl -f best -u, --username inin611@gmail.com -p, --password hitsugayamatsumoto --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=-8Vu3Hyv_Vk\n', 'youtube-dl -f best --username inin611@gmail.com --password hitsugayamatsumoto --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=-8Vu3Hyv_Vk\n', 'youtube-dl -f best -u inin611@gmail.com -p hitsugayamatsumoto --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=-8Vu3Hyv_Vk\n', "youtube-dl -f best -u 'inin611@gmail.com' -p 'hitsugayamatsumoto' --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=-8Vu3Hyv_Vk\n", 'youtube-dl -f best --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=gTXyTbMa1_w\n', 'youtube-dl -f best --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=IDKUyL4yXrQ\n', 'youtube-dl -f best --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=WyIXO4IVz_c\n', 'youtube-dl -f best --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=8paeqlO98pM\n', 'youtube-dl -f best --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=cKW1F_xMOFc\n', '\n', 'youtube-dl -v --list-subs https://www.youtube.com/watch?v=gTXyTbMa1_w\n', 'youtube-dl --sub-lang en --write-auto-sub --sub-format vtt --skip-download https://www.youtube.com/watch?v=gTXyTbMa1_w\n', 'youtube-dl --write-sub --sub-lang en --skip-download https://www.youtube.com/watch?v=gTXyTbMa1_w  <--WORKED']
+    for eachline in yesblanklinesvariable:
+        #print(eachline)
+        '''
+        youtube-dl --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=Eg7yCvc0yGI.  youtube-dl --write-auto-sub https://www.youtube.com/watch?v=VD-fBj4d9Ck.
+
+
+
+        Download all the videos in the YouTube playlist youtube-dl -f best -ciw --playlist-start 1 *playlist URL*.  Select a range of playlist videos youtube-dl  -f best -ciw --playlist-items startnumber-endnumber *playlist URL*
+
+
+
+
+
+        youtube-dl -f best -u inin611@gmail.com -p hitsugayamatsumoto --write-auto-sub --sub-lang en --playlist-start 1 https://www.youtube.com/playlist?list=PL_jIDr2tZiuRHlp-bLwYNgWaFAp6dR7_
+
+
+
+        youtube-dl -f best -u, --username inin611@gmail.com -p, --password hitsugayamatsumoto --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=-8Vu3Hyv_Vk
+        ...
+        '''
+        if eachline.strip() != "":
+            print(eachline.strip())
+            '''
+            youtube-dl --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=Eg7yCvc0yGI.  youtube-dl --write-auto-sub https://www.youtube.com/watch?v=VD-fBj4d9Ck.
+            Download all the videos in the YouTube playlist youtube-dl -f best -ciw --playlist-start 1 *playlist URL*.  Select a range of playlist videos youtube-dl  -f best -ciw --playlist-items startnumber-endnumber *playlist URL*
+            youtube-dl -f best -u inin611@gmail.com -p hitsugayamatsumoto --write-auto-sub --sub-lang en --playlist-start 1 https://www.youtube.com/playlist?list=PL_jIDr2tZiuRHlp-bLwYNgWaFAp6dR7_
+            youtube-dl -f best -u, --username inin611@gmail.com -p, --password hitsugayamatsumoto --write-auto-sub --sub-lang en https://www.youtube.com/watch?v=-8Vu3Hyv_Vk
+            ...
+            '''
+            noblanklines.write(eachline.strip())
+            noblanklines.write("\n") #add a new line which is not a blank line between two lines with string
+#Read all files in a directory and combine them into a single file
+#Created four text files day1.txt, day2.txt, day2afternoon.txt, and day3.txt in journal directory
+import os
+filesindirectory = os.listdir("/home/mar/python/journal")
+print(filesindirectory) #print ['day2.txt', 'day2afternoon.txt', 'day3.txt', 'day1.txt']
+with open("combinetextfiles.txt", "w") as combinetextfilesinonefile:
+    for eachfilesindirectory in filesindirectory:
+        #print(eachfilesindirectory)
+        '''
+        day2.txt
+        day2afternoon.txt
+        day3.txt
+        day1.txt
+        '''
+        directoryandfilename = "/home/mar/python/journal/" + eachfilesindirectory #python program is executed not in /home/mar/python/journal.  Executed in /home/mar/python/.
+        #print(directoryandfilename)
+        '''
+        /home/mar/python/journal/day2.txt
+        /home/mar/python/journal/day2afternoon.txt
+        /home/mar/python/journal/day3.txt
+        /home/mar/python/journal/day1.txt
+        '''
+        with open(directoryandfilename, "r") as eachfile:
+            #print(eachfile.read())
+            '''
+            I wrote some Python today.
+            I wrote even more Python.
+            Today I planned to write some code, but I watched YouTube instead.
+            Today I learned how to use the open function in Python.
+            '''
+            combinetextfilesinonefile.write("File name " + directoryandfilename)
+            combinetextfilesinonefile.write("\n")
+            combinetextfilesinonefile.write(eachfile.read())
+            combinetextfilesinonefile.write("\n")
+            combinetextfilesinonefile.write("\n")
+            '''
+            File name /home/mar/python/journal/day2.txt
+            I wrote some Python today.
+
+            File name /home/mar/python/journal/day2afternoon.txt
+            I wrote even more Python.
+
+            File name /home/mar/python/journal/day3.txt
+            Today I planned to write some code, but I watched YouTube instead.
+
+            File name /home/mar/python/journal/day1.txt
+            Today I learned how to use the open function in Python.
+            '''
+            # savesentenceinvariable = eachfile.read()  #RM:  save the .read() in variable because .read() is used once
+            # if "wrote" in savesentenceinvariable:
+            #     print("love")
+            #     combinetextfilesinonefile.write("File name " + directoryandfilename)
+            #     combinetextfilesinonefile.write("\n")
+            #     combinetextfilesinonefile.write(savesentenceinvariable)
+            #     combinetextfilesinonefile.write("\n")
+            #     combinetextfilesinonefile.write("\n")
+with open("simple.html", "r") as fileobjectoneline:
+    eachlinevariable = fileobjectoneline.readlines()  #RM:  save the .readlines() in eachlinevariable because .readlines() is used once
+    for x in eachlinevariable:
+        if "article" in x:
+            print(x.strip()) #added .strip() to remove tab spaces
+            '''
+            <div class="article">
+            <h2><a href="article_1.html">Article 1 Headline</a></h2>
+            <p>This is a summary of article 1</p>
+            <div class="article">
+            <h2><a href="article_2.html">Article 2 Headline</a></h2>
+            <p>This is a summary of article 2</p>
+            '''
+with open("simple.html", "rb") as fileobjectoneline:
+    eachlinevariable = fileobjectoneline.readlines()  #RM:  save the .read() in eachlinevariable because .read() is used once
+    print(type(eachlinevariable)) #print <class 'list'>
+    print(eachlinevariable)
+    '''
+    [b'<!doctype html>\n', b'<html class="no-js" lang="">\n', b'    <head>\n', b'        <title>Test - A Sample Website</title>\n', b'        <meta charset="utf-8">\n', b'        <link rel="stylesheet" href="css/normalize.css">\n', b'        <link rel="stylesheet" href="css/main.css">\n', b'    </head>\n', b'    <body>\n', b"        <h1 id='site_title'>Test Website</h1>\n", b'        <hr></hr>\n', b'        <div class="article">\n', b'            <h2><a href="article_1.html">Article 1 Headline</a></h2>\n', b'            <p>This is a summary of article 1</p>\n', b'        </div>\n', b'        <hr></hr>\n', b'        <div class="article">\n', b'            <h2><a href="article_2.html">Article 2 Headline</a></h2>\n', b'            <p>This is a summary of article 2</p>\n', b'        </div>\n', b'        <hr></hr>\n', b"        <div id='footer'>\n", b'            <p>Footer Information</p>\n', b'        </div>\n', b'        <script>\n', b'        var para = document.createElement("p");\n', b'        var node = document.createTextNode("This is text generated by JavaScript.");\n', b'        para.appendChild(node);\n', b'        var element = document.getElementById("footer");\n', b'        element.appendChild(para);\n', b'        </script>\n', b'    </body>\n', b'</html>']
+    '''
+    for x in eachlinevariable:
+        if "article" in str(x):
+            print(x.strip())
+            '''
+            b'<div class="article">'
+            b'<h2><a href="article_1.html">Article 1 Headline</a></h2>'
+            b'<p>This is a summary of article 1</p>'
+            b'<div class="article">'
+            b'<h2><a href="article_2.html">Article 2 Headline</a></h2>'
+            b'<p>This is a summary of article 2</p>'
+            '''
+#Read a binary file.  Use a .db file.  Backup the binary file.  Append a timestamp.  Backup file backup file.
+from time import time
+with open("company.db", "rb") as fileobject, open(f"companybackup.db.backup.{time()}", "wb") as fileobjectbackup:
+    chunksizeefficientbackupreadbytes = 4096 #set up a buffer for big memory size files.  Backup by chunk file size
+    while True:
+        data = fileobject.read(chunksizeefficientbackupreadbytes)
+        if not data:
+            break
+        fileobjectbackup.write(data)
+    '''
+    b"SQLite format 3\x00\x10\x00\x01\x01\x00@  \x00\x00\x00+\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00+\x00.?\xd9\r\x00\x00\x00\x01\x0fi\x00\x0fi\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
+    ...
+    '''
+    fileobjectbackup.write(data) #Create backup file companybackup.db.backup.1652425537.246177 with the timestamp
