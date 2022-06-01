@@ -482,3 +482,140 @@ Inventory:
 1 dagger
 Total number of items: 48
 '''
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 06 Manipulating Strings
+print(r"Raw string begins the print statement with a lower case r.") #print Raw string begins the print statement with a lower case r.
+print(r"Raw strings are helpful when a string contains many backslashes for escape characters.") #print raw string begins the print statement with a lower case r.
+print("""Dear person,
+
+    If you want a multiline string, then being and end with three double quotes.
+
+Easy to understand.""")
+'''
+Dear person,
+
+    If you want a multiline string, then being and end with three double quotes.
+
+Easy to understand.
+'''
+indexslicereview = "Hello world!"
+print(indexslicereview[0]) #print H
+print(indexslicereview[4]) #print o
+print(indexslicereview[-1]) #print !
+print(indexslicereview[0:5]) #print Hello
+print(indexslicereview[:5]) #print Hello
+print(indexslicereview[6:]) #print world!
+print("" in "spam") #print True
+print(" " in "spam") #print False
+commonstringmethods = "Hello world!"
+print(commonstringmethods.upper()) #print HELLO WORLD!
+print(commonstringmethods.lower()) #print hello world!
+print(commonstringmethods.lower().isupper()) #print False
+print(commonstringmethods.lower().islower()) #print True
+checkstringlettersnoblanks = commonstringmethods.isalpha()
+print(checkstringlettersnoblanks) #print False
+checkstringlettersnumbersnoblanks = commonstringmethods.isalnum()
+print(checkstringlettersnumbersnoblanks) #print False
+checkstringnumbersnoblanks = commonstringmethods.isdecimal()
+print(checkstringlettersnumbersnoblanks) #print False
+checkstringspacestabslinesnoblanks = "     ".isspace()
+print(checkstringspacestabslinesnoblanks) #print True
+checkstringtitlecase = commonstringmethods.istitle()
+print(checkstringtitlecase) #print False
+checkstringtitlecase = "This Is Title Case With Blanks Numbers 123 Exclamation!".istitle()
+print(checkstringtitlecase) #print True
+startswithendswith = "Starts with is the sentence ends with."
+print(startswithendswith.startswith("Starts with")) #print True
+print(startswithendswith.endswith("ends with")) #print False
+print(startswithendswith.endswith("ends with.")) #print True
+joinlistwithcomma = ["cats", "rats", "bats"]
+print(", ".join(joinlistwithcomma)) #print cats, rats, bats
+joinlistsimon = ["My", "Name", "Is", "Simon"]
+print(" ".join(joinlistsimon)) #print My Name Is Simon
+print("I am behind of each list item".join(joinlistsimon)) #print MyI am behind of each list itemNameI am behind of each list itemIsI am behind of each list itemSimon
+splitstringtoalist = "Split the string to a list".split() #default split is wherever whitespace character such as a space, tab, or newline.  Any delimiter string can be passed to specify the split.
+print(splitstringtoalist) #print ['Split', 'the', 'string', 'to', 'a', 'list']
+splitstringtoalistbyABC = "SplitABCtheABCstringABCtoABCaABClist".split("ABC")
+print(splitstringtoalistbyABC) #print ['Split', 'the', 'string', 'to', 'a', 'list']
+splitstringbytremovest = "Split the string to a list".split("t")
+print(splitstringbytremovest) #print ['Spli', ' ', 'he s', 'ring ', 'o a lis', '']
+#rjust() and ljust() methods return a padded version which insert spaces to justify the ntext length
+print("No right justify ten spaces on the left because string is more than ten characters long.".rjust(10)) #print No right justify ten spaces on the left because string is more than ten characters long.
+print("Yes right justify 012 spaces on the left because string is more than 089 characters long.".rjust(100)) #print            Yes right justify 012 spaces on the left because string is more than 089 characters long.
+print("Hello".rjust(10)) #print '     Hello'
+print("Hello World".rjust(10)) #print Hello World
+print("Hello".ljust(10)) #print 'Hello     '
+print("Hello World".ljust(10)) #print Hello World
+print("Four".rjust(10)) #print '      Four'
+print("Four".ljust(10)) #print 'Four      '
+print("Add asterisk on the left to total 50 characters".rjust(50, "*")) #print ***Add asterisk on the left to total 50 characters
+print("Add hyphen on the right to total 60 characters".ljust(60, "-")) #print Add hyphen on the right to total 60 characters--------------
+print("CENTERME total 40 characters".center(40)) #print '      CENTERME total 40 characters      '
+print("centerme total 50 characters with =".center(50, "=")) #print =======centerme total 50 characters with =========
+def picnic(item, leftwidth, rightwidth):
+    print("PICNIC ITEMS".center(leftwidth + rightwidth, "-"))
+    for key, value in item.items():
+        print(key.ljust(leftwidth, ".") + str(value).rjust(rightwidth))
+
+
+picnicdictionary = {"sandwiches": 4, "apples": 12, "cups": 4, "cookies": 8000}
+picnic(picnicdictionary, 12, 5)
+'''
+---PICNIC ITEMS--
+sandwiches..    4
+apples......   12
+cups........    4
+cookies..... 8000
+'''
+picnic(picnicdictionary, 20, 6)
+'''
+-------PICNIC ITEMS-------
+sandwiches..........     4
+apples..............    12
+cups................     4
+cookies.............  8000
+'''
+removewhitespace = "     String has white space before and after          "
+print(removewhitespace) #print '     String has white space before and after          '
+print(removewhitespace.strip()) #print String has white space before and after
+print(removewhitespace.lstrip()) #print 'String has white space before and after          '
+print(removewhitespace.rstrip()) #print '     String has white space before and after'
+removelettersampSbeginningend = "SpamSpamBaconSpamEggsSpamSpam"
+print(removelettersampSbeginningend.strip("ampS")) #print BaconSpamEggs.  strip("ampS") removes a, m, p, and S from the left side and the right side of removelettersampSbeginningend.  The order of the characters don't matter.  strip("ampS"), strip("mapS"), and strip("Spam") returns BaconSpamEggs
+#pyperclip module has copy() and paste() functions which sends text to and receive text from the computer's clipboard.  Send the output of your program to the clipboard makes it easy to paste it when calling pyperclip.paste().
+# import pyperclip
+# # pyperclip.copy("Copy the string to pyperclip")
+# # print(pyperclip.paste()) #print Copy the string to pyperclip
+# print(pyperclip.paste()) #print String has white space before and after.  RM:  If I commented the two lines above and ctrl+c String has white space before and after, then pyperclip.paste() prints String has white space before and after
+tabledata = [['apples', 'oranges', 'cherries', 'banana'], ['Alice', 'Bob', 'Carol', 'David'], ['dogs', 'cats', 'moose', 'goose']]
+
+numberoflists = len(tabledata)
+print(numberoflists) #print 3
+numberofdata = len(tabledata[0])
+print(numberofdata) #print 4
+longestitemlength = 0
+joinitems = []
+for y in range(0, numberofdata):
+    newinnerlist = []
+    rowitemlength = 0
+    for x in range(0, numberoflists):
+        print(tabledata[x][y]) #print apples
+        item = tabledata[x][y]
+        newinnerlist.append(item)
+        itemlength = len(item)
+        rowitemlength += itemlength
+        if rowitemlength > longestitemlength:
+            longestitemlength = rowitemlength
+            print(longestitemlength) #print 6
+    joinitems.append(newinnerlist)
+print(joinitems) #print [['apples', 'Alice', 'dogs'], ['oranges', 'Bob', 'cats'], ['cherries', 'Carol', 'moose'], ['banana', 'David', 'goose']]
+longestitemlength = longestitemlength + numberoflists - 1
+print(longestitemlength) #print 20
+for eachjoinitems in joinitems:
+    print(" ".join(eachjoinitems).rjust(longestitemlength))
+    '''
+       apples Alice dogs
+        oranges Bob cats
+    cherries Carol moose
+      banana David goose
+    '''
