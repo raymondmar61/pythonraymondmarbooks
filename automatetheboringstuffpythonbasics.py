@@ -619,3 +619,102 @@ for eachjoinitems in joinitems:
     cherries Carol moose
       banana David goose
     '''
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 08 Reading And Writing Files
+import os
+#Join file paths or file pathways
+os.path.join("home", "mar", "python")
+print(os.path.join("home", "mar", "python")) #print home/mar/python
+filepath = os.path.join("home", "mar", "python")
+selectedpythonfiles = ["automatetheboringstuffpythonbasics.py", "mastermind147.py", "sqldatabase.py", "yytest.py"]
+for eachselectedpythonfiles in selectedpythonfiles:
+    print(os.path.join(filepath, eachselectedpythonfiles))
+    '''
+    home/mar/python/automatetheboringstuffpythonbasics.py
+    home/mar/python/mastermind147.py
+    home/mar/python/sqldatabase.py
+    home/mar/python/yytest.py
+    '''
+currentworkingdirectory = os.getcwd() #cwd current working directory
+print(currentworkingdirectory) #print /home/mar/python
+for eachselectedpythonfiles in selectedpythonfiles:
+    print(os.path.join(currentworkingdirectory, eachselectedpythonfiles))
+    '''
+    /home/mar/python/automatetheboringstuffpythonbasics.py
+    /home/mar/python/mastermind147.py
+    /home/mar/python/sqldatabase.py
+    /home/mar/python/yytest.py
+    '''
+changedirectory = os.chdir("/media/sf_UbuntuShare2004") #change current working directory
+print(changedirectory) #print None
+print(os.chdir("/media/sf_UbuntuShare2004")) #print None.  RM:  Python changed path
+printabsolutepath = os.path.abspath(".")
+print(printabsolutepath) #print /media/sf_UbuntuShare2004
+#createnewfolder = os.makedirs(currentworkingdirectory + "/tempdelete") #create new working directory tempdelete in /home/mar/python for /home/mar/python/tempdelete
+print(os.chdir("/home/mar/python")) #print None.  Change path to Python to continue learning
+absolutepath = os.path.abspath(".") #Returns a string of the absolute path.  Convert a relative path to an absolute path.
+print(absolutepath) #print /home/mar/python
+absolutepathwithsubfolder = ("./tempdelete")
+print(absolutepathwithsubfolder) #print ./tempdelete
+confirmabsolutepath = os.path.isabs(".") #returns True if absolute path and False if relative path
+print(confirmabsolutepath) #print False
+confirmabsolutepath = os.path.isabs("..")
+print(confirmabsolutepath) #print False
+confirmrelativepath = os.path.relpath("/home/python", "~") #returns a string of a relative path from the start path to path.  If start path is not provided, the current working directory is used as the start path.
+print(confirmrelativepath) #print ../../../python
+confirmrelativepath = os.path.relpath("/home/", "~")
+print(confirmrelativepath) #print ../../..
+confirmrelativepath = os.path.relpath("/home", "~")
+print(confirmrelativepath) #print ../../..
+confirmrelativepath = os.path.relpath("/", "~")
+print(confirmrelativepath) #print ../../../..
+confirmrelativepath = os.path.relpath("/home/python", "/home/")
+print(confirmrelativepath) #print python
+confirmrelativepath = os.path.relpath("/home/python", "/home")
+print(confirmrelativepath) #print python
+fullpathworkingdirectory = "/home/mar/python"
+beforelastslash = os.path.dirname(fullpathworkingdirectory)
+print(beforelastslash) #print /home/mar
+afterlastslash = os.path.basename(fullpathworkingdirectory)
+print(afterlastslash) #print python
+separatepathfilename = "/home/mar/python/yytest.py"
+print(os.path.split(separatepathfilename)) #print ('/home/mar/python', 'yytest.py')
+print(os.path.dirname(separatepathfilename), os.path.basename(separatepathfilename)) #print /home/mar/python yytest.py
+print((os.path.dirname(separatepathfilename), os.path.basename(separatepathfilename))) #print ('/home/mar/python', 'yytest.py')
+print(os.path.sep) #print /
+print(fullpathworkingdirectory.split(os.path.sep)) #print ['', 'home', 'mar', 'python'].  Use split string method for the fullpathworkingdirectory variable for os.path.sep to split by /
+# filesizeinbytes = os.path.getsize("~/python/automatetheboringstuffpythonbasics.py")
+# print(filesizeinbytes) #print FileNotFoundError: [Errno 2] No such file or directory: '~/python/automatetheboringstuffpythonbasics.py'
+filesizeinbytes = os.path.getsize("/home/mar/python/automatetheboringstuffpythonbasics.py")
+print(filesizeinbytes) #print 23509
+fileslistindorectory = os.listdir("/home/mar/python")
+print(fileslistindorectory) #print ['twitterdownloadtweetsfinalv1.2.py', 'coffeesqllitedatabase.py', 'myphotoalbum.html', . . . ,'mfgcompanysqlite.py', 'sqllitebackendbeginnersdatabase.py']
+print(os.path.exists("/home")) #print True
+print(os.path.exists("/home/mar")) #print True
+print(os.path.exists("/home/mar/python")) #print True
+print(os.path.isdir("/home")) #print True
+print(os.path.isdir("/home/mar")) #print True
+print(os.path.isdir("/home/mar/python")) #print True
+print(os.path.isfile("/home/mar/python/automatetheboringstuffpythonbasics.py")) #print True
+print(os.path.exists("/home/mar/python/automatetheboringstuffpythonbasics.py")) #print True
+print(os.path.isdir("/home/mar/python/automatetheboringstuffpythonbasics.py")) #print False
+print(os.path.isfile("/home/mar/python")) #print False
+#There are three steps to read or to write Python files.  1 Call the open() function to return a file object.  2 Call the read() or write() method on the file object.  3 Call the close() method to close the file on the file object.
+opentextfileobject = open(fullpathworkingdirectory + "/temphello.txt", "r") #open() returns a file object saved to opentextfileobject variable.  A file object represents a file on your computer or another type of value in Python like lists and dictionaries.
+readtextfileobject = opentextfileobject.read()
+print(readtextfileobject) #print Hello world!
+opentextfileobject.close()
+sonnetfileobject = open("sonnet29.txt")
+readsonnetfileobject = sonnetfileobject.readlines() #readlines method returns a list of sting values from the file.  One string for each line.
+print(readsonnetfileobject) #print ['Not sonnet29 in the book.\n', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n', 'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n', 'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n', 'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n', 'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n', 'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.']
+sonnetfileobject.close()
+writetobaconfileobject = open("bacon.txt", "w")
+writetobaconfileobject.write("Hello world!\n")
+writetobaconfileobject.close()
+addtextbaconfileobject = open("bacon.txt", "a")
+addtextbaconfileobject.write("Bacon is not a vegetable.\n")
+addtextbaconfileobject.close()
+readbaconfileobject = open("bacon.txt", "r")
+printreadbaconfileobject = readbaconfileobject.read()
+print(printreadbaconfileobject) #print Hello world!\n Bacon is not a vegetable.\n
+readbaconfileobject.close()
