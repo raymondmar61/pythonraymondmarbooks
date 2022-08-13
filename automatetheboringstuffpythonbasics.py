@@ -718,3 +718,91 @@ readbaconfileobject = open("bacon.txt", "r")
 printreadbaconfileobject = readbaconfileobject.read()
 print(printreadbaconfileobject) #print Hello world!\n Bacon is not a vegetable.\n
 readbaconfileobject.close()
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 09 Organizing Files
+import shutil
+import os
+import zipfile
+
+shutil.copy("temp.txt", "/home/mar") #copy temp.txt file in the python directory /home/mar/python to /home/mar
+shutil.copy("temp.txt", "/home/mar/renametempfilename.txt") #copy temp.txt file in the python directory /home/mar/python to /home/mar rename temp.txt file to renametempfilename.txt
+shutil.copytree("/home/mar/python", "/home/mar/createnewdirectory/") #copy python directory to a new directory name createnewdirectory
+shutil.move("temptext.txt", "/home/mar/Downloads") #move temptext.txt file to Downloads folder
+shutil.move("temptext.txt", "/home/mar/Downloads/renamemovedtemptext.txt") #move temptext.txt file to Downloads folder and rename text file from temptext.txt to renamemovedtemptext.txt
+os.unlink("deletetemptextfile.txt") #delete deletetemptextfile.txt at present directory permanently
+os.unlink("/home/mar/python/deletetemptextfile.txt") #delete deletetemptextfile.txt at /home/mar/python/ permanently
+os.rmdir("deletedirectory") #delete the empty folder deletedirectory in present directory permanently
+shutil.rmtree("/home/mar/python/deleteunempydirectory/") #delete the folder deleteunempydirectory with files and folders in present directory permanently
+for forloopdeletefiles in os.listdir():
+    if forloopdeletefiles.endswith(".txt"):
+        print("Check filenames before permanent delete os.unlink(forloopdeletefiles): " + forloopdeletefiles)
+        #os.unlink(forloopdeletefiles)
+#Directory tree or files and folders
+for foldername, subfolder, filename in os.walk("/home/mar/python/"):
+    print("Folder in python directory " + foldername)
+    for eachsubfolder in subfolder:
+        print("Subfolder " + eachsubfolder + " in " + foldername)
+    for eachfilename in filename:
+        print("Filename " + eachfilename + " in " + foldername)
+        '''
+        Folder in python directory /home/mar/python/
+        Subfolder myphotoalbum in /home/mar/python/
+        Subfolder journal in /home/mar/python/
+        Subfolder __pycache__ in /home/mar/python/
+        Filename twitterdownloadtweetsfinalv1.2.py in /home/mar/python/
+        Filename coffeesqllitedatabase.py in /home/mar/python/
+        Filename myphotoalbum.html in /home/mar/python/
+        Filename mastermind147.py in /home/mar/python/
+        Filename artgallery150.py in /home/mar/python/
+        Filename piecesofart.txt in /home/mar/python/
+        Filename encrypttextfile.txt in /home/mar/python/
+        ...
+        Folder in python directory /home/mar/python/myphotoalbum
+        Subfolder myphotoalbum in /home/mar/python/myphotoalbum
+        Filename sanmateojapanesegardens.jpg in /home/mar/python/myphotoalbum
+        Filename joaquinmillerlookoutpoint.jpg in /home/mar/python/myphotoalbum
+        Filename caacademy1.jpg in /home/mar/python/myphotoalbum
+        Filename zionnarrowsbottomup.jpg in /home/mar/python/myphotoalbum
+        Filename bernalheights.jpg in /home/mar/python/myphotoalbum
+        Filename baseballvintage.jpg in /home/mar/python/myphotoalbum
+        ...
+        '''
+#Zip files
+viewfilesinzipfolderobject = zipfile.ZipFile("kevincookiecompanygittutorial.zip")
+print(viewfilesinzipfolderobject.namelist()) #print ['Employee Salaries.txt', 'index.htm', 'KCC Logo.png', 'secret recipe.htm']
+afileinzipfileinformation = viewfilesinzipfolderobject.getinfo("index.htm")
+print(afileinzipfileinformation) #print <ZipInfo filename='index.htm' file_size=505>
+print(afileinzipfileinformation.file_size) #print 505 #RM:  number in bytes
+print(afileinzipfileinformation.compress_size) #print 505 #RM:  number in bytes
+viewfilesinzipfolderobject.extract("index.htm", "/home/mar") #extract() method extracts a file to destination which is extract index.htm to /home/mar directory
+viewfilesinzipfolderobject.extractall("/home/mar/python/extractzipfilefolder") #extractall() method extracts all files and folders in zip file to extractzipfilefolder folder
+viewfilesinzipfolderobject.close()
+createzipfile = zipfile.ZipFile("zipfile.zip", "w")
+createzipfile.write("personlog.txt", compress_type=zipfile.ZIP_DEFLATED)
+createzipfile.close()
+# If you want to add files to an existing zip file, use "a" append mode as the second argument
+createzipfileforloop = zipfile.ZipFile("zipfilealltextfiles.zip", "w")
+for forlooptextfiles in os.listdir():
+    if forlooptextfiles.endswith(".txt"):
+        createzipfileforloop.write(forlooptextfiles, compress_type=zipfile.ZIP_DEFLATED)
+createzipfileforloop.close()
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 13 Working With PDF and Word Documents
+#PyPDF2 extracts text which returns as a Python string.
+#Can't get PyPDF2 to work.  Google search there are better substitutes.  PyPDF2 and PyPDF4 installed.
+import PyPDF2
+pdffileobject = open("magnummaniamaddogsandenglishmen.pdf", "rb")
+pdfreader = PyPDF2.PdfFileReader(pdffileobject)
+print(pdfreader.numPages) #print 3
+page1pdffile = pdfreader.getPage(0)
+page1pdffile.extractText()
+print(page1pdffile.extractText()) #print *nothing*
+page2pdffile = pdfreader.getPage(1)
+page2pdffile.extractText()
+print(page2pdffile) #print {'/Type': '/Page', '/Resources': {'/ProcSet': ['/PDF', '/Text', '/ImageB', '/ImageC', '/ImageI'], '/ExtGState': {'/G3': IndirectObject(3, 0)}, '/Font': {'/F4': IndirectObject(4, 0), '/F10': IndirectObject(10, 0), '/F11': IndirectObject(11, 0)}}, '/MediaBox': [0, 0, 612, 792], '/Annots': [IndirectObject(43, 0), IndirectObject(44, 0), IndirectObject(45, 0), IndirectObject(46, 0), IndirectObject(47, 0), IndirectObject(48, 0), IndirectObject(49, 0)], '/Contents': IndirectObject(50, 0), '/StructParents': 1, '/Parent': IndirectObject(55, 0)}
+print(type(page2pdffile.extractText())) #print <class 'str'>
+print(type(page2pdffile)) #print <class 'PyPDF2._page.PageObject'>
+page = pdfreader.pages[0]
+print(page.extractText()) #print *nothing*
+print(pdfreader.getDocumentInfo()) #print {'/Creator': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36', '/Producer': 'Skia/PDF m96', '/CreationDate': "D:20220101091634+00'00'", '/ModDate': "D:20220101091634+00'00'"}
+pdffileobject.close()
