@@ -806,3 +806,191 @@ page = pdfreader.pages[0]
 print(page.extractText()) #print *nothing*
 print(pdfreader.getDocumentInfo()) #print {'/Creator': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36', '/Producer': 'Skia/PDF m96', '/CreationDate': "D:20220101091634+00'00'", '/ModDate': "D:20220101091634+00'00'"}
 pdffileobject.close()
+
+#Automate The Boring Stuff With Python By Al Sweigart Chapter 15 Keeping Time, Scheduling Tasks, And Launching Programs
+#The built-in time module reads the computer's system clock which is set to a date, time, and timezone.  time.time() and time.sleep() are the most useful functions.
+import time
+print(time.time()) #print 1660940220.9355557.  time.time() returns the number of seconds since 12:00am on Jan 1, 1970 which is called an epoch timestamp.
+recordtimestarttime = time.time()
+print("What is the difference between start time recordtimestarttime and recordtimeendtime?")
+recordtimeendtime = time.time()
+print("The answer is", recordtimeendtime - recordtimestarttime) #print The answer is 3.5762786865234375e-06
+def pauseprogram(numberofsecondssleep):
+    for i in range(1, numberofsecondssleep + 1):
+        time.sleep(i)
+        print("time.sleep() function blocks or don't return and release the program to execute another code.  Pause second number", i)
+    return "pauseprogram function completed"
+
+
+seconds = 1
+print(pauseprogram(seconds))
+'''
+time.sleep() function blocks or don't return and release the program to execute another code.  Pause second number 1
+time.sleep() function blocks or don't return and release the program to execute another code.  Pause second number 2
+time.sleep() function blocks or don't return and release the program to execute another code.  Pause second number 3
+time.sleep() function blocks or don't return and release the program to execute another code.  Pause second number 4
+time.sleep() function blocks or don't return and release the program to execute another code.  Pause second number 5
+'''
+import datetime
+print(datetime.datetime.now()) #print 2022-08-19 13:30:32.012225
+dt = datetime.datetime.now()
+print("datetime year", dt.year) #print datetime year 2022
+print("datetime month number no leading zero", dt.month) #print datetime month number no leading zero 8
+print("datetime day number", dt.day) #print datetime day number 19
+print("datetime hour 24 hour", dt.hour) #print datetime hour 24 hour 13
+print("datetime minute", dt.minute) #print datetime minute 30
+print("datetime second", dt.second) #print datetime second 32
+numberofsecondssinceepochtimestamp = 1000000 #epoch timestamp is Jan 1, 1970 at 12:00am
+print(datetime.datetime.fromtimestamp(numberofsecondssinceepochtimestamp)) #print 1970-01-12 05:46:40.  Jan 12, 1970 at 5:46am at 40 seconds is the date and time 1,000,000 seconds passed since Jan 1, 1970 at 12:00am.
+print(datetime.datetime.fromtimestamp(time.time())) #print 2022-08-19 13:36:41.765676.  time.time() returns the number of seconds since 12:00am on Jan 1, 1970 which is called an epoch timestamp.  fromtimestamp returns the datetime from time.time().  datetime.datetime.now() and datetime.datetime.fromtimestamp(time.time()) return the same result.
+halloween2022 = datetime.datetime(2022, 10, 31, 0, 0, 0)
+presidentsday2023 = datetime.datetime(2023, 2, 13, 0, 0, 0)
+oct312022 = datetime.datetime(2022, 10, 31, 0, 0, 0)
+print(halloween2022 == oct312022) #print True
+print(halloween2022 > presidentsday2023) #print False
+print(presidentsday2023 > halloween2022) #print True
+print(presidentsday2023 != oct312022) #print True
+#The datetime.timedelta() function takes keyword arguments weeks, days, hours, minutes, seconds, milliseconds, and microseconds. There is no month or year keyword argument because "a month" or "a year" is a variable amount of time depending on the particular month or year. A timedelta object has the total duration represented in days, seconds, and microseconds. These numbers are stored in the days, seconds, and microseconds attributes, respectively. The total_seconds() method will return the duration in number of seconds alone. Passing a timedelta object to str() will return a nicely formatted, human-readable string representation of the object.
+giventimereturntimeduration = datetime.timedelta(days=11, hours=10, minutes=9, seconds=8) #RM:  delta is the better variable.  I used giventimereturntimeduration to quickly explain timedelta.
+print("Number of days", giventimereturntimeduration.days) #print Number of days 11
+print("Number of seconds from hours, minutes and seconds", giventimereturntimeduration.seconds)  #Number of seconds from hours, minutes and seconds 36548.  10 hours, 9 minutes, are 8 seconds total 36548 seconds.
+print("Number of microseconds", giventimereturntimeduration.microseconds)  #Number of microseconds 0
+print("Total number of seconds days, hours, minutes, seconds", giventimereturntimeduration.total_seconds()) #print Total number of seconds days, hours, minutes, seconds 986948.0
+print("Return giventimereturntimeduration as a string " + str(giventimereturntimeduration)) #print Return giventimereturntimeduration as a string 11 days, 10:09:08
+todaysdate = datetime.datetime.now()
+onethousanddays = datetime.timedelta(days=1000)
+onethousanddayslater = todaysdate + onethousanddays
+print(onethousanddayslater) #print 2025-05-15 13:56:59.237881.  One thounsand days later is May 15, 2025
+#Pause program, delay, sleep
+initialnumber = 1
+while initialnumber < 6:
+    print("Wait one second")
+    time.sleep(0)
+    print(initialnumber)
+    initialnumber += 1
+    '''
+    Wait one second
+    1
+    Wait one second
+    2
+    Wait one second
+    3
+    Wait one second
+    4
+    Wait one second
+    5
+    '''
+#strftime() as in string str, f format, time is time.
+presentdaytimeobject = datetime.datetime.now()
+print(presentdaytimeobject) #print 2022-08-22 22:15:22.104291
+print(presentdaytimeobject.strftime("%Y")) #print 2022
+print(presentdaytimeobject.strftime("%y")) #print 22.  Year without century or two digit year.
+print(presentdaytimeobject.strftime("%m")) #print 08.  Month as decimal number.
+print(presentdaytimeobject.strftime("%B")) #print August
+print(presentdaytimeobject.strftime("%b")) #print Aug
+print(presentdaytimeobject.strftime("%d")) #print 22.  Day of the month.
+print(presentdaytimeobject.strftime("%j")) #print 234.  Numbered day of the year.  Aug 22 is the 234th day of the 2022 year.
+print(presentdaytimeobject.strftime("%w")) #print 1.  Numbered day of the week.  Sun is 0.  Sat is 6.
+print(presentdaytimeobject.strftime("%A")) #print Monday
+print(presentdaytimeobject.strftime("%a")) #print Mon
+print(presentdaytimeobject.strftime("%H")) #print 22.  24-hour clock
+print(presentdaytimeobject.strftime("%I")) #print 10.  12-hour clock.
+print(presentdaytimeobject.strftime("%M")) #print 15.  Minute.
+print(presentdaytimeobject.strftime("%S")) #print 22  Second.
+print(presentdaytimeobject.strftime("%p")) #print PM  AM or PM.
+print(presentdaytimeobject.strftime("%%")) #print %.  A percentage.
+print(presentdaytimeobject.strftime("%b %d, %Y")) #print Aug 22, 2022
+print(presentdaytimeobject.strftime("Today is %B %y, %Y.")) #print Today is August 22, 2022.
+#datetime.datetime.strptime() to convert a date in string format to a datetime object.  strptime() as in string str, p parse, time is time.
+print(datetime.datetime.strptime("Aug 22, 22", "%b %d, %y")) #print 2022-08-22 00:00:00
+print(datetime.datetime.strptime("Today is Mon Aug 22, 2022.", "Today is %a %b %d, %Y.")) #print 2022-08-22 00:00:00
+#Multithreading
+#A singlethreaded program has one finger.  A multithreaded program has multiple fingers.  Each finger moves to the next line of code.  The fingers can be at different places in the program and execute different lines of code at the same time.  You can execute the delayed or scheduled code in a separate thread using Python's threading module.  The separate thread pauses for the time.sleep calls for example.  Mean while, the program does other work in the original thread.
+import threading
+import time
+
+yesthreadstartime = time.time()
+print("Start program yesthread() function")
+def yesthread():
+    time.sleep(5)
+    yesthreadcompletedtime = time.time()
+    print("Wake up yesthread() function.  Time elapsed", yesthreadcompletedtime - yesthreadstartime)
+
+
+threadobject = threading.Thread(target=yesthread)
+threadobject.start()
+print("End program yesthread() function")
+yesthreadendtime = time.time()
+print("Time elapsed yesthread() function", yesthreadendtime - yesthreadstartime)
+print("\n")
+nothreadstartime = time.time()
+print("Start program nothread() function")
+def nothread():
+    time.sleep(5)
+    nothreadcompletedtime = time.time()
+    print("Wake up nothread() function.  Time elapsed", nothreadcompletedtime - nothreadstartime)
+
+
+nothread()
+print("End program nothread() function")
+nothreadendtime = time.time()
+print("Time elapsed nothread() function", nothreadendtime - nothreadstartime)
+#RM:  No more experimenting.
+#Create a thread object by calling the threading.Thread() function.
+print("Start real program")
+def takeanap():
+    time.sleep(5)
+    print("Wake up from takeanap() function")
+
+
+createthreadobject = threading.Thread(target=takeanap) #keyword argument target=takeanap() call the function takeanap() in the new thread.  You want to pass the takeanap function itself as the argument instead of call takeanap() function and pass its return value.
+createthreadobject.start() #create a new thread and start executing the target function in the new thread
+print("End real program")
+'''
+Start program yesthread() function
+End program yesthread() function
+Time elapsed yesthread() function 0.00018739700317382812
+
+
+Start program nothread() function
+Wake up nothread() function.  Time elapsed 5.002316236495972
+End program nothread() function
+Time elapsed nothread() function 5.002425193786621
+Start real program
+End real program
+Wake up yesthread() function.  Time elapsed 5.003744840621948
+Wake up from takeanap() function
+'''
+#If print('End of program.') is the last line of the program, you might think that it should be the last thing printed. The reason Wake up! comes after it is that when threadObj.start() is called, the target function for threadObj is run in a new thread of execution. Think of it as a second finger appearing at the start of the takeANap() function. The main thread continues to print('End of program.'). Meanwhile, the new thread that has been executing the time.sleep(5) call, pauses for 5 seconds. After it wakes from its 5-second nap, it prints 'Wake up!' and then returns from the takeANap() function. Chronologically, 'Wake up!' is the last thing printed by the program.
+#Two threads. RM:  technically three threads because of threadobject = threading.Thread(target=yesthread).  The first is the original thread that began at the start of the program and ends after print('End of program.'). The second thread is created when threadObj.start() is called, begins at the start of the takeANap() function, and ends after takeANap() returns.
+#A Python program will not terminate until all its threads have terminated. When you ran threadDemo.py, even though the original thread had terminated, the second thread was still executing the time.sleep(5) call.
+
+def threenumbersonestring(n1, n2, n3, string32):
+    print(n1)
+    print(n2)
+    print(n3)
+    print(string32)
+
+
+createthreadobject31 = threading.Thread(target=threenumbersonestring, args=[111, 345, 9899, "I am a string", ])
+createthreadobject31.start()
+'''
+Start program yesthread() function
+End program yesthread() function
+Time elapsed yesthread() function 0.00021219253540039062
+
+
+Start program nothread() function
+Wake up nothread() function.  Time elapsed 5.037243843078613
+End program nothread() function
+Time elapsed nothread() function 5.0375330448150635
+Start real program
+Wake up yesthread() function.  Time elapsed 5.037549257278442
+End real program
+111
+345
+9899
+I am a string
+Wake up from takeanap() function
+
+'''
