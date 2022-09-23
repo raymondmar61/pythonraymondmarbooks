@@ -78,3 +78,141 @@ print(friendslist) #print ['Toby', 'Oscar', 'Kevin', 'Karen', 'Jim']
 friendslist = ["Kevin", "Karen", "Jim", "Oscar", "Toby"]
 copyfriendslist = friendslist.copy()
 print(copyfriendslist) #print ["Kevin", "Karen", "Jim", "Oscar", "Toby"]
+#A tuple is immutable.  A tuple can't be changed.  A good example is coordinates in an cartisan coordinate graph.
+coordinates = (4, 5)
+print(coordinates) #print (4, 5)
+print(coordinates[0]) #print 4
+tupleslist = [(4, 5), (6, 7), (80, 34)]
+print(tupleslist[2]) #print (80, 34)
+print(tupleslist[2][1]) #print 34
+
+#Functions
+def functionnamesayhi(parametervariable, parameterage):
+    print("Hello User " + parametervariable + ", you are " + str(age))
+
+
+personname = "Mike"
+age = 35
+functionnamesayhi(personname, age) #return Hello User Mike, you are 35.  Calling function to execute function.  Calls function.
+personname = "Steve"
+age = 70
+functionnamesayhi(personname, age) #return Hello User Steve, you are 70
+def cube(number):
+    return number * number * number
+    print("The print statement is not printed below the return keyword.  return breaks out of the function.")
+
+
+print(cube(3)) #print 27
+resultvariable = cube(4)
+print(resultvariable) #print 64
+
+#If statements
+ismale = False
+istall = False
+if ismale or istall:
+    print("Execute when the if is True.  You are a male or tall or both.")
+else:
+    print("Execute when the condition above is False.  You are neither male nor tall.") #print Execute when the condition above is False.  You are neither male nor tall.
+ismale = True
+istall = True
+if ismale and istall:
+    print("Execute when the if is True.  You are a tall male.") #print Execute when the if is True.  You are a tall male.
+else:
+    print("Execute when the condition above is False.  You are either not male or tall or both.")
+ismale = False
+istall = True
+if ismale and istall:
+    print("Execute when the if is True.  You are a tall male.")
+elif ismale and not(istall):
+    print("You are a short male.")
+elif not ismale and (istall):
+    print("You are a tall female.") #print You are a tall female.
+else:
+    print("You are a short female.")
+def maximumnumber(num1, num2, num3):
+    if num1 >= num2 and num1 >= num3:
+        return num1
+    elif num2 >= num1 and num2 >= num3:
+        return num2
+    else:
+        return num3
+
+
+print(maximumnumber(3, 40, 5)) #print 40
+
+num1 = 6
+# num1 = float(input("Enter first number: "))
+operator = "*"
+# operator = input("Enter operator +, -, *, /: ")
+num2 = 5.23
+# num2 = float(input("Enter second number: "))
+if operator == "+":
+    print(num1 + num2)
+elif operator == "-":
+    print(num1 - num2)
+elif operator == "*":
+    print(num1 * num2) #print 31.380000000000003
+elif operator == "/":
+    print(num1 / num2)
+else:
+    print("Invalid operator")
+
+#Dictionary
+monthconversion = {"Jan": "January", "Feb": "February", "Mar": "March", "Apr": "April", "May": "May", "Jun": "June", "Jul": "July", "Aug": "August", "Sep": "September", "Oct": "October", "Nov": "November", "Dec": "December"}
+print(monthconversion) #print {'Jan': 'January', 'Feb': 'February', 'Mar': 'March', 'Apr': 'April', 'May': 'May', 'Jun': 'June', 'Jul': 'July', 'Aug': 'August', 'Sep': 'September', 'Oct': 'October', 'Nov': 'November', 'Dec': 'December'}
+print(monthconversion["Nov"]) #print November
+print(monthconversion.get("Dec")) #print December
+print(monthconversion.get("Luv")) #print None
+print(monthconversion.get("Luv", "Default valid not a valid Key")) #print Default valid not a valid Key
+
+#While loop
+counteri = 1
+while counteri <= 10:
+    print("Condition variable counteri is true", counteri)
+    '''
+    Condition variable counteri is true 1
+    Condition variable counteri is true 2
+    Condition variable counteri is true 3
+    Condition variable counteri is true 4
+    Condition variable counteri is true 5
+    Condition variable counteri is true 6
+    Condition variable counteri is true 7
+    Condition variable counteri is true 8
+    Condition variable counteri is true 9
+    Condition variable counteri is true 10
+    '''
+    counteri += 1
+print("counteri is 11.  Exit while loop.  While loop counteri completed.") #print counteri is 11.  Exit while loop.  While loop counteri completed.
+# secretword = "giraffe"
+# guess = ""
+# guesscount = 0
+# guesslimit = 3
+# outofguesses = False
+# while guess != secretword and outofguesses is False:
+#     if guesscount < guesslimit:
+#         print("Cheat.  The secret word is " + secretword)
+#         guess = input("Enter guess: ")
+#         #guess = secretword #cheat to immediately exit while loop
+#         guesscount += 1
+#     else:
+#         outofguesses = True
+# if outofguesses:
+#     print("You lose!  Exit while loop.")
+# else:
+#     print("You win!  Exit while loop.")
+secretword = "giraffe"
+guess = ""
+guesscount = 0
+guesslimit = 3
+while guess != secretword:
+    if guesscount == guesslimit:
+        print("You lose!  Exit while loop.")
+        break
+    else:
+        print("Cheat.  The secret word is " + secretword)
+        guess = input("Enter guess: ")
+        #guess = secretword #cheat to immediately exit while loop
+        if guess == secretword:
+            print("You win!  Exit while loop.")
+            break
+        guesscount += 1
