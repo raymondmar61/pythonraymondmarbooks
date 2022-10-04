@@ -216,3 +216,93 @@ while guess != secretword:
             print("You win!  Exit while loop.")
             break
         guesscount += 1
+for differentvaluevariable in "letter in string":
+    print(differentvaluevariable) #print l\n e\n t\n t\n e\n r\n \n i\n n\n \n s\n t\n r\n i\n n\n g
+arrayvariable = ["Jim", "Karen", "Kevin"]
+for friend in arrayvariable:
+    print(friend)
+    '''
+    Jim
+    Karen
+    Kevin
+    '''
+for index in range(3, 10):
+    print(index) #print 3\n 4\n 5\n 6\n 7\n 8\n 9
+for arrayvariableindex in range(len(arrayvariable)):
+    print(arrayvariable[arrayvariableindex])
+    '''
+    Jim
+    Karen
+    Kevin
+    '''
+print(2**3) #print 8 RM:  exponents
+def raisetopower(basenumber, powernumber):
+    result = 1
+    for index in range(powernumber):
+        result = result * basenumber
+    return result
+
+
+print(raisetopower(2, 3)) #print 8
+print(raisetopower(3, 2)) #print 9
+print(raisetopower(3, 4)) #print 81
+twodimensionlist = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [0]]
+print(twodimensionlist[0][0]) #print 1
+print(twodimensionlist[2][1]) #print 8
+for row in twodimensionlist:
+    print(row)
+    '''
+    [1, 2, 3]
+    [4, 5, 6]
+    [7, 8, 9]
+    [0]
+    '''
+    for column in row:
+        print(column)
+        '''
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        8
+        9
+        0
+        '''
+#Giraffe language.  All vowels is the letter g.  For example, dog is dgg, cat is cgt.
+def translate(phrase):
+    translation = ""
+    for letter in phrase:
+        if letter.lower() in "aeiou":
+            if letter.isupper():
+                translation = translation + "G"
+            else:
+                translation = translation + "g"
+        else:
+            translation = translation + letter
+    return translation
+
+
+#print(translate(input("Enter a phrase: "))) #dog prints dgg
+print(translate("To be or not to be")) #print Tg bg gr ngt tg bg
+print(translate("On")) #print Gn
+number = int(input("Enter an integer number: "))
+print(number) #print 4
+
+number = "String input"
+try:
+    print(int(number))
+except ValueError:
+    print("ValueError print statement") #print ValueError print statement
+
+try:
+    number = int(input("Enter an integer number: "))
+    print("Valid input " + str(number)) #print Valid input 4.  RM:  I can't get any of the excepts to be printed.  invalid literal for int() with base 10: 'were' is returned.
+except ZeroDivisionError as saveerrorasvariable:
+    print("Divided by zero")
+except ValueError as saveerrorasvariable:
+    print(saveerrorasvariable)
+except:
+    print("What the heck.  The default except must be last.")
