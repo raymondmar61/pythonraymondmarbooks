@@ -306,3 +306,64 @@ except ValueError as saveerrorasvariable:
     print(saveerrorasvariable)
 except:
     print("What the heck.  The default except must be last.")
+variablerepresentfile = open("/home/mar/python/employees.txt", "r")
+print(variablerepresentfile.readable()) #print True
+print(variablerepresentfile.read())
+'''
+Jim - Salesman
+Dwight - Salesman
+Pam - Receptionist
+Michael - Manager
+Oscar - Accountant
+'''
+print(variablerepresentfile.readline()) #print Jim - Salesman.  RM:  readline() works if no read().
+print(variablerepresentfile.readline()) #print Dwight - Salesman.  RM:  readline() works if no read().
+print(variablerepresentfile.readline()) #print Pam - Receptionist.  RM:  readline() works if no read().
+print(variablerepresentfile.readlines()) #print ['Jim - Salesman\n', 'Dwight - Salesman\n', 'Pam - Receptionist\n', 'Michael - Manager\n', 'Oscar - Accountant'].  RM:  readline() works if no read().
+for x in variablerepresentfile:
+    print(x)
+    '''
+    Jim - Salesman
+
+    Dwight - Salesman
+
+    Pam - Receptionist
+
+    Michael - Manager
+
+    Oscar - Accountant
+    '''
+for xreadlines in variablerepresentfile.readlines():  #readline() works if no read().
+    print(xreadlines)
+    '''
+    Jim - Salesman
+
+    Dwight - Salesman
+
+    Pam - Receptionist
+
+    Michael - Manager
+
+    Oscar - Accountant
+    '''
+variablerepresentfile.close()
+
+with open("/home/mar/python/employees.txt", "r") as anothervariablepresentfile:
+    print(anothervariablepresentfile) #print <_io.TextIOWrapper name='/home/mar/python/employees.txt' mode='r' encoding='UTF-8'>
+    for x in anothervariablepresentfile:
+        print(x)
+        '''
+        Jim - Salesman
+
+        Dwight - Salesman
+
+        Pam - Receptionist
+
+        Michael - Manager
+
+        Oscar - Accountant
+        '''
+variablerepresentfile = open("/home/mar/python/employees.txt", "a")
+variablerepresentfile.write("\nToby - Human Resources")
+variablerepresentfile.write("\nKelly - Customer Service")
+variablerepresentfile.close()
