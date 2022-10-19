@@ -367,3 +367,167 @@ variablerepresentfile = open("/home/mar/python/employees.txt", "a")
 variablerepresentfile.write("\nToby - Human Resources")
 variablerepresentfile.write("\nKelly - Customer Service")
 variablerepresentfile.close()
+'''
+usefultools.py module Python file
+
+import random
+feetinmile = 5280
+metersinkilometer = 1000
+beatles = ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"]
+def getfileextension(filename):
+    return filename[filename.index(".") + 1:]
+def rolldice(number):
+    return random.randint(1, number)
+'''
+#Modules webpage module webpage docs.python.org/3/py-modindex.html.  Modules with a lib reference is an external module saved to the lib directory.  Modules without a lib reference are built-in to Python.  /usr/local/lib/python3.8/dist-packages? for my Ubuntu.  No.  /home/mar/.local/lib/python3.8/site-packages.  Yes.  Module location module files modules file modules folder modules directory.
+
+import usefultools
+print(usefultools.feetinmile) #print 5280
+print(usefultools.beatles) #print ['John Lennon', 'Paul McCartney', 'George Harrison', 'Ringo Starr']
+print(usefultools.beatles[1]) #print Paul McCartney
+print(usefultools.getfileextension("text.txt")) #print txt
+print(usefultools.rolldice(10)) #print 10
+class Student:
+    def __init__(self, name, major, gpa, isonprobation):
+        self.name = name
+        self.major = major
+        self.gpa = gpa
+        self.isonprobation = isonprobation
+
+
+student1 = Student("Jim", "Business", 3.1, False)
+print(student1) #print <__main__.Student object at 0x7fa1597334c0>
+print(student1.name) #print Jim
+print(student1.gpa) #print 3.1
+student2 = Student("Pam", "Art", 2.5, True)
+print(student2) #print <__main__.Student object at 0x7fb275227850>
+print(student2.name) #print Pam
+print(student2.gpa) #print 2.5
+questionprompts = ["What color are applies?\n(a) Red or Green\n(b) Purple\n(c) Orange\n\n", "What color are Bananas?\n(a) Teal\n(b) Magenta\n(c) Yellow\n\n", "What color are strawberries?\n(a) Yellow\n(b) Red\n(c) Blue\n\n"]
+for eachquestion in questionprompts:
+    print(eachquestion)
+    '''
+    What color are applies?
+    (a) Red or Green
+    (b) Purple
+    (c) Orange
+
+
+    What color are Bananas?
+    (a) Teal
+    (b) Magenta
+    (c) Yellow
+
+
+    What color are strawberries?
+    (a) Yellow
+    (b) Red
+    (c) Blue
+    '''
+
+class Question:
+    def __init__(self, prompt, answer):
+        self.prompt = prompt
+        self.answer = answer
+
+
+questionsandanswers = [Question(questionprompts[0], "a"), Question(questionprompts[1], "c"), Question(questionprompts[2], "b")]
+def quiz(inputquestions):
+    #print(inputquestions) #print ['What color are applies?\n(a) Red or Green\n(b) Purple\n(c) Orange\n\n', 'What color are Bananas?\n(a) Teal\n(b) Magenta\n(c) Yellow\n\n', 'What color are strawberries?\n(a) Yellow\n(b) Red\n(c) Blue\n\n']
+    score = 0
+    for eachinputquestions in inputquestions:
+        print("eachinputquestions.prompt " + eachinputquestions.prompt)
+        print("eachinputquestions.answer " + eachinputquestions.answer)
+        useranswer = input(eachinputquestions.prompt)
+        if useranswer == eachinputquestions.answer:
+            score += 1
+    print("You got " + str(score) + "/" + str(len(questionprompts)) + " correct")
+
+
+quiz(questionsandanswers)
+'''
+eachinputquestions.prompt What color are applies?
+(a) Red or Green
+(b) Purple
+(c) Orange
+
+
+eachinputquestions.answer a
+What color are applies?
+(a) Red or Green
+(b) Purple
+(c) Orange
+
+a
+eachinputquestions.prompt What color are Bananas?
+(a) Teal
+(b) Magenta
+(c) Yellow
+
+
+eachinputquestions.answer c
+What color are Bananas?
+(a) Teal
+(b) Magenta
+(c) Yellow
+
+b
+eachinputquestions.prompt What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+
+eachinputquestions.answer b
+What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+c
+You got 1/3 correct
+'''
+class Student:
+    def __init__(self, name, major, gpa):
+        self.name = name
+        self.major = major
+        self.gpa = gpa
+    def honorroll(self):
+        if self.gpa >= 3.5:
+            return True
+        else:
+            return False
+    def favoritehobby(self, hobby):
+        print(self.name + "'s favorite hobby is " + hobby + ".")
+
+
+student1 = Student("Oscar", "Accounting", 3.1)
+student2 = Student("Phyllis", "Business", 3.8)
+print(student1.honorroll()) #print False
+print(student2.honorroll()) #print True
+student1.favoritehobby("cooking") #return Oscar's favorite hobby is cooking.
+student2.favoritehobby("sewing") #return Phyllis's favorite hobby is sewing.
+
+class Chef:
+    def makechicken(self):
+        print("The chef makes a chicken")
+    def makesalad(self):
+        print("The chef makes a salad")
+    def makespecialdish(self):
+        print("The chef makes bbq ribs")
+
+#class inheritance.  Chinesechef class uses Chef class functions.
+class Chinesechef(Chef):
+    def makefriedrice(self):
+        print("The chef makes fried rice")
+    def makespecialdish(self):
+        print("The chef makes orange chicken")
+
+
+mychef = Chef()
+mychef.makechicken() #return The chef makes a chicken
+mychef.makespecialdish() #return The chef makes bbq ribs
+mychinesechef = Chinesechef()
+mychinesechef.makespecialdish() #return The chef makes orange chicken
+mychinesechef.makesalad() #return The chef makes a salad
+mychinesechef.makechicken() #return The chef makes a chicken
