@@ -173,3 +173,186 @@ The player rolled a 1 and a 4 totaling 5
 The player rolled a 4 and a 5 totaling 9
 Winner
 '''
+def functiondefaultvalues(length=2, width=3):
+    "Calculate the area of a rectangle.  Default is length 2 and width 3."
+    return length * width
+
+
+print(functiondefaultvalues.__doc__) #print Calculate the area of a rectangle.  Default is length 2 and width 3.
+print(functiondefaultvalues(7, 3)) #print 21
+print(functiondefaultvalues(width=5, length=2)) #print 10
+print(functiondefaultvalues) #print <function functiondefaultvalues at 0x7fa30e1441f0>
+print(functiondefaultvalues()) #print 6
+print(functiondefaultvalues(width=3.5)) #print 7.0
+print(functiondefaultvalues(1.5)) #print 4.5
+def multiplearguments(*numbers):
+    return sum(numbers), (sum(numbers) / len(numbers))
+
+
+print(multiplearguments(78, 33, 22, 98)) #print (231, 57.75)
+print(multiplearguments(78, 33, 22, 98)[0]) #print 231
+print(multiplearguments(78, 33, 22, 98)[1]) #print 57.75
+print(type(multiplearguments(78, 33, 22, 98)[1])) #print <class 'float'>
+methodexercise = "Hello"
+print(methodexercise.lower()) #print hello
+print(methodexercise.upper()) #print HELLO
+
+globalvariablex = 7
+def accessglobalvariable():
+    print("globalvariablex printed from accessglobalvariable function", globalvariablex)
+
+
+accessglobalvariable() #return globalvariablex printed from accessglobalvariable function 7
+def modifyglobalvariable():
+    globalvariablex = 3.5
+    print("globalvariablex printed from modifyglobalvariable function", globalvariablex)
+
+
+modifyglobalvariable() #return globalvariablex printed from modifyglobalvariable function 3.5
+print(globalvariablex) #print 7
+def changeglobalvariable():
+    global globalvariablex
+    globalvariablex = 178939
+    print("globalvariablex printed from changeglobalvariable function", globalvariablex)
+
+
+changeglobalvariable() #return globalvariablex printed from changeglobalvariable function 178939
+print(globalvariablex) #print 178939
+
+#Recursion
+#A factorial of a positive integer n written n! pronounced "n factorial."  n * (n-1) *(n-2) . . . 1.  1! equals 1.  0! defined as 1.
+factorial = 1
+for forloopfactorial in range(5, 0, -1):
+    print(factorial, forloopfactorial)
+    '''
+    1 5
+    5 4
+    20 3
+    60 2
+    120 1
+    '''
+    factorial = factorial * forloopfactorial
+print(factorial) #print 120
+#A recursive function is capable of solving only the simplest case or base case.  If you call the function with a base case, the function returns a result immediately.  If you call the function with a more complex problem, it divides the problem into two pieces.  The first piece is the function knows how to do.  The second piece is the function doesn't know how to do.  The second piece must be a slightly simpler or smaller version of the original problem.  The function calls a fresh copy of its own function to work on the smaller problem; the new problem resembles the original problem referred to as a recursive call and recursion step.
+#The recursion step executes while the original function call is still active.  It can result in many more recursive calls as the function divides each new subproblem into two conceptual pieces.  Each time the function calls itself with a simpler version of the original problem, the sequence of smaller and smaller problems must converge on a base case for the recursion to terminate.  The function returns a result of the previous copy of the function when the function recognizes the base case.
+#factorialfunction below explanation.  If number <=1 is True, factorialfunction returns 1 and no further recursion is necessary.  If number is greater than 1, the second return statement is the product of number and a recursive call to factorialfunction which evalulates factorialfunction(number-1).
+def factorialfunction(number):
+    if number <= 1:
+        print("Prepare to return number=1")
+        return 1 #base case
+    print(number, (number - 1), (number * factorialfunction(number - 1)))
+    return number * factorialfunction(number - 1) #recursive call
+
+
+for i in range(6):
+    print(f"{i}!={factorialfunction(i)}")
+    print("\n")
+'''
+Prepare to return number=1
+0!=1
+
+Prepare to return number=1
+1!=1
+
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+2!=2
+
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3!=6
+
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+4 3 24
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+4!=24
+
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+4 3 24
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+5 4 120
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+4 3 24
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+3 2 6
+Prepare to return number=1
+2 1 2
+Prepare to return number=1
+5!=120
+'''
+
+import math
+#RM:  some of the function are standard Python no need to use the math module
+roundup = math.ceil(9.2)
+print(roundup) #print 10
+roundup = math.ceil(-9.8)
+print(roundup) #print -9
+rounddown = math.floor(9.2)
+print(rounddown) #print 9
+rounddown = math.floor(-9.8)
+print(rounddown) #print -10
+exponent = pow(2, 4)
+print(exponent) #print 16
+squareroot = math.sqrt(9)
+print(squareroot)
+absolutevalue = abs(-5.1)
+print(absolutevalue) #print 5.1
+absolutevalue = abs(-700)
+print(absolutevalue) #print 700
+absolutevaluealwaysfloat = math.fabs(-5.1)
+print(absolutevaluealwaysfloat) #print 5.1
+absolutevaluealwaysfloat = math.fabs(-700)
+print(absolutevaluealwaysfloat) #print 700.0
+remainder = 10 % 5
+print(remainder) #print 0
+remainderalwaysfloat = math.remainder(10, 5)
+print(remainderalwaysfloat) #print 0.0
+remainderalwaysfloat = math.fmod(10, 5)
+print(remainderalwaysfloat) #print 0.0
+import statistics as stats
+useasclausereferencemodule = [85, 93, 45, 87, 93]
+print(stats.mean(useasclausereferencemodule)) #print 80.6
+#Avoid wildcard imports from modulename import *; for example, from math import *
+print(7 is 7) #print True
+print(7 == 7) #print True
+print(stats.mean(useasclausereferencemodule) is 80.6) #print False
+print(stats.mean(useasclausereferencemodule) == 80.6) #print True
+print(stats.mean(useasclausereferencemodule) is stats.mean(useasclausereferencemodule)) #print False
