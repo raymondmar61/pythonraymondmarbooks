@@ -356,3 +356,139 @@ print(7 == 7) #print True
 print(stats.mean(useasclausereferencemodule) is 80.6) #print False
 print(stats.mean(useasclausereferencemodule) == 80.6) #print True
 print(stats.mean(useasclausereferencemodule) is stats.mean(useasclausereferencemodule)) #print False
+
+#Python For Programmers by Paul Deitel Chapter 05 Sequences:  Lists And Tuples
+integerlist = [-45, 6, 0, 72, 1543]
+print(integerlist) #print [-45, 6, 0, 72, 1543]
+print(integerlist[0]) #print -45
+print(integerlist[-5]) #print -45
+print(integerlist[4]) #print 1543
+integerlist[-1] = 17
+print(integerlist) #print [-45, 6, 0, 72, 17]
+lista = [10, 20, 30, 100]
+listb = [40, 50]
+combinelist = lista + listb #concatenate lists
+print(combinelist) #print [10, 20, 30, 100, 40, 50]
+print(lista > listb) #print False.  Book said True because lista has four elements.  listb has two elements.
+studenttuple = ()
+studenttuple = "John", "Green", 3.3
+print(studenttuple) #print ('John', 'Green', 3.3)
+colors = ["red", "orange", "yellow"]
+print(list(enumerate(colors))) #print [(0, 'red'), (1, 'orange'), (2, 'yellow')]
+print(tuple(enumerate(colors))) #print ((0, 'red'), (1, 'orange'), (2, 'yellow'))
+for index, value in list(enumerate(colors)):
+    print(index, value)
+    '''
+    0 red
+    1 orange
+    2 yellow
+    '''
+primitivebarchart = [19, 3, 15, 7, 11]
+for index, value in enumerate(primitivebarchart):
+    print(index, value, ("*" * value))
+    '''
+    0 19 *******************
+    1 3 ***
+    2 15 ***************
+    3 7 *******
+    4 11 ***********
+    '''
+slicelistnumbers = [2, 3, 5, 7, 11, 13, 17, 19]
+print(slicelistnumbers[2:6]) #print [5, 7, 11, 13]
+print(slicelistnumbers[:6]) #print [2, 3, 5, 7, 11, 13]
+print(slicelistnumbers[6:]) #print [17, 19]
+print(slicelistnumbers[::2]) #print [2, 5, 11, 17]
+print(slicelistnumbers[::-1]) #print [19, 17, 13, 11, 7, 5, 3, 2]
+print(slicelistnumbers[-3::-2]) #print [13, 7, 3]
+slicelistnumbers[0:3] = ["two", "three", "five"]
+print(slicelistnumbers) #print ['two', 'three', 'five', 7, 11, 13, 17, 19]
+slicelistnumbers[0:3] = []
+print(slicelistnumbers) #print [7, 11, 13, 17, 19]
+slicetoreplacelistnumbers = [2, 3, 5, 7, 11, 13, 17, 19]
+print(slicetoreplacelistnumbers) #print [2, 3, 5, 7, 11, 13, 17, 19]
+slicetoreplacelistnumbers[::2] = [100, 100, 100, 100]
+print(slicetoreplacelistnumbers) #print [100, 3, 100, 7, 100, 13, 100, 19]
+replaceonehundred = [2, 3, 5, 7, 11, 13, 17, 19, 21]
+print(replaceonehundred) #print [2, 3, 5, 7, 11, 13, 17, 19, 21]
+print(len(replaceonehundred)) #print 9
+import math
+counter = math.ceil(len(replaceonehundred) / 2) #round up
+print(counter) #print 5
+blanklist = [100 for i in range(0, counter)]
+print(blanklist) #print [100, 100, 100, 100, 100]
+replaceonehundred[::2] = blanklist
+print(replaceonehundred) #print [100, 3, 100, 7, 100, 13, 100, 19, 100]
+#Delete elements delete items from a list
+removenumbers = list(range(0, 10))
+print(removenumbers) #print [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+del(removenumbers[-1])
+print(removenumbers) #print [0, 1, 2, 3, 4, 5, 6, 7, 8]
+del removenumbers[0:2]
+print(removenumbers) #print [2, 3, 4, 5, 6, 7, 8]
+del removenumbers[::2]
+print(removenumbers) #print [3, 5, 7]
+del removenumbers[:]
+print(removenumbers) #print []
+sortnumbers = [10, 3, 7, 1, 9, 4, 2, 8, 5, 6]
+print(sortnumbers) #print [10, 3, 7, 1, 9, 4, 2, 8, 5, 6]
+print(sortnumbers.sort()) #print None
+sortmethod = sortnumbers.sort() #The .sort method must be stand alone.  No assigned variable.  No inside a print function.
+print(sortmethod) #print None
+sortedfunction = sorted(sortnumbers)
+print(sortedfunction) #print [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sortlettersinstring = "fadgchjebi"
+print(sorted(sortlettersinstring, reverse=True)) #print ['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
+searchlistelement = ["dog", "cat", "bird", "butterfly", "squarrel", "lady bug", "fish", "cat", "squarrel", "parrot", "snake"]
+print(searchlistelement.index("bird")) #print 2.  Print index number return index.
+print(searchlistelement.index("cat", 3)) #print 7.  Start search for cat at index number 3.
+print(searchlistelement.index("squarrel", 0, 5)) #print 4.  Start search for squarrel at index number 0 and end at index 4.
+searchlistelement.insert(1, "elephant")
+print(searchlistelement) #print ['dog', 'elephant', 'cat', 'bird', 'butterfly', 'squarrel', 'lady bug', 'fish', 'cat', 'squarrel', 'parrot', 'snake']
+searchlistelement.append("last animal hamster")
+print(searchlistelement) #print ['dog', 'elephant', 'cat', 'bird', 'butterfly', 'squarrel', 'lady bug', 'fish', 'cat', 'squarrel', 'parrot', 'snake', 'last animal hamster']
+searchlistelement.extend(["more items", "added as a list"])
+print(searchlistelement) #print ['dog', 'elephant', 'cat', 'bird', 'butterfly', 'squarrel', 'lady bug', 'fish', 'cat', 'squarrel', 'parrot', 'snake', 'last animal hamster', 'more items', 'added as a list']
+searchlistelement.remove("cat") #.remove deletes the first element in the list starting from the beginning.
+print(searchlistelement) #print ['dog', 'elephant', 'bird', 'butterfly', 'squarrel', 'lady bug', 'fish', 'cat', 'squarrel', 'parrot', 'snake', 'last animal hamster', 'more items', 'added as a list']
+searchlistelement.clear() #delete all elements in list
+quickstringtolist = []
+letters = "abcdefghijklmn"
+quickstringtolist.extend(letters)
+print(quickstringtolist) #print ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']
+quickstringtolist.reverse()
+print(quickstringtolist) #print ['n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
+letters = "abcdefghijklmn"
+reversedfunction = reversed(letters)
+print(reversedfunction) #print <reversed object at 0x7fa649495b50>
+reversedletters = [eachletters for eachletters in reversed(letters)]
+print(reversedletters) #print ['n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
+countelementsinalist = [1, 2, 5, 4, 3, 5, 2, 1, 3, 3, 1, 4, 3, 3, 3, 2, 3, 3, 2, 2]
+for i in range(1, 6):
+    print(f"{i} appears {countelementsinalist.count(i)} times.")
+    '''
+    1 appears 3 times.
+    2 appears 5 times.
+    3 appears 8 times.
+    4 appears 2 times.
+    5 appears 2 times.
+    '''
+searchlistelement = ["dog", "cat", "bird", "butterfly", "squarrel", "lady bug", "fish", "cat", "squarrel", "parrot", "snake"]
+copysearchlistelement = searchlistelement.copy()
+print(copysearchlistelement) #print ['dog', 'cat', 'bird', 'butterfly', 'squarrel', 'lady bug', 'fish', 'cat', 'squarrel', 'parrot', 'snake']
+pushappendpop = []
+pushappendpop.append("red") #insert element end of list
+print(pushappendpop) #print ['red']
+pushappendpop.append("green")
+print(pushappendpop) #print ['red', 'green']
+pushappendpop.pop() #delete element end of list
+print(pushappendpop) #print ['red']
+#Lambda to define a function inline.  A lambda expression is an anonymous function without a name.  lambda parameterlist: expression
+numbers = [10, 3, 7, 1, 9, 4, 2, 8, 5, 6]
+oddnumbers = list(filter(lambda x: x % 2 != 0, numbers))
+print(oddnumbers) #print [3, 7, 1, 9, 5]
+exponents = list(map(lambda x: x**2, numbers))
+print(exponents) #print [100, 9, 49, 1, 81, 16, 4, 64, 25, 36]
+exponentslistcomprehension = [eachnumbers**2 for eachnumbers in numbers]
+print(exponentslistcomprehension) #print [100, 9, 49, 1, 81, 16, 4, 64, 25, 36]
+oddnumbersexponentslistcomprehension = [eachnumbers**2 for eachnumbers in numbers if eachnumbers % 2 != 0]
+print(oddnumbersexponentslistcomprehension) #print [9, 49, 1, 81, 25]
