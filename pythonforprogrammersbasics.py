@@ -492,3 +492,22 @@ exponentslistcomprehension = [eachnumbers**2 for eachnumbers in numbers]
 print(exponentslistcomprehension) #print [100, 9, 49, 1, 81, 16, 4, 64, 25, 36]
 oddnumbersexponentslistcomprehension = [eachnumbers**2 for eachnumbers in numbers if eachnumbers % 2 != 0]
 print(oddnumbersexponentslistcomprehension) #print [9, 49, 1, 81, 25]
+
+#Python For Programmers by Paul Deitel Chapter 06 Dictionaries And Sets
+dayspermonth = {"January": 31, "February": 28, "March": 31}
+print(dayspermonth) #print {'January': 31, 'February': 28, 'March': 31}
+print(len(dayspermonth)) #print 3
+for keymonth, valuedays in dayspermonth.items():
+    print(keymonth, valuedays)
+    '''
+    January 31
+    February 28
+    March 31
+    '''
+dayspermonth["February"] = 38
+print(dayspermonth["February"]) #print 38
+dayspermonth["AddApril"] = 31
+print(dayspermonth) #print {'January': 31, 'February': 38, 'March': 31, 'AddApril': 31}
+del dayspermonth["February"]
+print(dayspermonth) #print {'January': 31, 'March': 31, 'AddApril': 31}
+print("May" in dayspermonth) #print False
