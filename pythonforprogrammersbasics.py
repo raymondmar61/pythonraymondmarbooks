@@ -511,3 +511,80 @@ print(dayspermonth) #print {'January': 31, 'February': 38, 'March': 31, 'AddApri
 del dayspermonth["February"]
 print(dayspermonth) #print {'January': 31, 'March': 31, 'AddApril': 31}
 print("May" in dayspermonth) #print False
+months = {"January": 1, "February": 2, "March": 3}
+print(months) #print {'January': 1, 'February': 2, 'March': 3}
+savekeysasvariable = months.keys()
+print(savekeysasvariable) #print dict_keys(['January', 'February', 'March'])
+for eachkey in savekeysasvariable:
+    print(eachkey)
+    '''
+    January
+    February
+    March
+    '''
+months["Add December"] = 12
+print(months) #print {'January': 1, 'February': 2, 'March': 3, 'Add December': 12}
+dictionarylistkeys = list(months.keys())
+print(dictionarylistkeys) #print ['January', 'February', 'March', 'Add December']
+dictionarylistitems = list(months.items())
+print(dictionarylistitems) #print [('January', 1), ('February', 2), ('March', 3), ('Add December', 12)]
+print(type(dictionarylistitems)) #print <class 'list'>
+print(dictionarylistitems[1]) #print ('February', 2)
+print(dictionarylistitems[1][1]) #print 2
+countrycodes = {}
+countrycodes.update({"South Africa": "ra"}) #insert key value in dictionary countrycodes
+print(countrycodes) #print {'South Africa': 'ra'}
+countrycodes.update({"Australia": "ar"})
+print(countrycodes) #print {'South Africa': 'ra', 'Australia': 'ar'}
+countrycodes.update({"Australia": "au"}) #correct value replace value
+print(countrycodes) #print {'South Africa': 'ra', 'Australia': 'au'}
+dictionarycomprehension = {monthnumber: monthname for monthname, monthnumber in months.items()}
+print(dictionarycomprehension) #print {1: 'January', 2: 'February', 3: 'March', 12: 'Add December'}
+#A set is an unordered collection of unique values.  Sets may contain only immutable objects such as strings, integers, floats, and tuples which contain immutable elements.  Sets are mutable.  Elements can be added or be removed.
+colorsset = {"red", "orange", "yellow", "green", "red", "blue", "blue"}
+print(colorsset) #print {'orange', 'green', 'blue', 'red', 'yellow'}
+print(len(colorsset)) #print 5
+duplicatenumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4]
+print(set(duplicatenumbers)) #print {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+print({1, 3, 5} == {3, 5, 1}) #print True
+print({1, 3, 5} != {3, 5, 1}) #print False
+print({1, 3, 5} < {3, 5, 1}) #print False.  #The less than < operator tests all the elements in the left are in the right.  A proper subset.
+print({1, 3, 5} < {7, 3, 5, 1}) #print True
+print({1, 3, 5} < {1, 3, 5, 7}) #print True
+print({1, 3, 5} <= {3, 5, 1}) #print True.  #The less than or equal to <= operator tests all the elements in the left are in the right and the sets might be equal.  An improper subset.
+print({1, 3} <= {3, 5, 1}) #print True.
+print({1, 3, 5}.issubset({3, 5, 1})) #print True.  #Use method issubset().  The less than or equal to <= operator tests all the elements in the left are in the right and the sets might be equal.  An improper subset.
+print({1, 3}.issubset({3, 5, 1})) #print True.
+print({1, 3, 5} > {3, 5, 1}) #print False.  #The greater than > operator tests all the elements in the right are in the left and the left has more elements.  A proper superubset.
+print({1, 3, 5, 7} > {3, 5, 1}) #print True.  #The greater than > operator tests all the elements in the right are in the left and the left has more elements.  A proper supersubset.
+print({1, 3, 5} >= {3, 5, 1}) #print True.  #The greater than or equal to >= operator tests all the elements in the right are in the left and the sets might be equal.  An improper superset.
+print({1, 3, 5, 7} >= {3, 1}) #print True
+print({1, 3} >= {3, 1, 7}) #print False
+print({1, 3, 5}.issuperset({3, 5, 1})) #print True.  #Use method isupserset().  The greater than or equal to >= operator tests all the elements in the right are in the left and the sets might be equal.  An improper superset.
+print({1, 3, 5, 7}.issuperset({3, 2})) #print False
+#The union of two sets is a set consisting of all unique elements for both sets.  The binary set operators must be be sets.
+print({1, 3, 5} | {2, 3, 4}) #print {1, 2, 3, 4, 5}
+print({1, 3, 5}.union({2, 3, 4})) #print {1, 2, 3, 4, 5}
+#The intersection of two sets is a set consisting of all the unqiue elements the two sets have in common.
+print({1, 3, 5} & {2, 3, 4}) #print {3}
+print({1, 3, 5}.intersection({2, 3, 4})) #print {3}
+#The difference between two sets is a set consisting of the elements in the left which are not in the right.
+print({1, 3, 5} - {2, 3, 4}) #print {1, 5}
+print({1, 3, 5}.difference({2, 3, 4})) #print {1, 5}
+#The symmetric difference between two sets is a set consisting of the elments of both sets not in common which each other.
+print({1, 3, 5} ^ {2, 3, 4}) #print {1, 2, 4, 5}
+print({1, 3, 5}.symmetric_difference({2, 3, 4})) #print {1, 2, 4, 5}
+#The disjoint returns True or False if both sets don't have any common elements
+print({1, 3, 5}.isdisjoint({2, 4, 6})) #print True
+print({1, 3, 5}.isdisjoint({4, 6, 1})) #print False
+numbersset = {1, 3, 5, 2, 3, 4}
+print(numbersset) #print {1, 2, 3, 4, 5}
+numbersset.update(range(10))
+print(numbersset) #print {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+numbersset.add(17)
+print(numbersset) #print {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17}
+numbersset.remove(3)
+print(numbersset) #print {0, 1, 2, 4, 5, 6, 7, 8, 9, 17}
+setcomprehension = {eachnumbersset for eachnumbersset in numbersset if eachnumbersset % 2 == 0}
+print(setcomprehension) #print {0, 2, 4, 6, 8}
+#The Law Of Large Numbers.  The more number data generated gets closer to the expected average.
