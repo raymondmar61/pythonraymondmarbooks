@@ -588,3 +588,243 @@ print(numbersset) #print {0, 1, 2, 4, 5, 6, 7, 8, 9, 17}
 setcomprehension = {eachnumbersset for eachnumbersset in numbersset if eachnumbersset % 2 == 0}
 print(setcomprehension) #print {0, 2, 4, 6, 8}
 #The Law Of Large Numbers.  The more number data generated gets closer to the expected average.
+
+#Python For Programmers by Paul Deitel Chapter 07 Array-Oriented Programming With NumPy
+import numpy as np
+numpyarraylist = np.array([2, 3, 5, 7, 11])
+print(numpyarraylist) #print [ 2  3  5  7 11]
+print(type(numpyarraylist)) #print <class 'numpy.ndarray'>
+numpyarraylisttwodimension = np.array([[1, 2, 3], [4, 5, 6]])
+print(numpyarraylisttwodimension)
+'''
+[[1 2 3]
+ [4 5 6]]
+'''
+numpyarraylisttwodimensionfloats = np.array([[0.0, 0.2, 0.3], [0.4, 0.5, 0.6]])
+print(numpyarraylisttwodimensionfloats)
+'''
+[[0.  0.2 0.3]
+ [0.4 0.5 0.6]]
+'''
+print(numpyarraylisttwodimensionfloats.dtype) #print float64
+print(numpyarraylisttwodimensionfloats.ndim) #print 2.  Number of dimensions.
+print(numpyarraylisttwodimensionfloats.shape) #print (2, 3).  Number of rows, columns.
+print(numpyarraylist.shape) #print (5,).  Number of rows, columns which is number of elements for a one dimension array.
+print(numpyarraylisttwodimensionfloats.size) #print 6.  Number of elements.
+print(numpyarraylisttwodimensionfloats.itemsize) #print 8.  Number of bytes required to store each element.
+for iteratemultidimensionasonedimension in numpyarraylisttwodimension.flat:
+    print(iteratemultidimensionasonedimension)
+    '''
+    1
+    2
+    3
+    4
+    5
+    6
+    '''
+fivezeros = np.zeros(5)
+print(fivezeros) #print [0. 0. 0. 0. 0.]
+print(fivezeros.dtype) #print float64.  zeros, ones create float64 by default.
+tworowsfourcolumnsones = np.ones((2, 4), dtype=np.int8)
+print(tworowsfourcolumnsones)
+'''
+[[1 1 1 1]
+ [1 1 1 1]]
+'''
+print(tworowsfourcolumnsones.dtype) #print int8
+threerowsfivecolumns99s = np.full((3, 5), 99, dtype=np.int16)
+print(threerowsfivecolumns99s)
+'''
+[[99 99 99 99 99]
+ [99 99 99 99 99]
+ [99 99 99 99 99]]
+'''
+print(threerowsfivecolumns99s.dtype) #print int16
+integerrange = np.arange(5) #NumPy arange creates integer ranges similar to range function
+print(integerrange) #print [0 1 2 3 4]
+integerrange = np.arange(50, 60)
+print(integerrange) #print [50 51 52 53 54 55 56 57 58 59]
+integerrange = np.arange(10, 1, -2)
+print(integerrange) #print [10  8  6  4  2]
+floatrange = np.linspace(0.0, 1.0, num=5)
+print(floatrange) #print [0.   0.25 0.5  0.75 1.  ]
+floatrange = np.linspace(0.0, 1.0, num=10)
+print(floatrange) #print [0.         0.11111111 0.22222222 0.33333333 0.44444444 0.55555556 0.66666667 0.77777778 0.88888889 1.        ]
+reshapeimmediately = np.arange(1, 21).reshape(4, 5)
+print(reshapeimmediately)
+'''
+[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]
+ [11 12 13 14 15]
+ [16 17 18 19 20]]
+'''
+print(reshapeimmediately.reshape(2, 10))
+'''
+[[ 1  2  3  4  5  6  7  8  9 10]
+ [11 12 13 14 15 16 17 18 19 20]]
+'''
+numpyrandomintegers = np.random.randint(1, 7, 6)
+print(numpyrandomintegers) #print [5 3 5 3 2 2]
+arithmeticnumpy = np.arange(1, 6)
+print(arithmeticnumpy) #print [1 2 3 4 5]
+print(arithmeticnumpy * 4) #print [ 4  8 12 16 20]
+print(arithmeticnumpy ** 2) #print [ 1  4  9 16 25]
+print(arithmeticnumpy + 10) #print [11 12 13 14 15]
+arithmeticnumpy += 300
+print(arithmeticnumpy) #print [301 302 303 304 305]
+#Broadcasting is NumPy performs arithmetic calculations with an array of the same shape with values
+arithmeticnumpylinspace = np.linspace(1.1, 5.5, 5)
+print(arithmeticnumpylinspace) #print [1.1 2.2 3.3 4.4 5.5]
+arithmeticnumpy = np.arange(1, 6)
+print(arithmeticnumpy) #print [1 2 3 4 5]
+print(arithmeticnumpy + arithmeticnumpylinspace) #print [ 2.1  4.2  6.3  8.4 10.5]
+print(arithmeticnumpy * arithmeticnumpylinspace) #print [ 1.1  4.4  9.9 17.6 27.5]
+comparingarrays = np.arange(11, 16)
+print(comparingarrays) #print [11 12 13 14 15]
+print(comparingarrays > 13) #print [False False False  True  True]
+print(comparingarrays > (arithmeticnumpy * arithmeticnumpylinspace)) #print [ True  True  True False False]
+print(comparingarrays == 13) #print [False False  True False False]
+fourstudentsgrades = np.array([[87, 96, 70], [100, 87, 90], [94, 77, 90], [100, 81, 82]])
+print(fourstudentsgrades)
+'''
+[[ 87  96  70]
+ [100  87  90]
+ [ 94  77  90]
+ [100  81  82]]
+'''
+print(fourstudentsgrades.sum()) #print 1054
+print(fourstudentsgrades.min()) #print 70
+print(fourstudentsgrades.max()) #print 100
+print(fourstudentsgrades.mean()) #print 87.83333333333333
+print(fourstudentsgrades.std()) #print 8.792357792739987
+print(fourstudentsgrades.var()) #print 77.30555555555556
+#Calculation methods are performed on specific array dimensions known as the axis.  The axis keyword argument specifies which dimension used in calculating.  axis=0 performs the calculation on the row values within each column.  axis=1 performs the calculation on the column values.  RM:  in plain English, axis=0 calculate column by column, axis=1 calculate row by row.  0 column.  1 row.
+sumexamcorescolumns = fourstudentsgrades.sum(axis=0)
+print(sumexamcorescolumns) #print [381 341 332]
+sumstudentscoresrows = fourstudentsgrades.sum(axis=1)
+print(sumstudentscoresrows) #print [253 277 261 263]
+numpymathfunctions = np.arange(1, 7)
+print(numpymathfunctions) #print [1 2 3 4 5 6]
+print(np.sqrt(numpymathfunctions)) #print [1.         1.41421356 1.73205081 2.         2.23606798 2.44948974]
+numpymathfunctionsmultiply10 = np.arange(1, 7) * 10
+print(numpymathfunctionsmultiply10) #print [10 20 30 40 50 60]
+print(np.add(numpymathfunctions, numpymathfunctionsmultiply10)) #print [11 22 33 44 55 66]
+print(np.multiply(numpymathfunctions, 5)) #print [ 5 10 15 20 25 30]
+'''
+Selected NumPy functions
+Math—add, subtract, multiply, divide, remainder, exp, log, sqrt, power
+Comparison—greater, greater_equal, less, less_equal, equal, not_equal, logical_and, logical_or, logical_xor, logical_not, minimum, maximum
+Floating point—floor, ceil, isinf, isnan, fabs, trunc
+'''
+print(np.greater(numpymathfunctions, 4)) #print [False False False False  True  True]
+print(np.ceil(np.sqrt(numpymathfunctions))) #print [1. 2. 2. 2. 3. 3.]
+fourstudentsgradesindexing = np.array([[87, 96, 70], [100, 87, 90], [94, 77, 90], [100, 81, 82]])
+print(fourstudentsgradesindexing)
+'''
+[[ 87  96  70]
+ [100  87  90]
+ [ 94  77  90]
+ [100  81  82]]
+'''
+print(fourstudentsgradesindexing[1]) #print [100  87  90]
+print(fourstudentsgradesindexing[1, 2]) #print 90
+print(fourstudentsgradesindexing[0:2])
+'''
+[[ 87  96  70]
+ [100  87  90]]
+'''
+print(fourstudentsgradesindexing[[1, 3]]) #Notice multiple non sequential rows need a list or double brackets
+'''
+[[100  87  90]
+ [100  81  82]]
+'''
+secondexam = fourstudentsgradesindexing[:, 1]
+print(secondexam) #print [96 87 77 81]
+firstexamthirdexam = fourstudentsgradesindexing[:, [0, 2]]
+print(firstexamthirdexam)
+'''
+[[ 87  70]
+ [100  90]
+ [ 94  90]
+ [100  82]]
+'''
+thirdfourthstudentsthirdexam = fourstudentsgradesindexing[2:4, 2]
+print(thirdfourthstudentsthirdexam) #print [90 82]
+#reshape returns a view or a copy of the original array.  resize modifies the original array's shape.
+reshapeimmediately = np.arange(1, 21).reshape(4, 5)
+print(reshapeimmediately)
+'''
+[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]
+ [11 12 13 14 15]
+ [16 17 18 19 20]]
+'''
+print(reshapeimmediately.reshape(2, 10))
+'''
+[[ 1  2  3  4  5  6  7  8  9 10]
+ [11 12 13 14 15 16 17 18 19 20]]
+'''
+print(reshapeimmediately.resize(2, 10)) #print None
+#flatten copies the original array's data.  ravel provides a view of the original array's data.
+print(reshapeimmediately.flatten()) #print [ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20]
+print(reshapeimmediately.ravel()) #print [ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20]
+resizeimmediately = np.arange(1, 21)
+print(resizeimmediately) #print [ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20]
+print(resizeimmediately.resize(2, 10)) #print None
+reshapeimmediately = np.arange(1, 21).reshape(4, 5)
+print(reshapeimmediately)
+'''
+[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]
+ [11 12 13 14 15]
+ [16 17 18 19 20]]
+'''
+print(reshapeimmediately.T) #Transpose
+'''
+[[ 1  6 11 16]
+ [ 2  7 12 17]
+ [ 3  8 13 18]
+ [ 4  9 14 19]
+ [ 5 10 15 20]]
+'''
+#Combine arrays add columns or add rows.  Horizontal stacking hstack add columns and vertical stacking vstack add rows.
+fourstudentsgrades = np.array([[87, 96, 70], [100, 87, 90], [94, 77, 90], [100, 81, 82]])
+print(fourstudentsgrades)
+'''
+[[ 87  96  70]
+ [100  87  90]
+ [ 94  77  90]
+ [100  81  82]]
+'''
+twoadditionalstudents = np.array([[94, 77, 90], [100, 81, 82]])
+print(twoadditionalstudents)
+'''
+[[ 94  77  90]
+ [100  81  82]]
+'''
+sixstudentsgrades = np.vstack((fourstudentsgrades, twoadditionalstudents))
+print(sixstudentsgrades)
+'''
+[[ 87  96  70]
+ [100  87  90]
+ [ 94  77  90]
+ [100  81  82]
+ [ 94  77  90]
+ [100  81  82]]
+'''
+threeadditionalexams = np.random.randint(70, 101, 8).reshape(4, 2)
+print(threeadditionalexams)
+'''
+[[ 89  74]
+ [ 92 100]
+ [ 71  90]
+ [ 98  80]]
+'''
+sixexamsgrades = np.hstack((fourstudentsgrades, threeadditionalexams))
+print(sixexamsgrades)
+'''
+[[ 87  96  70  89  74]
+ [100  87  90  92 100]
+ [ 94  77  90  71  90]
+ [100  81  82  98  80]]
+'''
