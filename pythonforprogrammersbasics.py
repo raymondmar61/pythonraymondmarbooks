@@ -828,3 +828,113 @@ print(sixexamsgrades)
  [ 94  77  90  71  90]
  [100  81  82  98  80]]
 '''
+
+#Python For Programmers by Paul Deitel Chapter 08 Strings:  A Deeper Look
+#f-string for float values.  Letter f and the decimal number rounding to format float values.
+print(f"{17.489:.2f}") #print 17.49
+number = 4.567
+print(f"{number:.2f}") #print 4.57
+#f-string for integer values.  Letter d to format integer values.
+print(f"{10:d}") #print 10
+print(f"Sesame street is brought to you by the number {8:d}.") #print Sesame street is brought to you by the number 8.
+print(f"Field width 10 enclosed in brackets to see the integer 27 value align right decimal included in count:  [{27:10d}]") #print Field width 10 enclosed in brackets to see the integer 27 value align right:  [        27]
+print(f"Field width 10 enclosed in backets to see the float 3.5 value align right decimal included in count:  [{3.5:10f}]") #print Field width 10 enclosed in backets to see the float 3.5 value align right[  3.500000]
+print(f"Field width 10 enclosed in backets to see the float 12346578.9 value align right decimal included in count which didn't happend:  [{12345678.9:10f}]") #print Field width 10 enclosed in backets to see the float 12346578.9 value align right decimal included in count which didn't happend:  [12345678.900000]
+print(f"Field width 10 enclosed in backets to see the float 12346578.9 value align right decimal included in count:  [{1.23456789:10f}]") #print Field width 10 enclosed in backets to see the float 12346578.9 value align right decimal included in count which didn't happend:  [  1.234568]
+print(f'[{"hello.  Any number right aligned.  String left aligned.":65}]') #print [hello.  Any number right aligned.  String left aligned.          ]
+print(f'[{"Single quotes inside f.  The sentence is 60 characters long.":63}]') #print [Single quotes inside f.  The sentence is 60 characters long.   ]
+#< left align.  > right align
+print(f"[{27:<15d}]") #print [27             ]
+print(f"[{3.5:<15f}]") #print Floating number width 4 still printed five zeros [3.500000]
+print(f'[{"Brackets assign count right align string 55 characters.":<60}]') #print [Brackets assign count right align string 55 characters.     ]
+print(f'[{"Brackets assign count right align string 55 characters.":<1}]') #print [Brackets assign count right align string 55 characters.]
+print(f"[{27:^8d}]") #print [   27   ]
+print(f"Floating number width 4 still printed five zeros [{3.5:^4f}]") #print [3.500000]
+print(f"[{3.5:^12f}]") #print [  3.500000  ]
+print(f'[{"Center the string or any number using the carrot sign 68 characters.":^74}]') #print [   Center the string or any number using the carrot sign 68 characters.   ].  Extra spaces of an unequal centering placed to the right.
+print(f"Positive sign text numerical value [{27:+4d}]") #print Positive sign text numerical value [ +27]
+print(f"Negative sign text numerical value [{-27:4d}]") #print Negative sign text numerical value [ -27]
+print(f"Positive sign text numerical value [{27:+10d}]") #print Positive sign text numerical value [       +27]
+print(f"Fill with zeros in front of numerical value [{27:+010d}]") #print Fill with zeros in front of numerical value [+000000027]
+print(f"Align positive negative with a space {27: d}") #print Align positive negative with a space  27
+print(f"Align positive negative with a space {-27: d}") #print Align positive negative with a space -27
+print(f"String numerical value with commas {123456789:,d}.") #print String numerical value with commas 123,456,789.
+print(f"String numerical value with commas {123456.78:,.3f}.") #print String numerical value with commas 123,456.780.
+print("String .format method {:.2f}.".format(17.489)) #print String .format method 17.49.
+print("{:.2f}".format(17.489)) #print 17.49
+print(type("{:.2f}".format(17.489))) #print <class 'str'>
+print("Two names multiple placeholders .format {} and {}.".format("Amanda", "Cyan")) #print Two names multiple placeholders .format Amanda and Cyan.
+print("Reference like index {0} and {1} by position number {0}.".format("Happy 0", "Birthday 1")) #print Reference like index Happy 0 and Birthday 1 by position number Happy 0.
+print("Reference arguments {firstreference} and {lastreference} by position reference {firstreference}.".format(lastreference="Birthday", firstreference="Happy")) #print Reference arguments Happy and Birthday by position reference Happy.
+whitespaces = "     five leading whitespace three trailing whitespace   "
+print(whitespaces.strip()) #print five leading whitespace three trailing whitespace
+print(whitespaces.lstrip()) #print five leading whitespace three trailing whitespace123
+print(whitespaces.rstrip()) #print 12345five leading whitespace three trailing whitespace
+print(whitespaces.strip().capitalize()) #print Five leading whitespace three trailing whitespace.  Upper case first word in sentence.  Capialize first word in sentence.
+countto = "to be or not to be that is the question"
+print(countto.count("to")) #print 2
+print(countto.count("to", 4)) #print 1.  Start count at the index number 4
+print(countto.count("that", 19, 23)) #print 1.  Start count at the index number 19 inclusive and end at 23 exclusive
+print(countto.index("be")) #print 3.  Return the index position for the first occurrence starting from the start of the string.
+print(countto.rindex("be")) #print 16.  Return the index position for the first occurrence starting from the end of the string.  The count, however, starts from the beginning.  16 is the index position 16 starting with 0 at the start of the string.
+print("questions" in countto) #print False
+print("THAT" not in countto) #print True
+print("QUESTION" not in countto) #print True
+print(countto.startswith("to")) #print True
+print(countto.startswith("be")) #print False
+print(countto.endswith("question")) #print True
+print(countto.endswith("QUEST")) #print False
+replacestring = "the incorrect word needs to be corrected"
+print(replacestring) #print the incorrect word needs to be corrected
+correctedreplacestring = replacestring.replace("incorrect", "correct")
+print(correctedreplacestring) #print the correct word needs to be corrected
+separatestrings = "A, B, C, D"
+print(separatestrings) #print A, B, C, D
+separatestringstolist = separatestrings.split(", ")
+print(separatestringstolist) #print ['A', 'B', 'C', 'D']
+separatestringstolisttwice = separatestrings.split(", ", 2)
+print(separatestringstolisttwice) #print ['A', 'B', 'C, D']
+joinstringsfromlist = ["A", "B", "C", "D"]
+print(joinstringsfromlist) #print ['A', 'B', 'C', 'D']
+joinstrings = ", ".join(joinstringsfromlist)
+print(joinstrings) #print A, B, C, D
+print(", ".join([str(i) for i in range(10)])) #print 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+studentgradestring = "Amanda: 89, 97, 92"
+print(studentgradestring) #print Amanda: 89, 97, 92
+studentgradestringseparatetuples = studentgradestring.partition(": ")
+print(studentgradestringseparatetuples) #print ('Amanda', ': ', '89, 97, 92')
+#rpartition split search for the separator from the end of the string
+webaddressseparatemultiplevariables = "D:/innovateinfinitely/blog/202212blog.html"
+mainurl, endfowardslash, suburl = webaddressseparatemultiplevariables.rpartition("/")
+print(suburl)
+print(endfowardslash)
+print(mainurl)
+#splitlines reteurns a list of new strings representing the lines of text split at each newline
+threelines = """This is line 1
+    This is line 2
+        This is line 3"""
+print(threelines)
+'''
+This is line 1
+    This is line 2
+        This is line 3
+'''
+onelinelist = threelines.splitlines()
+print(onelinelist) #print ['This is line 1', '    This is line 2', '        This is line 3']
+onelinelistkeepnewlines = threelines.splitlines(True)
+print(onelinelist) #print ['This is line 1', '    This is line 2', '        This is line 3']
+onelinelistkeepnewlines = threelines.splitlines(True)
+print(onelinelistkeepnewlines) #print ['This is line 1\n', '    This is line 2\n', '        This is line 3']
+testnegativenumberisdigit = "-27"
+print(testnegativenumberisdigit.isdigit()) #print False
+testnegativenumberisdigit = "-27"
+print(testnegativenumberisdigit.isnumeric()) #print False.  isnumeric is a numeric value without a positive sign or negative sign and no decimals.
+testnumberisdigit = "27"
+print(testnumberisdigit.isdigit()) #print True
+testalphanumeric = "Aa9876"
+print(testalphanumeric.isalnum()) #print True
+testalphanumericspaces = "A a 9 8 7 6"
+print(testalphanumericspaces.isalnum()) #print False
+#more character testing methods:  isalpha() alphabetic characters only, isdecimal, islower, isnumeric, isspace contains only whitespace only space characters, istitle contains title casing first letter is uppercase, isupper.
+rawstring = r"D:/innovateinfinitely/blog/202212blog.html"
+print(rawstring) #print D:/innovateinfinitely/blog/202212blog.html
