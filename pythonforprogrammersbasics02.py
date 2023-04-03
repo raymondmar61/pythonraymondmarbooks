@@ -243,3 +243,181 @@ print(account1.balance) #print -1000.00
 #Any attribute name beginning with an underscore is for a class's internal use only.  Attributes don't begin with an underscore are considered ppublicly accessible.
 classparameters = Account("John Green vars properties", Decimal("50.00")) #source https://stackoverflow.com/questions/5969806/print-all-properties-of-a-python-class
 print(vars(classparameters)) #print {'name': 'John Green vars properties', 'balance': Decimal('50.00')}
+from timewithproperties import Time #timewithproperties.py in same directory
+wakeuptimeobject = Time(hour=6, minute=30) #Create an object
+print(wakeuptimeobject.__repr__()) #print Time(hour=6, minute=30, second=0).  #Display an object
+print(wakeuptimeobject.__str__()) #print 6:30:00 AM.  #Display an object
+print(wakeuptimeobject) #print 6:30:00 AM.  #Display an object
+print(wakeuptimeobject.hour) #print 6.  #Display a property
+wakeuptimeobject.set_time(hour=7, minute=45) #Use Time's set_time method def set_time(self, hour=0, minute=0, second=0) which is like Time's __init__
+print(wakeuptimeobject) #print 7:45:00 AM
+wakeuptimeobject.hour = 6 #Call the hour method to set 6 as the argument
+print(wakeuptimeobject.__repr__()) #print Time(hour=6, minute=45, second=0).  #Display an object
+print(wakeuptimeobject.__str__()) #print 6:45:00 AM.  #Display an object
+print(wakeuptimeobject) #print 6:45:00 AM
+class PrivateClass:
+    def __init__(self):
+        self.publicdata = "public"
+        self.__privatedata = "private begins with two underscores"
+    def printpublicdata(self):
+        print("Printing self.publicdata " + self.publicdata)
+    def printprivatedata(self):
+        return "Did printing self.__privatedata work? " + self.__privatedata
+
+
+myobjectcreateobject = PrivateClass()
+print(myobjectcreateobject) #print <__main__.PrivateClass object at 0x7effd8ca3310>
+print(myobjectcreateobject.publicdata) #print public
+myobjectcreateobject.printpublicdata() #return Printing self.publicdata public
+# print(myobjectcreateobject.__privatedata) #print AttributeError: 'PrivateClass' object has no attribute '__privatedata'
+print(myobjectcreateobject.printprivatedata()) #print Did printing self.__privatedata work? private begins with two underscores
+#Inheritance is base classes and subclasses.  Loan is a base class.  CarLoan, HomeImprovementLoan, and MortgageLoan are subclasses.  Base classes tend to be more general.  Subclasses tend to be more specific.  More examples are student base class and graduate student and undergraduate student subclasses; shape base class and circle, triangle, rectangle, sphere, and cube subclasses; bankaccount base class and checking account and savings account subclasses; vehicle base class and cars, trucks, boats, and bicycles subclasses.
+#Inheritance hierarchy example.  An administrator in the subclass is a faculty in the subclass is an employee in the subclass is a community member in the base class for which all are objects.  Another example shape is a base class separated to two dimensions hape and three dimensional shape subclasses which has circle, square, and triangle subclasses in two dimension shape and sphere, cube, and tetrahedron subclasses in the three dimension shape.
+#Use inheritance to create new classes from existing classes.  Python assumes the class inherits directly from class object when you don't explicitly specify the base class.  The class hierarchy begins with class object.  The parentheses after a class name indicate inheritance and may contains a single class for single inheritance or a comma-separated list of base classes for multiple inheritance.  Multiple inheritance is beyond the scope of the book.
+#The subclass starts essentially the same as the base class in single inheritance.
+#Inheritance hierarchy class example.  Commission employee is base class.  Salaried commission employee is a subclass which inherits from base class Commission employee.
+from decimal import Decimal
+class CommissionEmployee:
+    def __init__(self, firstname, lastname, ssn, grosssales, commissionrate):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.ssn = ssn
+        self.grosssales = grosssales
+        self.commissionrate = commissionrate
+    def firstname(self):
+        return self.firstname
+    def lastname(self):
+        return self.astname
+    def ssn(self):
+        return self.ssn
+    def grosssales(self):
+        return self.grosssales
+    def grosssales(self, sales):
+        if sales < Decimal("0.00"):
+            raise ValueEreror("Gross sales must:  be >= to 0")
+        self.grosssales = sales
+    def commissionrate(self):
+        return self._commissionrate
+    def commissionrate(self, rate):
+        if not (Decimal("0.0") < rate < Decimal("1.0")):
+            raise ValueEreror("Interest rate must be greater than 0 and less than 1")
+        self.commissionrate = rate
+    def earnings(self):
+        return self.grosssales * self.commissionrate
+    def __repr__(self):
+        return ("CommissionEmployee: " + f'{self.firstname} {self.lastname}\n' + f'social security number: {self.ssn}\n' + f'gross sales: {self.grosssales:.2f}\n' + f'commission rate: {self.commissionrate:.2f}')
+
+
+cobject = CommissionEmployee("Sue", "Jones", "333-33-3333", Decimal("10000.00"), Decimal("0.06"))
+print(cobject)
+'''
+CommissionEmployee: Sue Jones
+social security number: 333-33-3333
+gross sales: 10000.00
+commission rate: 0.06
+'''
+print(cobject.__repr__())
+'''
+CommissionEmployee: Sue Jones
+social security number: 333-33-3333
+gross sales: 10000.00
+commission rate: 0.06
+'''
+print(cobject.firstname) #print Sue
+print(cobject.earnings()) #print 600.0000
+cobject.grosssales = Decimal("20000.00")
+cobject.commissionrate = Decimal("0.1")
+print(cobject.earnings()) #print 2000.000
+#Declare the subclass SalariedCommissionEmployee which inherits most of its capabilities from base class CommissionEmployee.  A SalariedCommissionEmployee is a CommissionEmployee.  Inheritance passes the capabilities from class CommissionEmployee to SalariedCommissionEmployee.
+#SalariedCommissionEmployee inherits from CommissionEmployee class SalariedCommissionEmployee(CommissionEmployee).  SalariedCommissionEmployee __init__ method calls CommissionEmployee __init__ method to initialize the base class portion of SalariedCommissionEmployee which are the five inherited data attributes from CommissionEmployee.  super().__init__ uses the built-in function super to locate and call the base class's __init__ method passing the five arguments which initialize the inherited data attributes.  SalariedCommissionEmployee earnings method overrides CommissionEmployee earnings method to calculate the earnings of SalariedCommissionEmployee.  SalariedCommissionEmployee obtains the earnings based on commission alone by calling CommissionEmployee earnings method with super().earnings().  SalariedCommissionEmployee earnings method adds the basesalary to calculate the total earnings.  We avoid duplicate codes by having SalariedCommissionEmployee earnings method invoke CommissionEmployee earnings method to calculate SalariedCommissionEmployee total earnings.
+#SalariedCommissionEmployee __repr__ method overrides CommissionEmployee method to return the CommissionEmployee "CommissionEmployee: " + f'{self.firstname} {self.lastname}\n' + f'social security number: {self.ssn}\n' + f'gross sales: {self.grosssales:.2f}\n' + f'commission rate: {self.commissionrate:.2f}' using super().__repr__() and SalariedCommissionEmployee base salary.
+class SalariedCommissionEmployee(CommissionEmployee):
+    def __init__(self, firstname, lastname, ssn, grosssales, commissionrate, basesalary):
+        super().__init__(firstname, lastname, ssn, grosssales, commissionrate) #initialize SalariedCommissionEmployee attributes
+        self.basesalary = basesalary
+    def basesalary(self):
+        return self.basesalary
+    def basesalary(self, salary):
+        if salary < Decimal("0.00"):
+            raise ValueEreror("Base salary must be >= to 0")
+        self.basesalary = salary
+    def earnings(self):
+        return super().earnings() + self.basesalary
+    def __repr__(self):
+        return ('Salaried' + super().__repr__() + f'\nbase salary: {self.basesalary:.2f}')
+
+
+screateobject = SalariedCommissionEmployee("Bob", "Lewis", "444-44-4444", Decimal("5000.00"), Decimal("0.04"), Decimal("300.00"))
+print(screateobject)
+'''
+SalariedCommissionEmployee: Bob Lewis
+social security number: 444-44-4444
+gross sales: 5000.00
+commission rate: 0.04
+base salary: 300.00
+'''
+#RM:  from CommissionEmployee: Bob Lewis to commission rate: 0.04 comes from the base class CommissionEmployee
+print(screateobject.firstname) #print Bob
+print(screateobject.earnings()) #print 500.00.  (5,000*0.04)+300=500
+screateobject.grosssales = Decimal("10000.00")
+screateobject.commissionrate = Decimal("0.05")
+screateobject.basesalary = Decimal("1000.00")
+print(screateobject)
+'''
+SalariedCommissionEmployee: Bob Lewis
+social security number: 444-44-4444
+gross sales: 10000.00
+commission rate: 0.05
+base salary: 1000.00
+'''
+print(screateobject.earnings()) #print 1500.00.  (10,000*0.05)+1000=1500
+#check subclass check class
+print(issubclass(SalariedCommissionEmployee, CommissionEmployee)) #print True
+#check instance base class instance
+print(isinstance(screateobject, CommissionEmployee)) #print True
+employeeslist = [cobject, screateobject]
+for eachemployeeslist in employeeslist:
+    print(eachemployeeslist)
+    print(eachemployeeslist.earnings())
+    '''
+    CommissionEmployee: Sue Jones
+    social security number: 333-33-3333
+    gross sales: 20000.00
+    commission rate: 0.10
+    2000.000
+    SalariedCommissionEmployee: Bob Lewis
+    social security number: 444-44-4444
+    gross sales: 10000.00
+    commission rate: 0.05
+    base salary: 1000.00
+    1500.0000
+    '''
+#Duck Typing:  A programming style which does not look at an object’s type to determine if it has the right interface; instead, the method or attribute is simply called or used ("If it looks like a duck and quacks like a duck, it must be a duck.").
+class WellPaidDuck():
+    def __repr__(self):
+        return "I'm a well-paid duck"
+    def earnings(self):
+        return Decimal("1_000_000.00")
+
+
+dcreateobject = WellPaidDuck()
+employeeslist = [cobject, screateobject, dcreateobject]
+for eachemployeeslist in employeeslist:
+    print(eachemployeeslist)
+    print(eachemployeeslist.earnings())
+    '''
+    CommissionEmployee: Sue Jones
+    social security number: 333-33-3333
+    gross sales: 20000.00
+    commission rate: 0.10
+    2000.000
+    SalariedCommissionEmployee: Bob Lewis
+    social security number: 444-44-4444
+    gross sales: 10000.00
+    commission rate: 0.05
+    base salary: 1000.00
+    1500.0000
+    I'm a well-paid duck
+    1000000.00
+    '''
+#RM:  skipped operator overload operator overloading
