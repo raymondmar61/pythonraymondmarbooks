@@ -331,3 +331,130 @@ setlistappend = set([1, 7, 8, 9])
 print(setlist | setlistappend) #print {1, 2, 3, 6, 7, 8, 9}
 print(setlist & setlistappend) #print {1}
 print(setlist ^ setlistappend) #print {2, 3, 6, 7, 8, 9}
+
+#The Quick Python Book by Naomi Ceder Chapter 06 Strings
+sliceastring = "Hello"
+print(sliceastring[0]) #print H
+print(sliceastring[-1]) #print o
+print(sliceastring[1:]) #ello
+stripastring = "Goodbye\n"
+print(stripastring[:-1]) #print Goodbye
+concatenateplussign = "Hello " + "World"
+print(concatenateplussign) #print Hello World
+duplicatemultiplysign = "multiplytwice" * 2
+print(duplicatemultiplysign) #print multiplytwicemultiplytwice
+print("override print function no newline\n", end="") #print override print function no newline use end parameter of "" end="" for the print function to not append the newline
+joinmethod = ["join", "puts", "spaces", "between", "elements"]
+print(" ".join(joinmethod)) #print join puts spaces between elements
+print("::".join(joinmethod)) #print join::puts::spaces::between::elements
+splitmethod = "You\t\t can have tabs\t\n \t and newlines " "mixed in"
+print(splitmethod)
+'''
+You      can have tabs  
+     and newlines mixed in
+'''
+print(splitmethod.split()) #print ['You', 'can', 'have', 'tabs', 'and', 'newlines', 'mixed', 'in']
+splitmethod = "Mississippi split by ss"
+print(splitmethod.split("ss")) #print ['Mi', 'i', 'ippi split by ', '']
+#Specify how many splits in the second argument.  If you specify n splits, split goes along the input string until it performs n splits which generates a list with n+1 substrings as elements or until it runs out of string.
+howmanysplits = "abcd"
+print(howmanysplits) #print abcd
+print(howmanysplits.split()) #print ['abcd']
+#print(howmanysplits.split("", 1)) #print ValueError: empty separator
+howmanysplits = "a b c d"
+print(howmanysplits) #print a b c d
+print(howmanysplits.split()) #print ['a', 'b', 'c', 'd']
+print(howmanysplits.split(" ", 1)) #print ['a', 'b c d']
+print(howmanysplits.split(" ", 2)) #print ['a', 'b', 'c d']
+print(howmanysplits.split(" ", 9)) #print ['a', 'b', 'c', 'd']
+#A first argument is required when specifying the number of splits in the second argument.  To split on whitespace runs using the second argument, type None as the first argument.
+print(howmanysplits.split(None, 1)) #print ['a', 'b c d']
+print(howmanysplits.split(None, 2)) #print ['a', 'b', 'c d']
+print(howmanysplits.split(None, 9)) #print ['a', 'b', 'c', 'd']
+removewhitespace = "  Hello,       World\t\t"
+print(removewhitespace) #print **Hello,       World********
+print(removewhitespace.strip()) #print Hello,       World
+print(removewhitespace.lstrip()) #print Hello,       World******
+print(removewhitespace.rstrip()) #print **Hello,       World
+specifycharactersremove = "www.python.org"
+print(specifycharactersremove.strip("w")) #print .python.org
+print(specifycharactersremove.strip("org")) #print www.python.
+print(specifycharactersremove.strip("worg")) #print .python.
+print(specifycharactersremove.strip("gorw")) #print .python. #Strip removes any and all characters no matter the order.  RM:  it doesn't work all the time.
+print(specifycharactersremove.strip("gorwt")) #print .python.
+print(specifycharactersremove.strip("gorwt.")) #print python
+print(specifycharactersremove.strip("gorth")) #print www.python.
+print(specifycharactersremove.strip("gorth.")) #print www.python
+searchinstring = "Mississippi"
+print(searchinstring.find("ss")) #print 2
+print(searchinstring.find("zz")) #print -1
+print(searchinstring.find("ss", 3)) #print 5.  Begin search at the third index position
+print(searchinstring.find("ss", 1, 4)) #print 2.  Begin search at the first index position and end at the fourth index position
+print(searchinstring.rfind("ss")) #print 5.  Start the search at the end of the string which returns the position of the first character of the last occurrence with respect to the start of the string.  There is no lfind method.
+print(searchinstring.startswith("Miss")) #print True
+print(searchinstring.startswith("Mist")) #print False
+print(searchinstring.endswith("pi")) #print True
+print(searchinstring.endswith(("i", "u", "check all strings in tuple"))) #print True.  If the parameter with startswith or endswith is a tuple of strings, both methods check for all the strings in the tuple which returns True if any of them is found.
+countcharacters = "Mississippi"
+print(countcharacters.count("ss")) #print 2
+replacecharacters = "Mississippi"
+print(replacecharacters.replace("ss", "+++")) #print Mi+++i+++ippi
+changecase = "MiSSiSSippi valley"
+print(changecase) #print MiSSiSSippi valley
+print(changecase.lower()) #print mississippi valley
+print(changecase.upper()) #print MISSISSIPPI VALLEY
+print(changecase.capitalize()) #print Mississippi valley.  Capitalize capitalizes the first character of a string.
+print(changecase.title()) #print Mississippi Valley
+print(changecase.swapcase()) #print mIssIssIPPI VALLEY
+splitmethod = "You\t\t can have tabs\t\n \t and newlines " "mixed in"
+print(splitmethod.expandtabs(1)) #expandtabs replaces tab characters with the specified number of spaces
+'''
+You   can have tabs 
+   and newlines mixed in
+'''
+checkstringtext = "stringcheck"
+checkstringintegers = "123"
+print(checkstringtext.isdigit()) #print False
+print(checkstringtext.isalpha()) #print True
+print(checkstringintegers.isalpha()) #print False
+checkstringtextuppercase = "M"
+print(checkstringtextuppercase.isupper()) #print True
+print(checkstringtextuppercase.islower()) #print False
+checkstringtext = "string check there are spaces returns False"
+print(checkstringtext.isalpha()) #print False
+#Use the format method to combine a format string containing replacement fields with curly braces {} with replacement values taken from the parameters given to the format command.  Use double curly braces for the literal { or }.  Quick format is "contain string with {}." end with .format(strings for the curlybraces)
+formatmethod = "{0} is the {1} of {2}".format("Ambrosia", "food", "the gods")
+print(formatmethod) #print Ambrosia is the food of the gods
+print("{food} is the food of {user}".format(food="Ambrosia", user="the gods")) #print Ambrosia is the food of the gods
+print("{0} is the food of {user[1]}".format("Ambrosia", user=["men", "the gods", "others"])) #print Ambrosia is the food of the gods
+print("{0:10} is the food of gods".format("Ambrosia")) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.  10 spaces start at 0 pad with spaces.
+print("{0:{2}} is the food of gods".format("Ambrosia", 55, 10)) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.  10 spaces start at 0 pad with spaces using the third parameter or the second index parameter.
+print("{food:{width}} is the food of gods".format(food="Ambrosia", width=10)) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.
+print("{0:>10} is the food of gods".format("Ambrosia")) #print **Ambrosia is the food of gods.  >10 forces right justify of the field and pads with spaces
+print("{0:&>10} is the food of gods".format("Ambrosia")) #print &&Ambrosia is the food of gods.  &>10 forces right justify of the field and pads with ampersands instead of spaces
+#String modulus operator.  The left side of the percentage sign is the string.  The right side of the percentage sign is the tuple containing the values to substitute the %s string formatting sequences.
+print("%s is the %s of %s" % ("Ambrosia", "food", "the gods")) #print Ambrosia is the food of the gods
+print("%s is the %s of %s" % ("Nectar", "drink", "gods")) #print Nectar is the drink of gods
+print("%s is the %s of %s" % ("Brussels Sprouts", "food", "foolish")) #print Brussels Sprouts is the food of foolish
+#Use %f for floats
+print("Pi is %f" % (3.14159)) #print Pi is 3.141590
+print("Pi is %.2f" % (3.14159)) #print Pi is 3.14
+print("Pi is %6.2f" % (3.14159)) #print Pi is **3.14
+print("Pi is %-6f for geometry circles" % (3.14159)) #print Pi is 3.141590 for geometry circles
+print("Pi is %-6.2f" % (3.14159)) #print Pi is 3.14**
+dictionarymodules = {"e": 2.718, "pi": 3.14159}
+print("%(pi).2f - %(pi).4f - %(e).2f" % dictionarymodules)
+dictionarymodulesstring = {"e": "letter e", "pi": "letters pi"}
+print("%(pi).s %(e).s" % dictionarymodulesstring) #print *null*
+print("Include several arguments", "or", "several strings", "are printed on the same line", "separated by spaces and ending with a new line") #print Include several arguments or several strings are printed on the same line separated by spaces and ending with a new line
+print("Include several arguments", "or", "several strings", "are printed on the same line", "separated by a vertical line and ending with a new line", sep="|") #print Include several arguments|or|several strings|are printed on the same line|separated by a vertical line and ending with a new line
+print("Use print function", "to create a file", "to write everything on the print statement", file=open("printfunctionoutput.txt", "w")) #created text file printfunctionoutput.txt with the sentence Use print function to create a file to write everything on the print statement\n
+from os import remove
+remove("printfunctionoutput.txt")
+value = 42
+stringinterpolation = f"The answer is {value}"
+print(stringinterpolation) #print The answer is 42
+pi = 3.1415
+print(f"pi is {pi:{10}.{2}}") #print pi is *******3.1
+value = "grapes"
+print(f"String interpolation value variable {value}.") #print String interpolation value variable grapes.
