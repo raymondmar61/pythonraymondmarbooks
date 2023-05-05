@@ -458,3 +458,35 @@ pi = 3.1415
 print(f"pi is {pi:{10}.{2}}") #print pi is *******3.1
 value = "grapes"
 print(f"String interpolation value variable {value}.") #print String interpolation value variable grapes.
+
+#The Quick Python Book by Naomi Ceder Chapter 07 Dictionaries
+emptydictionary = {}
+emptydictionary[0] = "Hello"
+print(emptydictionary) #print {0: 'Hello'}
+emptydictionary[1] = "Goodbye"
+print(emptydictionary) #print {0: 'Hello', 1: 'Goodbye'}
+emptydictionary["two"] = 2
+emptydictionary["pi"] = 3.15
+print(emptydictionary) #print {0: 'Hello', 1: 'Goodbye', 'two': 2, 'pi': 3.15}
+print(emptydictionary["two"] * emptydictionary["pi"]) #print 6.3
+englishtofrench = {"red": "rouge", "blue": "bleu", "green": "vert"}
+print(englishtofrench) #print {'red': 'rouge', 'blue': 'bleu', 'green': 'vert'}
+print(len(englishtofrench)) #print 3
+listdictionarykeys = list(englishtofrench.keys())
+print(listdictionarykeys) #print ['red', 'blue', 'green']
+listdictionaryvalues = list(englishtofrench.values())
+print(listdictionaryvalues) #print ['rouge', 'bleu', 'vert']
+listdictionarykeysvalues = list(englishtofrench.items())
+print(listdictionarykeysvalues) #print [('red', 'rouge'), ('blue', 'bleu'), ('green', 'vert')]
+print(englishtofrench.get("blue", "Didn't find blue")) #print bleu
+print(englishtofrench.get("chartresue", "Didn't find chartresue")) #print Didn't find chartresue
+print(englishtofrench.setdefault("chartresue", "Didn't find chartresue use setdefault to add to englishtofrench dictionary")) #print Didn't find chartresue
+print(englishtofrench) #print {'red': 'rouge', 'blue': 'bleu', 'green': 'vert', 'chartresue': "Didn't find chartresue use setdefault to add to englishtofrench dictionary"}
+copydictionary = englishtofrench.copy()
+print(copydictionary) #print {'red': 'rouge', 'blue': 'bleu', 'green': 'vert', 'chartresue': "Didn't find chartresue use setdefault to add to englishtofrench dictionary"}
+updatedictionary = {"white": "blanc", "black": "black?", "red": "rouge", "blue": "override initial blue"}
+copydictionary.update(updatedictionary)
+print(copydictionary) #print {'red': 'rouge', 'blue': 'override initial blue', 'green': 'vert', 'chartresue': "Didn't find chartresue use setdefault to add to englishtofrench dictionary", 'white': 'blanc', 'black': 'black?'}.  RM:  The updates from the update dictionary or second dictionary overrides matching key-value pairs in the first dictionary.  Same values are not duplicated.
+del(copydictionary["chartresue"]) #delete entry, remove entry
+print(copydictionary) #print {'red': 'rouge', 'blue': 'override initial blue', 'green': 'vert', ''white': 'blanc', 'black': 'black?'}
+print("white" in copydictionary) #print True
