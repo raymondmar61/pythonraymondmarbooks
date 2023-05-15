@@ -490,3 +490,241 @@ print(copydictionary) #print {'red': 'rouge', 'blue': 'override initial blue', '
 del(copydictionary["chartresue"]) #delete entry, remove entry
 print(copydictionary) #print {'red': 'rouge', 'blue': 'override initial blue', 'green': 'vert', ''white': 'blanc', 'black': 'black?'}
 print("white" in copydictionary) #print True
+
+#The Quick Python Book by Naomi Ceder Chapter 08 Control Flow
+whileloopcondition = 0
+while whileloopcondition < 5:
+    print("body.  whileloopcondition is a Boolean expression True or False", whileloopcondition)
+    whileloopcondition += 1
+else:
+    print("post while loop code.  Some programmers omit the else because the else statement is optional.", whileloopcondition)
+'''
+body.  whileloopcondition is a Boolean expression True or False 0
+body.  whileloopcondition is a Boolean expression True or False 1
+body.  whileloopcondition is a Boolean expression True or False 2
+body.  whileloopcondition is a Boolean expression True or False 3
+body.  whileloopcondition is a Boolean expression True or False 4
+post while loop code.  Some programmers omit the else because the else statement is optional. 5
+'''
+#while loop two special statements break and continue.  Break terminates the while loop.  Continue causes the remainder of the body to be skipped over.
+condition1 = False
+condition2 = True
+if condition1:
+    print("body1")
+elif condition2:
+    print("body2") #print body2
+else:
+    print("body")
+#if-elif-else statement special statement pass.  Pass performs no action.  Pass is a placeholder statement.
+#Case statement use functions and dictionaries
+def casea():
+    print("casea process")
+def caseb():
+    print("caseb process")
+def casec():
+    print("casec process")
+
+
+casedictionary = {"a": casea, "b": caseb, "c": casec} #RM:  the case function nanes in the casedictionary are not strings
+selectcasefunction = "a"
+casedictionary[selectcasefunction]() #return casea process
+
+objectyieldsequenceofvalues = [1, 2, 3, 4]
+for x in objectyieldsequenceofvalues:
+    print(x)
+    '''
+    1
+    2
+    3
+    4
+    '''
+else:
+    print("The else statement in a for loop is optional.  Break statement and Continue statement are valid in for loops.")
+print(list(range(3, 7))) #print [3, 4, 5, 6]
+print(list(range(2, 10))) #print [2, 3, 4, 5, 6, 7, 8, 9]
+print(list(range(5, 3))) #print []
+print(list(range(5, 3, -1))) #print [5, 4]
+print(list(range(0, 10, 2))) #print [0, 2, 4, 6, 8]
+print(list(range(5, 0, -1))) #print [5, 4, 3, 2, 1]
+tupleunpacking = [(1, 2), (3, 7), (9, 5)]
+for eachtuple in tupleunpacking:
+    print(eachtuple[0] * eachtuple[1])
+    '''
+    2
+    21
+    45
+    '''
+for lefttuple, righttuple in tupleunpacking:
+    print(lefttuple * righttuple)
+    '''
+    2
+    21
+    45
+    '''
+#Enumerate function assigns a number with an item in a list.  It returns a tuple of (index position of item,item) in a list.
+enumeratelist = [1, 3, -7, 4, 9, -5, 4]
+print(enumeratelist) #print [1, 3, -7, 4, 9, -5, 4]
+print(enumerate(enumeratelist)) # print <enumerate object at 0x7fed1832a040>
+print(list(enumerate(enumeratelist))) #print [(0, 1), (1, 3), (2, -7), (3, 4), (4, 9), (5, -5), (6, 4)]
+for index, item in enumerate(enumeratelist):
+    print("index position", index, ".  Item is", item, ".")
+    '''
+    index position 0 .  Item is 1 .
+    index position 1 .  Item is 3 .
+    index position 2 .  Item is -7 .
+    index position 3 .  Item is 4 .
+    index position 4 .  Item is 9 .
+    index position 5 .  Item is -5 .
+    index position 6 .  Item is 4 .
+    '''
+#Zip function combine two or more iterables.  Zip function combines lists into tuples.  Combine lists to tuples.
+firstnumber = [1, 2, 3, 4]
+secondstring = ["a", "b", "c"]
+combinenumberstringlists = zip(firstnumber, secondstring)
+print(list(combinenumberstringlists)) #print [(1, 'a'), (2, 'b'), (3, 'c')
+#A list comprehension or comprehension is a list or dictionary as a one line for loop to create a new list or dictionary from a sequence.  newlist = [expression1 for variable in oldlist if expression2].  newdictionary = {expression1:expression2 for variable in list if expression 3}
+numberslist = [1, 2, 3, 4]
+numberslistsquared = [eachnumberslist * eachnumberslist for eachnumberslist in numberslist]
+print(numberslistsquared) #print [1, 4, 9, 16]
+numberslistsquaredif = [eachnumberslist * eachnumberslist for eachnumberslist in numberslist if eachnumberslist > 2]
+print(numberslistsquaredif) #print [9, 16]
+keylist = ["football", "baseball", "basketball", "hockey"]
+valuelist = ["49ers", "Giants", "Warriors", "Sharks"]
+combinekeylistvaluelist = zip(keylist, valuelist)
+print(combinekeylistvaluelist) #print <zip object at 0x7fef9acf0980>
+combinekeylistvaluelist = list(zip(keylist, valuelist))
+print(combinekeylistvaluelist) #print [('football', '49ers'), ('baseball', 'Giants'), ('basketball', 'Warriors'), ('hockey', 'Sharks')]
+bayareasportsdictionary = {key: value for key, value in combinekeylistvaluelist}
+print(bayareasportsdictionary) #print {'football': '49ers', 'baseball': 'Giants', 'basketball': 'Warriors', 'hockey': 'Sharks'}
+#Python has a Boolean object which can be set to either True or False.  Any expression with a Boolean operation returns True or False.
+print(bool(0)) #print False
+print(bool(1)) #print True
+print(bool(-94531)) #print True
+print(bool("")) #print False
+print(bool("here is a string")) #print True
+print(bool([])) #print False
+print(bool(["the", "list", "has", "string", "objects"])) #print True
+print(bool({})) #print False
+print(bool(set())) #print False
+print(bool(None)) #print False
+#If an and expression has one false element, the expression is False and the False value is returned.  If an and expression is all True, the expression is True and the last value is returned.  If an or expression has one false element, the expression is True and the True value is returned.  If an or expression is all True, the expression is True and the first value is returned.
+print([] and [5]) #print []
+print([2] and [3, 4]) #print [3, 4]
+print([] or [5]) #print [5]
+print([2] or [3, 4]) #print [2]
+
+#The Quick Python Book by Naomi Ceder Chapter 09 Functions
+def basicfunction(parameter1, parameter2):
+    """Optional documentation string or docstring"""
+    print("function body parameter1 " + parameter1)
+    print(f"function body parameter2 {parameter2}.")
+
+
+basicfunction("parameter1apple", "parameter2orange")
+'''
+function body parameter1 parameter1apple
+function body parameter2 parameter2orange.
+'''
+print(basicfunction.__doc__) #print Optional documentation string or docstring.  Print function definition function description.
+def factorial(n):
+    """Return the factorial of a given number."""
+    r = 1
+    while n > 0:
+        r = r * n
+        n = n - 1
+    return r
+
+
+print(factorial.__doc__) #print Return the factorial of a given number.
+print(factorial(4)) #print 24
+def power(x, defaultvaluelastonesy=2):
+    r = 1
+    while defaultvaluelastonesy > 0:
+        r = r * x
+        defaultvaluelastonesy = defaultvaluelastonesy - 1
+    return r
+
+
+print(power(3, 2)) #print 9
+print(power(3)) #print 9
+print(power(defaultvaluelastonesy=2, x=3)) #print 9
+def foodlist(fruit=False, meat=False, grain=False):
+    if not fruit:
+        fruit = "No fruit"
+    if not meat:
+        meat = "No meat"
+    if not grain:
+        grain = "No grain"
+    return fruit, meat, grain
+
+
+print(foodlist()) #print ('No fruit', 'No meat', 'No grain')
+print(foodlist("apple", grain="rice")) #print ('apple', 'No meat', 'rice')
+def variablenumberarguments(*lotsofnumbers):
+    if len(lotsofnumbers) == 0:
+        return None
+    else:
+        maximumnumber = lotsofnumbers[0]
+        for eachlotsofnumbers in lotsofnumbers[1:]:
+            if eachlotsofnumbers > maximumnumber:
+                maximumnumber = eachlotsofnumbers
+        return maximumnumber
+
+
+print(variablenumberarguments(3, 2, 8)) #print 8
+print(variablenumberarguments(1, 5, 9, -2, 2)) #print 9
+#Global variables
+def globalvariables():
+    global aglobalvariable
+    aglobalvariable = 1
+    blocalvariable = 2
+    return aglobalvariable, blocalvariable
+
+
+aglobalvariable = "one"
+blocalvariable = "two"
+print(aglobalvariable) #print one
+print(blocalvariable) #print two
+print(globalvariables()) #print (1,2)
+print(aglobalvariable) #print 1
+print(blocalvariable) #print two
+#Assign functions to variables.  Function a variable assigned.
+def addten(inputnumber):
+    return inputnumber + 10
+
+
+variableassignedfunction = addten
+print(variableassignedfunction(25)) #print 35
+functionindictionary = {"add30": addten, "add55": addten, "add200": addten}
+print(functionindictionary["add30"](30)) #print 40
+print(functionindictionary["add55"](55)) #print 65
+print(functionindictionary["add200"](200)) #print 210
+#Define short functions using the lambda expression.  lambda parameter1, parameter2, . . .: expression.  Lambda expressions are anonymous little functions defined inline.  A small function needs to be passed to another function such as the key function used by a list's sort method.
+parameter1 = 5
+parameter2 = 6
+simplelambda = lambda parameter1, parameter2: parameter1*parameter2
+print(simplelambda) #print <function simplelambda at 0x7f62fe328280>
+print(simplelambda(parameter1,parameter2)) #print 30
+lambdaindictionary = {"add30": lambda inputnumber: inputnumber + 30, "add50": lambda inputnumber: inputnumber + 50, "subtract10": lambda inputnumber: inputnumber - 10, "subtractwhat": lambda inputnumber, subtractnumber: inputnumber - subtractnumber}
+print(lambdaindictionary["add30"](75)) #print 105
+print(lambdaindictionary["subtract10"](75)) #print 65
+print(lambdaindictionary["subtractwhat"](100, 30)) #print 70
+#Decorators are functions passing as arguments to other functions and passed back as return values from other functions.  A decorator wraps one function inside another with a one-line addition.  A decorator involves two parts which are define the function being wrapped or decorated and use an @ followed by the decorator immediately before the wrapped function is defined
+def decorate(functionname):
+    print("In decorate function, decorating.  Print the function name being wrapped when the function is defined", functionname.__name__)
+
+    def wrapperfunction(*arguments):
+        print("Executing", functionname.__name__)
+        return functionname(*arguments)
+    return wrapperfunction #Return the wrapped function
+@decorate #myfunctionbelowatdecorate is decorated using @decorate
+def myfunctionbelowatdecorate(parameter):
+    print(parameter)
+
+
+myfunctionbelowatdecorate("hello")
+'''
+In decorate function, decorating.  Print the function name being wrapped when the function is defined myfunctionbelowatdecorate
+Executing myfunctionbelowatdecorate
+hello
+'''
