@@ -39,3 +39,35 @@ searchstring = "It was a hot summer night"
 splitatspace = r"\s" #\s returns a match where the string contains a white space character.  \S returns a match where the string doesn't contain a white space character
 splitsearchstring = re.split(splitatspace, searchstring)
 print(splitsearchstring) #print ['It', 'was', 'a', 'hot', 'summer', 'night']
+#The sub() function replaces occurrences of the regular expression pattern in the string with the repl string.  re.sub(pattern, repl, string, max=0).
+searchpattern = "(England|Wales|Scotland)"
+inputstring = "England for football, Wales for Rugby, and Scotland for the Highland games."
+replacefinal = re.sub(searchpattern, "Replacement here all England", inputstring)
+print(replacefinal) #print Replacement here all England for football, Replacement here all England for Rugby, and Replacement here all England for the Highland games.
+replacefirsttwofinal = re.sub(searchpattern, "Replacement here all England", inputstring, 2)
+print(replacefirsttwofinal) #print Replacement here all England for football, Replacement here all England for Rugby, and Scotland for the Highland games.
+replacecountfinal = re.subn(searchpattern, "Tuple Replacement here all England and count replacements", inputstring)
+print(replacecountfinal) #print ('Tuple Replacement here all England and count replacements for football, Tuple Replacement here all England and count replacements for Rugby, and Tuple Replacement here all England and count replacements for the Highland games.', 3)
+print("\n")
+#The compile() function compiles a regular expression pattern into a regular expression object.  The regular expression object can be used for other methods such as match() and search().  re.compile(pattern, flags=0).  The compiled regular expression objects methods and attributes are different than their function counterparts.
+searchpattern = "(England|Wales|Scotland)"
+inputstring = "England for football, Wales for Rugby, and Scotland for the Highland games."
+repattern = re.compile(searchpattern)
+replacefinal = repattern.sub("Replacement here all England", inputstring)
+print(replacefinal) #print Replacement here all England for football, Replacement here all England for Rugby, and Replacement here all England for the Highland games.
+splitstring = repattern.split(inputstring)
+print(splitstring) #print ['', 'England', ' for football, ', 'Wales', ' for Rugby, and ', 'Scotland', ' for the Highland games.'].  RM:  correct split.  Split by England, Wales, or Scotland.
+searchstring = repattern.search(inputstring)
+print(searchstring) #print <re.Match object; span=(0, 7), match='England'>
+searchstring = repattern.search(inputstring)
+print(searchstring[0]) #print England
+searchstring = repattern.search(inputstring)
+print(searchstring[1]) #print England
+searchstring = repattern.search(inputstring, 1, 50)
+print(searchstring) #print <re.Match object; span=(22, 27), match='Wales'>
+searchstring = repattern.search(inputstring, 1, 50)
+print(type(searchstring)) #print <class 're.Match'>
+searchstring = repattern.search(inputstring, 1, 50)
+print(searchstring[1]) #print Wales
+searchstring = repattern.search(inputstring, 1, 50)
+print(searchstring[0]) #print Wales
