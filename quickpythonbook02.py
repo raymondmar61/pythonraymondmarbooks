@@ -155,3 +155,69 @@ print(list(currentpath.glob("*panda*")))
 #os.walk traverses recursive directory structures.  Go through an entire directory tree, returning the root or the path, a list of its subdirectories, and a list of files. os.walk(directory, topdown=True, onerror=None, followlinks=False).  directory is the starting directory path.  topdown=True is default the files are processed before its subdirectories resulting ina list which starts at the top and goes down.  topdown=False subdirectories of each directory are processed first giving a bottom-up traversal of the tree.  onerror handles any errors which result from calls to os.listdir which are ignored by default.  os.walk followlinks=False by default doesn't walk down into folders which are symbolic links.
 # for root, dirs, files in os.walk(os.getcwd(), topdown=True, onerror=None, followlinks=False):
 #     print(files)
+
+#The Quick Python Book by Naomi Ceder Chapter 13 Reading And Writing Files
+#The open() function doesn't read from the file.  The open() function returns an object called fileobjectvariable to access the opened file.  All Python file I/O is done using the fileobjectvariable object instead of file names.
+with open("temp.txt", "r") as fileobjectvariable:
+    readoneline = fileobjectvariable.readline()
+fileobjectvariable.close()
+import os
+openfilefromanotherdirectory = os.path.join("/", "media", "sf_UbuntuShare2004", "quickpythonbook02.py")
+print(openfilefromanotherdirectory) #print /media/sf_UbuntuShare2004/quickpythonbook02.py
+with open(openfilefromanotherdirectory, "r") as fileobjectvariable:
+    readoneline = fileobjectvariable.readline()
+    print(readoneline) #print #The Quick Python Book by Naomi Ceder Chapter 10 Modules And Scoping Rules
+with open(openfilefromanotherdirectory, "r") as fileobjectvariable:
+    readalllineslist = fileobjectvariable.readlines()
+    print(readalllineslist) #print ['#The Quick Python Book by Naomi Ceder Chapter 10 Modules And Scoping Rules\n', '#A module is a file containing code.  A module defines a group of Python functions or other objects.  The name of the module is derived from the name of the file.\n', 'import mymath #import mymath is from the file mymath.py in the same directory.\n', 'mymathmodulepivariable = mymath.pi\n', 'print(mymathmodulepivariable) #print 3.14159\n', . . . ]
+with open(openfilefromanotherdirectory, "r") as fileobjectvariable:
+    readalllineslist = fileobjectvariable.readlines()
+    for eachline in readalllineslist:
+        print(eachline)
+        '''
+        #The Quick Python Book by Naomi Ceder Chapter 10 Modules And Scoping Rules
+
+        #A module is a file containing code.  A module defines a group of Python functions or other objects.  The name of the module is derived from the name of the file.
+
+        import mymath #import mymath is from the file mymath.py in the same directory.
+
+        mymathmodulepivariable = mymath.pi
+
+        print(mymathmodulepivariable) #print 3.14159
+
+        print(mymath.area(2)) #print 12.56636
+        ...
+        '''
+inputfile = open("temp.txt", "r", newline="\n")
+alllines = inputfile.readlines()
+inputfile.close()
+copyfile = open("tempcopied.txt", "w")
+copyfile.writelines(alllines)
+copyfile.close()
+import sys
+print("Type something for screen input.  Press Enter when done.")
+screeninputfromuser = sys.stdin.readline()
+print(screeninputfromuser)
+sys.stdout = sys.__stdout__
+print("\n")
+#Use sys to write to a file
+createfileforinputfromuser = open("tempcopied.txt", "a")
+sys.stdout = createfileforinputfromuser
+sys.stdout.writelines(["A list of writelines number one sentence in its line.\n", "A list of writelines number two sentence in its own line.\n"])
+print("A line from the print function.  The line is inclded in the tempcopied.txt file.")
+print("Print function for A list of writelines number one.", "A list of writelines number one.\n", file=createfileforinputfromuser)
+sys.stdout = sys.__stdout__
+#Use a user screen input to write to a file
+print("Write to the standard output.  Type something for screen input.  Press Enter when done.")
+screeninputfromuserwritetofile = sys.stdin.readline()
+print(screeninputfromuserwritetofile, file=createfileforinputfromuser)
+sys.stdout = sys.__stdout__
+createfileforinputfromuser.close()
+'''
+A list of writelines number one sentence in its line.
+A list of writelines number two sentence in its own line.
+A line from the print function.  The line is inclded in the tempcopied.txt file.
+Print function for A list of writelines number one. A list of writelines number one.
+
+Input the sentence here
+'''
