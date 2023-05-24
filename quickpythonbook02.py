@@ -221,3 +221,90 @@ Print function for A list of writelines number one. A list of writelines number 
 
 Input the sentence here
 '''
+
+#The Quick Python Book by Naomi Ceder Chapter 14 Exceptions
+'''
+Types of Python exceptions
+BaseException
+    SystemExit
+    KeyboardInterrupt
+    GeneratorExit
+    Exception
+        StopIteration
+        ArithmeticError
+            FloatingPointError
+            OverflowError
+            ZeroDivisionError
+        AssertionError
+        AttributeError
+        BufferError
+        EOFError
+        ImportError
+            ModuleNoteFoundError
+        LookupError
+            IndexError
+            KeyError
+        MemoryError
+        NameError
+            UnboundLocalError
+        OSError
+            BlockingIOError
+            ChildProcessError
+            ConnectionError
+                BrokenPipeError
+                ConnectionAbortedError
+                ConnectionRefusedError
+                ConnectionResetError
+            FileExistsError
+            FileNotFoundError
+            InterruptedError
+            IsADirectoryError
+            NotADirectoryError
+            PermissionError
+            ProcessLookupError
+            TimeoutError
+        ReferenceError
+        RuntimeError
+            NotImplementedError
+            RecursionError
+        SyntaxError
+            IndentationError
+                TabError
+        SystemError
+        TypeError
+        ValueError
+            UnicodeError
+                UnicodeDecodeError
+                UnicodeEncodeError
+                UnicodeTranslateError
+        Warning
+            DeprecationWarning
+            PendingDeprecationWarning
+            RuntimeWarning
+            SyntaxWarning
+            UserWarning
+            FutureWarning
+            ImportWarning
+            UnicodeWarning
+            BytesWarningException
+            ResourceWarning
+An IndexError is also a LookupError and by inheritance an Exception and a BaseException.  Most exceptions inherit from Exception.  It's strongly recommended any user-defined exceptions also subclass Exception.  Don't use BaseException.
+try:
+    #do something
+except Exception:
+    #handle exceptions
+'''
+'''
+threenumberslist = [1, 2, 3]
+seventhnumber = threenumberslist[6]
+Traceback (most recent call last):
+  File "yytest.py", line 74, in <module>
+    seventhnumber = threenumberslist[6]
+IndexError: list index out of range
+'''
+threenumberslist = [1, 2, 3]
+try:
+    seventhnumber = threenumberslist[6]
+    raise IndexError("Change the IndexError error message here.  ")
+except IndexError as errorvariable:
+    print("Print the raise IndexError", errorvariable) #print Print the raise IndexError list index out of range
