@@ -175,3 +175,79 @@ parentinstance = Parent()
 parentinstance.setparent()
 parentinstance.printparent()  #return Class Parent
 #parentinstance.setchild() #return AttributeError: 'Parent' object has no attribute 'setchild'
+
+#The Quick Python Book by Naomi Ceder Chapter 16 Regular Expressions
+#Regular expressions recognize data and extract data from certain patterns of text.  A regex recognizes a piece of text or a string to match the text or string.  A regex is defined by a string in which certain characters or metacharacters to match many text or strings.  Text parsing text parse.
+import re
+regexp = re.compile("hello")
+count = 0
+searchfile = open("temp.txt") #temp.txt contains hello in a line
+for eachline in searchfile.readlines():
+    if regexp.search(eachline):
+        count = count + 1
+searchfile.close()
+print(count) #print 1
+regexpverticalbaror1 = re.compile("hello|Hello")
+regexpverticalbaror2 = re.compile("(h|H)ello") #The parentheses group characters
+regexpverticalbaror3 = re.compile("[hH]ello") #The brackets matches any single character.  [a-z] matches a single character between a and z.  [0-9A-Z] matches any digit or any uppercase character.  Include a real hyphen in the brackets put the hyphen as the first character; for example [-012] matches a hyphen, 0, 1, or 2.
+count = 0
+searchfile = open("temp.txt") #temp.txt contains hello in a line
+for eachline in searchfile.readlines():
+    if regexpverticalbaror3.search(eachline):
+        count = count + 1
+searchfile.close()
+print(count) #print 1
+regexpbackslash = re.compile("\\\\ten") #four backslashes to search for one backslash.  The first two backslashs is a special sequence representing a single backslash and the second two backslashes is a sepcial sequence representing another single backslash.  Two single backslashes \\ results in two actual backslashes in the Python string.  re.compile("\\\\ten") becomes re.compile("\\ten") which is the correct search for \ten Python string.
+count = 0
+searchfile = open("temp.txt") #temp.txt contains \ten
+for eachline in searchfile.readlines():
+    if regexpbackslash.search(eachline):
+        count = count + 1
+searchfile.close()
+print(count) #print 1
+oneletterandhyphen = re.compile("[-a-zA-Z]")
+manyletterandhyphen = re.compile("[-a-zA-Z]+") #The plus sign repeats whatever comes before it one or more times as necessary to match the string being processed.  [-a-zA-Z]+ matches a single name such as Kenneth or McDonald or Perkin-Elmer or - or -a-b-c.
+phohenumber = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d") #\d matches any number.  The regex is three digits, a hyphen, three digits, a hyphen, and four digits.
+phohenumberoptionalareacode = re.compile(r"(\d\d\d-)?\d\d\d-\d\d\d\d") #\d matches any number.  The ? special character says anything before the ? is optional.  The regex is three digits optional, a hyphen optional, three digits, a hyphen, and four digits.
+phohenumberoptionalareacode = re.compile(r"(\d{3}-)?\d{3}-\d{4}") #\d matches any number.  The {} curly braces indicates the number of times a pattern repeats.  The regex is three digits optional, a hyphen optional, three digits, a hyphen, and four digits.
+#Commas, colons, and spaces don't have special meanings.
+namephonenumber = re.compile(r"[-a-zA-Z]+, [-a-zA-Z]+( [-a-zA-Z]+)?: (\d{3}-)?\d{3}-\d{4}") #Last name, comma, space, first name, space, middle name optional, colon, space, phone number for which area code optional.
+namephonenumberlabel = re.compile(r"(?P<last>[-a-zA-Z]+,) (?P<first>[-a-zA-Z]+)( (?P<middle>[-a-zA-Z]+))?: (?P<phone>(\d{3}-)?\d{3}-\d{4})")
+searchfile = open("temp.txt") #temp.txt contains lastname, firstname: 408-555-1234 and lastname, firstname middlenamenoareacode: 555-7890
+for eachline in searchfile.readlines():
+    result = namephonenumberlabel.search(eachline)
+    print(result)
+    if result == None:
+        print("No found")
+    else:
+        lastname = result.group("last")
+        firstname = result.group("first")
+        middlename = result.group("middle")
+        if middlename == None:
+            middlename = ""
+        phonenumber = result.group("phone")
+        print("Return search result-->Name:", lastname, firstname, middlename, "Number:", phonenumber)
+'''
+...
+<re.Match object; span=(0, 33), match='lastname, firstname: 408-555-1234'>
+Return search result-->Name: lastname, firstname  Number: 408-555-1234
+None
+No found
+None
+No found
+<re.Match object; span=(0, 50), match='lastname, firstname middlenamenoareacode: 555-789>
+Return search result-->Name: lastname, firstname middlenamenoareacode Number: 555-7890
+'''
+searchfile.close()
+doublethe = "If the the problem is textual, use the the re module"
+pattern = r"the the"
+finddoublethe = re.compile(pattern)
+print(finddoublethe.sub("the", doublethe)) #print If the problem is textual, use the re module.  The sub method uses findddoublethe to scan pattern to produce a new string replacing all matching substrings with the value in the first argument.  Replace the double the doublethe variable with "the".
+integerstring = "1 2 3 4 5"
+def convertintegertofloatfunction(matchobject):
+    return(matchobject.group("numberlabel") + ".0")
+
+
+searchpattern = r"(?P<numberlabel>[0-9]+)" #Looks for a number consisting of one or more digits.  Give each a name numberlabel.
+regexpsearchintegerinstring = re.compile(searchpattern)
+print(regexpsearchintegerinstring.sub(convertintegertofloatfunction, integerstring)) #print 1.0 2.0 3.0 4.0 5.0.  Take integerstring matching numberlabel to the function convertintegertofloatfunction.  The function uses group to extract the matching substring from the match object matchobject to produce a new string concatenate with .0.  sub returns the new string.
