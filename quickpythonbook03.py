@@ -327,3 +327,76 @@ for x in LineReader("temp.txt"):
 #The Quick Python Book by Naomi Ceder Chapter 18 Packages
 #A module is a file containing code.  A module defines a group of Python functions or other objects.
 #A package is a directory containing code and further subdirectories.  A package contains a group of usually related code files or modules.  Packatges are a natural extension of the module concept and are designed to handle very large projects.  Packages group related modules.
+
+#The Quick Python Book by Naomi Ceder Chapter 21 Processing Data Files
+#ASCII encoding is 128 characters.  95 characters are printable.
+#Unicode encoding is called UTF-8.  UTF-8 accepts basic ASCII characters and allows an almost unlimited set of other characters and symbols according to the Unicode standard.  UTF-8 was used in more than 85% of web pages as of the date the book is written.
+#The open() function accepts optional errors parameters to deal with encoding errors when reading or writing.  The default option is strict which causes an error to be raised whenever an encoding error is encountered.  Other options are ignore which causes the character causing the error to be skipped.  Option replace which causes the character to be replaced by a marker character usually ?.  Option backslashreplace which replaces the character with a backslash escape sequence.  Option surrogateescape which translates the offending character to a private Unicode code point on reading and back to the original sequence of bytes on writing.
+#Examples option function:  open("test.txt", errors="ignore").read(), open("test.txt", errors="replace").read() default replaces with ?, open("test.txt", errors="surrogateescape").read(), open("test.txt", errors="backslashreplace").read()
+mobytext = open("moby01.txt").read()
+mobyparagraphs = mobytext.split("\n\n")
+print(mobyparagraphs)
+'''
+["Call me Ishmael. Some years ago--never mind how long precisely--\nhaving little or no money in my purse, and nothing particular\nto interest me on shore, I thought I would sail about a little\nand see the watery part of the world. It is a way I have\nof driving off the spleen and regulating the circulation.\nWhenever I find myself growing grim about the mouth;\nwhenever it is a damp, drizzly November in my soul; whenever I\nfind myself involuntarily pausing before coffin warehouses,\nand bringing up the rear of every funeral I meet;\nand especially whenever my hypos get such an upper hand of me,\nthat it requires a strong moral principle to prevent me from\ndeliberately stepping into the street, and methodically knocking\npeople's hats off--then, I account it high time to get to sea\nas soon as I can. This is my substitute for pistol and ball.\nWith a philosophical flourish Cato throws himself upon his sword;\nI quietly take to the ship. There is nothing surprising in this.\nIf they but knew it, almost all men in their degree, some time\nor other, cherish very nearly the same feelings towards\nthe ocean with me.", 'There now is your insular city of the Manhattoes, belted round by wharves\nas Indian isles by coral reefs--commerce surrounds it with her surf.\nRight and left, the streets take you waterward. Its extreme downtown\nis the battery, where that noble mole is washed by waves, and cooled\nby breezes, which a few hours previous were out of sight of land.\nLook at the crowds of water-gazers there.']
+'''
+print(mobyparagraphs[1])
+'''
+There now is your insular city of the Manhattoes, belted round by wharves
+as Indian isles by coral reefs--commerce surrounds it with her surf.
+Right and left, the streets take you waterward. Its extreme downtown
+is the battery, where that noble mole is washed by waves, and cooled
+by breezes, which a few hours previous were out of sight of land.
+Look at the crowds of water-gazers there.
+'''
+mobyparagraphsindex1lowercase = mobyparagraphs[1].lower()
+mobyparagraphsindex1lowercase = mobyparagraphsindex1lowercase.replace(".", "")
+mobyparagraphsindex1lowercase = mobyparagraphsindex1lowercase.replace(",", "")
+mobyparagraphsindex1lowercasesplitwords = mobyparagraphsindex1lowercase.split()
+print(mobyparagraphsindex1lowercasesplitwords)
+'''
+['there', 'now', 'is', 'your', 'insular', 'city', 'of', 'the', 'manhattoes', 'belted', 'round', 'by', 'wharves', 'as', 'indian', 'isles', 'by', 'coral', 'reefs--commerce', 'surrounds', 'it', 'with', 'her', 'surf', 'right', 'and', 'left', 'the', 'streets', 'take', 'you', 'waterward', 'its', 'extreme', 'downtown', 'is', 'the', 'battery', 'where', 'that', 'noble', 'mole', 'is', 'washed', 'by', 'waves', 'and', 'cooled', 'by', 'breezes', 'which', 'a', 'few', 'hours', 'previous', 'were', 'out', 'of', 'sight', 'of', 'land', 'look', 'at', 'the', 'crowds', 'of', 'water-gazers', 'there']
+'''
+pipestext = open("datapipes.txt").read()
+pipestextparagraphs = pipestext.split("|")
+print(pipestextparagraphs)
+'''
+['State', 'Month Day, Year Code', 'Avg Daily Max Air Temperature (F)', 'Record Count for Daily Max Air Temp (F)\nIllinois', '1979/01/01', '17.48', '994\nIllinois', '1979/01/02', '4.64', '994\nIllinois', '1979/01/03', '11.05', '994\nIllinois', '1979/01/04', '9.51', '994\nIllinois', '1979/05/15', '68.42', '994\nIllinois', '1979/05/16', '70.29', '994\nIllinois', '1979/05/17', '75.34', '994\nIllinois', '1979/05/18', '79.13', '994\nIllinois', '1979/05/19', '74.94', '994']
+'''
+eachlinealist = []
+for eachline in open("datapipes.txt"):
+    eachlinealist.append(eachline.strip().split("|"))
+print(eachlinealist)
+'''
+[['State', 'Month Day, Year Code', 'Avg Daily Max Air Temperature (F)', 'Record Count for Daily Max Air Temp (F)'], ['Illinois', '1979/01/01', '17.48', '994'], ['Illinois', '1979/01/02', '4.64', '994'], ['Illinois', '1979/01/03', '11.05', '994'], ['Illinois', '1979/01/04', '9.51', '994'], ['Illinois', '1979/05/15', '68.42', '994'], ['Illinois', '1979/05/16', '70.29', '994'], ['Illinois', '1979/05/17', '75.34', '994'], ['Illinois', '1979/05/18', '79.13', '994'], ['Illinois', '1979/05/19', '74.94', '994']]
+'''
+import csv
+eachlinealistcsvmodule = [eachline for eachline in csv.reader(open("datapipes.txt", newline=""), delimiter="|")]
+print(eachlinealistcsvmodule)
+'''
+[['State', 'Month Day, Year Code', 'Avg Daily Max Air Temperature (F)', 'Record Count for Daily Max Air Temp (F)'], ['Illinois', '1979/01/01', '17.48', '994'], ['Illinois', '1979/01/02', '4.64', '994'], ['Illinois', '1979/01/03', '11.05', '994'], ['Illinois', '1979/01/04', '9.51', '994'], ['Illinois', '1979/05/15', '68.42', '994'], ['Illinois', '1979/05/16', '70.29', '994'], ['Illinois', '1979/05/17', '75.34', '994'], ['Illinois', '1979/05/18', '79.13', '994'], ['Illinois', '1979/05/19', '74.94', '994']]
+'''
+eachlinealistcsvmodulecsvfile = [eachline for eachline in csv.reader(open("datapipes.csv", newline=""))]
+print(eachlinealistcsvmodulecsvfile)
+'''
+[['Notes', 'State', 'State Code', 'Month Day, Year', 'Month Day, Year Code', 'Avg Daily Max Air Temperature (F)', 'Record Count for Daily Max Air Temp (F)', 'Min Temp for Daily Max Air Temp (F)', 'Max Temp for Daily Max Air Temp (F)', 'Avg Daily Max Heat Index (F)', 'Record Count for Daily Max Heat Index (F)', 'Min for Daily Max Heat Index (F)', 'Max for Daily Max Heat Index (F)', 'Daily Max Heat Index (F) % Coverage ', 'Illinois', '17', 'Jan 01, 1979', '1979/01/ 01', '17.48', '994', '6.00', '30.50', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'Jan 02, 1979', '1979/01/02', '4.64', '994', '- 6.40', '15.80', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'Jan 03, 1979', '1979/01/03', '11.05', '994', '- 0.70', '24.70', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'Jan 04, 1979', '1979/01/ 04', '9.51', '994', '0.20', '27.60', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'May 15, 1979', '1979/05/ 15', '68.42', '994', '61.00', '75.10', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'May 16, 1979', '1979/05/ 16', '70.29', '994', '63.40', '73.50', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'May 17, 1979', '1979/05/ 17', '75.34', '994', '64.00', '80.50', '82.60', '2', '82.40', '82.80', '0.20% ', 'Illinois', '17', 'May 18, 1979', '1979/05/ 18', '79.13', '994', '75.50', '82.10', '81.42', '349', '80.20', '83.40', '35.11% ', 'Illinois', '17', 'May 19, 1979', '1979/05/ 19', '74.94', '994', '66.90', '83.10', '82.87', '78', '81.60', '85.20', '7.85%']]
+'''
+for eachline in csv.reader(open("datapipes.csv", newline="")):
+    print(eachline)
+    '''
+    ['Notes', 'State', 'State Code', 'Month Day, Year', 'Month Day, Year Code', 'Avg Daily Max Air Temperature (F)', 'Record Count for Daily Max Air Temp (F)', 'Min Temp for Daily Max Air Temp (F)', 'Max Temp for Daily Max Air Temp (F)', 'Avg Daily Max Heat Index (F)', 'Record Count for Daily Max Heat Index (F)', 'Min for Daily Max Heat Index (F)', 'Max for Daily Max Heat Index (F)', 'Daily Max Heat Index (F) % Coverage ', 'Illinois', '17', 'Jan 01, 1979', '1979/01/ 01', '17.48', '994', '6.00', '30.50', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'Jan 02, 1979', '1979/01/02', '4.64', '994', '- 6.40', '15.80', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'Jan 03, 1979', '1979/01/03', '11.05', '994', '- 0.70', '24.70', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'Jan 04, 1979', '1979/01/ 04', '9.51', '994', '0.20', '27.60', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'May 15, 1979', '1979/05/ 15', '68.42', '994', '61.00', '75.10', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'May 16, 1979', '1979/05/ 16', '70.29', '994', '63.40', '73.50', 'Missing', '0', 'Missing', 'Missing', '0.00% ', 'Illinois', '17', 'May 17, 1979', '1979/05/ 17', '75.34', '994', '64.00', '80.50', '82.60', '2', '82.40', '82.80', '0.20% ', 'Illinois', '17', 'May 18, 1979', '1979/05/ 18', '79.13', '994', '75.50', '82.10', '81.42', '349', '80.20', '83.40', '35.11% ', 'Illinois', '17', 'May 19, 1979', '1979/05/ 19', '74.94', '994', '66.90', '83.10', '82.87', '78', '81.60', '85.20', '7.85%']
+    '''
+eachlinealistcsvmoduledictionary = [eachline for eachline in csv.DictReader(open("datapipes.csv", newline=""))]
+print(eachlinealistcsvmoduledictionary) #print []
+from openpyxl import Workbook
+workbookobject = Workbook()
+worksheetobject = workbookobject.active
+worksheetobject.title = "worksheet name Temperature Data"
+for eachrow in eachlinealist:
+    worksheetobject.append(eachrow)
+workbookobject.save("datapipesexcel.xlsx") #Excel file datapipesexcel.xlsx created good Excel file with header and each row a record
+workbookobject2 = Workbook()
+worksheetobject2 = workbookobject2.active
+worksheetobject2.title = "worksheet name Temperature Data 2"
+for eachline in csv.reader(open("datapipes.csv", newline="")):
+    worksheetobject2.append(eachline)
+workbookobject.save("datapipesexcel2.xlsx") #Excel file datapipesexcel2.xlsx created good Excel file with header and each row a record
