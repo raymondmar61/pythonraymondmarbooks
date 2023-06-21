@@ -1,3 +1,151 @@
+#Strings
+print(r"Begin the raw string in the print function with the letter r to return as-is.") #print Begin the raw string in the print function with the letter r to return as-is.
+rawstring = r"D:/innovateinfinitely/blog/202306blog.html"
+print(rawstring) #print D:/innovateinfinitely/blog/202306blog.html
+print("Print five times " * 5) #print Print five times Print five times Print five times Print five times Print five times
+multiplelinestring = """Use triple quotes for multiple lines or
+multi-line strings or multi line strings.
+The last line ends with triple quotes.  Otherwise, Python
+inserts a line break below."""
+print(multiplelinestring)
+'''
+Use triple quotes for multiple lines or
+multi-line strings or multi line strings.
+The last line ends with triple quotes.  Otherwise, Python
+inserts a line break below.
+'''
+lengthofastring = "Find the number of characters in a string."
+print(len(lengthofastring)) #print 42
+stringsplitindexing = "Use brackets to split a string beginning with the number zero and end with minus one."
+print(stringsplitindexing) #print Use brackets to split a string beginning with the number zero.
+print(stringsplitindexing[0]) #print U
+print(stringsplitindexing[1:4]) #print se*space*
+print(stringsplitindexing[1:9:2]) #print s rc
+print(stringsplitindexing[-2]) #print e
+print(stringsplitindexing[-10:-2]) #print minus on
+print(stringsplitindexing[-2:-10:-1]) #print eno suni.  RM:  print(stringsplitindexing[-2:-10]) returns null
+print(stringsplitindexing[-1::-1]) #print .eno sunim htiw dne dna orez rebmun eht htiw gninnigeb gnirts a tilps ot stekcarb esU
+print(stringsplitindexing[::-1]) #print .eno sunim htiw dne dna orez rebmun eht htiw gninnigeb gnirts a tilps ot stekcarb esU
+print(stringsplitindexing.index("Use")) #print 0.  Find the index position of a string
+print(stringsplitindexing.index("s")) #print 1.  Find the index position of a string
+print(stringsplitindexing.index("zero")) #print 57.  Find the index position of a string
+print(stringsplitindexing.rindex("with")) #print 70.  Return the index position for the first occurrence starting from the end of the string.  The count, however, starts from the beginning.  70 is the index position 70 starting with 0 at the start of the string.
+cleanstring = "     5beforeremovespaces3after   "
+print(cleanstring) #print *****5beforeremovespaces3after***
+print(cleanstring.rstrip()) #print *****5beforeremovespaces3after
+print(cleanstring.lstrip()) #print 5beforeremovespaces3after***
+print(cleanstring.strip()) #print 5beforeremovespaces3after
+changecase = "The SENTENCE convert Upper Case lower case Casing"
+print(changecase) #print The SENTENCE convert Upper Case lower case Casing
+print(changecase.lower()) #print the sentence convert upper case lower case casing
+print(changecase.upper()) #print THE SENTENCE CONVERT UPPER CASE LOWER CASE CASING
+print(changecase.title()) #print The Sentence Convert Upper Case Lower Case Casing
+print(changecase.capitalize()) #print The sentence convert upper case lower case casing
+checkcase = "Methods Check A String'S Case."
+print(checkcase.isupper()) #print False
+print(checkcase.islower()) #print False
+print(checkcase.istitle()) #print True.  'S is capitalized for title!?!
+print(checkcase.isalpha()) #print False.  isalpha() method can't have spaces.  Alphabetic characters only.
+print(checkcase[0:7].isalpha()) #print True.  isalpha() method can't have spaces.  Alphabetic characters only.
+print(checkcase[0:7].isalnum()) #print True.  isalnum() method can't have spaces.  isalnum searches for alpha numeric or alphanumeric or alpha-numeric.
+print(checkcase.isspace()) #print False
+checkspaces = " 4 cke x  sioj "
+print(checkspaces.isspace()) #print False.  White spaces or spaces only.
+alldecimals0to9base10 = "123789"
+print(alldecimals0to9base10.isdecimal()) #print True.  Python isdecimal() function returns a Boolean value TRUE if the input string contains all decimal characters
+print(alldecimals0to9base10.isdigit()) #print True.  No positive signs or negative signs.
+print(alldecimals0to9base10.isnumeric()) #print True.  isnumeric is a numeric value without a positive sign or negative sign and no decimals.
+splitstring = "Separate string by letters or spaces"
+print(splitstring) #print Separate string by letters or spaces
+print(splitstring.split()) #print ['Separate', 'string', 'by', 'letters', 'or', 'spaces']
+print(splitstring.split(" ")) #print ['Separate', 'string', 'by', 'letters', 'or', 'spaces']
+print(splitstring.split("\n")) #print ['Separate string by letters or spaces']
+print(splitstring.split("r")) #print ['Sepa', 'ate st', 'ing by lette', 's o', ' spaces']
+print(splitstring.split("r", 3)) #print ['Sepa', 'ate st', 'ing by lette', 's o', ' spaces'].  Split by the letter r three times.
+#pretendinputcolors = str(input("Enter a list of colors separated by a space "))
+pretendinputcolors = "black white red"
+print(pretendinputcolors) #print black white red
+splitpretendinputcolors = pretendinputcolors.split()
+print(splitpretendinputcolors) #print ['black', 'white', 'red']
+splitbyspecificcharacter = "Separate by string character:  89, 97, 92"
+print(splitbyspecificcharacter) #print Separate by string character:  89, 97, 92
+splitcharactercolondoublespace = splitbyspecificcharacter.partition(":  ")
+print(splitcharactercolondoublespace) #print ('Separate by string character', ':  ', '89, 97, 92')
+print(list(splitcharactercolondoublespace)) #print ['Separate by string character', ':  ', '89, 97, 92']
+#rpartition split search for the one separator from the end of the string
+multiplesplitbyspecificcharacter = "D:/innovateinfinitely/blog/202306blog.html"
+mainurl, rightmostforwardslash, htmlfile = multiplesplitbyspecificcharacter.rpartition("/")
+print(mainurl) #print D:/innovateinfinitely/blog
+print(rightmostforwardslash) #print /
+print(htmlfile) #print 202306blog.html
+doublesplitbyspecificcharacter = "Separate by string character:  89, 97, 92 :  45, 56, 78"
+print(doublesplitbyspecificcharacter) #print Separate by string character:  89, 97, 92 :  45, 56, 78
+doublesplitcharactercolondoublespace = doublesplitbyspecificcharacter.partition(":  ")
+print(doublesplitcharactercolondoublespace) #print ('Separate by string character', ':  ', '89, 97, 92 :  45, 56, 78').  RM:  Single split at the first colon from the left.
+print(list(doublesplitcharactercolondoublespace)) #print ['Separate by string character', ':  ', '89, 97, 92 :  45, 56, 78']
+print(len(list(doublesplitcharactercolondoublespace))) #print 3
+#splitlines reteurns a list of new strings representing the lines of text split at each newline
+threelines = """This is line 1
+    This is line 2
+        This is line 3"""
+print(threelines)
+'''
+This is line 1
+    This is line 2
+        This is line 3
+'''
+splitlineswithformatting = threelines.splitlines()
+print(splitlineswithformatting) #print ['This is line 1', '    This is line 2', '        This is line 3']
+splitlineswithformattingnewline = threelines.splitlines(True)
+print(splitlineswithformattingnewline) #print ['This is line 1\n', '    This is line 2\n', '        This is line 3']
+joinsplitinputcolors = ", ".join(splitpretendinputcolors)
+print(joinsplitinputcolors) #print black, white, red
+print(" ".join(splitpretendinputcolors)) #print black white red
+print("\t".join(splitpretendinputcolors)) #print black  white   red
+findstring = "Search string replace string"
+print(findstring) #print Search string replace string
+print(findstring.find("string")) #print 7.  Seven is the starting index number
+print(findstring.find("string", 13)) #print 22.  22 is the starting index number.  13 is the index number to begin the find.
+print(findstring.replace("Search", "Find")) #print Find string replace string
+print(findstring.startswith("Search")) #print True
+print(findstring.startswith("search")) #print False
+print(findstring.startswith("string")) #print False
+print(findstring.endswith("ing")) #print True
+print(findstring.endswith("string")) #print True
+sortstring = "Sorting a string convert to a list by splitting and sort the list it is a nice day today"
+print(sortstring) #print Sorting a string convert to a list by splitting and sort the list it is a nice day today
+sortstringassplitlist = sortstring.split()
+print(sortstringassplitlist.sort()) #print None
+sortstringassplitlist.sort()
+print(sortstringassplitlist) #print ['Sorting', 'a', 'a', 'a', 'and', 'by', 'convert', 'day', 'is', 'it', 'list', 'list', 'nice', 'sort', 'splitting', 'string', 'the', 'to', 'today']
+sortlistofstrings = "It is a nice day today, isn't it?".split()
+print(sortlistofstrings) #print ['It', 'is', 'a', 'nice', 'day', 'today,', "isn't", 'it?']
+sortlistofstrings.sort()
+print(sortlistofstrings) #print ['It', 'a', 'day', 'is', "isn't", 'it?', 'nice', 'today,']
+#rjust() and ljust() methods return a padded version which insert spaces to justify the ntext length
+print("No right justify ten spaces on the left because string is more than ten characters long.".rjust(10)) #print No right justify ten spaces on the left because string is more than ten characters long.
+print("Yes right justify 012 spaces on the left because string is more than 089 characters long.".rjust(100)) #print            Yes right justify 012 spaces on the left because string is more than 089 characters long.
+print("Hello".rjust(10)) #print '     Hello'
+print("Hello World".rjust(10)) #print Hello World
+print("Hello".ljust(10)) #print 'Hello     '
+print("Hello World".ljust(10)) #print Hello World
+print("Four".rjust(10)) #print '      Four'
+print("Four".ljust(10)) #print 'Four      '
+print("Add asterisk on the left to total 50 characters".rjust(50, "*")) #print ***Add asterisk on the left to total 50 characters
+print("Add hyphen on the right to total 60 characters".ljust(60, "-")) #print Add hyphen on the right to total 60 characters--------------
+print("CENTERME total 40 characters".center(40)) #print '      CENTERME total 40 characters      '
+print("centerme total 50 characters with =".center(50, "=")) #print =======centerme total 50 characters with =========
+from collections import Counter
+countwords = "Count the words in the string.  We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem."
+print(countwords) #print Count the words in the string.  We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem.
+print(countwords.count("the")) #print 7
+print(countwords.count("the", 10)) #print 6.  Start the count at index position 10.
+print(countwords.count("that", 253, 429)) #print 2.  Start the count at index position 253 inclusive and stop the count at index position 429 exclusive.
+splitcountwords = countwords.split(" ")
+topwords = Counter(splitcountwords)
+threemostcommonwords = topwords.most_common(5)
+print(threemostcommonwords) #print [('the', 7), ('in', 4), ('', 4), ('to', 4), ('We', 3)].  RM:  I intentionally double spaced after the periods.
+
 #Boolean
 print(bool("return true" > "or return false using bool()")) #print True
 print(bool("v" > "a")) #print True
@@ -24,7 +172,10 @@ print(checkinteger) #print True
 checkfloat = isinstance(floatnumber, (int, float))
 print(checkfloat) #print True
 print(intnumber is floatnumber) #print False
-
+truestring = "A string is considered ture if it's not empty."
+print(any(truestring)) #print True
+print("string" in truestring) #print True
+print("STRING" in truestring) #print False
 #Variables
 assignvariablenone = None
 print(assignvariablenone) #print None
@@ -104,3 +255,49 @@ print(rightlist) #print []
 rightlist.append("add text to the blank right list")
 print(middlelist) #print []
 print(rightlist) #print ['add text to the blank right list']
+stringvariable = "The String"
+integervariable = 457
+decimalvariable = 3.14159
+print("Use plus sign to concatenate string variables.  Integer is " + str(integervariable) + ".  String is " + stringvariable + ".") #print Use plus sign to concatenate string variables.  Integer is 457.  String is The String.
+print("use comma to concateante numerical variables.  Integer is", integervariable, ".  Decimal is", decimalvariable, ".") #print use comma to concateante numerical variables.  Integer is 457 .  Decimal is 3.14159 .
+print("Use the percent f for an integer as a floating number %f.  Use the percent s for a string %s." % (integervariable, stringvariable)) #print Use the percent f for an integer as a floating number 457.000000.  Use the percent s for a string The String.
+print("Use the percent f for a decimal as a floating number %f." % (decimalvariable)) #print Use the percent f for a decimal as a floating number 3.141590.
+print("Use the percent period 2 f for a decimal as a floating number two decimals %.2f." % (decimalvariable)) #print Use the percent period 2 f for a decimal as a floating number two decimals 3.14.
+print("Use the percent d for a decimal as an integer %d." % (decimalvariable)) #print Use the percent d for a decimal as an integer 3.
+print("Use curly braces {{}}.  Double curly braces as escape curly brace.  Integer is {}.  String is {}.".format(integervariable, stringvariable)) #print Use curly braces {}.  Double curly braces as escape curly brace.  Integer is 457.  String is The String.
+print("Type the colon period and number f for a floating number or decimal number from an integer {:.1f} {:.2f}.".format(integervariable, integervariable)) #print Type the colon period and number f for a floating number or decimal number from an integer 457.0 457.00.
+print("Decimal variable return two decimals {:.2f}.".format(decimalvariable)) #print Decimal variable return two decimals 3.14.
+print("Decimal variable return five decimals {:.5f}.".format(decimalvariable)) #Decimal variable return five decimals 3.14159.
+print("Reference like index numbers {1} and {0} by position number {1}.".format("Position 0", "Position 1")) #print Reference like index numbers Position 1 and Position 0 by position number Position 1.
+print("Reference like index numbers.  String index 1 is {1}.  Integer is index 0 {0}.".format(integervariable, stringvariable)) #print Reference like index numbers.  String index 1 is The String.  Integer is index 0 457.
+print("Reference arguments in the .format.  {lastreference} and {firstreference} by position reference {middlereference}.".format(firstreference="Happy", middlereference="Belated", lastreference="Birthday")) #print Reference arguments in the .format.  Birthday and Happy by position reference Belated.
+print(f"F-string quick lesson.  Double curly braces as escape curly brace {{}}.  Print the stringvariable {stringvariable}.  Print the integer {integervariable}.") #print F-string quick lesson.  Double curly braces as escape curly brace {}.  Print the stringvariable The String.  Print the integer 457.
+#f-strings for float values and integer values.  Letter f to format float values.  Letter d to format integer values.
+print(f"Two decimal places for 17.489 is {17.489:.2f}.") #print Two decimal places for 17.489 is 17.49.
+variable17489 = 17.489
+print(f"Two decimal places for variable 17.489 is {variable17489:.2f}.") #print Two decimal places for variable 17.489 is 17.49.
+print(f"Letter d to format integer number 8 is {8:d}.") #print Letter d to format integer number 8 is 8.
+print(f"Field width 10 enclosed in brackets to see the integer 27 value align right decimal included in count:  [{27:10d}]") #print Field width 10 enclosed in brackets to see the integer 27 value align right:  [        27]
+print(f"Field width 10 enclosed in backets to see the float 3.5 value align right decimal included in count:  [{3.5:10f}]") #print Field width 10 enclosed in backets to see the float 3.5 value align right[  3.500000]
+print(f"Field width 10 enclosed in backets to see the float 12346578.9 value align right decimal included in count which didn't happend field width 15 with five zeros:  [{12345678.9:10f}]") #print Field width 10 enclosed in backets to see the float 12346578.9 value align right decimal included in count which didn't happend field width 15 with five zeros:  [12345678.900000]
+print(f"Field width 10 enclosed in backets to see the float 1.23456789 value align right decimal included in count which didn't happen field width 8:  [{1.23456789:10f}]") #print Field width 10 enclosed in backets to see the float 1.23456789 value align right decimal included in count which didn't happend field display 8:  [  1.234568]
+#< left align.  > right align.  ^ center align.
+print(f"Field width left align 15 for integer 27 [{27:<15d}]") #print Field width less than 15 for integer 27 [27             ]
+print(f"Field width left align 15 for integer 271234567890123 all fifteen digits printed [{271234567890123:<15d}]") #print Field width less than 15 for integer 271234567890123 all fifteen digits printed [271234567890123]
+print(f"Field width left align 10 for integer 271234567890123 all fifteen digits printed [{271234567890123:<10d}]") #print Field width less than 10 for integer 271234567890123 all fifteen digits printed [271234567890123]
+print(f"Field width left align 4 for floating number 3.5 all five zeros printed [{3.5:<4f}]") #print Field width left align 4 for floating number 3.5 all five zeros printed [3.500000]
+print(f"Field width left align 1 for floating number 3.5 [{3.5:<.1f}]") #print Field width left align 1 for floating number 3.5 [3.5]
+print(f'[{"single quote f-string Brackets assign count right align string 82 characters.":>82}]') #print [     single quote f-string Brackets assign count right align string 82 characters.]
+print(f'[{"single quote f-string Brackets assign count right align string 82 characters.":>1}]') #print [single quote f-string Brackets assign count right align string 82 characters.]
+print(f"Center align integer 27 width 8 [{27:^8d}]") #print Center align integer 27 width 8 [   27   ]
+print(f'[{"Center the string or any number using the carrot sign 68 characters.":^74}]') #print [   Center the string or any number using the carrot sign 68 characters.   ].  Extra spaces of an unequal centering placed to the right.
+print(f"Align positive negative with a space width one [{27:+1d}]") #print Align positive negative with a space width one [+27]
+print(f"Align positive negative with a space width one [{-27:1d}]") #print Align positive negative with a space width one [-27]
+print(f"Positive sign text numerical value width four [{27:+4d}]") #print Positive sign text numerical value width four [ +27]
+print(f"Negative sign text numerical value width four [{-27:4d}]") #print Negative sign text numerical value width four [ -27]
+print(f"Positive sign text numerical value width ten [{27:+10d}]") #print Positive sign text numerical value width ten[       +27]
+print(f"Fill with zeros in front of numerical value width five [{27:+05d}]") #print Fill with zeros in front of numerical value width five [+0027]
+print(f"Fill with zeros in front of numerical value width ten [{27:+010d}]") #print Fill with zeros in front of numerical value width ten [+000000027]
+print(f"String integer value with commas {123456789:,d}.") #print String numerical value with commas 123,456,789.
+print(f"String decimal value with commas {123456.78:,.3f}.") #print String numerical value with commas 123,456.780.
+print(f"String decimal value with commas {123456.78:,.6f}.") #print String decimal value with commas 123,456.780000.
