@@ -1,7 +1,11 @@
 #Strings
+xstringescapecharacter = "Escape character backward slash\\ tab\t double quotes escape\" sentence."
+print(xstringescapecharacter) #print Escape character backward slash\ tab   double quotes escape" sentence.
 print(r"Begin the raw string in the print function with the letter r to return as-is.") #print Begin the raw string in the print function with the letter r to return as-is.
 rawstring = r"D:/innovateinfinitely/blog/202306blog.html"
 print(rawstring) #print D:/innovateinfinitely/blog/202306blog.html
+concatenateplussign = "Hello " + "World"
+print(concatenateplussign) #print Hello World
 print("Print five times " * 5) #print Print five times Print five times Print five times Print five times Print five times
 multiplelinestring = """Use triple quotes for multiple lines or
 multi-line strings or multi line strings.
@@ -14,6 +18,7 @@ multi-line strings or multi line strings.
 The last line ends with triple quotes.  Otherwise, Python
 inserts a line break below.
 '''
+print("override print function no newline\n", end="") #print override print function no newline use end parameter of "" end="" for the print function to not append the newline
 lengthofastring = "Find the number of characters in a string."
 print(len(lengthofastring)) #print 42
 stringsplitindexing = "Use brackets to split a string beginning with the number zero and end with minus one."
@@ -21,7 +26,10 @@ print(stringsplitindexing) #print Use brackets to split a string beginning with 
 print(stringsplitindexing[0]) #print U
 print(stringsplitindexing[1:4]) #print se*space*
 print(stringsplitindexing[1:9:2]) #print s rc
+print(stringsplitindexing[-1]) #print .
 print(stringsplitindexing[-2]) #print e
+print(stringsplitindexing[1:]) #print se brackets to split a string beginning with the number zero and end with minus one.
+print(stringsplitindexing[:-1]) #print Use brackets to split a string beginning with the number zero and end with minus one
 print(stringsplitindexing[-10:-2]) #print minus on
 print(stringsplitindexing[-2:-10:-1]) #print eno suni.  RM:  print(stringsplitindexing[-2:-10]) returns null
 print(stringsplitindexing[-1::-1]) #print .eno sunim htiw dne dna orez rebmun eht htiw gninnigeb gnirts a tilps ot stekcarb esU
@@ -30,17 +38,29 @@ print(stringsplitindexing.index("Use")) #print 0.  Find the index position of a 
 print(stringsplitindexing.index("s")) #print 1.  Find the index position of a string
 print(stringsplitindexing.index("zero")) #print 57.  Find the index position of a string
 print(stringsplitindexing.rindex("with")) #print 70.  Return the index position for the first occurrence starting from the end of the string.  The count, however, starts from the beginning.  70 is the index position 70 starting with 0 at the start of the string.
+stripastring = "Goodbye\n"
+print(stripastring[:-1]) #print Goodbye
 cleanstring = "     5beforeremovespaces3after   "
 print(cleanstring) #print *****5beforeremovespaces3after***
 print(cleanstring.rstrip()) #print *****5beforeremovespaces3after
 print(cleanstring.lstrip()) #print 5beforeremovespaces3after***
 print(cleanstring.strip()) #print 5beforeremovespaces3after
+specifycharactersremove = "www.python.org"
+print(specifycharactersremove.strip("w")) #print .python.org
+print(specifycharactersremove.strip("org")) #print www.python.
+print(specifycharactersremove.strip("worg")) #print .python.
+print(specifycharactersremove.strip("gorw")) #print .python. #Strip removes any and all characters no matter the order.  RM:  it doesn't work all the time.
+print(specifycharactersremove.strip("gorwt")) #print .python.
+print(specifycharactersremove.strip("gorwt.")) #print python
+print(specifycharactersremove.strip("gorth")) #print www.python.
+print(specifycharactersremove.strip("gorth.")) #print www.python
 changecase = "The SENTENCE convert Upper Case lower case Casing"
 print(changecase) #print The SENTENCE convert Upper Case lower case Casing
 print(changecase.lower()) #print the sentence convert upper case lower case casing
 print(changecase.upper()) #print THE SENTENCE CONVERT UPPER CASE LOWER CASE CASING
 print(changecase.title()) #print The Sentence Convert Upper Case Lower Case Casing
 print(changecase.capitalize()) #print The sentence convert upper case lower case casing
+print(changecase.swapcase()) #print tHE sentence CONVERT uPPER cASE LOWER CASE cASING
 checkcase = "Methods Check A String'S Case."
 print(checkcase.isupper()) #print False
 print(checkcase.islower()) #print False
@@ -62,6 +82,16 @@ print(splitstring.split(" ")) #print ['Separate', 'string', 'by', 'letters', 'or
 print(splitstring.split("\n")) #print ['Separate string by letters or spaces']
 print(splitstring.split("r")) #print ['Sepa', 'ate st', 'ing by lette', 's o', ' spaces']
 print(splitstring.split("r", 3)) #print ['Sepa', 'ate st', 'ing by lette', 's o', ' spaces'].  Split by the letter r three times.
+howmanysplits = "a b c d"
+print(howmanysplits) #print a b c d
+print(howmanysplits.split()) #print ['a', 'b', 'c', 'd']
+print(howmanysplits.split(" ", 1)) #print ['a', 'b c d']
+print(howmanysplits.split(" ", 2)) #print ['a', 'b', 'c d']
+print(howmanysplits.split(" ", 9)) #print ['a', 'b', 'c', 'd']
+#A first argument is required when specifying the number of splits in the second argument.  To split on whitespace runs using the second argument, type None as the first argument.
+print(howmanysplits.split(None, 1)) #print ['a', 'b c d']
+print(howmanysplits.split(None, 2)) #print ['a', 'b', 'c d']
+print(howmanysplits.split(None, 9)) #print ['a', 'b', 'c', 'd']
 #pretendinputcolors = str(input("Enter a list of colors separated by a space "))
 pretendinputcolors = "black white red"
 print(pretendinputcolors) #print black white red
@@ -102,6 +132,7 @@ joinsplitinputcolors = ", ".join(splitpretendinputcolors)
 print(joinsplitinputcolors) #print black, white, red
 print(" ".join(splitpretendinputcolors)) #print black white red
 print("\t".join(splitpretendinputcolors)) #print black  white   red
+print("::".join(splitpretendinputcolors)) #print black::white::red
 findstring = "Search string replace string"
 print(findstring) #print Search string replace string
 print(findstring.find("string")) #print 7.  Seven is the starting index number
@@ -112,6 +143,13 @@ print(findstring.startswith("search")) #print False
 print(findstring.startswith("string")) #print False
 print(findstring.endswith("ing")) #print True
 print(findstring.endswith("string")) #print True
+searchinstring = "Mississippi"
+print(searchinstring.find("zz")) #print -1
+print(searchinstring.find("ss", 3)) #print 5.  Begin search at the third index position
+print(searchinstring.find("ss", 1, 4)) #print 2.  Begin search at the first index position and end at the fourth index position
+print(searchinstring.rfind("ss")) #print 5.  Start the search at the end of the string which returns the position of the first character of the last occurrence with respect to the start of the string.  There is no lfind method.
+print(searchinstring.startswith(("mis", "Mss", "Misss", "Mrs", "checks all strings contained in tuple"))) #print False
+print(searchinstring.endswith(("i", "u", "check all strings in tuple"))) #print True.  If the parameter with startswith or endswith is a tuple of strings, both methods check for all the strings in the tuple which returns True if any of them is found.
 sortstring = "Sorting a string convert to a list by splitting and sort the list it is a nice day today"
 print(sortstring) #print Sorting a string convert to a list by splitting and sort the list it is a nice day today
 sortstringassplitlist = sortstring.split()
@@ -120,6 +158,18 @@ sortstringassplitlist.sort()
 print(sortstringassplitlist) #print ['Sorting', 'a', 'a', 'a', 'and', 'by', 'convert', 'day', 'is', 'it', 'list', 'list', 'nice', 'sort', 'splitting', 'string', 'the', 'to', 'today']
 sortlistofstrings = "It is a nice day today, isn't it?".split()
 print(sortlistofstrings) #print ['It', 'is', 'a', 'nice', 'day', 'today,', "isn't", 'it?']
+splitmethod = "Mississippi split by ss"
+print(splitmethod.split("ss")) #print ['Mi', 'i', 'ippi split by ', '']
+howmanysplits = "a b c d"
+print(howmanysplits) #print a b c d
+print(howmanysplits.split()) #print ['a', 'b', 'c', 'd']
+print(howmanysplits.split(" ", 1)) #print ['a', 'b c d']
+print(howmanysplits.split(" ", 2)) #print ['a', 'b', 'c d']
+print(howmanysplits.split(" ", 9)) #print ['a', 'b', 'c', 'd']
+#A first argument is required when specifying the number of splits in the second argument.  To split on whitespace runs using the second argument, type None as the first argument.
+print(howmanysplits.split(None, 1)) #print ['a', 'b c d']
+print(howmanysplits.split(None, 2)) #print ['a', 'b', 'c d']
+print(howmanysplits.split(None, 9)) #print ['a', 'b', 'c', 'd']
 sortlistofstrings.sort()
 print(sortlistofstrings) #print ['It', 'a', 'day', 'is', "isn't", 'it?', 'nice', 'today,']
 #rjust() and ljust() methods return a padded version which insert spaces to justify the ntext length
@@ -135,6 +185,12 @@ print("Add asterisk on the left to total 50 characters".rjust(50, "*")) #print *
 print("Add hyphen on the right to total 60 characters".ljust(60, "-")) #print Add hyphen on the right to total 60 characters--------------
 print("CENTERME total 40 characters".center(40)) #print '      CENTERME total 40 characters      '
 print("centerme total 50 characters with =".center(50, "=")) #print =======centerme total 50 characters with =========
+splitmethod = "You\t\t can have tabs\t\n \t and newlines " "mixed in"
+print(splitmethod.expandtabs(1)) #expandtabs replaces tab characters with the specified number of spaces
+'''
+You   can have tabs 
+   and newlines mixed in
+'''
 from collections import Counter
 countwords = "Count the words in the string.  We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem."
 print(countwords) #print Count the words in the string.  We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem.
@@ -176,7 +232,16 @@ truestring = "A string is considered ture if it's not empty."
 print(any(truestring)) #print True
 print("string" in truestring) #print True
 print("STRING" in truestring) #print False
+print(3 in [1, 3, 4, 5, "check item in list"]) #print True
+print(98 in [1, 3, 4, 5, "check item in list"]) #print False
+
 #Variables
+floatnumbertype = 6.91 #float
+complexnumbertype = 3 + 2j #complex
+print(type(complexnumbertype)) #print <class 'complex'>
+booleantype = True
+print(type(booleantype)) #print <class 'bool'>
+print(not booleantype) #print False
 assignvariablenone = None
 print(assignvariablenone) #print None
 x = "string variable attributes"
@@ -210,6 +275,8 @@ print(variable2) #print separated
 print(variable3) #print by four commas all
 print(variable4) #print in one tuple
 print(type(variable4)) #print <class 'str'>
+print(list((variable1, variable2, variable3))) #print ['four variables contained in a tuple', 'separated', 'by four commas all']
+print([(variable1, variable2, variable3)]) #print ['four variables contained in a tuple', 'separated', 'by four commas all']
 variable1, variable2, variable3, variable4 = ["assign me to four different variables"] * 4
 print(variable1) #print assign me to four different variables
 print(variable2) #print assign me to four different variables
@@ -264,6 +331,11 @@ print("Use the percent f for an integer as a floating number %f.  Use the percen
 print("Use the percent f for a decimal as a floating number %f." % (decimalvariable)) #print Use the percent f for a decimal as a floating number 3.141590.
 print("Use the percent period 2 f for a decimal as a floating number two decimals %.2f." % (decimalvariable)) #print Use the percent period 2 f for a decimal as a floating number two decimals 3.14.
 print("Use the percent d for a decimal as an integer %d." % (decimalvariable)) #print Use the percent d for a decimal as an integer 3.
+print("Pi is %f" % (3.14159)) #print Pi is 3.141590
+print("Pi is %.2f" % (3.14159)) #print Pi is 3.14
+print("Pi is %6.2f" % (3.14159)) #print Pi is **3.14
+print("Pi is %-6f for geometry circles" % (3.14159)) #print Pi is 3.141590 for geometry circles
+print("Pi is %-6.2f" % (3.14159)) #print Pi is 3.14**
 print("Use curly braces {{}}.  Double curly braces as escape curly brace.  Integer is {}.  String is {}.".format(integervariable, stringvariable)) #print Use curly braces {}.  Double curly braces as escape curly brace.  Integer is 457.  String is The String.
 print("Type the colon period and number f for a floating number or decimal number from an integer {:.1f} {:.2f}.".format(integervariable, integervariable)) #print Type the colon period and number f for a floating number or decimal number from an integer 457.0 457.00.
 print("Decimal variable return two decimals {:.2f}.".format(decimalvariable)) #print Decimal variable return two decimals 3.14.
@@ -271,6 +343,12 @@ print("Decimal variable return five decimals {:.5f}.".format(decimalvariable)) #
 print("Reference like index numbers {1} and {0} by position number {1}.".format("Position 0", "Position 1")) #print Reference like index numbers Position 1 and Position 0 by position number Position 1.
 print("Reference like index numbers.  String index 1 is {1}.  Integer is index 0 {0}.".format(integervariable, stringvariable)) #print Reference like index numbers.  String index 1 is The String.  Integer is index 0 457.
 print("Reference arguments in the .format.  {lastreference} and {firstreference} by position reference {middlereference}.".format(firstreference="Happy", middlereference="Belated", lastreference="Birthday")) #print Reference arguments in the .format.  Birthday and Happy by position reference Belated.
+print("{0} is the food of {user[1]}".format("Ambrosia", user=["men", "the gods", "others"])) #print Ambrosia is the food of the gods
+print("{0:10} is the food of gods".format("Ambrosia")) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.  10 spaces start at 0 pad with spaces.
+print("{0:{2}} is the food of gods".format("Ambrosia", 55, 10)) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.  10 spaces start at 0 pad with spaces using the third parameter or the second index parameter.
+print("{food:{width}} is the food of gods".format(food="Ambrosia", width=10)) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.  10 spaces start at 0.
+print("{0:>10} is the food of gods".format("Ambrosia")) #print **Ambrosia is the food of gods.  >10 forces right justify of the field and pads with spaces
+print("{0:&>10} is the food of gods".format("Ambrosia")) #print &&Ambrosia is the food of gods.  &>10 forces right justify of the field and pads with ampersands instead of spaces
 print(f"F-string quick lesson.  Double curly braces as escape curly brace {{}}.  Print the stringvariable {stringvariable}.  Print the integer {integervariable}.") #print F-string quick lesson.  Double curly braces as escape curly brace {}.  Print the stringvariable The String.  Print the integer 457.
 #f-strings for float values and integer values.  Letter f to format float values.  Letter d to format integer values.
 print(f"Two decimal places for 17.489 is {17.489:.2f}.") #print Two decimal places for 17.489 is 17.49.
@@ -301,3 +379,10 @@ print(f"Fill with zeros in front of numerical value width ten [{27:+010d}]") #pr
 print(f"String integer value with commas {123456789:,d}.") #print String numerical value with commas 123,456,789.
 print(f"String decimal value with commas {123456.78:,.3f}.") #print String numerical value with commas 123,456.780.
 print(f"String decimal value with commas {123456.78:,.6f}.") #print String decimal value with commas 123,456.780000.
+value = 42
+stringinterpolation = f"The answer is {value}"
+print(stringinterpolation) #print The answer is 42
+pi = 3.1415
+print(f"pi is {pi:{10}.{2}}") #print pi is *******3.1
+value = "grapes"
+print(f"String interpolation value variable {value}.") #print String interpolation value variable grapes.
