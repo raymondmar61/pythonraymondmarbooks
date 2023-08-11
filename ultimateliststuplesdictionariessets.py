@@ -293,3 +293,80 @@ squareslistcomprehension = [onenumber * onenumber for onenumber in numbers] #lis
 print(squareslistcomprehension) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 listsquared = [n**2 for n in range(0, 10)]
 print(listsquared) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+#Tuples
+print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')
+print(tuple((1, 2, 3))) #print (1, 2, 3)
+print(tuple(["A", "tuple", "can't", "change", "what", "is", "stored"])) #print ('A', 'tuple', "can't", 'change', 'what', 'is', 'stored')
+print(tuple(list("Tuples are for menu items which don't change."))) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'f', 'o', 'r', ' ', 'm', 'e', 'n', 'u', ' ', 'i', 't', 'e', 'm', 's', ' ', 'w', 'h', 'i', 'c', 'h', ' ', 'd', 'o', 'n', "'", 't', ' ', 'c', 'h', 'a', 'n', 'g', 'e', '.')
+slicetuple = ("a", "b", "c", "d", "e", "f", "g", "h")
+print(slicetuple[2]) #print C
+print(slicetuple[-1]) #print h
+print(slicetuple[1:5]) #print ('b', 'c', 'd', 'e')
+print(slicetuple[1:7:2]) #print ('b', 'd', 'f')
+numbersintuple = (1, 54565, -22)
+listoftuples = [slicetuple, numbersintuple]
+print(listoftuples) #print [('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'), (1, 54565, -22)]
+tupleoftuples = (slicetuple, numbersintuple)
+print(tupleoftuples) #print (('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'), (1, 54565, -22))
+combinetuplesnumbers = tuple([x for x in range(1, 8)])
+print(combinetuplesnumbers) #print (1, 2, 3, 4, 5, 6, 7)
+combinetupleswords = ("run", "shoe", "tree", "door", "hive", "six", "heaven")
+print(combinetupleswords) #print ('run', 'shoe', 'tree', 'door', 'hive', 'six', 'heaven')
+from itertools import product
+combinealltuples = product(combinetuplesnumbers, combinetupleswords)
+print(combinealltuples) #print <itertools.product object at 0x7faf0671ea40>
+print(tuple(combinealltuples)) #print ((1, 'run'), (1, 'shoe'), (1, 'tree'), (1, 'door'), (1, 'hive'), (1, 'six'), (1, 'heaven'), (2, 'run'), (2, 'shoe'), (2, 'tree'), (2, 'door'), (2, 'hive'), (2, 'six'), (2, 'heaven'), (3, 'run'), (3, 'shoe'), (3, 'tree'), (3, 'door'), (3, 'hive'), (3, 'six'), (3, 'heaven'), (4, 'run'), (4, 'shoe'), (4, 'tree'), (4, 'door'), (4, 'hive'), (4, 'six'), (4, 'heaven'), (5, 'run'), (5, 'shoe'), (5, 'tree'), (5, 'door'), (5, 'hive'), (5, 'six'), (5, 'heaven'), (6, 'run'), (6, 'shoe'), (6, 'tree'), (6, 'door'), (6, 'hive'), (6, 'six'), (6, 'heaven'), (7, 'run'), (7, 'shoe'), (7, 'tree'), (7, 'door'), (7, 'hive'), (7, 'six'), (7, 'heaven'))
+print(list(combinealltuples)) #print []
+listcombinealltuples = list(product(combinetuplesnumbers, combinetupleswords))
+print(listcombinealltuples) #print [(1, 'run'), (1, 'shoe'), (1, 'tree'), (1, 'door'), (1, 'hive'), (1, 'six'), (1, 'heaven'), (2, 'run'), (2, 'shoe'), (2, 'tree'), (2, 'door'), (2, 'hive'), (2, 'six'), (2, 'heaven'), (3, 'run'), (3, 'shoe'), (3, 'tree'), (3, 'door'), (3, 'hive'), (3, 'six'), (3, 'heaven'), (4, 'run'), (4, 'shoe'), (4, 'tree'), (4, 'door'), (4, 'hive'), (4, 'six'), (4, 'heaven'), (5, 'run'), (5, 'shoe'), (5, 'tree'), (5, 'door'), (5, 'hive'), (5, 'six'), (5, 'heaven'), (6, 'run'), (6, 'shoe'), (6, 'tree'), (6, 'door'), (6, 'hive'), (6, 'six'), (6, 'heaven'), (7, 'run'), (7, 'shoe'), (7, 'tree'), (7, 'door'), (7, 'hive'), (7, 'six'), (7, 'heaven')]
+listcombinealltuples.sort() #Sort a list of tuples or tuples inside a list
+print(listcombinealltuples) #print [(1, 'door'), (1, 'heaven'), (1, 'hive'), (1, 'run'), (1, 'shoe'), (1, 'six'), (1, 'tree'), (2, 'door'), (2, 'heaven'), (2, 'hive'), (2, 'run'), (2, 'shoe'), (2, 'six'), (2, 'tree'), (3, 'door'), (3, 'heaven'), (3, 'hive'), (3, 'run'), (3, 'shoe'), (3, 'six'), (3, 'tree'), (4, 'door'), (4, 'heaven'), (4, 'hive'), (4, 'run'), (4, 'shoe'), (4, 'six'), (4, 'tree'), (5, 'door'), (5, 'heaven'), (5, 'hive'), (5, 'run'), (5, 'shoe'), (5, 'six'), (5, 'tree'), (6, 'door'), (6, 'heaven'), (6, 'hive'), (6, 'run'), (6, 'shoe'), (6, 'six'), (6, 'tree'), (7, 'door'), (7, 'heaven'), (7, 'hive'), (7, 'run'), (7, 'shoe'), (7, 'six'), (7, 'tree')]
+numberletter = [("c", 3), ("a", 1), ("b", 2), ("a", 2), ("c", 2)]
+print(numberletter) #print [('c', 3), ('a', 1), ('b', 2), ('a', 2), ('c', 2)]
+numberletter.sort()
+print(numberletter) #print [('a', 1), ('a', 2), ('b', 2), ('c', 2), ('c', 3)]
+
+#Dictionaries
+blankdictionary = {}
+blankdictionary["Insert key in brackets"] = "Insert item right of equal sign"
+blankdictionary["Insert key left of colon"] = "Insert value to blankdictionary dictionary"
+blankdictionary["Number key"] = 721
+blankdictionary["Use len function"] = "to return the number of entries"
+print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Number key': 721, 'Use len function': 'to return the number of entries'}
+print(blankdictionary["Number key"]) #print 721
+print(len(blankdictionary)) #print 4
+for keysonly in blankdictionary.keys(): #RM:  Looping a dictionary default is key; for example for defaultgetkey in blankdictionary the for loop returns the keys.
+    print(keysonly, end=", ") #print Insert key in brackets, Insert key left of colon, Number key, Use len function,
+for sortedkeys in sorted(blankdictionary.keys()):
+    print(sortedkeys, end=", ") #print Insert key in brackets, Insert key left of colon, Number key, Use len function,
+for valuesonly in blankdictionary.values():
+    print(valuesonly, end=", ") #print Insert item right of equal sign, Insert value to blankdictionary dictionary, 721, to return the number of entries,
+for key, value in blankdictionary.items():
+    print(key + ": " + str(value))
+    '''
+    Insert key in brackets: Insert item right of equal sign
+    Insert key left of colon: Insert value to blankdictionary dictionary
+    Number key: 721
+    Use len function: to return the number of entries
+    '''
+for key in blankdictionary:
+    print(key + ": " + str(blankdictionary[key]))
+    '''
+    Insert key in brackets: Insert item right of equal sign
+    Insert key left of colon: Insert value to blankdictionary dictionary
+    Number key: 721
+    Use len function: to return the number of entries
+    '''
+blankdictionary.update({"Number key": "Change value update dictionary value to a string here."})
+print(blankdictionary["Number key"]) #print Change value update dictionary value to a string here.
+blankdictionary["Use len function"] = "Change dictionary value works, too"
+print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Number key': 'Change value update dictionary value to a string here.', 'Use len function': 'Change dictionary value works, too'}
+del blankdictionary["Number key"] #delete entry delete dictionary
+print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Use len function': 'to return the number of entries'}
+dictionaryvaluesalist = {"Name": "Raymond Mar", "Age": 49, "Board Games": True, "Attributes": ["strong", "high self-esteem", "self-trained genius"], "Favorite Color": "White"}
+print(dictionaryvaluesalist) #print {'Name': 'Raymond Mar', 'Age': 49, 'Board Games': True, 'Attributes': ['strong', 'high self-esteem', 'self-trained genius'], 'Favorite Color': 'White'}
+print(dictionaryvaluesalist.items())  #print dict_items([('Name', 'Raymond Mar'), ('Age', 49), ('Board Games', True), ('Attributes', ['strong', 'high self-esteem', 'self-trained genius']), ('Favorite Color', 'White')].  items() returns an array of tuples with each tuple consisting of a key/value pair from the dictionary
+print(dictionaryvaluesalist.keys()) #print dict_keys(['Name', 'Age', 'Board Games', 'Attributes', 'Favorite Color'])
+print(dictionaryvaluesalist.values()) #print dict_values(['Raymond Mar', 49, True, ['strong', 'high self-esteem', 'self-trained genius'], 'White'])
+print(list(dictionaryvaluesalist.values())[4]) #print White.  Convert the dict_values to a list to slice.  Likewise for dict_keys.
