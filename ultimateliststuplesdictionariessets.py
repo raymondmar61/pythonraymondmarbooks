@@ -364,9 +364,97 @@ blankdictionary["Use len function"] = "Change dictionary value works, too"
 print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Number key': 'Change value update dictionary value to a string here.', 'Use len function': 'Change dictionary value works, too'}
 del blankdictionary["Number key"] #delete entry delete dictionary
 print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Use len function': 'to return the number of entries'}
-dictionaryvaluesalist = {"Name": "Raymond Mar", "Age": 49, "Board Games": True, "Attributes": ["strong", "high self-esteem", "self-trained genius"], "Favorite Color": "White"}
-print(dictionaryvaluesalist) #print {'Name': 'Raymond Mar', 'Age': 49, 'Board Games': True, 'Attributes': ['strong', 'high self-esteem', 'self-trained genius'], 'Favorite Color': 'White'}
-print(dictionaryvaluesalist.items())  #print dict_items([('Name', 'Raymond Mar'), ('Age', 49), ('Board Games', True), ('Attributes', ['strong', 'high self-esteem', 'self-trained genius']), ('Favorite Color', 'White')].  items() returns an array of tuples with each tuple consisting of a key/value pair from the dictionary
-print(dictionaryvaluesalist.keys()) #print dict_keys(['Name', 'Age', 'Board Games', 'Attributes', 'Favorite Color'])
-print(dictionaryvaluesalist.values()) #print dict_values(['Raymond Mar', 49, True, ['strong', 'high self-esteem', 'self-trained genius'], 'White'])
-print(list(dictionaryvaluesalist.values())[4]) #print White.  Convert the dict_values to a list to slice.  Likewise for dict_keys.
+basicfunctionsforadictionary = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN": 306.21, "AAPL": 99.76}
+print(basicfunctionsforadictionary) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
+print(min(basicfunctionsforadictionary)) #print AAPL
+print(max(basicfunctionsforadictionary)) #print YHOO
+print(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values())) #print <zip object at 0x7fac3c8975c0>
+print(min(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print ('AAPL', 99.76)
+print(max(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print ('YHOO', 39.28)
+print(max(zip(basicfunctionsforadictionary.values(), basicfunctionsforadictionary.keys()))) #print (520.54, 'GOOG')
+print(list(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print [('GOOG', 520.54), ('FB', 76.45), ('YHOO', 39.28), ('AMZN', 306.21), ('AAPL', 99.76)]
+print(sorted(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print [('AAPL', 99.76), ('AMZN', 306.21), ('FB', 76.45), ('GOOG', 520.54), ('YHOO', 39.28)]
+basicfunctionsforadictionary.clear()
+print(basicfunctionsforadictionary) #print {}
+valueislist = {"listvalues": ["a", "list", "is", "a", "value"], "dictionarydefinition": "Use a list as a definition", "luck": "good"}
+print(valueislist) #print {'listvalues': ['a', 'list', 'is', 'a', 'value'], 'dictionarydefinition': 'Use a list as a definition', 'luck': 'good'}
+print(valueislist.items()) #print dict_items([('listvalues', ['a', 'list', 'is', 'a', 'value']), ('dictionarydefinition', 'Use a list as a definition'), ('luck', 'good')])
+print(valueislist.keys()) #print dict_keys(['listvalues', 'dictionarydefinition', 'luck'])
+print(valueislist.values()) #print dict_values([['a', 'list', 'is', 'a', 'value'], 'Use a list as a definition', 'good'])
+print(list(valueislist.values())) #print [['a', 'list', 'is', 'a', 'value'], 'Use a list as a definition', 'good']
+print(list(valueislist.values())[1]) #print Use a list as a definition
+print(valueislist["listvalues"]) #print ['a', 'list', 'is', 'a', 'value']
+print(valueislist["listvalues"][1]) #print list
+valueislist["insertnewlist"] = ["insert", "new value", "in dictionary", "as a list"]
+print(valueislist) #print {'listvalues': ['a', 'list', 'is', 'a', 'value'], 'dictionarydefinition': 'Use a list as a definition', 'luck': 'good', 'insertnewlist': ['insert', 'new value', 'in dictionary', 'as a list']}
+valueislist["listvalues"].sort() #sort valueislist dictionary listvalues key values
+print(valueislist) #print {'listvalues': ['a', 'a', 'is', 'list', 'value'], 'dictionarydefinition': 'Use a list as a definition', 'luck': 'good', 'insertnewlist': ['insert', 'new value', 'in dictionary', 'as a list']}
+valueislist["listvalues"].remove("is") #remove valueislist dictionary listvalues key value is
+print(valueislist) #print {'listvalues': ['a', 'a', 'list', 'value'], 'dictionarydefinition': 'Use a list as a definition', 'luck': 'good', 'insertnewlist': ['insert', 'new value', 'in dictionary', 'as a list']}
+for loopvalueislist in valueislist["insertnewlist"]:
+    print(loopvalueislist)
+    '''
+    insert
+    new value
+    in dictionary
+    as a list
+    '''
+for eachvalueislist in valueislist.values():
+    print(eachvalueislist)
+    '''
+    ['a', 'a', 'list', 'value']
+    Use a list as a definition
+    good
+    ['insert', 'new value', 'in dictionary', 'as a list']
+    '''
+#Individual dictionaries, variable dictionaries, assign dictionaries
+lloyd = {"name": "Lloyd", "homework": [0.0, 97.0, 75.0, 92.0], "quizzes": [88.0, 40.0, 94.0], "tests": [75.0, 90.0]}
+alice = {"name": "Alice", "homework": [100.0, 92.0, 98.0, 100.0], "quizzes": [82.0, 83.0, 91.0], "tests": [89.0, 97.0]}
+tyler = {"name": "Tyler", "homework": [0.0, 87.0, 75.0, 22.0], "quizzes": [0.0, 75.0, 78.0], "tests": [100.0, 100.0]}
+print(lloyd) #print {'name': 'Lloyd', 'homework': [0.0, 97.0, 75.0, 92.0], 'quizzes': [88.0, 40.0, 94.0], 'tests': [75.0, 90.0]}
+combinedictionaries = [lloyd, alice, tyler]
+print(combinedictionaries) #print [{'name': 'Lloyd', 'homework': [0.0, 97.0, 75.0, 92.0], 'quizzes': [88.0, 40.0, 94.0], 'tests': [75.0, 90.0]}, {'name': 'Alice', 'homework': [100.0, 92.0, 98.0, 100.0], 'quizzes': [82.0, 83.0, 91.0], 'tests': [89.0, 97.0]}, {'name': 'Tyler', 'homework': [0.0, 87.0, 75.0, 22.0], 'quizzes': [0.0, 75.0, 78.0], 'tests': [100.0, 100.0]}]
+print(combinedictionaries[1]) #print {'name': 'Alice', 'homework': [100.0, 92.0, 98.0, 100.0], 'quizzes': [82.0, 83.0, 91.0], 'tests': [89.0, 97.0]}
+print(combinedictionaries[1]["name"]) #print Alice
+print(combinedictionaries[1]["quizzes"]) #print [82.0, 83.0, 91.0]
+print(combinedictionaries[1]["quizzes"][2]) #print 91
+#Nested dictionary.  Notice the information value in for loop reference it's nested dictionary keys such as information["country"]
+nesteddictionarycities = {"springdale": {"country": "usa", "population": 3000, "fact": "zion national park", }, "anaheim": {"country": "usa", "population": 50000, "fact": "disneyland"}, "london": {"country": "great britian", "population": 500000, "fact": "london bridge"}}
+for city, information in nesteddictionarycities.items():
+    print("City: " + city)
+    print("Country: " + information["country"] + " population: ", information["population"])
+    print("fact: " + information["fact"])
+'''
+City: springdale
+Country: usa population:  3000
+fact: zion national park
+City: anaheim
+Country: usa population:  50000
+fact: disneyland
+City: london
+Country: great britian population:  500000
+fact: london bridge
+'''
+from operator import itemgetter
+dictionaryinsidealist = [{"fname": "Bucky", "lname": "Roberts"}, {"fname": "Tom", "lname": "Roberts"}, {"fname": "Bernie", "lname": "Zunks"}, {"fname": "Jenna", "lname": "Hayes"}, {"fname": "Sally", "lname": "Jones"}, {"fname": "Amanda", "lname": "Roberts"}, {"fname": "Tom", "lname": "Williams"}, {"fname": "Dean", "lname": "Hayes"}, {"fname": "Bernie", "lname": "Barbie"}, {"fname": "Tom", "lname": "Jones"}]
+print(dictionaryinsidealist) #print [{'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Tom', 'lname': 'Jones'}]
+sortfname = sorted(dictionaryinsidealist, key=itemgetter("fname"))
+print(sortfname) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}, {'fname': 'Tom', 'lname': 'Jones'}]
+sortfnamelname = sorted(dictionaryinsidealist, key=itemgetter("fname", "lname"))
+print(sortfnamelname) #print [{'fname': 'Amanda', 'lname': 'Roberts'}, {'fname': 'Bernie', 'lname': 'Barbie'}, {'fname': 'Bernie', 'lname': 'Zunks'}, {'fname': 'Bucky', 'lname': 'Roberts'}, {'fname': 'Dean', 'lname': 'Hayes'}, {'fname': 'Jenna', 'lname': 'Hayes'}, {'fname': 'Sally', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Jones'}, {'fname': 'Tom', 'lname': 'Roberts'}, {'fname': 'Tom', 'lname': 'Williams'}]
+#Order lists order dictionary keeps track of order.  Ordered lists.  Ordered dictionary.
+from collections import OrderedDict
+nameandcolor = OrderedDict()
+nameandcolor["Jen"] = "Red"
+nameandcolor["Ben"] = "Brown"
+nameandcolor["Ren"] = "Blue"
+nameandcolor["Ten"] = "White"
+print(nameandcolor) #print OrderedDict([('Jen', 'Red'), ('Ben', 'Brown'), ('Ren', 'Blue'), ('Ten', 'White')])
+for key, value in nameandcolor.items():
+    print(key + "'s name as key favorite color is as value " + value + ".")
+    '''
+    Jen's name as key favorite color is as value Red.
+    Ben's name as key favorite color is as value Brown.
+    Ren's name as key favorite color is as value Blue.
+    Ten's name as key favorite color is as value White.
+    '''
