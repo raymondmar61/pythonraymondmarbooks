@@ -50,6 +50,17 @@ fourthreepipes = threepipes * 4
 print(fourthreepipes) #print ['|||', '|||', '|||', '|||']
 joinfourthreepipes = "".join(fourthreepipes)
 print(joinfourthreepipes) #print ||||||||||||
+usernumbers = "1 2 3 1 2 3 1 2 3 4"
+print(usernumbers.split()) #print ['1', '2', '3', '1', '2', '3', '1', '2', '3', '4'].  .split separates number string by spaces create a list
+initializetotal = 0
+for eachusernumbers in usernumbers.split():
+    initializetotal += int(eachusernumbers)
+print(initializetotal) #print 22
+usernumberslistcomprehension = [int(eachusernumbers) for eachusernumbers in usernumbers.split()]
+print(usernumberslistcomprehension) #print [1, 2, 3, 1, 2, 3, 1, 2, 3, 4]
+print(sum(usernumberslistcomprehension)) #print 22
+sumusernumberslistcomprehension = sum([int(eachusernumbers) for eachusernumbers in usernumbers.split()])
+print(sumusernumberslistcomprehension) #print 22
 #enumerate works by supplying a corresponding index to each element in the list that you pass it. Each time you go through the loop, index will be one greater, and item will be the next item in the sequence. It's very similar to using a normal for loop with a list, except this gives us an easy way to count how many items we've seen so far.
 firstname = ["Bucky", "Tom", "Taylor"]
 lastname = ["Roberts", "Hanks", "Swift"]
@@ -300,6 +311,7 @@ print(tuple((1, 2, 3))) #print (1, 2, 3)
 print(tuple(["A", "tuple", "can't", "change", "what", "is", "stored"])) #print ('A', 'tuple', "can't", 'change', 'what', 'is', 'stored')
 print(tuple(list("Tuples are for menu items which don't change."))) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'f', 'o', 'r', ' ', 'm', 'e', 'n', 'u', ' ', 'i', 't', 'e', 'm', 's', ' ', 'w', 'h', 'i', 'c', 'h', ' ', 'd', 'o', 'n', "'", 't', ' ', 'c', 'h', 'a', 'n', 'g', 'e', '.')
 slicetuple = ("a", "b", "c", "d", "e", "f", "g", "h")
+print(slicetuple.index("e")) #print 4.  Return index position.
 print(slicetuple[2]) #print C
 print(slicetuple[-1]) #print h
 print(slicetuple[1:5]) #print ('b', 'c', 'd', 'e')
@@ -458,3 +470,83 @@ for key, value in nameandcolor.items():
     Ren's name as key favorite color is as value Blue.
     Ten's name as key favorite color is as value White.
     '''
+
+#Sets
+setvariable = set([10, 20, 30, 10, 20, 30, 40, "abc", "abcabcabc", "printed sets items printed in random order"])
+print(setvariable) #print {'abc', 40, 10, 'printed sets items printed in random order', 20, 'abcabcabc', 30}
+usesetsremoveduplicates = [1, 1, 1, 2, 3, 4, 4, 4, 5]
+print(usesetsremoveduplicates) #print [1, 1, 1, 2, 3, 4, 4, 4, 5]
+print(set(usesetsremoveduplicates)) #print {1, 2, 3, 4, 5}
+print(list(set(usesetsremoveduplicates))) #print {1, 2, 3, 4, 5}.  Convert set to list.
+blankset = set()
+print(blankset) #print set()
+blankset.add("insert item to set")
+blankset.add("insert item to set")
+blankset.add("number")
+blankset.add(5)
+blankset.add("there is a duplicate")
+blankset.add("there is a duplicate")
+blankset.add("there is a duplicate")
+blankset.add("set items returned in random order")
+print(blankset) #print {'insert item to set', 5, 'number', 'there is a duplicate', 'set items returned in random order'}
+print("\n")
+blankset.update(["New Updates", "a list of updates", "added to blankset", "set", "set", "set is a duplicate"])
+print(blankset) #print {'a list of updates', 'New Updates', 'set is a duplicate', 5, 'insert item to set', 'set items returned in random order', 'set', 'added to blankset', 'there is a duplicate', 'number'}
+blankset.remove("set items returned in random order")
+print(blankset) #print {5, 'a list of updates', 'insert item to set', 'set', 'there is a duplicate', 'added to blankset', 'number', 'set is a duplicate', 'New Updates'}
+setone = {1, 2, 3, 4, 1000}
+settwo = {3, 4, 5, 6, 2222}
+uniontwosets = setone | settwo #Combine two sets all items printed once no duplicates
+print(uniontwosets) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
+#or
+print(setone.union(settwo)) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
+intersecttwosets = setone & settwo #Combine two sets all duplicate items
+print(intersecttwosets) #print {3, 4}
+#or
+print(setone.intersection(settwo)) #print {3, 4}
+differencetwosets = setone ^ settwo #Combine two sets no duplicates
+print(differencetwosets) #print {1, 2, 5, 6, 1000, 2222}
+print(setone.symmetric_difference(settwo)) #print {1, 2, 5, 6, 1000, 2222}
+subsetcheck = {5, 6}
+print(subsetcheck < settwo) #print True.  subsetcheck is a subset of settwo
+print(subsetcheck > settwo) #print False.  settwo is not a subset of subsetcheck
+
+#Sets
+setvariable = set([10, 20, 30, 10, 20, 30, 40, "abc", "abcabcabc", "printed sets items printed in random order"])
+print(setvariable) #print {'abc', 40, 10, 'printed sets items printed in random order', 20, 'abcabcabc', 30}
+usesetsremoveduplicates = [1, 1, 1, 2, 3, 4, 4, 4, 5]
+print(usesetsremoveduplicates) #print [1, 1, 1, 2, 3, 4, 4, 4, 5]
+print(set(usesetsremoveduplicates)) #print {1, 2, 3, 4, 5}
+print(list(set(usesetsremoveduplicates))) #print {1, 2, 3, 4, 5}.  Convert set to list.
+blankset = set()
+print(blankset) #print set()
+blankset.add("insert item to set")
+blankset.add("insert item to set")
+blankset.add("number")
+blankset.add(5)
+blankset.add("there is a duplicate")
+blankset.add("there is a duplicate")
+blankset.add("there is a duplicate")
+blankset.add("set items returned in random order")
+print(blankset) #print {'insert item to set', 5, 'number', 'there is a duplicate', 'set items returned in random order'}
+print("\n")
+blankset.update(["New Updates", "a list of updates", "added to blankset", "set", "set", "set is a duplicate"])
+print(blankset) #print {'a list of updates', 'New Updates', 'set is a duplicate', 5, 'insert item to set', 'set items returned in random order', 'set', 'added to blankset', 'there is a duplicate', 'number'}
+blankset.remove("set items returned in random order")
+print(blankset) #print {5, 'a list of updates', 'insert item to set', 'set', 'there is a duplicate', 'added to blankset', 'number', 'set is a duplicate', 'New Updates'}
+setone = {1, 2, 3, 4, 1000}
+settwo = {3, 4, 5, 6, 2222}
+uniontwosets = setone | settwo #Combine two sets all items printed once no duplicates
+print(uniontwosets) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
+#or
+print(setone.union(settwo)) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
+intersecttwosets = setone & settwo #Combine two sets all duplicate items
+print(intersecttwosets) #print {3, 4}
+#or
+print(setone.intersection(settwo)) #print {3, 4}
+differencetwosets = setone ^ settwo #Combine two sets no duplicates
+print(differencetwosets) #print {1, 2, 5, 6, 1000, 2222}
+print(setone.symmetric_difference(settwo)) #print {1, 2, 5, 6, 1000, 2222}
+subsetcheck = {5, 6}
+print(subsetcheck < settwo) #print True.  subsetcheck is a subset of settwo
+print(subsetcheck > settwo) #print False.  settwo is not a subset of subsetcheck
