@@ -3,10 +3,16 @@ listitemscontainedinbrackets = ["Multiple data types", 55, True, "contained in l
 print(listitemscontainedinbrackets) #print ['Multiple data types', 55, True, 'contained in list', -1, 3.5]
 listvariable1, listvariable2, listvariable3 = ["multiple variables", "one list", "separate list entry"]
 print(listvariable2) #print one list
-nest1 = ["a list of lists"]
-nest2 = ["nested lists sublists"]
+nest1 = ["a list of lists", "numbers", 1, 5, 7]
+nest2 = ["nested lists sublists", "fruit", "apple", "orange", "banana"]
 nestedlists = [nest1, nest2]
-print(nestedlists) #print [['a list of lists'], ['nested lists sublists']]
+print(nestedlists) #print [['a list of lists', 'numbers', 1, 5, 7], ['nested lists sublists', 'fruit', 'apple', 'orange', 'banana']]
+print(nestedlists[0][2]) #print 1
+print(nestedlists[1][-1]) #print banana
+concatenatelist = nest1 + nest2 #Concatenate lists or combine lists
+print(concatenatelist) #print ['a list of lists', 'numbers', 1, 5, 7, 'nested lists sublists', 'fruit', 'apple', 'orange', 'banana']
+replicatelist = ["multiply", "a", "list", "multiple lists"] * 3
+print(replicatelist) #print ['multiply', 'a', 'list', 'multiple lists', 'multiply', 'a', 'list', 'multiple lists', 'multiply', 'a', 'list', 'multiple lists']
 appendlistinsidelist = []
 leftlist = "sublist append"
 rightlist = "inside main list"
@@ -110,11 +116,13 @@ print(insertitemsinlist) #print [29, 58, 71, 87, 90, 91, 98, 120, 6594, 3799, 98
 print(savedeletedlistitemvariable) #print 66
 savedeletedlistitemvariable = insertitemsinlist.remove(6594)
 print(insertitemsinlist) #print [29, 58, 71, 87, 90, 91, 98, 120, 3799, 98453, 87990, -1, -10, -54]
+insertitemsinlist[4] = 9090 #replace item in list
+print(insertitemsinlist) #print [29, 58, 71, 87, 9090, 91, 98, 120, 3799, 98453, 87990, -1, -10, -54]
 print(savedeletedlistitemvariable) #print None
 del insertitemsinlist[6]
-print(insertitemsinlist) #print [29, 58, 71, 87, 90, 91, 120, 3799, 98453, 87990, -1, -10, -54]
+print(insertitemsinlist) #print [29, 58, 71, 87, 9090, 91, 120, 3799, 98453, 87990, -1, -10, -54]
 insertitemsinlist.sort(key=abs) #sort by absolute value ignore negatives; all numbers are positive
-print(insertitemsinlist) #print [-1, -10, 29, -54, 58, 71, 87, 90, 91, 120, 3799, 87990, 98453]
+print(insertitemsinlist) #print [-1, -10, 29, -54, 58, 71, 87, 91, 120, 3799, 9090, 87990, 98453]
 grades = [32, 43, 654, 34, 132, 66, 99, 532]
 print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
 print(min(grades)) #print 32
@@ -141,6 +149,7 @@ print(extractfromlistslice[6:1:-1]) #print [77, 66, 55, 44, 33]
 print(extractfromlistslice[:4]) #print [11, 22, 33, 44]
 print(extractfromlistslice[5:]) #print [66, 77, 88]
 print(extractfromlistslice[-3:]) #print [66, 77, 88].  #a negative index returns an element a certain distance beginning from the end of a list
+print(extractfromlistslice[0:-1]) #print [11, 22, 33, 44, 55, 66, 77]
 print(extractfromlistslice[::2]) #print [11, 33, 55, 77]
 print(extractfromlistslice[::-1]) #print [88, 77, 66, 55, 44, 33, 22, 11]
 print(extractfromlistslice[::-3]) #print [88, 55, 22]
@@ -386,6 +395,8 @@ print(max(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.
 print(max(zip(basicfunctionsforadictionary.values(), basicfunctionsforadictionary.keys()))) #print (520.54, 'GOOG')
 print(list(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print [('GOOG', 520.54), ('FB', 76.45), ('YHOO', 39.28), ('AMZN', 306.21), ('AAPL', 99.76)]
 print(sorted(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print [('AAPL', 99.76), ('AMZN', 306.21), ('FB', 76.45), ('GOOG', 520.54), ('YHOO', 39.28)]
+print("get() method get value for FB stock price " + str(basicfunctionsforadictionary.get("FB", "default value if there's no FB ticker symbol")) + ".") #print get() method get value for FB stock price 76.45.
+print("get() method get value for APPL stock price " + str(basicfunctionsforadictionary.get("APPL", "default value if there's no APPL ticker symbol")) + ".") #print get() method get value for APPL stock price default value if there's no APPL ticker symbol.
 basicfunctionsforadictionary.clear()
 print(basicfunctionsforadictionary) #print {}
 valueislist = {"listvalues": ["a", "list", "is", "a", "value"], "dictionarydefinition": "Use a list as a definition", "luck": "good"}
@@ -395,6 +406,14 @@ print(valueislist.keys()) #print dict_keys(['listvalues', 'dictionarydefinition'
 print(valueislist.values()) #print dict_values([['a', 'list', 'is', 'a', 'value'], 'Use a list as a definition', 'good'])
 print(list(valueislist.values())) #print [['a', 'list', 'is', 'a', 'value'], 'Use a list as a definition', 'good']
 print(list(valueislist.values())[1]) #print Use a list as a definition
+valueislistprintlistvalues = list(valueislist.values())
+print(valueislistprintlistvalues) #print [['a', 'list', 'is', 'a', 'value'], 'Use a list as a definition', 'good']
+valueislistprintkeyvalues = list(valueislist.keys())
+print(valueislistprintkeyvalues) #print ['listvalues', 'dictionarydefinition', 'luck']
+print("list" in valueislist.values()) #print False
+print(["a", "list", "is", "a", "value"] in valueislist.values()) #print True
+print("good" in valueislist.values()) #print True
+print("listvalues" in valueislist.keys()) #print True
 print(valueislist["listvalues"]) #print ['a', 'list', 'is', 'a', 'value']
 print(valueislist["listvalues"][1]) #print list
 valueislist["insertnewlist"] = ["insert", "new value", "in dictionary", "as a list"]
@@ -419,6 +438,14 @@ for eachvalueislist in valueislist.values():
     good
     ['insert', 'new value', 'in dictionary', 'as a list']
     '''
+missingvalue = {"name": "Pooka", "age": 5}
+print(missingvalue) #print {'name': 'Pooka', 'age': 5}
+missingvalue.setdefault("color", "add key and default value if key and value doesn't exist")
+print(missingvalue) #print {'name': 'Pooka', 'age': 5, 'color': "add key and default value if key and value doesn't exist"}
+missingvalue.setdefault("color", "I want to change the default value.  I actually can't change because color key is already in missingvalue dictionary")
+print(missingvalue) #print {'name': 'Pooka', 'age': 5, 'color': "add key and default value if key and value doesn't exist"}
+missingvalue["color"] = "Change default white color"
+print(missingvalue) #print {'name': 'Pooka', 'age': 5, 'color': 'Change default white color'}
 #Individual dictionaries, variable dictionaries, assign dictionaries
 lloyd = {"name": "Lloyd", "homework": [0.0, 97.0, 75.0, 92.0], "quizzes": [88.0, 40.0, 94.0], "tests": [75.0, 90.0]}
 alice = {"name": "Alice", "homework": [100.0, 92.0, 98.0, 100.0], "quizzes": [82.0, 83.0, 91.0], "tests": [89.0, 97.0]}
