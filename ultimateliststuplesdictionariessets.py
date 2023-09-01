@@ -1,6 +1,8 @@
 #Lists
 listitemscontainedinbrackets = ["Multiple data types", 55, True, "contained in list", -1, 3.50]
 print(listitemscontainedinbrackets) #print ['Multiple data types', 55, True, 'contained in list', -1, 3.5]
+copylistitemscontainedinbrackets = listitemscontainedinbrackets.copy()
+print(copylistitemscontainedinbrackets) #print ['Multiple data types', 55, True, 'contained in list', -1, 3.5]
 listvariable1, listvariable2, listvariable3 = ["multiple variables", "one list", "separate list entry"]
 print(listvariable2) #print one list
 nest1 = ["a list of lists", "numbers", 1, 5, 7]
