@@ -47,8 +47,17 @@ def functionsortlastletteroftheword(word):
     return word[::-1]
 
 
+wordlist = ["Python", "is", "better", "than", "C"]
+print(wordlist) #print ['Python', 'is', 'better', 'than', 'C']
+wordlist.sort(key=len)
+print(wordlist) #print ['C', 'is', 'than', 'Python', 'better']
 sortcaseinsensitive.sort(key=functionsortlastletteroftheword)
 print(sortcaseinsensitive) #print ['a', 'a', 'Period', 'of', 'string', 'bunch', 'With', 'in', 'Python', 'No', 'words', 'is', 'This']
+from operator import itemgetter #https://stackoverflow.com/questions/4174941/how-to-sort-a-list-of-lists-by-a-specific-index-of-the-inner-list
+sortlistwithinalist = [[1, 2, 3], [2, 1, 3], [4, 0, 1]]
+print(sortlistwithinalist) #print [[1, 2, 3], [2, 1, 3], [4, 0, 1]]
+sortlistwithinalist.sort(key=itemgetter(1)) #Sort the second element or index number one in the sublists
+print(sortlistwithinalist) #print [[4, 0, 1], [2, 1, 3], [1, 2, 3]]
 joinitemsinlist = ["convert", "list", "to", "string"] #list to string
 print(joinitemsinlist) #print ['convert', 'list', 'to', 'string']
 print(" ".join(joinitemsinlist)) #print convert list to string
@@ -75,6 +84,20 @@ lastname = ["Roberts", "Hanks", "Swift"]
 print(enumerate(firstname)) #print <enumerate object at 0x7f01d25b5708>
 print(list(enumerate(firstname))) #print [(0, 'Bucky'), (1, 'Tom'), (2, 'Taylor')]
 print(list(enumerate(lastname))) #print [(0, 'Roberts'), (1, 'Hanks'), (2, 'Swift')]
+for index, value in list(enumerate(lastname)):
+    print(index, value)
+    '''
+    0 Roberts
+    1 Hanks
+    2 Swift
+    '''
+for anyindexvariable, anyvaluevariable in list(enumerate(lastname)):
+    print(anyindexvariable, anyvaluevariable)
+    '''
+    0 Roberts
+    1 Hanks
+    2 Swift
+    '''
 print(tuple(enumerate(firstname))) #print ((0, 'Bucky'), (1, 'Tom'), (2, 'Taylor'))
 names = zip(firstname, lastname)
 print(names) #print <zip object at 0x7f7c3a3eeb48>
@@ -109,7 +132,7 @@ numberofitemsinlist = len(insertitemsinlist)
 print(numberofitemsinlist) #print 15
 insertitemsinlist[numberofitemsinlist + 1:] = [-1, -10, -54] #insert multiple items to list
 print(insertitemsinlist) #print [29, 58, 66, 'Insert at index number 3', 71, None, 87, 90, 91, 98, 120, 6594, 3799, 98453, 87990, -1, -10, -54]
-insertitemsinlist.pop(5) #delete specific index position
+insertitemsinlist.pop(5) #delete specific index position.  Can save to a variable to be used later.
 print(insertitemsinlist) #print [29, 58, 66, 'Insert at index number 3', 71, 87, 90, 91, 98, 120, 6594, 3799, 98453, 87990, -1, -10, -54]
 insertitemsinlist.remove("Insert at index number 3") #delete specific item
 print(insertitemsinlist) #print [29, 58, 66, 71, 87, 90, 91, 98, 120, 6594, 3799, 98453, 87990, -1, -10, -54]
@@ -121,12 +144,18 @@ print(insertitemsinlist) #print [29, 58, 71, 87, 90, 91, 98, 120, 3799, 98453, 8
 insertitemsinlist[4] = 9090 #replace item in list
 print(insertitemsinlist) #print [29, 58, 71, 87, 9090, 91, 98, 120, 3799, 98453, 87990, -1, -10, -54]
 print(savedeletedlistitemvariable) #print None
-del insertitemsinlist[6]
+del insertitemsinlist[6] #delete item in list which is sixth index position 98
 print(insertitemsinlist) #print [29, 58, 71, 87, 9090, 91, 120, 3799, 98453, 87990, -1, -10, -54]
-insertitemsinlist.sort(key=abs) #sort by absolute value ignore negatives; all numbers are positive
-print(insertitemsinlist) #print [-1, -10, 29, -54, 58, 71, 87, 91, 120, 3799, 9090, 87990, 98453]
+del insertitemsinlist[2:4] #delete item in list which is second and third index positions 71 and 87
+print(insertitemsinlist) #print [29, 58, 9090, 91, 120, 3799, 98453, 87990, -1, -10, -54]
+insertitemsinlist.sort(key=abs) #Sort by absolute value ignore negatives; all numbers are positive.  The .sort method must be stand alone.  No assigned variable.  No inside a print function.
+print(insertitemsinlist) #print [-1, -10, 29, -54, 58, 91, 120, 3799, 9090, 87990, 98453]
+insertitemsinlist.clear()
+print(insertitemsinlist) #print [].  Delete all items in a list.
 grades = [32, 43, 654, 34, 132, 66, 99, 532]
 print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
+sortedfunction = sorted(grades, reverse=False)
+print(sortedfunction) #print [32, 34, 43, 66, 99, 132, 532, 654].  Sorted function also works for a list.
 print(min(grades)) #print 32
 print(max(grades)) #print 654
 print(sum(grades)) #print 1592
@@ -151,7 +180,9 @@ print(extractfromlistslice[6:1:-1]) #print [77, 66, 55, 44, 33]
 print(extractfromlistslice[:4]) #print [11, 22, 33, 44]
 print(extractfromlistslice[5:]) #print [66, 77, 88]
 print(extractfromlistslice[-3:]) #print [66, 77, 88].  #a negative index returns an element a certain distance beginning from the end of a list
+print(extractfromlistslice[-5:-2]) #print [44, 55, 66].  #a negative index returns an element a certain distance beginning from the end of a list
 print(extractfromlistslice[0:-1]) #print [11, 22, 33, 44, 55, 66, 77]
+print(extractfromlistslice[1:-1]) #print [22, 33, 44, 55, 66, 77]
 print(extractfromlistslice[::2]) #print [11, 33, 55, 77]
 print(extractfromlistslice[::-1]) #print [88, 77, 66, 55, 44, 33, 22, 11]
 print(extractfromlistslice[::-3]) #print [88, 55, 22]
@@ -170,8 +201,18 @@ print(extractfromlistslice[1:4:]) #print [22, 33, 44]
 print(extractfromlistslice[1:4:-1]) #print []
 print(extractfromlistslice[3:0:-1]) #print [44, 33, 22]
 print(extractfromlistslice[-5:-8:-1]) #print [44, 33, 22]
-listindexnumber = extractfromlistslice.index(55)
-print(listindexnumber) #print 4
+slicetoreplacelistnumbers = [2, 3, 5, 7, 11, 13, 17, 19]
+print(slicetoreplacelistnumbers) #print [2, 3, 5, 7, 11, 13, 17, 19]
+slicetoreplacelistnumbers[::2] = ["Every second number with 100 start index 0", "Every second number with 100 start index 0", "Every second number with 100 start index 0", "Every second number with 100 start index 0"]
+print(slicetoreplacelistnumbers) #print ['Every second number with 100 start index 0', 3, 'Every second number with 100 start index 0', 7, 'Every second number with 100 start index 0', 13, 'Every second number with 100 start index 0', 19]
+slicetoreplacelistnumbers = [2, 3, 5, 7, 11, 13, 17, 19]
+print(slicetoreplacelistnumbers) #print [2, 3, 5, 7, 11, 13, 17, 19]
+slicetoreplacelistnumbers[::3] = ["Every third number 555 start index 0", "Every third number 555 start index 0", "Every third number 555 start index 0"]
+print(slicetoreplacelistnumbers) #print ['Every third number 555 start index 0', 3, 5, 'Every third number 555 start index 0', 11, 13, 'Every third number 555 start index 0', 19]
+searchlistelement = ["dog", "cat", "bird", "butterfly", "squarrel", "lady bug", "fish", "cat", "squarrel", "parrot", "snake"]
+print(searchlistelement.index("bird")) #print 2.  Print index number return index.
+print(searchlistelement.index("cat", 3)) #print 7.  Start search for cat at index number 3.
+print(searchlistelement.index("squarrel", 0, 5)) #print 4.  Start search for squarrel at index number 0 and end at index 4.
 alphabeticalanimals = ["zebra", "aardvark", "cat", "dog", "fish", "duck", "aligator"]
 print(min(alphabeticalanimals)) #print aardvark
 print(max(alphabeticalanimals)) #print zebra
@@ -319,6 +360,7 @@ print(listsquared) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 #Tuples
 print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')
 print(tuple((1, 2, 3))) #print (1, 2, 3)
+print(tuple((1, 2, 3)) * 3) #print (1, 2, 3, 1, 2, 3, 1, 2, 3)
 print(tuple(["A", "tuple", "can't", "change", "what", "is", "stored"])) #print ('A', 'tuple', "can't", 'change', 'what', 'is', 'stored')
 print(tuple(list("Tuples are for menu items which don't change."))) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'f', 'o', 'r', ' ', 'm', 'e', 'n', 'u', ' ', 'i', 't', 'e', 'm', 's', ' ', 'w', 'h', 'i', 'c', 'h', ' ', 'd', 'o', 'n', "'", 't', ' ', 'c', 'h', 'a', 'n', 'g', 'e', '.')
 slicetuple = ("a", "b", "c", "d", "e", "f", "g", "h")
@@ -381,10 +423,12 @@ for key in blankdictionary:
     Number key: 721
     Use len function: to return the number of entries
     '''
-blankdictionary.update({"Number key": "Change value update dictionary value to a string here."})
+blankdictionary.update({"Number key": "Change value update dictionary value to a string here."})  #The updates from the update dictionary or second dictionary overrides matching key-value pairs in the first dictionary.  Same values are not duplicated.
 print(blankdictionary["Number key"]) #print Change value update dictionary value to a string here.
 blankdictionary["Use len function"] = "Change dictionary value works, too"
 print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Number key': 'Change value update dictionary value to a string here.', 'Use len function': 'Change dictionary value works, too'}
+blankdictionary.update({"Use update method to": "insert a new item"})
+print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Number key': 'Change value update dictionary value to a string here.', 'Use len function': 'Change dictionary value works, too', 'Use update method to': 'insert a new item'}
 del blankdictionary["Number key"] #delete entry delete dictionary
 print(blankdictionary) #print {'Insert key in brackets': 'Insert item right of equal sign', 'Insert key left of colon': 'Insert value to blankdictionary dictionary', 'Use len function': 'to return the number of entries'}
 basicfunctionsforadictionary = {"GOOG": 520.54, "FB": 76.45, "YHOO": 39.28, "AMZN": 306.21, "AAPL": 99.76}
@@ -397,8 +441,12 @@ print(max(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.
 print(max(zip(basicfunctionsforadictionary.values(), basicfunctionsforadictionary.keys()))) #print (520.54, 'GOOG')
 print(list(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print [('GOOG', 520.54), ('FB', 76.45), ('YHOO', 39.28), ('AMZN', 306.21), ('AAPL', 99.76)]
 print(sorted(zip(basicfunctionsforadictionary.keys(), basicfunctionsforadictionary.values()))) #print [('AAPL', 99.76), ('AMZN', 306.21), ('FB', 76.45), ('GOOG', 520.54), ('YHOO', 39.28)]
+dictionarycomprehension = {stocksymbolkey: stockpricevalue for stocksymbolkey, stockpricevalue in basicfunctionsforadictionary.items()} #dictionary comprehension
+print(dictionarycomprehension) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 print("get() method get value for FB stock price " + str(basicfunctionsforadictionary.get("FB", "default value if there's no FB ticker symbol")) + ".") #print get() method get value for FB stock price 76.45.
 print("get() method get value for APPL stock price " + str(basicfunctionsforadictionary.get("APPL", "default value if there's no APPL ticker symbol")) + ".") #print get() method get value for APPL stock price default value if there's no APPL ticker symbol.
+copydictionary = basicfunctionsforadictionary.copy() #copy dictionary
+print(copydictionary) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 basicfunctionsforadictionary.clear()
 print(basicfunctionsforadictionary) #print {}
 valueislist = {"listvalues": ["a", "list", "is", "a", "value"], "dictionarydefinition": "Use a list as a definition", "luck": "good"}
@@ -416,6 +464,7 @@ print("list" in valueislist.values()) #print False
 print(["a", "list", "is", "a", "value"] in valueislist.values()) #print True
 print("good" in valueislist.values()) #print True
 print("listvalues" in valueislist.keys()) #print True
+print("luck" in valueislist) #print True
 print(valueislist["listvalues"]) #print ['a', 'list', 'is', 'a', 'value']
 print(valueislist["listvalues"][1]) #print list
 valueislist["insertnewlist"] = ["insert", "new value", "in dictionary", "as a list"]
@@ -525,57 +574,44 @@ blankset.remove("set items returned in random order")
 print(blankset) #print {5, 'a list of updates', 'insert item to set', 'set', 'there is a duplicate', 'added to blankset', 'number', 'set is a duplicate', 'New Updates'}
 setone = {1, 2, 3, 4, 1000}
 settwo = {3, 4, 5, 6, 2222}
-uniontwosets = setone | settwo #Combine two sets all items printed once no duplicates
+uniontwosets = setone | settwo #Combine two sets all items printed once no duplicates.  TThe union of two sets is a set consisting of all unique elements for both sets.  The binary set operators must be be sets.
 print(uniontwosets) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
 #or
 print(setone.union(settwo)) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
-intersecttwosets = setone & settwo #Combine two sets all duplicate items
+intersecttwosets = setone & settwo #Combine two sets all duplicate items.  The intersection of two sets is a set consisting of all the unqiue elements the two sets have in common.
 print(intersecttwosets) #print {3, 4}
 #or
 print(setone.intersection(settwo)) #print {3, 4}
-differencetwosets = setone ^ settwo #Combine two sets no duplicates
-print(differencetwosets) #print {1, 2, 5, 6, 1000, 2222}
+differencetwosets = setone - settwo
+print(differencetwosets) #print {1000, 1, 2}.  The difference between two sets is a set consisting of the elements in the left which are not in the right.
+#or
+print(setone.difference(settwo)) #print {1000, 1, 2}
+symmetricdifferencetwosets = setone ^ settwo #Combine two sets no duplicates
+print(symmetricdifferencetwosets) #print {1, 2, 5, 6, 1000, 2222}.  The symmetric difference between two sets is a set consisting of the elments of both sets not in common which each other.
+#or
 print(setone.symmetric_difference(settwo)) #print {1, 2, 5, 6, 1000, 2222}
+print(setone.isdisjoint(settwo)) #print False.  The disjoint returns True if both sets don't have any common elements.  Returns False if both sets do have any common elements.
 subsetcheck = {5, 6}
+print(subsetcheck) #print {5, 6}
 print(subsetcheck < settwo) #print True.  subsetcheck is a subset of settwo
 print(subsetcheck > settwo) #print False.  settwo is not a subset of subsetcheck
-
-#Sets
-setvariable = set([10, 20, 30, 10, 20, 30, 40, "abc", "abcabcabc", "printed sets items printed in random order"])
-print(setvariable) #print {'abc', 40, 10, 'printed sets items printed in random order', 20, 'abcabcabc', 30}
-usesetsremoveduplicates = [1, 1, 1, 2, 3, 4, 4, 4, 5]
-print(usesetsremoveduplicates) #print [1, 1, 1, 2, 3, 4, 4, 4, 5]
-print(set(usesetsremoveduplicates)) #print {1, 2, 3, 4, 5}
-print(list(set(usesetsremoveduplicates))) #print {1, 2, 3, 4, 5}.  Convert set to list.
-blankset = set()
-print(blankset) #print set()
-blankset.add("insert item to set")
-blankset.add("insert item to set")
-blankset.add("number")
-blankset.add(5)
-blankset.add("there is a duplicate")
-blankset.add("there is a duplicate")
-blankset.add("there is a duplicate")
-blankset.add("set items returned in random order")
-print(blankset) #print {'insert item to set', 5, 'number', 'there is a duplicate', 'set items returned in random order'}
-print("\n")
-blankset.update(["New Updates", "a list of updates", "added to blankset", "set", "set", "set is a duplicate"])
-print(blankset) #print {'a list of updates', 'New Updates', 'set is a duplicate', 5, 'insert item to set', 'set items returned in random order', 'set', 'added to blankset', 'there is a duplicate', 'number'}
-blankset.remove("set items returned in random order")
-print(blankset) #print {5, 'a list of updates', 'insert item to set', 'set', 'there is a duplicate', 'added to blankset', 'number', 'set is a duplicate', 'New Updates'}
-setone = {1, 2, 3, 4, 1000}
-settwo = {3, 4, 5, 6, 2222}
-uniontwosets = setone | settwo #Combine two sets all items printed once no duplicates
-print(uniontwosets) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
-#or
-print(setone.union(settwo)) #print {1, 2, 3, 4, 5, 6, 1000, 2222}
-intersecttwosets = setone & settwo #Combine two sets all duplicate items
-print(intersecttwosets) #print {3, 4}
-#or
-print(setone.intersection(settwo)) #print {3, 4}
-differencetwosets = setone ^ settwo #Combine two sets no duplicates
-print(differencetwosets) #print {1, 2, 5, 6, 1000, 2222}
-print(setone.symmetric_difference(settwo)) #print {1, 2, 5, 6, 1000, 2222}
-subsetcheck = {5, 6}
-print(subsetcheck < settwo) #print True.  subsetcheck is a subset of settwo
-print(subsetcheck > settwo) #print False.  settwo is not a subset of subsetcheck
+print(1000 in setone) #print True
+print({1, 3, 5} == {3, 5, 1}) #print True
+print({1, 3, 5} != {3, 5, 1}) #print False
+print({1, 3, 5} < {3, 5, 1}) #print False.  #The less than < operator tests all the elements in the left are in the right.  A proper subset.
+print({1, 3, 5} < {7, 3, 5, 1}) #print True
+print({1, 3, 5} < {1, 3, 5, 7}) #print True
+print({1, 3, 5} <= {3, 5, 1}) #print True.  #The less than or equal to <= operator tests all the elements in the left are in the right and the sets might be equal.  An improper subset.
+print({1, 3} <= {3, 5, 1}) #print True.
+print({1, 3, 5}.issubset({3, 5, 1})) #print True.  #Use method issubset().  The less than or equal to <= operator tests all the elements in the left are in the right and the sets might be equal.  An improper subset.
+print({1, 3}.issubset({3, 5, 1})) #print True.
+print({1, 3, 5} > {3, 5, 1}) #print False.  #The greater than > operator tests all the elements in the right are in the left and the left has more elements.  A proper superubset.
+print({1, 3, 5, 7} > {3, 5, 1}) #print True.  #The greater than > operator tests all the elements in the right are in the left and the left has more elements.  A proper supersubset.
+print({1, 3, 5} >= {3, 5, 1}) #print True.  #The greater than or equal to >= operator tests all the elements in the right are in the left and the sets might be equal.  An improper superset.
+print({1, 3, 5, 7} >= {3, 1}) #print True
+print({1, 3} >= {3, 1, 7}) #print False
+print({1, 3, 5}.issuperset({3, 5, 1})) #print True.  #Use method isupserset().  The greater than or equal to >= operator tests all the elements in the right are in the left and the sets might be equal.  An improper superset.
+print({1, 3, 5, 7}.issuperset({3, 2})) #print False
+numbersset = {0, 1, 2, 4, 5, 6, 7, 8, 9, 17}
+setcomprehension = {eachnumbersset for eachnumbersset in numbersset if eachnumbersset % 2 == 0}
+print(setcomprehension) #print {0, 2, 4, 6, 8}
