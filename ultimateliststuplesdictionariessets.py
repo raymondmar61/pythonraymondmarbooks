@@ -62,6 +62,7 @@ joinitemsinlist = ["convert", "list", "to", "string"] #list to string
 print(joinitemsinlist) #print ['convert', 'list', 'to', 'string']
 print(" ".join(joinitemsinlist)) #print convert list to string
 print("-".join(joinitemsinlist)) #print convert-list-to-string
+print("\n".join(joinitemsinlist)) #print convert\n list\n to\n string
 threepipes = ["|||"]
 fourthreepipes = threepipes * 4
 print(fourthreepipes) #print ['|||', '|||', '|||', '|||']
