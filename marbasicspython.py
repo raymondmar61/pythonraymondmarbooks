@@ -1260,6 +1260,22 @@ keeplocalvariable = functionobject(100, 110)
 print(keeplocalvariable) #print (210, <frame object at 0x15a25a8>)
 print(keeplocalvariable[0]) #print 210
 print(keeplocalvariable[0] + 1000) #print 1210
+def definedatatypes(anynumber, integervariable: int, defaultintegervariable: int=40): #RM:  SyntaxError: non-default argument follows default argument
+    print(integervariable)
+    print(type(integervariable))
+    print(defaultintegervariable)
+    print(type(defaultintegervariable))
+    print(anynumber)
+    print(type(anynumber))
+definedatatypes(integervariable=178, anynumber=500)
+'''
+178
+<class 'int'>
+40
+<class 'int'>
+500
+<class 'int'>
+'''
 
 #Category:  Function Iterators
 numbers = [1, 2, 3, 4, 5]
