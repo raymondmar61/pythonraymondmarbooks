@@ -1276,6 +1276,20 @@ definedatatypes(integervariable=178, anynumber=500)
 500
 <class 'int'>
 '''
+def savefunctionresults(number1: int, number2: int, number3: int, astring: str):
+    number1answer = number1 + 100
+    number2answer = number2 * 200
+    number3answer = number3 / 300
+    astring = "Change to bread"
+    return (number1answer, number2answer, number3answer, astring)
+
+
+input1, input2, input3, input4 = 400, 1200, 3000, "Tie Die"
+functionresultsvariable = savefunctionresults(input1, input2, input3, input4)
+print(functionresultsvariable) #print (500, 240000, 10.0)
+print("The second result or middle result is", functionresultsvariable[1]) #print The second result or middle result is 240000
+print(f"The string is {functionresultsvariable[3]}") #print The string is Change to bread
+
 
 #Category:  Function Iterators
 numbers = [1, 2, 3, 4, 5]
