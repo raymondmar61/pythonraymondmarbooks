@@ -392,6 +392,13 @@ numberletter = [("c", 3), ("a", 1), ("b", 2), ("a", 2), ("c", 2)]
 print(numberletter) #print [('c', 3), ('a', 1), ('b', 2), ('a', 2), ('c', 2)]
 numberletter.sort()
 print(numberletter) #print [('a', 1), ('a', 2), ('b', 2), ('c', 2), ('c', 3)]
+wordstring = ["apple", "banana", "chocolate", "dream", "echo", "figure", "g15", "hightower", "ice", "jam"]
+appendtuplelist = []
+for n in range(1, 11):
+    leftside = n
+    rightside = n + 10
+    appendtuplelist.append((leftside, rightside, wordstring[n - 1]))
+print(appendtuplelist) #print [(1, 11, 'apple'), (2, 12, 'banana'), (3, 13, 'chocolate'), (4, 14, 'dream'), (5, 15, 'echo'), (6, 16, 'figure'), (7, 17, 'g15'), (8, 18, 'hightower'), (9, 19, 'ice'), (10, 20, 'jam')]
 
 #Dictionaries
 blankdictionary = {}
