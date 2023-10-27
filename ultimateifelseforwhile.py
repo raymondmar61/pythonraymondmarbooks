@@ -251,3 +251,144 @@ valuelist = ["49ers", "Giants", "Warriors", "Sharks"]
 print(list(zip(keylist, valuelist))) #print [('football', '49ers'), ('baseball', 'Giants'), ('basketball', 'Warriors'), ('hockey', 'Sharks')]
 combinelistsdictionary = {key: value for key, value in list(zip(keylist, valuelist))}
 print(combinelistsdictionary) #print {'football': '49ers', 'baseball': 'Giants', 'basketball': 'Warriors', 'hockey': 'Sharks'}
+
+
+#While loop
+initializewhileloop = "This sentence is true"
+while initializewhileloop:
+    print("While loop continues because condition is true")
+    initializewhileloop = input("Stop the while loop by pressing enter.  Pressing enter the initializewhileloop is null and False which stop the while loop or exits the while loop. ")
+initializeuserslist = ["Alice", "Brian", "Candace", "David", "Elaine", "Fox"]
+movenamesherelist = []
+while initializeuserslist:
+    deletelastentry = initializeuserslist.pop()
+    movenamesherelist.append(deletelastentry)
+print("initializeuserslist names are now at movenamesherelist.  Use a comma to concatenate a list to a string print function", movenamesherelist) #print initializeuserslist names are now at movenamesherelist.  Use a comma to concatenate a list to a string print function ['Fox', 'Elaine', 'David', 'Candace', 'Brian', 'Alice']
+pets = ["dog", "there is a cat in pets list", "dog", "goldfish", "there is a cat in pets list", "rabbit", "there is a cat in pets list"]
+while "there is a cat in pets list" in pets:
+    pets.remove("there is a cat in pets list")
+print("The cat is removed in pets", pets) #print The cat is removed in pets ['dog', 'dog', 'goldfish', 'rabbit']
+nameandhobbydictionary = {}
+while True:
+    name = input("What is your name? ")
+    hobby = input("What is your hobby? ")
+    nameandhobbydictionary[name] = hobby
+    exitwhileloop = input("Do you want to exit while True loop.  While loop loops as long as loop is true.  Type Y to exit? ")
+    if exitwhileloop == "Y":
+        break
+    else:
+        continue
+print(nameandhobbydictionary) #print {'Raymond': 'Exercise', 'Raymond2': 'Read books', 'Raymond3': 'Board games'}
+import random
+counter = 0
+abunchofnumbers = []
+while counter < 20:
+    append20numbers = random.randint(1, 21)
+    abunchofnumbers.append(append20numbers)
+    counter += 1
+print(abunchofnumbers) #print [6, 17, 12, 7, 18, 12, 3, 17, 13, 6, 11, 6, 19, 19, 5, 20, 21, 16, 19, 6]
+whileloopkeepgoingvariable = "yes"
+while whileloopkeepgoingvariable == "yes":
+    print(whileloopkeepgoingvariable)
+    print("The while loop continues to loop because the while loop variable whileloopkeepgoingvariable is true.")
+    randomnumber = random.randint(1, 20)
+    print(randomnumber)
+    if randomnumber == 20:
+        print("Exit the while loop because the variable whileloopkeepgoingvariable is not equal to yes.")
+        whileloopkeepgoingvariable = "No.  Exit the while loop"
+    else:
+        whileloopkeepgoingvariable = "yes"
+    '''
+    yes
+    The while loop continues to loop because the while loop variable whileloopkeepgoingvariable is true.
+    15
+    yes
+    The while loop continues to loop because the while loop variable whileloopkeepgoingvariable is true.
+    11
+    yes
+    The while loop continues to loop because the while loop variable whileloopkeepgoingvariable is true.
+    20
+    Exit the while loop because the variable whileloopkeepgoingvariable is not equal to yes.
+    '''
+stopnumber = ""
+while stopnumber != 43:
+    print("Inside the while loop.")
+    stopnumber = int(input("Type the stop number 43 to exit or to stop the loop.  "))
+    '''
+    Inside the while loop.
+    Type the stop number 43 to exit or to stop the loop.  987
+    Inside the while loop.
+    Type the stop number 43 to exit or to stop the loop.  24813
+    Inside the while loop.
+    Type the stop number 43 to exit or to stop the loop.  -4
+    Inside the while loop.
+    Type the stop number 43 to exit or to stop the loop.  43
+    '''
+guessnumber = 24
+userguess = int(input("I am thinking of a number between 1 and 50.  Guess the number? "))
+while True:
+    if userguess == guessnumber:
+        print("Correct, you win.  Exit while loop.")
+        break
+    elif userguess > guessnumber:
+        userguess = int(input("Too high.  I'm thinking of a number between 1 and 50.  Guess again. "))
+    elif userguess < guessnumber:
+        userguess = int(input("Too low.  I'm thinking of a number between 1 and 50.  Guess again. "))
+    '''
+    I am thinking of a number between 1 and 50.  Guess the number? 5
+    Too low.  I'm thinking of a number between 1 and 50.  Guess again. 25
+    Too high.  I'm thinking of a number between 1 and 50.  Guess again. 16
+    Too low.  I'm thinking of a number between 1 and 50.  Guess again. 33
+    Too high.  I'm thinking of a number between 1 and 50.  Guess again. 24
+    Correct, you win.  Exit while loop.
+    '''
+while True:
+    name = input("Who are you?  Enter Joe to proceed; otherwise, while loop goes back to the top of while loop.  There is no initialization. ")
+    if name != "Joe":
+        continue
+    password = input("What is the password?  It's a fish ")
+    if password == "swordfish":
+        print("Exiting while loop.  Break")
+        break
+    '''
+    Who are you?  Enter Joe to proceed; otherwise, while loop goes back to the top of while loop.  There is no initialization. Buck
+    Who are you?  Enter Joe to proceed; otherwise, while loop goes back to the top of while loop.  There is no initialization. Joe
+    What is the password?  It's a fish Goldfish
+    Who are you?  Enter Joe to proceed; otherwise, while loop goes back to the top of while loop.  There is no initialization. Joe
+    What is the password?  It's a fish karp
+    Who are you?  Enter Joe to proceed; otherwise, while loop goes back to the top of while loop.  There is no initialization. Joe
+    What is the password?  It's a fish swordfish
+    Exiting while loop.  Break
+    '''
+
+secretword = "giraffe"
+guess = ""
+guesscount = 0
+guesslimit = 3
+outofguesses = False
+print(guess != secretword) #print True
+print(outofguesses is False) #print True.  RM:  It's counterintuitive  outofguesses is really False which is True.
+print(guess != secretword and outofguesses is False) #print True
+print(guesscount, guess != secretword, outofguesses is False) #print 0 True True
+print(True and False) #print False
+print(False and False) #print False
+while guess != secretword and outofguesses is False:
+    if guesscount < guesslimit:
+        print(f"Cheat.  The secret word is {secretword}")
+        guess = input("Guess the secret word: ")
+        guesscount += 1
+        print(guesscount, guess != secretword, outofguesses)
+    else:
+        print("You're out of guesses.  outofguesses variable is True.  Exit while loop.")
+        outofguesses = True
+    '''
+    Cheat.  The secret word is giraffe
+    Guess the secret word: 34
+    1 True False
+    Cheat.  The secret word is giraffe
+    Guess the secret word: opop
+    2 True False
+    Cheat.  The secret word is giraffe
+    Guess the secret word: giraffe
+    3 False False
+    '''
