@@ -392,3 +392,18 @@ while guess != secretword and outofguesses is False:
     Guess the secret word: giraffe
     3 False False
     '''
+whileloopelse = "The while loop else statement is optional"
+whileloopcondition = 0
+while whileloopcondition < 5:
+    print("While loop body.  The whileloopcondition is a Boolean expression True or False", whileloopcondition)
+    whileloopcondition += 1
+else:
+    print("Break while loop or exit while loop.  Some programmers omit the else because the else statement is optional.", whileloopcondition)
+'''
+While loop body.  The whileloopcondition is a Boolean expression True or False 0
+While loop body.  The whileloopcondition is a Boolean expression True or False 1
+While loop body.  The whileloopcondition is a Boolean expression True or False 2
+While loop body.  The whileloopcondition is a Boolean expression True or False 3
+While loop body.  The whileloopcondition is a Boolean expression True or False 4
+Break while loop or exit while loop.  Some programmers omit the else because the else statement is optional. 5
+'''
