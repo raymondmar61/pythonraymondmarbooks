@@ -357,6 +357,21 @@ squareslistcomprehension = [onenumber * onenumber for onenumber in numbers] #lis
 print(squareslistcomprehension) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 listsquared = [n**2 for n in range(0, 10)]
 print(listsquared) #print [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+removeblanks = ["", "Argentina", "", "Brazil", "Chile", "", "Colombia", "", "Ecuador", "", "", "Venezuela"] #delete blanks in list
+print(list(filter(None, removeblanks))) #print ['Argentina', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Venezuela']
+abunchofnames = ["raymond1", "harry", "raymond2", "edward", "raymond3", "peach tree", "raymond4", "raymond5", "kenny rogers", "raymond6", "wolverine"]
+extractraymonds = [eachabunchofnames for eachabunchofnames in abunchofnames if "raymond" in eachabunchofnames]
+print(extractraymonds) #print ['raymond1', 'raymond2', 'raymond3', 'raymond4', 'raymond5', 'raymond6']
+extractraymondselselove = [eachabunchofnames if "raymond" in eachabunchofnames else "love" for eachabunchofnames in abunchofnames]
+print(extractraymondselselove) #print ['raymond1', 'love', 'raymond2', 'love', 'raymond3', 'love', 'raymond4', 'raymond5', 'love', 'raymond6', 'love']
+decimalsletters = [1.5, 2.3, 4.4, 5.4, "n", 1.5, 5.1, "a"]
+extractnumbers = [decimals for decimals in decimalsletters if not isinstance(decimals, str)]
+print(extractnumbers) #print [1.5, 2.3, 4.4, 5.4, 1.5, 5.1]
+replaceletters = [599 if isinstance(decimals, str) else decimals for decimals in decimalsletters]
+print(replaceletters) #print [1.5, 2.3, 4.4, 5.4, 599, 1.5, 5.1, 599]
+list45 = [22, 13, 45, 50, 98, 69, 43, 44, 1]
+add1add5 = [(eachlist45 + 1) if eachlist45 >= 45 else (eachlist45 + 5) for eachlist45 in list45]
+print(add1add5) #print [27, 18, 46, 51, 99, 70, 48, 49, 6]
 
 #Tuples
 print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')
