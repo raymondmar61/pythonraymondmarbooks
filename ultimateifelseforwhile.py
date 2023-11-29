@@ -115,6 +115,10 @@ else:
     print(integernumber, "is not an integer int by checking data type")
 if type(integernumber) == int:
     print("isinstance function better than type(integernumber) == int") #print isinstance function better than type(integernumber) == int
+value = 123
+print(value, "is", "even after second comma all." if value % 2 == 0 else "odd after second comma all.") #print 123 is odd after second comma all.
+value = 124
+print(value, "is", "even after second comma all." if value % 2 == 0 else "odd after second comma all.") #print 124 is even after second comma all.
 
 #For loop
 stringisalist = "Zophie"
