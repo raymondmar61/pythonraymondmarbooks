@@ -20,6 +20,18 @@ firstlineinfunction(functioninput)
 (END)
 '''
 
+def printreturn():
+    print("The print statement in a function")
+    return "The return statement in a function"
+
+
+printreturn() #return The print statement in a function
+print(printreturn())
+'''
+The print statement in a function
+The return statement in a function
+'''
+
 def multiplelinesinfunction(insertvalue):
     """
     Triple double quotes better docstring.
@@ -168,36 +180,6 @@ Enter a number between one and ten 5
 You Won.  Don't call the callmyownfunction()
 '''
 
-def functionone(n):
-    return n + 1
-def functiontwo(n):
-    return functionone(n) + 2
-
-
-print(functionone(10)) #print 11
-print(functiontwo(10)) #print 13.  functiontwo receives 10.  functiontwo returns functionone 10+1 which is 11.  functiontwo 11+2 which is 13.
-
-def giverfunction(initialist):
-    print(initialist)
-    finalist = sorted(initialist)
-    return finalist
-def receiverfunction(updatelist):
-    print("I have the giverfunction initiallist updated", updatelist)
-
-
-childlist = ["zebra", "apple", "honey", "comb", "stick", "ball"]
-print(giverfunction(childlist))
-'''
-['zebra', 'apple', 'honey', 'comb', 'stick', 'ball']
-['apple', 'ball', 'comb', 'honey', 'stick', 'zebra']
-'''
-receiverfunction(childlist) #print I have the giverfunction initiallist updated ['zebra', 'apple', 'honey', 'comb', 'stick', 'ball']
-receiverfunction(giverfunction(childlist))
-'''
-['zebra', 'apple', 'honey', 'comb', 'stick', 'ball']
-I have the giverfunction initiallist updated ['apple', 'ball', 'comb', 'honey', 'stick', 'zebra']
-'''
-
 #double asterisks before the parameter **userinfo cause Python to create an empty dictionary called user_info and pack whatever name-value pairs it receives into this dictionary.  Function works no matter how many additional key-value pairs are provided in the function call.
 def buildprofile(first, last, **userinfo):
     profile = {}
@@ -229,3 +211,380 @@ print(differencereturnand(numberlist1match, numberlist2match)) #print True
 print(differencereturnand(numberlist1match, numberlist2unmatch)) #print False
 print(differencereturncomma(numberlist1match, numberlist2match), "is a tuple.") #print (True, True)  is a tuple.
 print(differencereturncomma(numberlist1match, numberlist2unmatch), "is a tuple.") #print (True, False)  is a tuple.
+
+def definedatatypes(anynumber, integervariable: int, defaultintegervariable: int=40): #RM:  SyntaxError: non-default argument follows default argument
+    print(integervariable)
+    print(type(integervariable))
+    print(defaultintegervariable)
+    print(type(defaultintegervariable))
+    print(anynumber)
+    print(type(anynumber))
+
+
+definedatatypes(integervariable=178, anynumber=500)
+'''
+178
+<class 'int'>
+40
+<class 'int'>
+500
+<class 'int'>
+'''
+
+def savefunctionresults(number1: int, number2: int, number3: int, astring: str):
+    number1answer = number1 + 100
+    number2answer = number2 * 200
+    number3answer = number3 / 300
+    astring = "Change astring input to bread"
+    return (number1answer, number2answer, number3answer, astring) #RM:  return number1answer, number2answer, number3answer, astring with the parenthesis is the same results
+
+
+input1, input2, input3, input4 = 400, 1200, 3000, "Tie Die"
+print(savefunctionresults(input1, input2, input3, input4)) #print (500, 240000, 10.0, 'Change astring input to bread')
+savefunctionresultsvariable = savefunctionresults(input1, input2, input3, input4)
+print(savefunctionresultsvariable) #print (500, 240000, 10.0, 'Change astring input to bread')
+
+#Global variables, local variables
+globalvariable = "The variable is global.  Use the global variable anywhere."
+def localvariable():
+    global globalvariable
+    print("localvariable() function.  Print the global variable: " + globalvariable)
+
+
+print(globalvariable) #print The variable is global.  Use the global variable anywhere.
+localvariable() #return localvariable() function.  Print the global variable: The variable is global.  Use the global variable anywhere.
+if "globalvariable" in globals():
+    print("The if checks globalvariable is a global variable.") #print The if checks globalvariable is a global variable.
+
+def returnlocalvariable():
+    localvariable = 200
+    return "returnlocalvariable() function is " + str(localvariable) #RM:  "returnlocalvariable() function is", localvariable returns tuple ('returnlocalvariable() function is', 200)
+
+
+print(returnlocalvariable()) #print returnlocalvariable() function is 200
+
+globalvariablelargestnumber = 0
+def inefficientreturnglobalvariable(numberlist):
+    largestnumber = 0
+    for eachnumberlist in numberlist:
+        if eachnumberlist > largestnumber:
+            largestnumber = eachnumberlist
+    return largestnumber
+
+
+globalvariablelargestnumber = inefficientreturnglobalvariable([45, 3, 67, 357, 33])
+print(globalvariablelargestnumber) #print 357
+
+globalvariablelargestnumber = 0
+def efficientreturnglobarvariable(numberlist):
+    global globalvariablelargestnumber
+    largestnumber = 0
+    for eachnumberlist in numberlist:
+        if eachnumberlist > largestnumber:
+            largestnumber = eachnumberlist
+    globalvariablelargestnumber = largestnumber
+    print(globalvariablelargestnumber)
+
+
+efficientreturnglobarvariable([45, 3, 67, 357, 33]) #return 357
+
+#List map filter function.  Function iterators.
+def listmapfunction(dollars):
+    return dollars * 2
+
+
+doubleincome = [10, 30, 75]
+print(listmapfunction(doubleincome)) #print [10, 30, 75, 10, 30, 75]
+print(map(listmapfunction, doubleincome)) #print <map object at 0x7fd85db69b20>
+print(list(map(listmapfunction, doubleincome))) #print [20, 60, 150
+
+def greaterthantenfilterlist(numberlist):
+    return numberlist > 10
+
+
+thenumberlist = [5, 7, 345, 78, 34, 5]
+print(filter(greaterthantenfilterlist, thenumberlist)) #print <filter object at 0x7f781b675ca0>
+print(list(filter(greaterthantenfilterlist, thenumberlist))) #print [345, 78, 34]
+print(list(map(greaterthantenfilterlist, thenumberlist))) #print [False, False, True, True, True, False]
+
+def beginswithletterfilterlist(wordlist, prefix="e"):
+    return wordlist.startswith(prefix)
+
+
+thewordlist = ["earth", "unicycle", "moose", "beed", "eradicate"]
+#print(filter(beginswithletterfilterlist, thewordlist,"e")) #error message filter expected 2 arguments
+print(filter(beginswithletterfilterlist, thewordlist)) #print <filter object at 0x7f7ca0627828>
+print(list(filter(beginswithletterfilterlist, thewordlist))) #print ['earth', 'eradicate']
+
+def squarednumbers(numbers):
+    return numbers**2
+
+
+numbers = [1, 2, 3, 4, 5]
+#print(squarednumbers(numbers)) #TypeError: unsupported operand type(s) for ** or pow(): 'list' and 'int'
+print(map(squarednumbers, numbers)) #print <map object at 0x7f9c2fa9c9d0>
+print(list(map(squarednumbers, numbers))) #print [1, 4, 9, 16, 25]
+def uppercaseletters(string):
+    return string.upper()
+
+
+letters = ["abc", "def", "ghi"]
+print(list(map(uppercaseletters, letters))) #print ['ABC', 'DEF', 'GHI']
+
+def greaterthanthreenumbers(numberslist):
+    return numberslist > 3
+
+
+numbers = [1, 2, 3, 4, 5, 6]
+print(list(filter(greaterthanthreenumbers, numbers))) #print [4, 5, 6]
+print(list(map(greaterthanthreenumbers, numbers))) #print [False, False, False, True, True, True]
+
+from random import shuffle
+def jumble(word):
+    anagram = list(word)
+    shuffle(anagram)
+    return "".join(anagram)
+
+
+words = ["beetroot", "carrots", "potatoes"]
+print(map(jumble, words)) #print <map object at 0x7fbc09ee02e8>
+print(list(map(jumble, words))) #print ['etetboro', 'scrrtoa', 'oaptsoet']
+
+#List comprehension functions
+#RM:  using jumble function above
+words = ["beetroot", "carrots", "potatoes"]
+functioninsidelistcomprehension = [jumble(eachwords) for eachwords in words]
+print(functioninsidelistcomprehension) #print ['robteeto', 'aotrscr', 'pstoeota']
+
+#Parent child functions
+def functionone(n):
+    return n + 1
+def functiontwo(n):
+    return functionone(n) + 2
+
+
+print(functionone(10)) #print 11
+print(functiontwo(10)) #print 13.  functiontwo receives 10.  functiontwo returns functionone 10+1 which is 11.  functiontwo 11+2 which is 13.
+
+def giverfunction(initialist):
+    print(initialist)
+    finalist = sorted(initialist)
+    return finalist
+def receiverfunction(updatelist):
+    print("I have the giverfunction initiallist updated", updatelist)
+
+
+childlist = ["zebra", "apple", "honey", "comb", "stick", "ball"]
+print(giverfunction(childlist))
+'''
+['zebra', 'apple', 'honey', 'comb', 'stick', 'ball']
+['apple', 'ball', 'comb', 'honey', 'stick', 'zebra']
+'''
+receiverfunction(childlist) #print I have the giverfunction initiallist updated ['zebra', 'apple', 'honey', 'comb', 'stick', 'ball']
+receiverfunction(giverfunction(childlist))
+'''
+['zebra', 'apple', 'honey', 'comb', 'stick', 'ball']
+I have the giverfunction initiallist updated ['apple', 'ball', 'comb', 'honey', 'stick', 'zebra']
+'''
+
+def firstfunctionparent():
+    def secondfunctionchild():
+        return "secondfunctionchild() as a string"
+
+
+firstfunctionparent() #print *blank*
+print(firstfunctionparent()) #print None
+
+def firstfunctionparent():
+    def secondfunctionchild():
+        return "secondfunctionchild() as a string"
+    return "firstfunctionparent() as a string"
+
+
+firstfunctionparent() #print *blank*
+print(firstfunctionparent()) #print firstfunctionparent() as a string
+print(type(firstfunctionparent())) #print <class 'str'>
+# secondfunctionchild() #NameError: name 'secondfunctionchild' is not defined
+
+def firstfunctionparent():
+    print("Create a new function object assigned to variable secondfunction.  secondfunction is a local variable local to firstfunction.  firstfunction returns the secondfunctionchild function and not a string 'firstfunctionparent() as a string'.")
+
+    def secondfunctionchild():
+        print("Inside the secondfunctionchild() did I print?")
+        return "secondfunctionchild() as a string"
+    return secondfunctionchild
+
+
+firstfunctionparent() #print Create a new function object assigned to variable secondfunction.  secondfunction is a local variable local to firstfunction.  firstfunction returns the secondfunctionchild function and not a string 'firstfunctionparent() as a string'.
+print(firstfunctionparent())
+'''
+Create a new function object assigned to variable secondfunction.  secondfunction is a local variable local to firstfunction.  firstfunction returns the secondfunctionchild function and not a string 'firstfunctionparent() as a string'.
+<function firstfunctionparent.<locals>.secondfunctionchild at 0x7f3bc99a3160>
+'''
+print(type(firstfunctionparent()))
+'''
+Create a new function object assigned to variable secondfunction.  secondfunction is a local variable local to firstfunction.  firstfunction returns the secondfunctionchild function and not a string 'firstfunctionparent() as a string'.
+<class 'function'>
+'''
+#secondfunctionchild() #NameError: name 'secondfunctionchild' is not defined
+accesssecondfunctionchildvariable = firstfunctionparent()
+print(accesssecondfunctionchildvariable())
+'''
+Create a new function object assigned to variable secondfunction.  secondfunction is a local variable local to firstfunction.  firstfunction returns the secondfunctionchild function and not a string 'firstfunctionparent() as a string'.
+Inside the secondfunctionchild() did I print?
+secondfunctionchild() as a string
+'''
+
+def firstfunctionparent():
+    def secondfunctionchild(a, b):
+        return a + b
+    return secondfunctionchild
+
+
+accesssecondfunctionchildvariable = firstfunctionparent()
+print(accesssecondfunctionchildvariable(4, 5)) #print 9
+
+def firstfunctionparent():
+    def secondfunctionchild(a, b):
+        def thirdfunctionchild(n):
+            return n * 2
+        return thirdfunctionchild(a) + thirdfunctionchild(b)
+    return secondfunctionchild
+
+
+accesssecondfunctionchildvariable = firstfunctionparent()
+print(accesssecondfunctionchildvariable(4, 5)) #print 18
+
+def firstfunctionparent(number):
+    print("firstfunctionparent", number)
+
+    def secondfunctionchild():
+        print("secondfunctionparent", number)
+        return f"secondfunctionchild() function number {number}"
+    return secondfunctionchild
+
+
+firstfunctionparent(111) #return firstfunctionparent 111
+print(firstfunctionparent(222))
+'''
+firstfunctionparent 222
+<function firstfunctionparent.<locals>.secondfunctionchild at 0x7f25424c70d0>
+'''
+accesssecondfunctionchildvariable = firstfunctionparent(333) #returns firstfunctionparent 333.  RM:  I can't explain a variable assignment returns a result.  Is it the print(number) in firstfunctionparent?  Yes.
+print(accesssecondfunctionchildvariable) #print <function firstfunctionparent.<locals>.secondfunctionchild at 0x7f2b93f780d0>
+print(accesssecondfunctionchildvariable())
+'''
+secondfunctionparent 333
+secondfunctionchild() function number 333
+'''
+
+def firstfunctionparent(name):
+    remainingpoints = 5
+
+    def secondfunctionchild():
+        nonlocal remainingpoints #local variable from firstfunctionparent function declared in secondfunctionchild function
+        while True:
+            print(remainingpoints)
+            if remainingpoints <= 0:
+                return "Game over"
+            else:
+                remainingpoints -= 1
+                print(f"Hello {name}")
+    return secondfunctionchild
+
+
+accesssecondfunctionchildvariable = firstfunctionparent("Raymond")
+print(accesssecondfunctionchildvariable())
+'''
+5
+Hello Raymond
+4
+Hello Raymond
+3
+Hello Raymond
+2
+Hello Raymond
+1
+Hello Raymond
+0
+Game over
+'''
+
+#Embed functions calls or multiple calls function multiple functions
+def functiononeaddten(number):
+    return number + 10
+def functiontwodouble(number):
+    return number * 2
+def functionthreetriple(number):
+    return number * 3
+
+
+variablenumber = 3
+print(functiononeaddten(variablenumber)) #print 13
+print(functiontwodouble(variablenumber)) #print 6
+print(functionthreetriple(variablenumber)) #print 9
+print(functiononeaddten(functiontwodouble(functionthreetriple(variablenumber)))) #print 28.  ((3*3)*2)+10
+
+#Call functions from another file.  Also call classes from another file.
+from functionsfile import formattedname  #RM:  functionsfile is functionsfile.py file in the same directory
+firstname = lowercaseraymond
+lastname = uppercasemar
+outputformattedname = formattedname(firstname, lastname)
+print("{} is your name formatted.".format(outputformattedname)) #print Raymond Mar is your name formatted.
+
+from functionsfile import AnonymousSurvey #RM:  functionsfile is functionsfile.py file in the same directory
+question = "What computer languages do you know?"
+survey = AnonymousSurvey(question)
+survey.displayquestion()
+while True:
+    response = input("Language?  Press q to quit. ")
+    if response == "q":
+        break
+    else:
+        survey.saveresponse(response)
+# survey.showresponse() #return The list ['HTML', 'Python', 'SQL', 'CSS', 'JavaScript', 'DAX']\n Your languages are HTML, Python, SQL, CSS, JavaScript, DAX\n HTML, Python, SQL, CSS, JavaScript, DAX
+
+#Stack frames, keep local variables
+def doineedtokeeplocalvariables(x, y):
+    z = x + y
+    return z
+
+
+print(doineedtokeeplocalvariables(10, 11)) #print 21
+
+import inspect
+def keeplocalvariables(x, y):
+    z = x + y
+    print(f"x+y={z}")
+
+
+print(keeplocalvariables(10, 11))
+'''
+x+y=21
+None
+'''
+variabletokeeplocalvariable = keeplocalvariables(110, 111)
+print(variabletokeeplocalvariable)
+'''
+x+y=221
+None
+'''
+
+def keeplocalvariableswithinspect(x, y):
+    z = x + y
+    print(f"x+y={z}")
+    return z, inspect.currentframe()
+
+
+print(keeplocalvariableswithinspect(10, 11))
+'''
+x+y=21
+(21, <frame at 0x7f4c609a6440, file 'yytest.py', line 255, code keeplocalvariableswithinspect>)
+'''
+variabletokeeplocalvariable = keeplocalvariableswithinspect(110, 111)
+print(variabletokeeplocalvariable)
+'''
+x+y=221
+(221, <frame at 0x7f4c609a6440, file 'yytest.py', line 255, code keeplocalvariableswithinspect>)
+'''
+print(variabletokeeplocalvariable[0]) #print 221
