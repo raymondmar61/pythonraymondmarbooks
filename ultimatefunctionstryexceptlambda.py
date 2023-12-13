@@ -510,6 +510,93 @@ Hello Raymond
 Game over
 '''
 
+#Subprograms or subfunctions.  Like parent child.
+def subprogramsub1():
+    sendstringtosubprogrammain = "Give me a noun and a verb"
+    return sendstringtosubprogrammain
+def subprogramreceivestring2(receivestring):
+    print("The string value from subprogramsub1() is " + receivestring)
+
+def subprogrammain():
+    stringfromsubprogramsub1 = subprogramsub1()
+    subprogramreceivestring2(stringfromsubprogramsub1)
+
+
+subprogrammain() #return The string value from subprogramsub1() is Give me a noun and a verb
+#Calling a child function separately
+def getdatatuplesubprogram1():
+    username = input("Input-->Enter your name: ")
+    userage = int(input("Input-->Enter your age: "))
+    datatupleresult = (username, userage)
+    return datatupleresult
+def printtuplessubprogram2(usernamegetdatatuplesubprogram1, useragegetdatatuplesubprogram1):
+    if useragegetdatatuplesubprogram1 <= 10:
+        print("Hi young person", usernamegetdatatuplesubprogram1)
+    else:
+        print("Hello", usernamegetdatatuplesubprogram1)
+
+
+def mainfunction():
+    assignedname, assignedage = getdatatuplesubprogram1()
+    printtuplessubprogram2(assignedname, assignedage)
+
+
+savefunctionvariable = getdatatuplesubprogram1() #RM:  I assigned savefunctionvariable to getdatatuplesubprogram1 function.  Not call mainfunction parent function.
+print(savefunctionvariable[0])
+print(savefunctionvariable[1])
+'''
+Input-->Enter your name: Raymond
+Input-->Enter your age: 12
+Raymond
+12
+'''
+printtuplessubprogram2(savefunctionvariable[0], savefunctionvariable[1]) #return Hello Raymond.  Call printtuplessubprogram2 function inputting savefunctionvariable[0] and savefunctionvariable[1].  Not call mainfunction parent function.
+mainfunction() #Called mainfunction.  No need to save returns to a variable.
+'''
+Input-->Enter your name: Raymond
+Input-->Enter your age: 9
+Hi young person Raymond
+'''
+def requestnumbersubfunction1():
+    usernumber = int(input("Input-->Enter a number: "))
+    return usernumber
+def countersubfunction2(endingnumber):
+    print("From countersubfunction2 subfunction")
+    for n in range(1, endingnumber + 1):
+        print(n)
+def numbermainfunction():
+    inputnumberforcountersubfunction2 = requestnumbersubfunction1()
+    countersubfunction2(inputnumberforcountersubfunction2)
+
+
+variableprintfunctionreturn = requestnumbersubfunction1()
+print("Output-->", variableprintfunctionreturn)
+'''
+Input-->Enter a number: 5
+Output--> 5
+'''
+countersubfunction2(variableprintfunctionreturn)
+'''
+From countersubfunction2 subfunction
+1
+2
+3
+4
+5
+'''
+numbermainfunction()
+'''
+Input-->Enter a number: 7
+From countersubfunction2 subfunction
+1
+2
+3
+4
+5
+6
+7
+'''
+
 #Embed functions calls or multiple calls function multiple functions
 def functiononeaddten(number):
     return number + 10
