@@ -11,7 +11,7 @@ def firstlineinfunction(functioninput):
 
 
 print(firstlineinfunction("Give To Function firstlineinfunction")) #print The string value inputted when calling firstlineinfunction function is Give To Function firstlineinfunction
-help(firstlineinfunction)
+help(firstlineinfunction) #opens the help in CommandPrompt
 '''
 Help on function firstlineinfunction in module __main__:
 
@@ -19,6 +19,7 @@ firstlineinfunction(functioninput)
     This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute.
 (END)
 '''
+print(firstlineinfunction.__doc__) #print This is the docstring.  If the first line of the function is a string, then the string is seen as the documentation for the function.  Technically, the docstring is stored in the function's __doc__attribute.
 
 def printreturn():
     print("The print statement in a function")
@@ -245,6 +246,36 @@ savefunctionresultsvariable = savefunctionresults(input1, input2, input3, input4
 print(savefunctionresultsvariable) #print (500, 240000, 10.0, 'Change astring input to bread')
 
 #Global variables, local variables
+globalnumbervariable = 7
+def functionuseglobalnumbervariable():
+    print("Print the globalnumbervariable", globalnumbervariable)
+def functionchangeglobalnumbervariable():
+    globalnumbervariable = 3.5
+    print("Print the changed globalnumbervariable", globalnumbervariable)
+
+
+functionuseglobalnumbervariable() #return Print the globalnumbervariable 7
+functionchangeglobalnumbervariable() #return Print the changed globalnumbervariable 3.5
+
+def spam():
+    eggs = "spam() function eggs local variable"
+    print(eggs)
+def bacon():
+    eggs = "bacon() function eggs local variable"
+    print(eggs)
+    spam()
+    print(eggs)
+
+
+eggs = "eggs global variable"
+bacon()
+'''
+bacon function eggs local variable
+spam function eggs local variable
+bacon function eggs local variable
+'''
+print(eggs) #print eggs global variable
+
 globalvariable = "The variable is global.  Use the global variable anywhere."
 def localvariable():
     global globalvariable
@@ -253,6 +284,17 @@ def localvariable():
 
 print(globalvariable) #print The variable is global.  Use the global variable anywhere.
 localvariable() #return localvariable() function.  Print the global variable: The variable is global.  Use the global variable anywhere.
+eggsglobalvariable = "eggs global variable outside a function"
+def functionchangeglobalvariable():
+    global eggsglobalvariable
+    eggsglobalvariable = "functionchangeglobalvariable() function changes global variable"
+
+
+print(eggsglobalvariable) #print eggs global variable outside a function
+functionchangeglobalvariable()
+print(eggsglobalvariable) #print functionchangeglobalvariable() function changes global variable
+
+#globals() function checks a variable is a global variable?
 if "globalvariable" in globals():
     print("The if checks globalvariable is a global variable.") #print The if checks globalvariable is a global variable.
 
@@ -675,3 +717,59 @@ x+y=221
 (221, <frame at 0x7f4c609a6440, file 'yytest.py', line 255, code keeplocalvariableswithinspect>)
 '''
 print(variabletokeeplocalvariable[0]) #print 221
+
+
+#Try except
+try:
+    print("Python code is beneath the try: to check for errors") #print Python code is beneath the try: to check for errors
+except SyntaxError as isexceptvariableneeded:
+    print("The right to except statement is the error code which is case sensitive")
+else:
+    print("If there is no error not in the except statement, then the else statement is executed") #print If there is no error not in the except statement, then the else statement is executed.
+finally:
+    print("Anything at finally statement is always executed") #print Anything at finally statement is always executed
+try:
+    numbervariable = int("I'm not a number")
+except ValueError:
+    print("The except error type is case sensitive")
+    print(r"numbervariable=int(\"I'm a string\") is a ValueError")
+'''
+The except error type is case sensitive
+numbervariable=int(\"I'm a string\") is a ValueError
+'''
+try:
+    numbervariable = 5 / 0
+except ZeroDivisionError:
+    print("The except error type is case sensitive")
+    print(r"numbervariable = 5 / 0 is a ZeroDivisionError")
+'''
+The except error type is case sensitive
+numbervariable = 5 / 0 is a ZeroDivisionError
+'''
+try:
+    numbervariable = 50 / 100
+except ZeroDivisionError:
+    print("The except error type is case sensitive")
+except:
+    print("The numbervariable = 50/100 is a valid code.  No error messages in except.")
+else:
+    print(numbervariable) #print 0.5
+#An except clause may name multiple exceptions as a parenthesized tuple
+try:
+    anythingvariable = was
+    print(anythingvariable)
+except (ZeroDivisionError, NameError) as combineexcept:
+    print("You need to relearn Python basics") #print You need to relearn Python basics
+except (RuntimeError, TypeError, NameError) as threeerrors:
+    print("You acheived three common Errors")
+else:
+    print("The Python code is correct")
+age = 199
+if age > 135:
+    raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
+'''
+Traceback (most recent call last):
+  File "yytest.py", line 48, in <module>
+    raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
+Exception: You're supposed to be dead.  You're older than 135 years old.
+'''
