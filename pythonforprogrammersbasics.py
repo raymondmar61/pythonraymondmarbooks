@@ -133,7 +133,7 @@ if point != None:
             print("Winner")
             break
         else:
-            sumdievalue = sum(rolldice())
+            continue
 '''
 Yes first roll crap out
 Coming out (1, 1)
