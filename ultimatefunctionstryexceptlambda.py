@@ -720,6 +720,25 @@ print(variabletokeeplocalvariable[0]) #print 221
 
 
 #Try except
+#The finally clause guarantees execution.  In Python, we prefer the with statement (RM: correct word is else statement and not with statement?) for the purpose and place other code in the finally.
+try:
+    print("try print statement is printed with no exceptions raised") #print try print statement is printed with no exceptions raised
+except SyntaxError:
+    print("No except executed because no errors in try")
+else:
+    print("Yes else executed because except not executed") #print Yes else executed because except not executed
+finally:
+    print("Yes finally executed always") #print Yes finally executed always
+try:
+    print("try is an error inputing a string inside the int() function") #print try is an error inputing a string inside the int() function
+    int("The string inside int() is an error")
+except ValueError:
+    print("Yes except executed because of a ValueError") #print Yes except executed because of a ValueError
+else:
+    print("No else executed because error in try executing except instead of else")
+finally:
+    print("Yes finally executed always") #print Yes finally executed always
+
 try:
     print("Python code is beneath the try: to check for errors") #print Python code is beneath the try: to check for errors
 except SyntaxError as isexceptvariableneeded:
@@ -728,6 +747,7 @@ else:
     print("If there is no error not in the except statement, then the else statement is executed") #print If there is no error not in the except statement, then the else statement is executed.
 finally:
     print("Anything at finally statement is always executed") #print Anything at finally statement is always executed
+
 try:
     numbervariable = int("I'm not a number")
 except ValueError:
@@ -773,3 +793,56 @@ Traceback (most recent call last):
     raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
 Exception: You're supposed to be dead.  You're older than 135 years old.
 '''
+#Print error message display error message
+try:
+    dontinputinteger = int(input("Enter a string to create an error: "))
+    print(dontinputinteger) #print Enter a string to create an error: were
+except ZeroDivisionError as savezerodivisionerrorasvariable:
+    print("Divided by zero")
+except ValueError as savevalueerrorasvariable:
+    print("Entered a string")
+    print(savevalueerrorasvariable)
+    '''
+    Entered a string
+    invalid literal for int() with base 10: 'were'
+    '''
+try:
+    dividebyzero = 256 / 0
+    print(dividebyzero) #print *nothing*
+except ZeroDivisionError as savezerodivisionerrorasvariable:
+    print("Divided by zero")
+    print(savezerodivisionerrorasvariable)
+    '''
+    Divided by zero
+    division by zero
+    '''
+except ValueError as savevalueerrorasvariable:
+    print("Entered a string")
+    print(savevalueerrorasvariable)
+
+#No file error message
+try:
+    with open("filenotexist.txt", "r") as tryexceptfilenotfound:
+        print(f'{"ID":<3}{"Name":<7}{"Grade"}')
+        for student in tryexceptfilenotfound:
+            studentid, name, grade = tryexceptfilenotfound.split()
+            print(f'{studentid:<3}{name:<7}{grade}')
+except FileNotFoundError:
+    print("The file name specified doesn't exist")
+'''
+The file name specified doesn't exist
+'''
+
+#Lambda
+numbersfilter = [1, 2, 3, 4, 5, 6]
+print(list(filter(lambda x: x > 3, numbersfilter))) #print [4, 5, 6]
+numbers = [1, 2, 3, 4, 5]
+print(map(lambda x: x**2,numbers)) #print <map object at 0x7fd294e77470>
+print(list(map(lambda x: x**2,numbers))) #print [1, 4, 9, 16, 25]
+numberdata = [1.3,2.7,0.8,4.1,4.3,-0.1]
+averagedata = sum(numberdata)/len(numberdata)
+print(averagedata) #print 2.183333333333333
+numberdatagreaterthanaverage = list(filter(lambda x: x>averagedata,numberdata))
+print(numberdatagreaterthanaverage) #print [2.7, 4.1, 4.3]
+numberdatalessthanaverage = list(filter(lambda x: x<averagedata,numberdata))
+print(numberdatalessthanaverage) #print [1.3, 0.8, -0.1]
