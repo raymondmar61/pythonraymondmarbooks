@@ -1,0 +1,23 @@
+ creditcategoryfilename.csv
+ creditcategoryfilename.json
+
+ creditcategoryfilename.txt
+ 
+
+ creditcategoryfilename.xlsx
+ csvdictionaryheaders.csv
+ csvfilebeatles.csv
+ 
+
+
+ csvfilenamefile01.csv
+ datapipes.csv
+ datapipesexcel2.xlsx
+ datapipesexcel.xlsx
+ 
+
+
+
+ datapipes.txt
+ 
+ default.pdf
