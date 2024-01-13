@@ -12,6 +12,9 @@ print(fileread.readline()) #print Second line need \n.
 print(fileread.readline()) #print Close() function to close file.
 fileread.close()
 fileread = open("basicreadwritefile.txt", "r")
+print("file name: " + fileread.name) #print file name: basicreadwritefile.txt
+print("file name mode file status opened: " + fileread.mode) #print file name mode file status opened: r
+print("file name closed? boolean datatype:", fileread.closed) #print file name closed? boolean datatype: False
 printfileread = fileread.read()
 print(printfileread)
 '''
@@ -20,10 +23,32 @@ Second line need \\n.
 Close() function to close file.
 
 '''
+#Note that once you have read some text from a file using read(), readline(), or readlines(), then that line is not read again.
 fileread.close()
+fileread = open("basicreadwritefile.txt", "r")
+readlinesobjectvariable = fileread.readlines()
+for eachreadlinesobjectvariable in readlinesobjectvariable:
+    print(eachreadlinesobjectvariable, end="")
+    '''
+    Write function write to file.
+    Second line need \\n.
+    Close() function to close file.
+    '''
+fileread.close()
+fileread = open("basicreadwritefile.txt", "r")
+for forlooponly in fileread:
+    print(forlooponly, end="") #RM:  The \n at the end is still valid for new lines.
+    '''
+    Write function write to file.
+    Second line need \\n.
+    Close() function to close file.
+    '''
+fileread.close()
+print("file name mode file status opened: " + fileread.mode) #print file name mode file status opened: r
+print("file name closed? boolean datatype:", fileread.closed) #print file name closed? boolean datatype: True
 #Python can only write strings to a text file. If you want to store numerical data in a text file, you'll have to convert the data to string format first using the str() function.
 filewrite = open("stringnumerical.txt", "w")
-print(fileread.readable()) #print True.  Check can read file.
+print(filewrite.readable()) #print False.  Check can read file.
 filewrite.write("55\n")
 filewrite.write(str(55))
 filewrite.close()
@@ -64,6 +89,57 @@ with openfile1, openfile2 as twofilesobject:
         '''
         55
 
+        55
+        '''
+import fileinput
+with fileinput.input(files=("basicreadwritefile.txt", "stringnumerical.txt")) as filesobjectvariable:
+    eachline = filesobjectvariable.readline()
+    print("file name method: " + filesobjectvariable.filename()) #print file name method: basicreadwritefile.txt
+    print("The first line method boolean answer:", filesobjectvariable.isfirstline()) #print The first line method boolean answer: True
+    print("The first line number method integer answer:", filesobjectvariable.lineno()) #print The first line number method integer answer: 1
+    print("The first file line number method integer answer:", filesobjectvariable.filelineno()) #print The first file line number method integer answer: 1
+    for x in filesobjectvariable:
+        print(x)
+        '''
+        Second line need \n.
+
+        Close() function to close file.
+
+        55
+
+        55
+        '''
+#Note that once you have read some text from a file using read(), readline(), or readlines(), then that line is not read again.
+with fileinput.input(files=("basicreadwritefile.txt", "stringnumerical.txt")) as filesobjectvariable:
+    for eachfilesobjectvariable in filesobjectvariable:
+        print(filesobjectvariable.filename()) #RM:  notice the variable for the methods and the variable for the for loop.  I can't solve how to print the file name once or no repeats.
+        print(filesobjectvariable.lineno()) #RM:  notice the variable for the methods and the variable for the for loop
+        print(filesobjectvariable.filelineno()) #RM:  notice the variable for the methods and the variable for the for loop
+        print(eachfilesobjectvariable)
+        '''
+        1
+        1
+        basicreadwritefile.txt
+        Write function write to file.
+
+        2
+        2
+        basicreadwritefile.txt
+        Second line need \n.
+
+        3
+        3
+        basicreadwritefile.txt
+        Close() function to close file.
+
+        4
+        1
+        stringnumerical.txt
+        55
+
+        5
+        2
+        stringnumerical.txt
         55
         '''
 
@@ -259,6 +335,16 @@ with open("writecsvfile.csv", "r") as readobject:
     Neville,55555,Loyal trustworthy
     Ginny,666666,Strong self-esteem
     '''
+with open("csvdictionaryheaders.csv", "w", newline="") as csvwritedictionaryvariable:
+    #RM:  how to I insert commas?
+    columnheaders = ["Title", "Author", "Year"]
+    writer = csv.DictWriter(csvwritedictionaryvariable, fieldnames=columnheaders)
+    writer.writeheader()
+    writer.writerow({"Title": "The Glass Castle", "Author": "Jeanette Walls", "Year": 2005})
+    writer.writerow({"Title": "Steve Jobs", "Author": "Walter Issacson", "Year": 2011})
+    writer.writerow({"Title": "A Brief History Of Time", "Author": "Stephen Hawking", "Year": 1988})
+    writer.writerow({"Title": "To Kill A Mockingbird", "Author": "Harper Lee", "Year": 1960})
+    writer.writerow({"Title": "Harry Potter", "Author": "J.K. Rowling", "Year": 1992})
 with open("writecsvfile.csv", "r") as csvfileobject:
     lineisalist = csvfileobject.readlines()
     print(type(lineisalist)) #print <class 'list'>
@@ -305,6 +391,43 @@ with open("csvwriter.csv", "r", newline="") as csvreadobjectvariable:
         4444                     Fluxx                          9.15
         55555                    Dixit                          11.4
         '''
+with open("csvwriter.csv", "r", newline="") as csvreadobjectvariable:
+    reader = csv.reader(csvreadobjectvariable)
+    for eachreader in reader:
+        print(*eachreader, sep=", ")
+        '''
+        1, Catan, 54.54
+        22, Puerto Rico, 69.99
+        333, Pandemic, 39.59
+        4444, Fluxx, 9.15
+        55555, Dixit, 11.4
+        '''
+with open("csvwriter.csv", "r", newline="") as csvreadobjectvariable:
+    reader = csv.reader(csvreadobjectvariable)
+    for eachreader in reader:
+        print(eachreader, sep=", ")
+        '''
+        ['1', 'Catan', '54.54']
+        ['22', 'Puerto Rico', '69.99']
+        ['333', 'Pandemic', '39.59']
+        ['4444', 'Fluxx', '9.15']
+        ['55555', 'Dixit', '11.4']
+        '''
+with open("csvdictionaryheaders.csv", "r", newline="") as csvreaddictionaryvariable:
+    reader = csv.DictReader(csvreaddictionaryvariable)
+    for headingfieldnames in reader.fieldnames:
+        print(headingfieldnames, end=",")
+    print("\b")
+    for eachreader in reader:
+        print(eachreader["Title"], eachreader["Author"], eachreader["Year"], sep=",")
+        '''
+        Title,Author,Year,
+        The Glass Castle,Jeanette Walls,2005
+        Steve Jobs,Walter Issacson,2011
+        A Brief History Of Time,Stephen Hawking,1988
+        To Kill A Mockingbird,Harper Lee,1960
+        Harry Potter,J.K. Rowling,1992
+        '''
 
 #try, except write file error write file
 tryexceptwritefile = open("errormessagewritefile.txt", "w")
@@ -326,7 +449,7 @@ finally:
     '''
     tryexceptwritefile.close()
 
-#delete file or remove file.  Rename file
+#delete file or remove file.  Rename file.
 import os
 os.remove("basicreadwritefile.txt")
 os.remove("stringnumerical.txt")
