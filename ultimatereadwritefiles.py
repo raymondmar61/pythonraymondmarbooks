@@ -154,7 +154,17 @@ with open("withreadwritefile.txt", "w") as objectvariablewritefiles:
     objectvariablewritefiles.write("\nwritelines() method below\n")
     objectvariablewritefiles.writelines(writelineslist)
 with open("withreadwritefile.txt", "r") as objectvariablereadfiles:
-    print(objectvariablereadfiles.readlines()) #print ['1 With open function write files.2 No need for close method.3 Line one\n', '4 Need the \n', '5 Line three use .write() or .writelines method\n', 'writelines() method below\n', '3 Line one\n', '4 Need the \n', '5 Line three use .write() or .writelines method']
+    readoneline = objectvariablereadfiles.readline()
+    print(readoneline) #print 1 With open function write files.2 No need for close method.3 Line one
+with open("withreadwritefile.txt", "r") as objectvariablereadfiles:
+    readoneline = objectvariablereadfiles.readline()
+    print(readoneline) #print 1 With open function write files.2 No need for close method.3 Line one
+    print(readoneline) #print 1 With open function write files.2 No need for close method.3 Line one
+    print(readoneline) #print 1 With open function write files.2 No need for close method.3 Line one
+with open("withreadwritefile.txt", "r") as objectvariablereadfiles:
+    readalllines = objectvariablereadfiles.readlines()
+    print(readalllines) #print ['1 With open function write files.2 No need for close method.3 Line one\n', '4 Need the \n', '5 Line three use .write() or .writelines method\n', 'writelines() method below\n', '3 Line one\n', '4 Need the \n', '5 Line three use .write() or .writelines method']
+with open("withreadwritefile.txt", "r") as objectvariablereadfiles:
     for eachobjectvariablereadfiles in objectvariablereadfiles.readlines():
         print(eachobjectvariablereadfiles)
         '''
@@ -296,6 +306,14 @@ with open("tempdeletelinks.txt", "r") as objectvariablereadfiles:
     readfilevariable = objectvariablereadfiles.read()
     print(readfilevariable) #print apple bananna\n orange\n bread\n apple\n strawberry\n grape\n apple\n bananna\n chicken\n steak\n pork\n
 
+#Copy file
+sourcefile = open("temp.txt", "r", newline="\n")
+preparecopyfile = sourcefile.readlines()
+sourcefile.close()
+copyfile = open("copytemp.txt", "w")
+copyfile.writelines(preparecopyfile)
+copyfile.close()
+
 #Read csv file, write csv file, read.csv file, write .csv file
 import csv
 writecsvfile = open("writecsvfile.csv", "w")
@@ -428,6 +446,32 @@ with open("csvdictionaryheaders.csv", "r", newline="") as csvreaddictionaryvaria
         To Kill A Mockingbird,Harper Lee,1960
         Harry Potter,J.K. Rowling,1992
         '''
+for eachline in csv.reader(open("csvdictionaryheaders.csv", newline=""), delimiter=","):
+    print(eachline)
+    '''
+    ['Title', 'Author', 'Year']
+    ['The Glass Castle', 'Jeanette Walls', '2005']
+    ['Steve Jobs', 'Walter Issacson', '2011']
+    ['A Brief History Of Time', 'Stephen Hawking', '1988']
+    ['To Kill A Mockingbird', 'Harper Lee', '1960']
+    ['Harry Potter', 'J.K. Rowling', '1992']
+    '''
+
+#Write Excel file, write xlsx file, write.xlsx file, write .xlsx file
+from openpyxl import Workbook
+workbookobject1 = Workbook()
+worksheetobject1 = workbookobject1.active
+worksheetobject1.title = "Change Sheet1 name"
+fruitlisteachownseparateline = [["apple"], ["bananna"], ["orange"], ["bread"], ["apple"], ["strawberry"], ["grape"], ["apple"], ["bananna"]]
+for eachfruitlisteachownseparateline in fruitlisteachownseparateline:
+    worksheetobject1.append(eachfruitlisteachownseparateline)
+workbookobject1.save("fruitlisteachownseparatelinefruitsexcel.xlsx") #RM:  Good Excel file.  Worksheet name changed to Change Sheet1 name.  One column.  Each fruit or bread in its own separate row and cell.
+workbookobject2 = Workbook()
+worksheetobject2 = workbookobject2.active
+worksheetobject2.title = "worksheet name instead of Sheet1"
+for writetoexcel in csv.reader(open("csvdictionaryheaders.csv", newline=""), delimiter=","):
+    worksheetobject2.append(writetoexcel)
+workbookobject2.save("csvfilesavedExcel2.xlsx") #RM:  Good Excel file.  Worksheet name mostly changed because 30 character limit.  Three columns Title, Author, Year.  Each row its own book.
 
 #try, except write file error write file
 tryexceptwritefile = open("errormessagewritefile.txt", "w")
@@ -449,7 +493,16 @@ finally:
     '''
     tryexceptwritefile.close()
 
-#delete file or remove file.  Rename file.
+#Use the glob module to search for specific filenames
+import glob
+printallfilesaslist = glob.glob("*")
+print(printallfilesaslist) #print ['NativityExamplepage3.pdf', 'moby01.txt', . . ., 'advancedguidepythonprogrammingthreading.py', 'advancedguidepythonprogrammingasyncio.py', 'advancedguidepythonprogrammingsynchronization.py', 'ted.csv', 'small.csv', 'accountscreatetextfile.txt', 'yytest.py']
+printtextfilesaslist = glob.glob("*.txt")
+print(printtextfilesaslist) #print ['moby01.txt', 'endgametabpaymentmethod.txt', 'combinedatatitanic.txt', . . ., 'ex_06-03.txt', 'accountscreatetextfile.txt']
+printfilesnametemp = glob.glob("*temp*")
+print(printfilesnametemp) #print ['tempcopied.txt', 'temp.txt', 'temp.html', 'tempexpensesrearrangedcolumns.csv', 'tempexcel.xlsx', 'tempexpensesrearrangedcolumns.xlsx', 'tempbloghtmlsearchresults.txt', 'tempexpensesrearrangedcolumns.txt', 'renamefiletempdeletelinks.txt']
+
+#delete file or remove file.  Rename file.  Remove directory.
 import os
 os.remove("basicreadwritefile.txt")
 os.remove("stringnumerical.txt")
@@ -458,12 +511,22 @@ os.remove("textfilewithblanklines.txt")
 os.remove("tempdeletelinks.txt")
 os.remove("errormessagewritefile.txt")
 os.rename("tempdeletelinks.txt", "renamefiletempdeletelinks.txt")
+os.rmdir("delete directory name")
 
 #File paths, file directory, file pathways
 import os
 #/home/mar/python
 filepath = os.path.join("home", "mar", "python")
 print(filepath) #print home/mar/python
+printallfilesaslist = os.listdir(os.curdir)
+print(printallfilesaslist) #print ['NativityExamplepage3.pdf', 'moby01.txt', . . ., 'advancedguidepythonprogrammingthreading.py', 'advancedguidepythonprogrammingasyncio.py', 'advancedguidepythonprogrammingsynchronization.py', 'ted.csv', 'small.csv', 'accountscreatetextfile.txt', 'yytest.py']
+os.chdir("/media/sf_UbuntuShare2004") #Change directory function
+print(os.getcwd()) #print /media/sf_UbuntuShare2004
+filepath1 = os.path.join("/home", "mar")
+filepath2 = os.path.join("python")
+print(os.path.join(filepath1, filepath2)) #print /home/mar/python
+os.chdir(os.path.join(filepath1, filepath2))
+print(os.path.basename(os.getcwd())) #print python
 pythonfileslist = ["ultimatereadwritefiles.py", "ultimatefunctionstryexceptlambda.py", "ultimateifelseforwhile.py", "ultimateliststuplesdictionariessets.py"]
 for eachpythonfileslist in pythonfileslist:
     print(os.path.join(filepath, eachpythonfileslist))
@@ -501,3 +564,36 @@ with open(currentfilepath + "/" + filename, "r") as fileobject:
     Second line need \\n.
     Close() function to close file.
     '''
+os.makedirs("create new directory name")
+
+import sys
+#Use sys for user input or screen input
+print("Type the following:  Camping pamping dramping.  Press Enter when done.")
+screeninputfromuser = sys.stdin.readline()
+print(screeninputfromuser) #print Camping pamping dramping.
+sys.stdout = sys.__stdout__
+print("\n")
+#Use sys to write file
+quickcreatefile = open("tempuserinputonterminal.txt", "w")
+quickcreatefile.close()
+createfileforinputfromuser = open("tempuserinputonterminal.txt", "a")
+sys.stdout = createfileforinputfromuser
+sys.stdout.writelines(["A list of writelines number one sentence in its line.\n", "A list of writelines number two sentence in its own line.\n"])
+print("A line from the print function.  The line is inclded in the tempuserinputonterminal.txt file.")
+print("Print function for A list of writelines number one.", "A list of writelines number one.\n", file=createfileforinputfromuser)
+sys.stdout = sys.__stdout__
+readthecreatefileforinputfromuser = sys.stdin.readline()
+print(readthecreatefileforinputfromuser, file=createfileforinputfromuser)
+sys.stdout = sys.__stdout__
+createfileforinputfromuser.close()
+'''
+RM:  tempuserinputonterminal.txt contains.  I needed to press Ctrl+C to stop terminal from running.  I don't know the Python code to stop running.  It appears I can press Enter to stop running.
+A list of writelines number one sentence in its line.
+A list of writelines number two sentence in its own line.
+A line from the print function.  The line is inclded in the tempuserinputonterminal.txt file.
+Print function for A list of writelines number one. A list of writelines number one.
+
+
+
+
+'''
