@@ -1,25 +1,27 @@
 #Basics
+integernumber1 = 9
+integernumber2 = 6
+basicdivide = integernumber1 / integernumber2
+print(basicdivide) #print 1.5
+basicdivideinteger = integernumber1 // integernumber2
+print(basicdivideinteger) #print 1
 moduloreturnstheremainder = 10 % 3
 print(moduloreturnstheremainder) #print 1
+print(divmod(10, 3)) #print (3, 1).  10/3 is 3 remainder 1.  10 is the dividend.  3 is the divisor.  The 3 in the 3 remainder 1 is the quotient.
+floatnumber = 458.21897869
+complextnumber = 3 + 2j
+exponentsasteriks = 2**4
+print(exponentsasteriks) #print 16
+print(pow(2, 4)) #print 16
+roundthreedecimals = round(floatnumber, 3)
+print(roundthreedecimals) #print 458.219
 print(42 == 42.0) #print True
 print(42.0 == 0042.0000) #print True
 print(2 != 3) #print True
-exponentsasteriks = 2**4
-print(exponentsasteriks) #print 16
-number1 = 9
-number2 = 6
-basicdivide = number1 / number2
-print(basicdivide) #print 1.5
-basicdivideinteger = number1 // number2
-print(basicdivideinteger) #print 1
-floatnumber = 458.21897869
-print(floatnumber) #print 458.21897869
-roundthreedecimals = round(floatnumber, 3)
-print(roundthreedecimals) #print 458.219
-number3 = -5
-print(abs(number3)) #print 5
-print(max(4, 6, number3)) #print 6
-print(min(4, 6, number3)) #print -5
+integernumber3 = -5
+print(abs(integernumber3)) #print 5
+print(max(4, 6, integernumber3)) #print 6
+print(min(4, 6, integernumber3)) #print -5
 
 #Formatting
 stringvariable = "The String"
@@ -51,7 +53,7 @@ print(ceiling) #print 6
 floor = math.floor(number)
 print(floor) #print 5
 print(math.factorial(4)) #print 24
-exponentetothepower = math.exp(2)
+exponentetothepower = math.exp(2) #Return e raised to the power of x
 print(exponentetothepower) #print 7.38905609893065
 exponentsxtothepowerofy = math.pow(2, 4)
 print(exponentsxtothepowerofy) #print 16.0
@@ -118,3 +120,17 @@ print(type(decimal.Decimal(decimalstring))) #print <class 'decimal.Decimal'>
 decimalstringcalculations = decimal.Decimal(decimalstring)
 print(decimalstringcalculations) #print 0.00
 print(decimalstringcalculations + 1) #print 1.00
+
+#Manual counter, manual iterator
+generateanumber = iter(range(0, 10))
+print(generateanumber) #print <range_iterator object at 0x7f094d6a0b10>
+#RM:  the next function must be immediate; otherwise, an error message StopIteration
+# print(type(generateanumber)) #print <class 'range_iterator'>
+# print(list(generateanumber)) #print [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(next(generateanumber)) #print 0
+print(next(generateanumber)) #print 1
+print(next(generateanumber)) #print 2
+print(type(generateanumber)) #print <class 'range_iterator'>
+print(next(generateanumber)) #print 3
+print(list(generateanumber)) #print [4, 5, 6, 7, 8, 9]
+#print(next(generateanumber)) #Error message StopIteration
