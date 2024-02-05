@@ -222,6 +222,8 @@ class Boatnoselfinfunction():
         self.cargoweight = 23
     def changecargoweight(newcargoweight):
         newcargoweight.cargoweight = 45
+    def finalcargoweight(addedfunction):
+        addedfunction.cargoweight = 678
 
 
 boatinstance = Boatnoselfinfunction()
@@ -242,3 +244,73 @@ boatinstance2.changecargoweight()
 print(boatinstance2.cargoweight) #print 45
 print(boatinstance2.cargoweight) #print 45
 print(id(boatinstance2)) #print 140586116297920
+boatinstanceaddedfunction = Boatnoselfinfunction()
+print(boatinstanceaddedfunction) #print <__main__.Boatnoselfinfunction object at 0x7f5fcdb9deb0>
+print(boatinstanceaddedfunction.cargoweight) #print 23
+print(id(boatinstanceaddedfunction)) #print 139752490430128
+boatinstanceaddedfunction.changecargoweight()
+print(boatinstanceaddedfunction.cargoweight) #print 45
+print(id(boatinstanceaddedfunction)) #print 139752490430128
+boatinstanceaddedfunction.changecargoweight()
+print(boatinstanceaddedfunction.cargoweight) #print 45
+print(id(boatinstanceaddedfunction)) #print 139752490430128
+boatinstanceaddedfunction.finalcargoweight()
+print(boatinstanceaddedfunction.cargoweight) #print 678
+print(id(boatinstanceaddedfunction)) #print 139752490430128
+boatinstance2.finalcargoweight()
+print(boatinstance2.cargoweight) #print 678
+
+#assign self to a class local variable
+class Character():
+    insideclass = 100
+    def __init__(self, name):
+        self.name = name
+        self.insideclassnumber = Character.insideclass
+    def finalhealth(self):
+        namelength = len(self.name)
+        return self.insideclassnumber - namelength
+
+
+defineclassobjectraymond = Character("Raymond")
+print(defineclassobjectraymond.insideclassnumber) #print 100
+print(defineclassobjectraymond.name) #print Raymond
+print(defineclassobjectraymond.finalhealth()) #print 93
+
+class Characterlocalfunctionvariable():
+    insideclass = 100
+    def __init__(self, name):
+        self.name = name
+        self.insideclassnumber = Characterlocalfunctionvariable.insideclass
+    def finalhealth(self):
+        namelength = len(self.name)
+        self.needselffunctionvariable = namelength
+        return self.insideclassnumber - self.needselffunctionvariable
+
+
+defineclassobjectfma = Characterlocalfunctionvariable("RizaRoyShiska")
+print(defineclassobjectfma.insideclassnumber) #print 100
+print(defineclassobjectfma.name) #print RizaRoyShiska
+#print(defineclassobjectfma.needselffunctionvariable) #print AttributeError: 'Characterlocalfunctionvariable' object has no attribute 'needselffunctionvariable'
+print(defineclassobjectfma.finalhealth()) #print 87
+print(defineclassobjectfma.needselffunctionvariable) #print 13
+defineclassobjectsailormoon = Characterlocalfunctionvariable("Sailor Jupiter")
+print(defineclassobjectsailormoon.name) #print Sailor Jupiter
+defineclassobjectsailormoon.finalhealth()
+print(defineclassobjectsailormoon.needselffunctionvariable) #print 14
+print(defineclassobjectsailormoon.finalhealth()) #print 86
+
+#no assign self to a class local variable
+class Alsocharacter():
+    insideclass = 100
+    def __init__(self, name):
+        self.name = name
+    def finalhealth(self):
+        namelength = len(self.name)
+        return Alsocharacter.insideclass - namelength
+
+
+defineclassobjectpotter = Alsocharacter("HarryPotter")
+print(defineclassobjectpotter.name) #print HarryPotter
+defineclassobjectpotter.finalhealth()
+print(defineclassobjectpotter.finalhealth()) #print 89
+#print(defineclassobjectpotter.namelength) #print AttributeError: 'Alsocharacter' object has no attribute 'namelength'
