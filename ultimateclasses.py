@@ -551,6 +551,59 @@ childraymondsbatterycar = Childclasselectric("Toyota", "Prius", "2022", 1000)
 print(childraymondsbatterycar.year) #print 2022
 childraymondsbatterycar.carbatterysize() #return The battery car is 2022 Toyota Prius driving with 1000 battery size.
 
+#Instances as attributes and a class is a child to two parent classes or parent and grandparent
+class Batterysize():
+    def __init__(self, batterysizenumber=702):
+        self.batterysizenumber = batterysizenumber
+    def displaybatterysizenumber(self):
+        print("The car has a " + str(self.batterysizenumber) + " -kwh battery.")
+    def updatebatterysizenumber(self, newbatterhsizenumber):
+        self.batterysizenumber = newbatterhsizenumber
+class Grandchildclasselectricbatterysize(Parentclasscar):
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        self.batterysizenumber = Batterysize()
+
+
+defaultbatterysizenumber = Batterysize()
+print(defaultbatterysizenumber.batterysizenumber) #print 702
+defaultbatterysizenumber.displaybatterysizenumber() #return The car has a 702 -kwh battery.
+changedefaultbatterysizenumber = Batterysize(5327)
+print(changedefaultbatterysizenumber.batterysizenumber) #print 5327
+changedefaultbatterysizenumber.displaybatterysizenumber() #return The car has a 5327 -kwh battery.
+changedefaultbatterysizenumber.updatebatterysizenumber(9890980)
+print(changedefaultbatterysizenumber.batterysizenumber) #print 9890980
+changedefaultbatterysizenumber.displaybatterysizenumber() #return The car has a 9890980 -kwh battery.
+grandchildmakemodelyear = Grandchildclasselectricbatterysize("Nissan", "Leaf", 2023)
+print(grandchildmakemodelyear.displaycar()) #print The car is 2023 Nissan Leaf
+print(grandchildmakemodelyear.batterysizenumber) #print <__main__.Batterysize object at 0x7f388c2d97c0>
+# print(grandchildmakemodelyear.batterysizenumber.displaybatterysizenumber()) #print The car has a 702 -kwh battery.\n None
+grandchildmakemodelyear.batterysizenumber.displaybatterysizenumber() #print The car has a 702 -kwh battery.
+grandchildmakemodelyear.batterysizenumber.updatebatterysizenumber(8981891)
+grandchildmakemodelyear.batterysizenumber.displaybatterysizenumber() #print The car has a 8981891 -kwh battery.
+
+#Check if instance check
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+class Person:
+    def __init__(self, name, sex):
+        self.personname = name
+        self.sex = sex
+
+
+emmaemployee = Employee("Emma", 22111)
+brentperson = Person("Brent", "Male")
+if isinstance(emmaemployee, Employee):
+    print("Yes " + emmaemployee.name + "is in Employee class") #print Yes Emmais in Employee class
+if isinstance(brentperson, Employee):
+    print("Yes " + brentperson.name + " is in Employee class")
+else:
+    print("No " + brentperson.personname + " is not in Employee class") #print No Brent is not in Employee class
+if isinstance(brentperson, Person):
+    print("Yes " + brentperson.personname + " is in Person class") #print Yes Brent is in Person class
+
 class Functionoutsideclass():
     def choosemathoperationoutisdeclass(self, tellmemathoperationfunction, *numbers):
         print("The result is {}".format(tellmemathoperationfunction(*numbers)))
@@ -574,3 +627,73 @@ print(mathoperaetionmultiply(40, 80)) #print 3200
 defineobjectmultiply2 = Functionoutsideclass()
 print(defineobjectmultiply2) #print <__main__.Functionoutsideclass object at 0x7fac5578e880>
 defineobjectmultiply2.choosemathoperationoutisdeclass(mathoperaetionmultiply, 100, 333) #return The result is 33300.  It's a method.
+
+#Context manager.  The __exit__ method as the except in the try except which traps exceptions.  Simple exception is include return True in Mycontextmanagertrue class.
+#Defining "__enter__" and "__exit__" on your classes, you can give them the ability to work inside of "with" blocks, doing things automatically at the start and finish.  And you can even have them trap exceptions in a semi-automated way, without needing "try" and "except" anywhere around.
+
+class Mycontextmanager(object):
+    def __enter__(self):
+        print("I'm the enter method.  I work before the with.  I start before the with")
+        print("A second print function in the enter method for which the class must include (object).")
+    def __exit__(self, type, value, traceback):
+        print("I'm the exit method.  I work after the with.  I end after the with.")
+        print("I don't understand the (. . ., type, value, and traceback) as the moment.")
+
+
+with Mycontextmanager() as variablename:
+    print("Hello.  I'm the first sentence in the with statement.")
+    print("I'm the second sentence in the with statement.")
+    '''
+    I'm the enter method.  I work before the with.  I start before the with
+    A second print function in the enter method for which the class must include (object).
+    Hello.  I'm the first sentence in the with statement.
+    I'm the second sentence in the with statement.
+    I'm the exit method.  I work after the with.  I end after the with.
+    I don't understand the (. . ., type, value, and traceback) as the moment.
+    '''
+# with Mycontextmanager() as errormessage:
+#     print(10 / 0)
+    '''
+    I'm the enter method.  I work before the with.  I start before the with
+    A second print function in the enter method for which the class must include (object).
+    I'm the exit method.  I work after the with.  I end after the with.
+    I don't understand the (. . ., type, value, and traceback) as the moment.
+    Traceback (most recent call last):
+      File "yytest.py", line 27, in <module>
+        print(10 / 0)
+    ZeroDivisionError: division by zero
+    '''
+class Contextmanagertypevaluetraceback(object):
+    def __enter__(self):
+        print("__enter__")
+    def __exit__(self, type, traceback, value):
+        print("__exit__")
+        print(self)
+        print("type={}".format(type))
+        print("value=%s" % (value))
+        print("traceback={}".format(traceback))
+        return True
+
+
+with Contextmanagertypevaluetraceback() as noerrormessage:
+    print("The type, traceback, and value variables")
+    '''
+    __enter__
+    The type, traceback, and value variables
+    __exit__
+    <__main__.Contextmanagertypevaluetraceback object at 0x7f5c7a4384c0>
+    type=None
+    value=None
+    traceback=None
+    '''
+
+with Contextmanagertypevaluetraceback() as yeserrormessage:
+    print(10 / 0)
+    '''
+    __enter__
+    __exit__
+    <__main__.Contextmanagertypevaluetraceback object at 0x7f26f063a4c0>
+    type=<class 'ZeroDivisionError'>
+    value=<traceback object at 0x7f26f0481500>
+    traceback=division by zero
+    '''
