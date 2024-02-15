@@ -83,6 +83,17 @@ print(stankyobject.hobby) #print sewing
 print(stankyobject.yesclassvariable) #print female
 print(stankyobject.nameinstancevariable) #print Stanky
 
+class Foollistvariables():
+    def __init__(self, onenumber, listofnumbers):
+        self.onenumber = onenumber
+        self.listofnumbers = listofnumbers
+
+
+call01foollist = Foollistvariables(10, [100, 200, 300])
+print(call01foollist.onenumber) #print 10
+print(call01foollist.listofnumbers) #print [100, 200, 300]
+print(vars(call01foollist)) #print {'onenumber': 10, 'listofnumbers': [100, 200, 300]}
+
 class Thenewbostontuna:
     def __init__(self):
         print("Blrrblrlbrlbrbr.  The __init__ is always returned when the class is called the first time.")
@@ -174,6 +185,68 @@ instance2.addnumber(999)
 instance2.addnumber(1000)
 instance2.printnumber() #print 1888
 
+#Class description class definition class describe class help
+class Fruit():
+    """
+    A class which makes various tasty fruits.
+    Docstring.  A second line.
+    """
+    def __init__(self, fruitname, color, flavor, poisonous=False):
+        self.name = fruitname
+        self.color = color
+        self.flavor = flavor
+        self.ispoison = poisonous
+    def description(self):
+        print("I'm a %s %s and I taste %s." % (self.color, self.name, self.flavor))
+        print("I'm a {} {} and I taste {}.".format(self.color, self.name, self.flavor))
+        print("I'm a " + self.color + " " + self.name + " and I taste " + self.flavor)
+    def isedible(self):
+        if self.ispoison:
+            print("Don't eat me!  I'm super poisonous.")
+        else:
+            print("Yep! I'm edible.")
+
+
+lemon = Fruit("lemon", "yellow", "sour", False)
+help(lemon)
+'''
+Help on Fruit in module __main__ object:
+
+class Fruit(builtins.object)
+ |  Fruit(fruitname, color, flavor, poisonous=False)
+ |  
+ |  A class which makes various tasty fruits.
+ |  Docstring.  A second line.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, fruitname, color, flavor, poisonous=False)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  description(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+'''
+print(lemon.__doc__)
+'''
+    A class which makes various tasty fruits.
+    Docstring.  A second line.
+'''
+lemon.description()
+'''
+I'm a yellow lemon and I taste sour.
+I'm a yellow lemon and I taste sour.
+I'm a yellow lemon and I taste sour
+'''
+lemon.isedible() #return Yep! I'm edible.
+
 class Restaurant():
     def __init__(self, restaurantname, cuisinetype):
         self.differentvariablename = restaurantname
@@ -205,7 +278,7 @@ mingchinese.addmorecustomers(100)
 mingchinese.printchangenumbercustomers() #return The number of customers changed is 100
 mingchinese.readnumbercustomers() #return 600 customers have been served at Ming River Restaurant
 print("Notice use the self variables when referencing the class Restaurant() outside the class. " + mingchinese.differentvariablename + " is the restaurant name. " + mingchinese.cuisinetype + " is the restaurant type.") #print Notice use the self variables when referencing the class Restaurant() outside the class. Ming River Restaurant is the restaurant name. Chinese is the restaurant type.
-lesliediner = Restaurant("Leslie's", "American Diner")
+lesliediner = Restaurant(cuisinetype="American Diner", restaurantname="Leslie's", )
 lesliediner.firstcallclassrestaurant() #return The initial values for restaurantname, cusininetype, and number of customers are the following: Leslie's; American Diner, 0.  I changed variable name restaurantname to self.differentvariablename
 lesliediner.describerestaurant() #return Leslie's servces the kind of food American Diner inside the class Restaurant().
 lesliediner.printchangenumbercustomers() #return The number of customers changed is 0
@@ -215,6 +288,60 @@ lesliediner.addmorecustomers(50)
 lesliediner.printchangenumbercustomers() #return The number of customers changed is 50
 lesliediner.readnumbercustomers() #return 52 customers have been served at Leslie's
 print("Notice use the self variables when referencing the class Restaurant() outside the class. " + lesliediner.differentvariablename + " is the restaurant name. " + lesliediner.cuisinetype + " is the restaurant type.") #print Notice use the self variables when referencing the class Restaurant() outside the class. Leslie's is the restaurant name. American Diner is the restaurant type.
+
+class CharacterClassVariable():
+    #class variables or static variables
+    totalnumberofcharacters = 0
+    maximumhealth = 150
+    lastname = "Potter"
+    def __init__(self, firstname, lastname):
+        #instance variables
+        self.firstname = firstname
+        self.lastname = lastname
+        self.health = CharacterClassVariable.maximumhealth
+        # CharacterClassVariable.totalnumberofcharacters += 1
+        CharacterClassVariable.totalnumberofcharacters = CharacterClassVariable.totalnumberofcharacters + 1
+
+
+bob = CharacterClassVariable(firstname="Bob", lastname="")
+print(CharacterClassVariable.totalnumberofcharacters) #print 1
+print(bob.totalnumberofcharacters) #print 1
+ryan = CharacterClassVariable("Ryan", "Willow")
+print(ryan) #print <__main__.CharacterClassVariable object at 0x7f5693dadfd0>
+print(ryan.totalnumberofcharacters) #print 2
+print(CharacterClassVariable.totalnumberofcharacters) #print 2
+charlie = CharacterClassVariable("Charlie", "Hanks")
+print(charlie.totalnumberofcharacters) #print 3
+print(CharacterClassVariable.totalnumberofcharacters) #print 3
+print(charlie.totalnumberofcharacters) #print 3
+print("\n")
+
+class CharacterClassVariablecorrect():
+    #class variables or static variables
+    totalnumberofcharacters = 0
+    maximumhealth = 150
+    lastname = "Potter"
+    def __init__(self, firstname, lastname):
+        #instance variables
+        self.firstname = firstname
+        self.lastname = lastname
+        self.health = CharacterClassVariablecorrect.maximumhealth
+        self.totalnumberofcharacters = self.totalnumberofcharacters + 1
+
+
+bob = CharacterClassVariablecorrect(firstname="Bob", lastname="")
+print(CharacterClassVariablecorrect.totalnumberofcharacters) #print 0
+print(bob.totalnumberofcharacters) #print 1
+ryan = CharacterClassVariablecorrect("Ryan", "Willow")
+print(ryan) #print <__main__.CharacterClassVariablecorrect object at 0x7f5693f254c0>
+print(CharacterClassVariablecorrect.totalnumberofcharacters) #print 0
+print(ryan.totalnumberofcharacters) #print 1
+charlie = CharacterClassVariablecorrect("Charlie", "Hanks")
+print(CharacterClassVariablecorrect.totalnumberofcharacters) #print 0
+print(charlie.totalnumberofcharacters) #print 1
+print(charlie.totalnumberofcharacters) #print 1
+print(charlie.totalnumberofcharacters) #print 1
+print(CharacterClassVariablecorrect.totalnumberofcharacters) #print 0
 
 class Human():
     def __init__(self, initializevariablename, initializevariablegender):
@@ -365,6 +492,127 @@ print(defineclassobjectpotter.name) #print HarryPotter
 defineclassobjectpotter.finalhealth()
 print(defineclassobjectpotter.finalhealth()) #print 89
 #print(defineclassobjectpotter.namelength) #print AttributeError: 'Alsocharacter' object has no attribute 'namelength'
+
+class Additemsinshoppingcartdictionary():
+    itemsincart = {}
+    def __init__(self, customername):
+        self.customername = customername
+    def additem(self, product, price):
+        self.itemsincart[product] = price
+
+
+rockycart = Additemsinshoppingcartdictionary("Rocky")
+rockycart.additem("broccoli", 50)
+rockycart.additem("coffee", 10.20)
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2}
+rockycart.additem("caramel", 33)
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33}
+mapopcart = Additemsinshoppingcartdictionary("Ma")
+mapopcart.additem("chocolate", 10)
+mapopcart.additem("peas and carrots", 15)
+print(mapopcart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33, 'chocolate': 10, 'peas and carrots': 15}
+mapopcart = Additemsinshoppingcartdictionary("Pa")
+mapopcart.additem("comic book", 1)
+print(mapopcart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33, 'chocolate': 10, 'peas and carrots': 15, 'comic book': 1}
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33, 'chocolate': 10, 'peas and carrots': 15, 'comic book': 1}
+poponlycart = Additemsinshoppingcartdictionary("Pa")
+poponlycart.additem("two comic books", 2)
+print(poponlycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33, 'chocolate': 10, 'peas and carrots': 15, 'comic book': 1, 'two comic books': 2}
+popspelledcorrectlyonlycart = Additemsinshoppingcartdictionary("Pop")
+popspelledcorrectlyonlycart.additem("three comic books", 3)
+print(poponlycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33, 'chocolate': 10, 'peas and carrots': 15, 'comic book': 1, 'two comic books': 2, 'three comic books': 3}
+
+class Additemsinshoppingcardictionarycorrect():
+    def __init__(self, customername):
+        self.customername = customername
+        self.itemsincart = {}
+    def additem(self, product, price):
+        self.itemsincart[product] = price
+
+
+rockycart = Additemsinshoppingcardictionarycorrect("Rocky")
+rockycart.additem("broccoli", 50)
+rockycart.additem(price=10.20, product="coffee")
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2}
+rockycart.additem(price=33, product="caramel")
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33}
+macart = Additemsinshoppingcardictionarycorrect("Ma")
+macart.additem("chocolate", 10)
+macart.additem("peas and carrots", 15)
+print(macart.itemsincart) #print {'chocolate': 10, 'peas and carrots': 15}
+popcart = Additemsinshoppingcardictionarycorrect("Pa")
+popcart.additem("comic book", 1)
+print(macart.itemsincart) #print {'chocolate': 10, 'peas and carrots': 15}
+print(popcart.itemsincart) #print {'comic book': 1}
+print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33}
+
+#Call class and call function inside class which is a method(?)
+class Chooseafunction():
+    def __init__(self, name, defaultnull=""):
+        self.name = name
+        self.default = defaultnull
+    def runfunctioninsideclass(self, numberdefaultblank=""):
+        self.number = numberdefaultblank
+        if self.number:
+            print("runfunctioninsideclass self.number", self.number)
+        else:
+            print("There is no self.number")
+    def function01(self):
+        print(self.name + " is printed from function01 which is a method in a class")
+    def function02(self):
+        print(self.name + " is printed from function02 which is a method in a class")
+    def function03(self):
+        print(self.name + " is printed from function03 which is a method in a class")
+        variableinsidefunction03 = "green"
+        print(variableinsidefunction03 + " is printed from function03")
+    def function04(self):
+        print(self.name + " is printed from function04 which is a method in a class")
+        number = int(input("Type a number: "))
+        print(number)
+    def runtwofunctions(self):
+        print("Run two functions.  First function is runtwofunctions().  Second is jello() function with starwberry.")
+        self.jello("strawberry")
+    def jello(self, flavor):
+        print("I received the flavor " + flavor)
+    def function05(self, anything):
+        #self.anything = anything
+        print(self.name + " " + anything + " are printed from function05 which is a method in a class")
+        number = int(input("Type a number for the second function runfunctioninsideclass: "))
+        self.runfunctioninsideclass(number)
+
+
+numberfunctiontest = Chooseafunction("Roy")
+numberfunctiontest.runfunctioninsideclass(40) #return runfunctioninsideclass self.number 40
+numberfunctiontest.runfunctioninsideclass() #return There is no self.number
+bigg = Chooseafunction("Bigg")
+bigg.function01() #return Bigg is printed from function01 which is a method in a class
+bigg.function02() #return Bigg is printed from function02 which is a method in a class
+function03only = Chooseafunction("Biv")
+function03only.function03()
+'''
+Biv is printed from function03 which is a method in a class
+green is printed from function03
+'''
+needinputfunction = Chooseafunction("Declare object first to access a function")
+needinputfunction.function04()
+'''
+Declare object first to access a function is printed from function04 which is a method in a class
+Type a number: 64
+64
+'''
+twofunctions = Chooseafunction("Need a name", "object for defaultnull not null")
+twofunctions.runtwofunctions()
+'''
+Run two functions.  First function is runtwofunctions().  Second is jello() function with starwberry.
+I received the flavor strawberry
+'''
+jack = Chooseafunction("Jack")
+jack.function05("no self for anything variable sent string object")
+'''
+Jack no self for anything variable sent string object are printed from function05 which is a method in a class
+Type a number for the second function runfunctioninsideclass: 99
+runfunctioninsideclass self.number 99
+'''
 
 #Parent child class
 class Thenewbostonparent():
