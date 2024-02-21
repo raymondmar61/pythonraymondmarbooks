@@ -1,3 +1,16 @@
+#Everything in Python is an object.  Houses are built from blueprints.  Objects are built from classes.  Object-based programming is create objects and use objects from existing classes.  For example, int, float, str, list, tuple, dict, set, Decimal from the standard library, arrays from NumPy, Figures from Matplotlib, and DataFrames from Pandas.
+#Object Oriented Programming OOP.  Class example.  The instance initializer method or constructor is always __init__.  Instance variables are created and initialized at __init__.  Methods are like functions in classes defined using the def keyword.  The first argument in any method is self.  Self is set to the instance which invoked the method.
+#Inheritance or inheriting:  take an attribute or variable from another class
+#Methods:  a function in a class
+#Base class:  The initial class or the first class.  Also called superclass.
+#Derived class:  The new class or the class created after the base class.  Also called subclass.
+#Polymorphism:  Program "in the general" rather than "in the specific."  Send the same method call to objects possibly of many different types.  Each object responds by "doing the right thing."  The same method call takes on "many forms."
+#The class name which begins with an uppercase letter is used in a constructor expression to create an object for class name.  The class name also invokes the class's __init__ method.  __init__ is the initializing class object.
+#Save the class name to a variable classnamevariable creates a new object.  The __init__ method initializes the data.  Each new class you create provides an __init__ method which specifies how to initialize an object's data attributes.
+#When you call a method for a specific object, Python implicitly passes a reference to that object as the method's first argument.  Python programmers call a method's first parameter self.  A class's methods must use the self reference to access the object's attributes and other methods.  The __init__ method also specifies parameters for the other variables.
+#When an object of a class is created, the object doesn't have any attributes.  The attributes are added dynamically using the self.attributename = value.
+#Any attribute name beginning with an underscore is for a class's internal use only.  Attributes don't begin with an underscore are considered ppublicly accessible.
+
 class Boat():
     pass
 
@@ -9,6 +22,18 @@ print(id(boatinstance)) #print 140505523836096
 anotherboatinstance = Boat()
 print(anotherboatinstance) #print <__main__.Boat object at 0x7fc9fdd654c0>
 print(id(anotherboatinstance)) #print 140505523836096
+
+#The field of an instance or structure are accessed and assigned by dot notation.
+class Circle:
+    pass
+
+
+circleinstance1 = Circle()
+circleinstance1.radius = 5
+print(2 * 3.14 * circleinstance1.radius) #print 31.400000000000002
+circleinstance2 = Circle()
+circleinstance2.radius = 17
+print(2 * 3.14 * circleinstance2.radius) #print 106.76
 
 class Thenewbostonenemynoinit:
     startinglives = 3
@@ -54,6 +79,9 @@ print(stankyobject) #print <__main__.Thenewbostongirlnofunctions object at 0x7ff
 print(stankyobject.withclassvariable) #print female
 print(stankyobject.nameinstancevariable) #print Stanky
 
+#Initialize fields of an instance automatically using an __init__ initialization method.  The function is run every time an instance of the class is created.  The new instance first agument is self.  Python classes may only have one __init__ method.
+#nameinstancevariable is an instance variable.  Each instance has its own copy of name.  The value stored in the copy may be different from the values stored in the name variable in other instances.  Create an instance variable by assigning to a field of a class instance instance.variable = value.  For example rachelobject.hobby = "Override chess as favoritehobby".
+#All instance variables require explicit mention of the containing instance which is instance.variable.
 class Thenewbostongirlyesfunctions():
     yesclassvariable = "female"
     def __init__(self, name):
@@ -73,6 +101,13 @@ Rachel's favorite hobby is chess.  I define an instance self.hobby in the favori
 '''
 print(rachelobject.yesclassvariable) #print female
 print(rachelobject.nameinstancevariable) #print Rachel
+rachelobject.hobby = "Override chess as favoritehobby"
+print(rachelobject.hobby) #print Override chess as favoritehobby
+rachelobject.favoritehobby("Hobby is back to chess")
+'''
+female
+Rachel's favorite hobby is Hobby is back to chess.  I define an instance self.hobby in the favoritehobby() function
+'''
 stankyobject = Thenewbostongirlyesfunctions("Stanky")
 stankyobject.favoritehobby("sewing")
 '''
@@ -120,6 +155,101 @@ defineobjectThenewbostontuna3.eat() #return Blrrblrlbrlbrbr.  The __init__ is al
 defineobjectThenewbostontuna3.sleep() #return I am sleeping
 defineobjectThenewbostontuna3.swim() #return  I am swimming
 
+#Three questions for the class Question
+threequestions = ["What color are applies?\n(a) Red or Green\n(b) Purple\n(c) Orange\n\n", "What color are Bananas?\n(a) Teal\n(b) Magenta\n(c) Yellow\n\n", "What color are strawberries?\n(a) Yellow\n(b) Red\n(c) Blue\n\n"]
+for eachthreequestions in threequestions:
+    print(eachthreequestions)
+    '''
+    What color are applies?
+    (a) Red or Green
+    (b) Purple
+    (c) Orange
+
+
+    What color are Bananas?
+    (a) Teal
+    (b) Magenta
+    (c) Yellow
+
+
+    What color are strawberries?
+    (a) Yellow
+    (b) Red
+    (c) Blue
+    '''
+class Question:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+
+answers = [Question(threequestions[0], "a"), Question(threequestions[1], "c"), Question(threequestions[2], "b")]
+print(answers) #print [<__main__.Question object at 0x7f058a24e4c0>, <__main__.Question object at 0x7f058a0b3ca0>, <__main__.Question object at 0x7f058a0b3b50>]
+print(answers[0].question)
+'''
+What color are applies?
+(a) Red or Green
+(b) Purple
+(c) Orange
+'''
+print(answers[1].answer) #print c
+#Function contestant answers three questions
+def quiz(inputquestionsanswers):
+    score = 0
+    for eachinputquestionsanswers in inputquestionsanswers:
+        print("eachinputquestionsanswers.answer variable: " + eachinputquestionsanswers.answer)
+        print("eachinputquestionsanswers.question variable: " + eachinputquestionsanswers.question)
+        contestantanswers = input("Contestant answer the eachinputquestionsanswers.question variable: " + eachinputquestionsanswers.question)
+        if contestantanswers == eachinputquestionsanswers.answer:
+            score += 1
+    print("You got " + str(score) + "/" + str(len(answers)) + " correct")
+
+
+quiz(answers)
+'''
+eachinputquestionsanswers.answer variable: a
+eachinputquestionsanswers.question variable: What color are applies?
+(a) Red or Green
+(b) Purple
+(c) Orange
+
+
+Contestant answer the eachinputquestionsanswers.question variable: What color are applies?
+(a) Red or Green
+(b) Purple
+(c) Orange
+
+a
+eachinputquestionsanswers.answer variable: c
+eachinputquestionsanswers.question variable: What color are Bananas?
+(a) Teal
+(b) Magenta
+(c) Yellow
+
+
+Contestant answer the eachinputquestionsanswers.question variable: What color are Bananas?
+(a) Teal
+(b) Magenta
+(c) Yellow
+
+b
+eachinputquestionsanswers.answer variable: b
+eachinputquestionsanswers.question variable: What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+
+Contestant answer the eachinputquestionsanswers.question variable: What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+c
+You got 1/3 correct
+'''
+
+#Methods can be invoked with arguments if the method definitions accept arguments.
 class Dog():
     def __init__(self, name, age):
         self.name = name
@@ -289,6 +419,7 @@ lesliediner.printchangenumbercustomers() #return The number of customers changed
 lesliediner.readnumbercustomers() #return 52 customers have been served at Leslie's
 print("Notice use the self variables when referencing the class Restaurant() outside the class. " + lesliediner.differentvariablename + " is the restaurant name. " + lesliediner.cuisinetype + " is the restaurant type.") #print Notice use the self variables when referencing the class Restaurant() outside the class. Leslie's is the restaurant name. American Diner is the restaurant type.
 
+#A class variable is a variable associated with a class.  A class variable is not an instance of a class.  A class variable is accessible by all instances of the class.
 class CharacterClassVariable():
     #class variables or static variables
     totalnumberofcharacters = 0
@@ -301,6 +432,16 @@ class CharacterClassVariable():
         self.health = CharacterClassVariable.maximumhealth
         # CharacterClassVariable.totalnumberofcharacters += 1
         CharacterClassVariable.totalnumberofcharacters = CharacterClassVariable.totalnumberofcharacters + 1
+    def __repr__(self):
+        """Return CharacterClassVariable something for repr()"""
+        return self.firstname + " " + self.lastname
+
+    def __str__(self):
+        """Return CharacterClassVariable string in another format"""
+        print("{} {}".format(self.firstname, self.lastname))
+
+    def __somethingbetween__(self):
+        return "All you need is love"
 
 
 bob = CharacterClassVariable(firstname="Bob", lastname="")
@@ -314,7 +455,9 @@ charlie = CharacterClassVariable("Charlie", "Hanks")
 print(charlie.totalnumberofcharacters) #print 3
 print(CharacterClassVariable.totalnumberofcharacters) #print 3
 print(charlie.totalnumberofcharacters) #print 3
-print("\n")
+print(charlie.__repr__()) #print Charlie Hanks.  Display an object.
+charlie.__str__() #return Charlie Hanks.  Display an object.
+print(charlie.__somethingbetween__()) #print All you need is love.  Display an object.
 
 class CharacterClassVariablecorrect():
     #class variables or static variables
@@ -342,6 +485,16 @@ print(charlie.totalnumberofcharacters) #print 1
 print(charlie.totalnumberofcharacters) #print 1
 print(charlie.totalnumberofcharacters) #print 1
 print(CharacterClassVariablecorrect.totalnumberofcharacters) #print 0
+print(CharacterClassVariablecorrect.maximumhealth) #print 150
+CharacterClassVariablecorrect.maximumhealth = 150000150
+print(CharacterClassVariablecorrect.maximumhealth) #print 150000150
+petenewmaximumhealth = CharacterClassVariablecorrect("Pete", "Malark")
+print(petenewmaximumhealth.health) #return 150000150
+print(petenewmaximumhealth.__class__.maximumhealth) #print 150000150
+print(petenewmaximumhealth.__class__) #print <class '__main__.CharacterClassVariablecorrect'>
+print(petenewmaximumhealth.__class__.totalnumberofcharacters) #print 0
+print(petenewmaximumhealth.totalnumberofcharacters) #print 1
+print(petenewmaximumhealth.totalnumberofcharacters) #print 1
 
 class Human():
     def __init__(self, initializevariablename, initializevariablegender):
@@ -546,7 +699,26 @@ print(macart.itemsincart) #print {'chocolate': 10, 'peas and carrots': 15}
 print(popcart.itemsincart) #print {'comic book': 1}
 print(rockycart.itemsincart) #print {'broccoli': 50, 'coffee': 10.2, 'caramel': 33}
 
-#Call class and call function inside class which is a method(?)
+#Variables inside class only
+class PrivateClass:
+    def __init__(self):
+        self.publicdata = "public"
+        self.__privatedata = "private begins with two underscores"
+    def printepublicdata(self):
+        print("printing self.publicdata " + self.publicdata)
+    def printeprivatedata(self):
+        print("Did printeprivatedata print? " + self.__privatedata)
+
+
+createprivateclassobject = PrivateClass()
+print(createprivateclassobject.publicdata) #print private
+createprivateclassobject.printepublicdata() #return printing self.publicdata public
+try:
+    print(createprivateclassobject.__privatedata)
+except AttributeError:
+    print("AttributeError.  'PrivateClass' object has no attribute '__privatedata'") #print AttributeError.  'PrivateClass' object has no attribute '__privatedata'
+
+#Call class and call function inside class which is a method
 class Chooseafunction():
     def __init__(self, name, defaultnull=""):
         self.name = name
@@ -614,7 +786,11 @@ Type a number for the second function runfunctioninsideclass: 99
 runfunctioninsideclass self.number 99
 '''
 
-#Parent child class
+#Inheritance is base classes and subclasses.  Loan is a base class.  CarLoan, HomeImprovementLoan, and MortgageLoan are subclasses.  Base classes tend to be more general.  Subclasses tend to be more specific.  More examples are student base class and graduate student and undergraduate student subclasses; shape base class and circle, triangle, rectangle, sphere, and cube subclasses; bankaccount base class and checking account and savings account subclasses; vehicle base class and cars, trucks, boats, and bicycles subclasses.
+#Inheritance hierarchy example.  An administrator in the subclass is a faculty in the subclass is an employee in the subclass is a community member in the base class for which all are objects.  Another example shape is a base class separated to two dimensions hape and three dimensional shape subclasses which has circle, square, and triangle subclasses in two dimension shape and sphere, cube, and tetrahedron subclasses in the three dimension shape.
+#Use inheritance to create new classes from existing classes.  Python assumes the class inherits directly from class object when you don't explicitly specify the base class.  The class hierarchy begins with class object.  The parentheses after a class name indicate inheritance and may contains a single class for single inheritance or a comma-separated list of base classes for multiple inheritance.  Multiple inheritance is beyond the scope of the book.
+#The subclass starts essentially the same as the base class in single inheritance.
+#Parent child class.  Class inheritance.  Thenewbostonchild class uses Thenewbostonparent class functions.
 class Thenewbostonparent():
     def __init__(self, parentname):
         self.parentname = parentname
@@ -730,6 +906,8 @@ print(player2supermarioobjectonly.playername) #print player2
 player2supermarioobjectonly.move() #return player2 is moving Mario
 player2supermarioobjectonly.mushroom() #return player2 eats the mushroom
 player2supermarioobjectonly.jumps() #return player2 breaks brick blocks
+print(issubclass(Supermario, Eatmushrooom)) #print True.  Check subclass.  Check class.
+print(issubclass(Supermario, Mario)) #print True
 
 class Parentclasscar():
     def __init__(self, make, model, year):
@@ -944,4 +1122,41 @@ with Contextmanagertypevaluetraceback() as yeserrormessage:
     type=<class 'ZeroDivisionError'>
     value=<traceback object at 0x7f26f0481500>
     traceback=division by zero
+    '''
+
+#Duck Typing:  A programming style which does not look at an object’s type to determine if it has the right interface; instead, the method or attribute is simply called or used ("If it looks like a duck and quacks like a duck, it must be a duck.").  RM:  I don't understand.
+class Boat():
+    pass
+    def earnings(self):
+        return 1
+class WellPaidDuck():
+    def __repr__(self):
+        return "Must be __repr__ I'm a well-paid duck"
+    def __somethingelse__(self):
+        return "__somethingelse__"
+    def earnings(self):
+        return 1000000.00
+
+
+print(Boat()) #print <__main__.Boat object at 0x7fc9fdd654c0>
+boatinstance = Boat()
+print(boatinstance) #print <__main__.Boat object at 0x7fc9fdd654c0>
+print(id(boatinstance)) #print 140505523836096
+anotherboatinstance = Boat()
+print(anotherboatinstance) #print <__main__.Boat object at 0x7fc9fdd654c0>
+print(id(anotherboatinstance)) #print 140505523836096
+print("\n")
+
+duckobject = WellPaidDuck()
+classinstanceslist = [boatinstance, anotherboatinstance, duckobject]
+for eachclassinstanceslist in classinstanceslist:
+    print(eachclassinstanceslist)
+    print(eachclassinstanceslist.earnings())
+    '''
+    <__main__.Boat object at 0x7f2fbcc794c0>
+    1
+    <__main__.Boat object at 0x7f2fbcb52430>
+    1
+    Must be __repr__ I'm a well-paid duck
+    1000000.0
     '''
