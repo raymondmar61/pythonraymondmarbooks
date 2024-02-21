@@ -718,6 +718,9 @@ x+y=221
 '''
 print(variabletokeeplocalvariable[0]) #print 221
 
+balance = -1.25
+if balance <= 0.00:
+    raise ValueError("The balance is a negative number") #return ValueError: The balance is a negative number
 
 #Try except
 #The finally clause guarantees execution.  In Python, we prefer the with statement (RM: correct word is else statement and not with statement?) for the purpose and place other code in the finally.
