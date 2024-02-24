@@ -1160,3 +1160,144 @@ for eachclassinstanceslist in classinstanceslist:
     Must be __repr__ I'm a well-paid duck
     1000000.0
     '''
+
+class Trackallcirclescreatedstaticmethod:
+    """Class description here"""
+    allcirclestrackedlist = [] #Class variable containing list of all circles created
+    pivariable = 3.14159
+    def __init__(self, radius=1):
+        self.radius = radius
+        self.__class__.allcirclestrackedlist.append(self) #Adds instance or instances logged to allcirclestrackedlist
+    def area(self):
+        """Calculate area of a circle"""
+        return self.__class__.pivariable * pow(self.radius, 2)
+    def printallcirclestrackedlist(self):
+        return self.allcirclestrackedlist
+    def printallcirclestrackedlistwithclass(self):
+        return self.__class__.allcirclestrackedlist
+    def printallcirclestrackedliststillnotcorrect(self):
+        return Trackallcirclescreatedstaticmethod.allcirclestrackedlist
+    @staticmethod
+    def returnstaticmethodfunction():
+        """No self in parenthesis"""
+        return Trackallcirclescreatedstaticmethod.allcirclestrackedlist
+    @staticmethod
+    def love():
+        """Can I print the allcirclestrackedlist list?"""
+        print(Trackallcirclescreatedstaticmethod.allcirclestrackedlist)
+    @staticmethod
+    def forloopprintallcirclestrackedlist():
+        """Try to print the allcirclestrackedlist list as xlist"""
+        xlist = []
+        for x in Trackallcirclescreatedstaticmethod.allcirclestrackedlist:
+            xlist.append(x)
+        return xlist
+    @staticmethod
+    def addtotalareas():
+        """Static method sum all circle areas calculated"""
+        total = 0
+        counter = 0
+        for x in Trackallcirclescreatedstaticmethod.allcirclestrackedlist:
+            total = total + x.area()
+            print(counter, ": ", total)
+            counter += 1
+        return total
+
+
+print(Trackallcirclescreatedstaticmethod.__doc__) #print Class description here
+print(Trackallcirclescreatedstaticmethod.area.__doc__) #print Calculate area of a circle
+print(Trackallcirclescreatedstaticmethod.returnstaticmethodfunction.__doc__) #print No self in parenthesis
+checkareamethod = Trackallcirclescreatedstaticmethod(2)
+print(checkareamethod.area()) #print 12.56636
+instancedefaultradius = Trackallcirclescreatedstaticmethod()
+print(instancedefaultradius.area()) #print 3.14159
+print(instancedefaultradius.printallcirclestrackedlist()) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f9823f914c0>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f9823df69d0>]
+print(instancedefaultradius.printallcirclestrackedlistwithclass()) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f9823f914c0>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f9823df69d0>]
+print(instancedefaultradius.printallcirclestrackedliststillnotcorrect())
+print(instancedefaultradius.returnstaticmethodfunction) #print <function Trackallcirclescreatedstaticmethod.love at 0x7f89212b11f0>
+print(instancedefaultradius.returnstaticmethodfunction()) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7fbdca2ceb20>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7fbdca2ceca0>]
+print(instancedefaultradius.love) #print <function Trackallcirclescreatedstaticmethod.love at 0x7f61f78501f0>
+instancedefaultradius.love() #return [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f05e3020c40>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f05e30209d0>]
+print(instancedefaultradius.forloopprintallcirclestrackedlist) #print <function Trackallcirclescreatedstaticmethod.forloopprintallcirclestrackedlist at 0x7f590e7b0310>
+print(instancedefaultradius.forloopprintallcirclestrackedlist()) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f590e7caca0>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f590e7f3e50>]
+# print(instancedefaultradius.addtotalareas) #print <function Trackallcirclescreatedstaticmethod.addtotalareas at 0x7fa0b0e0e310>
+print(instancedefaultradius.addtotalareas())
+'''
+0 :  12.56636
+1 :  15.70795
+15.70795
+'''
+instancethreeradius = Trackallcirclescreatedstaticmethod(3)
+print(instancethreeradius.area()) #print 28.27431
+print(instancethreeradius.addtotalareas())
+'''
+0 :  12.56636
+1 :  15.70795
+2 :  43.98226
+43.98226
+'''
+print(instancethreeradius.allcirclestrackedlist) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544729d0>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544e6430>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544455b0>]
+print(Trackallcirclescreatedstaticmethod.allcirclestrackedlist) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544729d0>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544e6430>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544455b0>]
+print(instancethreeradius.__class__.allcirclestrackedlist) #print [<__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544729d0>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544e6430>, <__main__.Trackallcirclescreatedstaticmethod object at 0x7f56544455b0>]
+print(Trackallcirclescreatedstaticmethod.pivariable) #print 3.14159
+
+class Trackallcirclescreatedclassmethod:
+    """Class description here"""
+    allcirclestrackedlist = [] #Class variable containing list of all circles created
+    pivariable = 3.14159
+    def __init__(self, radius=1):
+        self.radius = radius
+        self.__class__.allcirclestrackedlist.append(self) #Adds instance or instances logged to allcirclestrackedlist
+    def area(self):
+        """Calculate area of a circle"""
+        return self.__class__.pivariable * pow(self.radius, 2)
+    def printallcirclestrackedlist(self):
+        return self.allcirclestrackedlist
+    def printallcirclestrackedlistwithclass(self):
+        return self.__class__.allcirclestrackedlist
+    def printallcirclestrackedliststillnotcorrect(self):
+        return Trackallcirclescreatedclassmethod.allcirclestrackedlist
+    @classmethod
+    def returnclassmethodfunction(cls):
+        """No self in parenthesis"""
+        return Trackallcirclescreatedclassmethod.allcirclestrackedlist
+    @classmethod
+    def love(cls):
+        """Can I print the allcirclestrackedlist list?"""
+        print(cls.allcirclestrackedlist)
+    @classmethod
+    def forloopprintallcirclestrackedlist(cls):
+        """Try to print the allcirclestrackedlist list as xlist"""
+        xlist = []
+        for x in Trackallcirclescreatedclassmethod.allcirclestrackedlist:
+            xlist.append(x)
+        return xlist
+    @classmethod
+    def addtotalareas(cls):
+        """Class method sum all circle areas calculated.  Need class parameter cls in parenthesis."""
+        total = 0
+        counter = 0
+        for x in cls.allcirclestrackedlist:
+            total = total + x.area()
+            print(counter, ": ", total)
+            counter += 1
+        return total
+
+
+instancefourradius = Trackallcirclescreatedclassmethod(4)
+print(instancefourradius.area()) #print 50.26544
+print(instancefourradius.addtotalareas) #print <bound method Trackallcirclescreatedclassmethod.addtotalareas of <class '__main__.Trackallcirclescreatedclassmethod'>>
+print(instancefourradius.addtotalareas())
+'''
+0 :  50.26544
+50.26544
+'''
+instancefiveradius = Trackallcirclescreatedclassmethod(5)
+print(instancefiveradius.area()) #print 50.26544
+print(instancefiveradius.addtotalareas) #print <bound method Trackallcirclescreatedclassmethod.addtotalareas of <class '__main__.Trackallcirclescreatedclassmethod'>>
+print(instancefiveradius.addtotalareas())
+'''
+0 :  50.26544
+1 :  128.80518999999998
+128.80518999999998
+'''
