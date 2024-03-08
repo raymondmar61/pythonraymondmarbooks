@@ -7,28 +7,33 @@ print(re.fullmatch(matchfivestringnumbers, "02215") is True) #print False
 print(re.fullmatch(matchfivestringnumbers, "02215") == True) #print False
 if re.fullmatch(matchfivestringnumbers, "02215"):
     print("True") #print True
-print(re.fullmatch(matchfivestringnumbers, "13329")) #print None
+if re.fullmatch(matchfivestringnumbers, "13329"):
+    print("True")
+else:
+    print("False no fullmatch") #print False no fullmatch
+print(re.fullmatch(matchfivestringnumbers, "35530")) #print None
 
 #Four steps using Python regular expression summarized:  1 import regex module import re.  2 Create a regex object with the re.compile() function.  Use a raw string.  3 Pass the string to search using the search() method.  It returns a Match object first matched text.  4 Call the Match object's group() method to return a string of the actual matched text.  groups() method can work.
-#search() method returns a Match object first matched text.  findall() method returns a string of every match in a list.
-vowelleters = re.compile(r"[aeiouAEIOU]")
+#search() method returns a Match object first matched text.  The search function looks for the first occurrence which matches the regular expression.  It returns a match object of type SRE_Match containing the matching substring.  The match object's group method returns the substring.  Include flags=re.IGNORECASE for case insensitive
+#findall() method returns a string of every match in a list.
 stringsentence = "RoboCop eats baby food.  BABY FOOD."
+vowelleters = re.compile(r"[aeiouAEIOU]")
 extractvowels = vowelleters.findall(stringsentence)
 print(extractvowels) #print ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o', 'A', 'O', 'O']
 #Use the caret character before defining the character class as the negative or not
 consonantletters = re.compile(r"[^aeiouAEIOU]")
 extractconsonants = consonantletters.findall(stringsentence)
 print(extractconsonants) #print ['R', 'b', 'C', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.', ' ', ' ', 'B', 'B', 'Y', ' ', 'F', 'D', '.']
-lettersnumbersranges = re.compile(r"[M-Za-f4-7]")
 stringsentence = "RoboCop eats baby food.  4 9 1 BABY FOOD."
+lettersnumbersranges = re.compile(r"[M-Za-f4-7]")
 extractselectedrangelettersnumbers = lettersnumbersranges.findall(stringsentence)
 print(extractselectedrangelettersnumbers) #print ['R', 'b', 'e', 'a', 'b', 'a', 'b', 'f', 'd', '4', 'Y', 'O', 'O']
-lettersnumbersranges = re.compile(r"[M-Za-f4-7 ]")
 stringsentence = "RoboCop eats baby food.  4 9 1 BABY FOOD."
+lettersnumbersranges = re.compile(r"[M-Za-f4-7 ]")
 extractselectedrangelettersnumbersplusspaces = lettersnumbersranges.findall(stringsentence)
 print(extractselectedrangelettersnumbersplusspaces) #print ['R', 'b', ' ', 'e', 'a', ' ', 'b', 'a', 'b', ' ', 'f', 'd', ' ', ' ', '4', ' ', ' ', ' ', 'Y', ' ', 'O', 'O']
-mustbeginwithcaret = re.compile(r"^Begins with hello")
 stringsentence = "Begins with hello world ends with goodbye."
+mustbeginwithcaret = re.compile(r"^Begins with hello")
 extractstartswith = mustbeginwithcaret.search(stringsentence)
 print(extractstartswith) #print <re.Match object; span=(0, 17), match='Begins with hello'>
 print(extractstartswith.group()) #print Begins with hello
@@ -38,8 +43,8 @@ mustendswithdollarsign = re.compile(r"ends with goodbye\.$")
 extractendswith = mustendswithdollarsign.search(stringsentence).group()
 print(extractendswith) #print ends with goodbye.
 #The period match any character except for a new line.  Match a single character.
-singlecharacterwildcard = re.compile(r".at")
 findmultipleswithat = "The cat in the hat sat on the flat mat."
+singlecharacterwildcard = re.compile(r".at")
 #print(singlecharacterwildcard.find(findmultipleswithat)) #print AttributeError: 're.Pattern' object has no attribute 'find'
 print(singlecharacterwildcard.findall(findmultipleswithat)) #print ['cat', 'hat', 'sat', 'lat', 'mat']
 print(singlecharacterwildcard.search(findmultipleswithat)) #print <re.Match object; span=(4, 7), match='cat'>
@@ -49,8 +54,8 @@ findmultiplesat = re.compile(r".*at")
 print(findmultiplesat.findall(findmultipleswithat)) #print ['The cat in the hat sat on the flat mat']
 #findmultiplesatnoperiod = re.compile(r"*at") #return re.error: nothing to repeat at position 0
 #print(findmultiplesatnoperiod.findall(findmultipleswithat)) #print re.error: nothing to repeat at position 0
-multiplecharacterswildcardbefore = re.compile(r".*jake")
 findjake = "The snake begins with jake from Florida."
+multiplecharacterswildcardbefore = re.compile(r".*jake")
 print(multiplecharacterswildcardbefore.findall(findjake)) #print ['The snake begins with jake']
 multiplecharacterswildcardafter = re.compile(r"jake*.")
 print(multiplecharacterswildcardafter.findall(findjake)) #print ['jake ']
@@ -61,8 +66,8 @@ print(multiplecharacterswildcardbeforeafter.findall(findjake)) #print ['The snak
 multiplecharacterswildcardbeforeafterall = re.compile(r".*jake.*")
 print(multiplecharacterswildcardbeforeafterall.findall(findjake)) #print ['The snake begins with jake from Florida.']
 #Search between strings
-firstnamelastnameingroups = re.compile(r"First Name: (.*) Last Name: (.*)")
 firstnamelastname1 = "First Name: Al Last Name: Sweigart"
+firstnamelastnameingroups = re.compile(r"First Name: (.*) Last Name: (.*)")
 extractnamessearchobject = firstnamelastnameingroups.search(firstnamelastname1)
 print(extractnamessearchobject.groups()) #print ('Al', 'Sweigart')
 print(extractnamessearchobject.group(1)) #print Al
@@ -77,26 +82,26 @@ print(firstnamelastnamefindall.findall(firstnamelastname1)) #print ['First Name:
 firstnamelastnamefindall = re.compile(r"First Name: *\w* Last Name: *\w* ")
 print(firstnamelastnamefindall.findall(firstnamelastname1)) #print ['First Name: Al Last Name: ']
 #periodstar default is greedy which matches as much text as possible.  Add a question mark for nongreedy which doesn't match as much text
-firstnamelastnamegreedy = re.compile(r"First Name: .*? Last Name: .*?")
 firstnamelastname1 = "First Name: Al Last Name: Sweigart"
+firstnamelastnamegreedy = re.compile(r"First Name: .*? Last Name: .*?")
 extractnamessearchobject = firstnamelastnamegreedy.search(firstnamelastname1)
 print(extractnamessearchobject) #print <re.Match object; span=(0, 26), match='First Name: Al Last Name: '>
 print(extractnamessearchobject.group()) #print First Name: Al Last Name:
 print(extractnamessearchobject.groups()) #print ()
-firstnamelastnamegreedy = re.compile(r"First Name: .*?.* Last Name: .*?.*")
 firstnamelastname1 = "First Name: Al Last Name: Sweigart"
+firstnamelastnamegreedy = re.compile(r"First Name: .*?.* Last Name: .*?.*")
 extractnamessearchobject = firstnamelastnamegreedy.search(firstnamelastname1)
 print(extractnamessearchobject) #print <re.Match object; span=(0, 34), match='First Name: Al Last Name: Sweigart'>
 print(extractnamessearchobject.group()) #print First Name: Al Last Name: Sweigart
 print(firstnamelastnamegreedy.findall(firstnamelastname1)) #print ['First Name: Al Last Name: Sweigart']
-firstnamelastnamegreedy = re.compile(r"First Name: .*?.* Last Name: .*?.*")
 firstnameslastnames1 = "First Name: Al Moose Last Name: Sweigart Booth"
+firstnamelastnamegreedy = re.compile(r"First Name: .*?.* Last Name: .*?.*")
 extractnamessearchobject = firstnamelastnamegreedy.search(firstnameslastnames1)
 print(extractnamessearchobject) #print <re.Match object; span=(0, 46), match='First Name: Al Moose Last Name: Sweigart Booth'>
 print(extractnamessearchobject.group()) #print First Name: Al Moose Last Name: Sweigart Booth
 print(firstnamelastnamegreedy.findall(firstnameslastnames1)) #print ['First Name: Al Moose Last Name: Sweigart Booth']
-firstnamelastnamegreedycarrots = re.compile(r"First Name: <.*?> Last Name: <.*?>")
 firstnameslastnamescarrots = "First Name: <Al Moose> Last Name: <Sweigart Booth>"
+firstnamelastnamegreedycarrots = re.compile(r"First Name: <.*?> Last Name: <.*?>")
 extractnamessearchobjectcarrots = firstnamelastnamegreedycarrots.search(firstnameslastnamescarrots)
 print(extractnamessearchobjectcarrots) #print <re.Match object; span=(0, 50), match='First Name: <Al Moose> Last Name: <Sweigart Booth>
 print(extractnamessearchobjectcarrots.group()) #print First Name: <Al Moose> Last Name: <Sweigart Booth>
@@ -107,25 +112,24 @@ print(extractnamessearchobjectcarrots) #print <re.Match object; span=(0, 50), ma
 print(extractnamessearchobjectcarrots.group()) #print First Name: <Al Moose> Last Name: <Sweigart Booth>
 print(firstnamelastnamegreedycarrots.findall(firstnameslastnamescarrots)) #print ['First Name: <Al Moose> Last Name: <Sweigart Booth>']
 #Include re.DOTALL to match all characters including the newline \n
-nonewline = re.compile(".*")
 multiplelinestring = "One run.\n  Two shoes.\n  Three trees.\n"
+nonewline = re.compile(".*")
 print(nonewline.search(multiplelinestring)) #print <re.Match object; span=(0, 8), match='One run.'>
 extractmultiplelinestringobject = nonewline.search(multiplelinestring)
 print(extractmultiplelinestringobject.group()) #print One run.
 print(extractmultiplelinestringobject.groups()) #print ()
-yesnewline = re.compile(".*", re.DOTALL)
 multiplelinestring = "One run.\n  Two shoes.\n  Three trees.\n"
+yesnewline = re.compile(".*", re.DOTALL)
 print(yesnewline.search(multiplelinestring)) #print <re.Match object; span=(0, 37), match='One run.\n  Two shoes.\n  Three trees.\n'>
 extractmultiplelinestringobject = yesnewline.search(multiplelinestring)
 print(extractmultiplelinestringobject.group()) #print One run.  Two shoes.  Three trees.
 print(extractmultiplelinestringobject.groups()) #print ()
 #Include re.IGNORECASE or re.I as a second argument to re.compile() to search no exact casing
-caseinsensitive = re.compile(r"seuss", re.I)
 drseussstring = "Author Dr. Seuss wrote children's books for the World whole."
+caseinsensitive = re.compile(r"seuss", flags=re.IGNORECASE)
 print(caseinsensitive.search(drseussstring)) #print <re.Match object; span=(11, 16), match='Seuss'>
 extractseussobject = caseinsensitive.search(drseussstring)
-print(extractseussobject.group()) #print Seuss
-#Character classes.  RM:  ignore the backslash escape character
+print(extractseussobject.group()) #print Seuss#Character classes.  RM:  ignore the backslash escape character
 '''
 \\d Any numeric digit from 0 to 9.
 \\D Any character that is not a numeric digit from 0 to 9.
@@ -139,9 +143,138 @@ Regular expressions metacharacters are the following:  [] {} () \\ * + ^ $ ? . |
 matchfivestringnumbers = "02215"
 matchfivestringnumberscompile = re.compile(r"\d\d\d\d\d")
 print(matchfivestringnumberscompile.findall(matchfivestringnumbers)) #print ['02215']
+#Use curly brackets for specific repetitions.  If you have a group to repeat a specific number of times, then type the number in curly brackets to the right of the group.  (Ha){3} searchs for HaHaHa.  (Ha){3,5} searchs for HaHaHa, HaHaHaHa, and HaHaHaHaHa.  (Ha){3,} searchs for three or more Ha.  (Ha){0,6} searches for zero to six instances of Ha.  (Ha)(Ha)(Ha) is the same as (Ha){3}.  (Ha)(Ha)(Ha)|(Ha)(Ha)(Ha)(Ha)|(Ha)(Ha)(Ha)(Ha)(Ha) is the same as (Ha){3,5}.
 matchfivestringnumberscompile = re.compile(r"\d{5}")
 print(matchfivestringnumberscompile.findall(matchfivestringnumbers)) #print ['02215']
-
+#Square brackets define a custom character class which matches a single character.  For example [aeiou] matches a lowercase vowel, [A-Z] matches an uppercase letter, [a-z] matches a lowercase letter, and [a-zA-Z] matches any lowercase or uppercase letter.  RM:  using findall returns all letters as a list; however, it seems using search() and group() follows the square brackets.
+rwally = "rRWally"
+findoneletterlowercase = re.compile(r"[a-z]")
+print(findoneletterlowercase.findall(rwally)) #print ['r', 'a', 'l', 'l', 'y']
+findoneletterallcases = re.compile(r"[a-zA-Z]")
+print(findoneletterallcases.findall(rwally)) #print ['r', 'R', 'W', 'a', 'l', 'l', 'y']
+rwallyobject = findoneletterallcases.search(rwally)
+print(rwallyobject.group()) #print r
+print(rwallyobject.group()) #print r
+print(rwallyobject.group()) #print r
+findtwoletterallcasescorrect = re.compile(r"[a-zA-Z][a-zA-Z]")
+rwallyobject = findtwoletterallcasescorrect.search(rwally)
+print(rwallyobject.group()) #print rR
+#Asterik * is the quantifier.  A quantifier matches zero or more occurrences of its subexpression.  For example, [A-Z][a-z]* matches an uppercase letter and zero or more lowercase letters such as Amanda, Bo, or E.
+findtwolettersandthereafter = re.compile(r"[a-zA-Z][a-zA-Z]*")
+rwallyobject = findtwolettersandthereafter.search(rwally)
+print(rwallyobject.group()) #print rRWally
+print(rwallyobject.groups()) #print ()
+firstlowercasethereafter = re.compile(r"[a-z]*")
+rwallyobject = firstlowercasethereafter.search(rwally)
+print(rwallyobject.group()) #print r
+firstuppercaselowercasethereafter = re.compile(r"[A-Z][a-z]*")
+#rwallyobject = notlowercaseyesuppercase.search(rwally)
+#print(rwallyobject.group()) #print NameError: name 'notlowercaseyesuppercase' is not defined
+first2uppercaselowercasethereafter = re.compile(r"[A-Z][A-Z][a-z]*")
+rwallyobject = first2uppercaselowercasethereafter.search(rwally)
+print(rwallyobject.group()) #print RWally
+print(first2uppercaselowercasethereafter.findall(rwally)) #print ['RWally']
+#Caret ^ is the not symbol.  For example, [^a-z] matches a character not lowercase.
+notlowercasenotuppercase = re.compile(r"[^a-z][^A-Z]")
+rwallyobject = notlowercasenotuppercase.search(rwally)
+print(rwallyobject.group()) #print Wa
+lowercasenotuppercase = re.compile(r"[a-z][^A-Z]")
+rwallyobject = lowercasenotuppercase.search(rwally)
+print(rwallyobject.group()) #print al
+notlowercaseyesuppercase = re.compile(r"[^a-z][A-Z]")
+rwallyobject = notlowercaseyesuppercase.search(rwally)
+print(rwallyobject.group()) #print RW
+print(notlowercaseyesuppercase.findall(rwally)) #print ['RW']
+#Metacharacters in a custom character class are metacharacters themselves.  For example [*+$] matches asterik * or plus + or dollar $.
+character = "!"
+findmetacharacter = re.compile(r"[*+!]")
+print(findmetacharacter.findall(character)) #print ['!']
+character = "*"
+findmetacharacter = re.compile(r"[*+!]")
+print(findmetacharacter.findall(character)) #print ['!']
+character = "*!"
+findmetacharacter = re.compile(r"[*+!]")
+print(findmetacharacter.findall(character)) #print ['*', '!']
+charactersentence = "character* in a $entence!."
+findmetacharacter = re.compile(r"[*+!]")
+print(findmetacharacter.findall(charactersentence)) #print ['*', '!']
+findmetacharacter = re.compile(r"[*]*[$]*[!]*[.]")
+print(findmetacharacter.findall(charactersentence)) #print ['!.']
+findmetacharacter = re.compile(r"[*]")
+print(findmetacharacter.findall(charactersentence)) #print ['*']
+findmetacharacter = re.compile(r"[*]*[$]")
+print(findmetacharacter.findall(charactersentence)) #print ['$']
+findmetacharacterandwords = re.compile(r"[a-z]*[*]")
+print(findmetacharacterandwords.findall(charactersentence)) #print ['character*']
+findmetacharacterandwords = re.compile(r"[a-z]*[*]\s[a-z]*\s[a-z]\s[$]")
+print(findmetacharacterandwords.findall(charactersentence)) #print ['character* in a $']
+#Plus sign + to find one or more custom character class
+rwally = "rRWally"
+customcharacterclass = re.compile(r"[a-z]+")
+print(customcharacterclass.findall(rwally)) #print ['r', 'ally']
+customcharacterclass = re.compile(r"[A-Z]+")
+print(customcharacterclass.findall(rwally)) #print ['RW']
+customcharacterclass = re.compile(r"[A-Z][a-z]+")
+print(customcharacterclass.findall(rwally)) #print ['Wally']
+customcharacterclass = re.compile(r"[a-z][A-Z]+")
+print(customcharacterclass.findall(rwally)) #print ['rRW']
+customcharacterclass = re.compile(r"[a-zA-Z]+")
+print(customcharacterclass.findall(rwally)) #print ['rRWally']
+customcharacterclass = re.compile(r"[A-Za-z]+")
+print(customcharacterclass.findall(rwally)) #print ['rRWally']
+customcharacterclass = re.compile(r"[A-Z]+[a-z]")
+print(customcharacterclass.findall(rwally)) #print ['RWa']
+#Question mark ? to find zero or one custom character class
+labelvariable = "labelled"
+questionmarkcustom = re.compile(r"labell?ed") #The labell?ed examples before l? indicates there can be zero or one letter l before the remaining characters ed or zero or one letter l to the left of the question mark
+print(questionmarkcustom.findall(labelvariable)) #print ['labelled'].  Zero or one letter l between label and the ed.
+labelvariable = "labeled"
+questionmarkcustom = re.compile(r"labell?ed")
+print(questionmarkcustom.findall(labelvariable)) #print ['labeled'].  Zero or one letter l between label and the ed.
+labelvariable = "labellled"
+questionmarkcustom = re.compile(r"labell?ed")
+print(questionmarkcustom.findall(labelvariable)) #print [].  Two letter l's between label and the ed.  Return nothing.
+labelvariable = "labelllzzed"
+questionmarkcustom = re.compile(r"labell?ed")
+print(questionmarkcustom.findall(labelvariable)) #print [].  One additional letter l and two letters z's between label and the ed.  Return nothing.
+labelvariable = "labeled"
+questionmarkcustom = re.compile(r"labe?led")
+print(questionmarkcustom.findall(labelvariable)) #print ['labeled'].  Zero or one letter e between lab and the led.
+labelvariable = "labled"
+questionmarkcustom = re.compile(r"labe?led")
+print(questionmarkcustom.findall(labelvariable)) #print ['labled'].  Zero or one letter e between lab and the led.
+labelvariable = "labzled"
+questionmarkcustom = re.compile(r"labe?led")
+print(questionmarkcustom.findall(labelvariable)) #print [].  No zero or one letter e between lab and the led.  z is not in the compile.
+labelvariable = "labzled"
+questionmarkcustom = re.compile(r"labz?led")
+print(questionmarkcustom.findall(labelvariable)) #print ['labzled'].  Zero or one letter z between lab and the led.
+labelvariable = "labzled"
+questionmarkcustom = re.compile(r"labz?led")
+print(questionmarkcustom.findall(labelvariable)) #print ['labzled'].  Zero or one letter z between lab and the led.
+rwally = "rRWally"
+questionmarkcustom = re.compile(r"r?RWa?llz?y")
+print(questionmarkcustom.findall(rwally)) #print ['rRWally'].  z? means a z or no z after the ll and before the y.
+#Curly brackets {number, } quantifier matches at least number occurrences.  Curly brackets {lowernumberinclusive, uppernumberinclusive} quantifier matches between lowernumber and uppernumber inclusive occurrences.
+fivewordssevenwords = "ultra combos7"
+fivewordssevenwordscompile = re.compile(r"\w{5}\s\w{7}")
+print(fivewordssevenwordscompile.findall(fivewordssevenwords)) #print ['ultra combos7']
+threewordssemicolonfivewords = "red;blues"
+threewordssemicolonfivewordscompile = re.compile(r"\w{3};\w{4}")
+print(threewordssemicolonfivewordscompile.findall(threewordssemicolonfivewords)) #print ['red;blue']
+threewordssemicolonfivewordsobject = threewordssemicolonfivewordscompile.search(threewordssemicolonfivewords)
+print(threewordssemicolonfivewordsobject.group()) #print red;blue
+print(threewordssemicolonfivewordsobject.groups()) #print ()
+#print(threewordssemicolonfivewordsobject.group(1)) #print IndexError: no such group
+elevenletters = "dixowixoebr"
+findelevenletters = re.compile(r"\w{11,}")
+print(findelevenletters.findall(elevenletters)) #print ['dixowixoebr']
+findnineelevenletters = re.compile(r"\w{9,11}")
+print(findnineelevenletters.findall(elevenletters)) #print ['dixowixoebr']
+findelevenletters = re.compile(r"[b-x]{11,}")
+print(findelevenletters.findall(elevenletters)) #print ['dixowixoebr']
+findelevenletters = re.compile(r"[d][^I][b-x]{8,10}[r]")
+print(findelevenletters.findall(elevenletters)) #print ['dixowixoebr']
 xmasregex = re.compile(r"\d+\s\w+") #xmasregex \d+ match text with one or more numeric digits, \s a whitespace character, and \w+ one or more letter or digit or underscore characters
 twelvedaysofxmas = "12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7 swans, 6 geese, 5 rings, 4 birds, 3 hens, 2 doves, 1 partridge"
 twelvedaysofxmaslist = xmasregex.findall(twelvedaysofxmas)
@@ -272,6 +405,24 @@ originalagentstring = "Agent Alice told Agent Carol that Agent Eve knew Agent Bo
 print(originalagentstring) #print Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.  Agent longassnamereplacewithasterisk.
 print(partialreplacenamefirstgroup.sub(r"\1*****", originalagentstring)) #print A***** told C***** that E***** knew B***** was a double agent.  l*****. #RM:  I'm guessing the \1 is for the group(\w) to replace name with *****.
 
+#Grouping and re.search no re.compile no compiling
+nameemailaddress = "Charlie Cyan, e-mail:  demo1@deitel.com"
+patternFirstnameLastnameonly = r"([A-Z][a-z]+ [A-Z][a-z]+)"
+print(re.search(patternFirstnameLastnameonly, nameemailaddress)) #print <re.Match object; span=(0, 12), match='Charlie Cyan'>
+print(type(re.search(patternFirstnameLastnameonly, nameemailaddress))) #print <class 're.Match'>
+print(re.search(patternFirstnameLastnameonly, nameemailaddress).groups()) #print ('Charlie Cyan',)
+print(re.search(patternFirstnameLastnameonly, nameemailaddress).groups()[0]) #print Charlie Cyan
+print(re.search(patternFirstnameLastnameonly, nameemailaddress).group(1)) #print Charlie Cyan
+matchasobject = re.search(patternFirstnameLastnameonly, nameemailaddress)
+print(matchasobject) #print <re.Match object; span=(0, 12), match='Charlie Cyan'>
+print(matchasobject.groups()) #print ('Charlie Cyan',)
+print(matchasobject.groups()[0]) #print Charlie Cyan
+patternFirstnameLastnameemail = r"([A-Z][a-z]+ [A-Z][a-z]+), e-mail:  (\w+[@]\w+[.]\w{3})"
+print(re.search(patternFirstnameLastnameemail, nameemailaddress))
+print(re.search(patternFirstnameLastnameemail, nameemailaddress).groups())
+print(re.search(patternFirstnameLastnameemail, nameemailaddress).groups()[1]) #print demo1@deitel.com
+print(re.search(patternFirstnameLastnameemail, nameemailaddress).group(2)) #print demo1@deitel.com
+
 #A regex object's search() method searches the string it is passed for matches.  The search() method returns None if the regex pattern is not found in the string.  If the pattern is found, the search() method returns a Match object.  Match objects have a group() method which returns the actual matched text from the searched string.
 phonenumberregex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
 phonenumbermessage = "Use \\d's to find digits or numbers and hyphens 415-555-4242"
@@ -291,6 +442,29 @@ try:
 except AttributeError:
     print("Phone number not found") #print Phone number not found
 
+#re.sub function replaces patterns in a string.  re.sub replaces all occurrrences by default.  Set count=number to specify the maximum number of replacements.
+numberstabed = "1\t2\t3\t4"
+print(numberstabed) #print 1    2   3   4
+print(re.sub(r"\t", ", ", numberstabed)) #print 1, 2, 3, 4.  Replace tab with comma and a space.
+print(numberstabed) #print 1    2   3   4
+print(re.sub(r"\t", ", ", numberstabed, count=2)) #print 1, 2, 3    4.  Replace tab with comma and a space two times.
+#re.split function separates a string to list with a delimiter.  The examples separates each string by a comma and its whitespaces to a list.  Set maxsplit=number to specify the maximum number of splits.
+#\s Any space, tab, or newline character. (Think of this as matching “space” characters.)
+#Question mark ? matches zero or one occurrence.  Asterik * matches zero or more occurrences.  Plus sign + matches one or more occurrences
+numberswhitespaces = "1, 2, 3,4, 5,6,       7,8"
+print(re.split(r",\s?", numberswhitespaces)) #print ['1', '2', '3', '4', '5', '6', '      7', '8'].  RM:  notice the comma before the \s.  Split by comma.
+print(re.split(r",\s*", numberswhitespaces)) #print ['1', '2', '3', '4', '5', '6', '7', '8']
+print(re.split(r",\s+", numberswhitespaces)) #print ['1', '2', '3,4', '5,6', '7,8']
+print(re.split(r",\s*", numberswhitespaces, maxsplit=3)) #print ['1', '2', '3', '4, 5,6,       7,8']
+#re.finditer function finds every matching substring in a string and returns one match substrings at a time
+contact = "Wally White, Home:  555-555-1234, Work:  555-555-4321"
+print(re.findall(r"\d{3}-\d{3}-\d{4}", contact)) #print ['555-555-1234', '555-555-4321']
+for phonenumbers in re.finditer(r"\d{3}-\d{3}-\d{4}", contact):
+    print(phonenumbers.group())
+    '''
+    555-555-1234
+    555-555-4321
+    '''
 #re.VERBOSE is used to write comments in regular expressions.  re.compile() takes only a single value as its second argument.  Use the pipe character | which is called a bitwise or operator.
 multiplesecondarguments = re.compile(r"something", re.IGNORECASE | re.DOTALL)
 multiplesecondarguments = re.compile(r"something", re.IGNORECASE | re.DOTALL | re.VERBOSE)
