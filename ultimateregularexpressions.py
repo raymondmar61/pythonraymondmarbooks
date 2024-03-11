@@ -1,6 +1,18 @@
 #Regular expressions specify a pattern of text to search.  Regular expressions, or regexes for short, are descriptions for a pattern of text.  For example, a \d in regex stands for a digit character from 0 to 9.  Regex \d\d\d-\d\d\d-\d\d\d\d is a phone number string of three numbers, a hyphen, three numbers, a hyphen, and four numbers.  Any other string doesn't match regex \d\d\d-\d\d\d-\d\d\d\d.
+#Regex or re is a sequence of characters such as letters, numbers, and special characters forming a pattern to search text, text files, CSV files, and Excel files.  Search for the text containing sequences of characters which match the pattern.  Use the built-in module re.  There are additional third party modules supporting regular expressions.
 import re
 
+matchfivestringnumbers = "02215"
+print(re.search(matchfivestringnumbers, "02215")) #print <re.Match object; span=(0, 5), match='02215'>
+print(re.search(matchfivestringnumbers, "02215") is True) #print False
+print(re.search(matchfivestringnumbers, "02215") == True) #print False
+if re.search(matchfivestringnumbers, "02215"):
+    print("True") #print True
+if re.search(matchfivestringnumbers, "13329"):
+    print("True")
+else:
+    print("False no search") #print False no search
+print(re.search(matchfivestringnumbers, "35530")) #print None
 matchfivestringnumbers = "02215"
 print(re.fullmatch(matchfivestringnumbers, "02215")) #print <re.Match object; span=(0, 5), match='02215'>
 print(re.fullmatch(matchfivestringnumbers, "02215") is True) #print False
@@ -12,10 +24,57 @@ if re.fullmatch(matchfivestringnumbers, "13329"):
 else:
     print("False no fullmatch") #print False no fullmatch
 print(re.fullmatch(matchfivestringnumbers, "35530")) #print None
+#The search() function searches the string for a match.  It returns a Match object if there is a match.  The signature of the function is re.search(pattern, string, flags=0).  pattern is the regular expression used in the matching process, string is the string to be searched, flags are optional flags to modify the search operation.
+#The match() function searches the beginning of a string for a match.  match() function works the same as search() function.  match() function checks at the beginning of the string.  search() function checks anywhere in the string.
+stringvariable = "find me at the beginning of the sentence"
+print(re.match("find me at the beginning", stringvariable)) #print <re.Match object; span=(0, 24), match='find me at the beginning'>
+print(re.search("find me at the beginning", stringvariable)) #print <re.Match object; span=(0, 24), match='find me at the beginning'>
+print(re.match("at the begin", stringvariable)) #print None
+print(re.search("at the begin", stringvariable)) #print <re.Match object; span=(8, 20), match='at the begin'>
+compilerobjectfindme = re.compile(r"find me at the beginning")
+compilerobjectatthe = re.compile(r"at the begin")
+print(re.match(compilerobjectfindme, stringvariable)) #print <re.Match object; span=(0, 24), match='find me at the beginning'>
+print(re.search(compilerobjectfindme, stringvariable)) #print <re.Match object; span=(0, 24), match='find me at the beginning'>
+print(re.match(compilerobjectatthe, stringvariable)) #print None
+print(re.search(compilerobjectatthe, stringvariable)) #print <re.Match object; span=(8, 20), match='at the begin'>
+ifelsematch = re.match(compilerobjectfindme, stringvariable)
+if ifelsematch:
+    print("True") #print True
+else:
+    print("False")
+ifelsesearch = re.search(compilerobjectfindme, stringvariable)
+if ifelsesearch:
+    print("True") #print True
+else:
+    print("False")
+ifelsematch = re.match(compilerobjectatthe, stringvariable)
+if ifelsematch:
+    print("True")
+else:
+    print("False") #print False
+ifelsesearch = re.search(compilerobjectatthe, stringvariable)
+if ifelsesearch:
+    print("True") #print True
+else:
+    print("False")
+compilerobjectfindme = re.compile(r"find me at the beginning")
+print(compilerobjectfindme.findall(stringvariable)) #print ['find me at the beginning']
+searchgroupobject = compilerobjectfindme.search(stringvariable)
+print(searchgroupobject.group()) #print find me at the beginning
+matchgroupobject = compilerobjectfindme.match(stringvariable)
+print(matchgroupobject.group()) #print find me at the beginning
+compilerobjectatthe = re.compile(r"at the begin")
+print(compilerobjectatthe.findall(stringvariable)) #print ['at the begin']
+searchgroupobject = compilerobjectatthe.search(stringvariable)
+print(searchgroupobject.group()) #print at the begin
+matchgroupobject = compilerobjectatthe.match(stringvariable)
+#print(matchgroupobject.group()) #print AttributeError: 'NoneType' object has no attribute 'group'
 
 #Four steps using Python regular expression summarized:  1 import regex module import re.  2 Create a regex object with the re.compile() function.  Use a raw string.  3 Pass the string to search using the search() method.  It returns a Match object first matched text.  4 Call the Match object's group() method to return a string of the actual matched text.  groups() method can work.
 #search() method returns a Match object first matched text.  The search function looks for the first occurrence which matches the regular expression.  It returns a match object of type SRE_Match containing the matching substring.  The match object's group method returns the substring.  Include flags=re.IGNORECASE for case insensitive
+#The search() function searches the string for a match.  It returns a Match object if there is a match.  The signature of the function is re.search(pattern, string, flags=0).  pattern is the regular expression used in the matching process, string is the string to be searched, flags are optional flags to modify the search operation.
 #findall() method returns a string of every match in a list.
+#The compile() function compiles a regular expression pattern into a regular expression object.  The regular expression object can be used for other methods such as match() and search().  re.compile(pattern, flags=0).  The compiled regular expression objects methods and attributes are different than their function counterparts.
 stringsentence = "RoboCop eats baby food.  BABY FOOD."
 vowelleters = re.compile(r"[aeiouAEIOU]")
 extractvowels = vowelleters.findall(stringsentence)
@@ -224,6 +283,11 @@ customcharacterclass = re.compile(r"[A-Za-z]+")
 print(customcharacterclass.findall(rwally)) #print ['rRWally']
 customcharacterclass = re.compile(r"[A-Z]+[a-z]")
 print(customcharacterclass.findall(rwally)) #print ['RWa']
+hyphenstring = "okay -submarine plane"
+lettersandhyphen = re.compile(r"[-a-z]")
+print(lettersandhyphen.findall(hyphenstring)) #print ['o', 'k', 'a', 'y', '-', 's', 'u', 'b', 'm', 'a', 'r', 'i', 'n', 'e', 'p', 'l', 'a', 'n', 'e']
+onehyphenandletter = re.compile(r"[-]\w")
+print(onehyphenandletter.findall(hyphenstring)) #print ['-s']
 #Question mark ? to find zero or one custom character class
 labelvariable = "labelled"
 questionmarkcustom = re.compile(r"labell?ed") #The labell?ed examples before l? indicates there can be zero or one letter l before the remaining characters ed or zero or one letter l to the left of the question mark
@@ -396,6 +460,7 @@ pipecharacteror = re.compile(r"Batman|Batwoman")
 findbatmanbatwoman = pipecharacteror.findall("The Adventures of Batman and Batwoman with more Batwoman and Batman")
 print(findbatmanbatwoman) #print ['Batman', 'Batwoman', 'Batwoman', 'Batman']
 #The sub() method substitutes next text in place of the patterns.  Replace text in search results.
+#The sub() function replaces occurrences of the regular expression pattern in the string with the repl string.  re.sub(pattern, repl, string, max=0).
 replaceagentname = re.compile(r"Agent \w+")
 originalagentstring = "Agent Alice gave the secret documents to Agent Bob."
 print(originalagentstring) #print Agent Alice gave the secret documents to Agent Bob.
@@ -404,6 +469,14 @@ partialreplacenamefirstgroup = re.compile(r"Agent (\w)\w*") #first group is in p
 originalagentstring = "Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.  Agent longassnamereplacewithasterisk."
 print(originalagentstring) #print Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.  Agent longassnamereplacewithasterisk.
 print(partialreplacenamefirstgroup.sub(r"\1*****", originalagentstring)) #print A***** told C***** that E***** knew B***** was a double agent.  l*****. #RM:  I'm guessing the \1 is for the group(\w) to replace name with *****.
+europeansports = "England for football, Wales for Rugby, and Scotland for the Highland games."
+replacecountriescompile = re.compile(r"England|Wales|Scotland")
+replacecountriesstring = "Replace the countries"
+print(re.sub(replacecountriescompile, replacecountriesstring, europeansports)) #print Replace the countries for football, Replace the countries for Rugby, and Replace the countries for the Highland games.
+replacefirstansecond = re.sub(replacecountriescompile, replacecountriesstring, europeansports, 2)
+print(replacefirstansecond) #print Replace the countries for football, Replace the countries for Rugby, and Scotland for the Highland games.
+replaceresulttuplesnumberreplaced = re.subn(replacecountriescompile, replacecountriesstring, europeansports)
+print(replaceresulttuplesnumberreplaced) #print ('Replace the countries for football, Replace the countries for Rugby, and Replace the countries for the Highland games.', 3)
 
 #Grouping and re.search no re.compile no compiling
 nameemailaddress = "Charlie Cyan, e-mail:  demo1@deitel.com"
@@ -422,6 +495,42 @@ print(re.search(patternFirstnameLastnameemail, nameemailaddress))
 print(re.search(patternFirstnameLastnameemail, nameemailaddress).groups())
 print(re.search(patternFirstnameLastnameemail, nameemailaddress).groups()[1]) #print demo1@deitel.com
 print(re.search(patternFirstnameLastnameemail, nameemailaddress).group(2)) #print demo1@deitel.com
+fullnamephonenumber = "Mylastname-hyphenated, Mymiddlename, Myfirstname: (650)-555-1298"
+assigngroupnamescompileobject = re.compile(r"(?P<last>[-a-zA-Z]+), (?P<middle>[-a-zA-Z]+), (?P<first>[-a-zA-Z]+): (?P<phone>([(]\d{3}[)]-\d{3}-\d{4}))") #Last name, comma, space, middle name, comma, space, first name, colon, space, phone number with area code.  The plus sign + finds one or more custom character class
+# assigngroupnamescompileobject = re.compile(r"(?P<last>[-a-zA-Z]+), ((?P<middle>[-a-zA-Z]+),)? (?P<first>[-a-zA-Z]+): (?P<phone>([(]\d{3}[)]-)?\d{3}-\d{4}") #Last name, comma, space, first name, space, middle name optional, colon, space, phone number for which area code optional.  Optional explanation is question mark ? finds zero or one custom character class.  The plus sign + finds one or more custom character class
+compilesearchobject = assigngroupnamescompileobject.search(fullnamephonenumber)
+print(compilesearchobject.group("last")) #print Mylastname-hyphenated
+print(compilesearchobject.group("middle")) #print Mymiddlename
+print(compilesearchobject.group("first")) #print Myfirstname
+print(compilesearchobject.group("phone")) #print (650)-555-1298
+partialfullnamephonenumber = "Mylastname-hyphenated, Myfirstnamenomiddlename: (650)-555-1298"
+assigngroupnamescompileobjectoptionals = re.compile(r"(?P<last>[-a-zA-Z]+),((?P<middle>[-a-zA-Z]+,))? (?P<first>[-a-zA-Z]+): (?P<phone>(([(]\d{3}[)])?-\d{3}-\d{4}))") #Last name, comma, space, middle name optional, comma, space, first name, colon, space, phone number with area code optional.  Optional explanation is question mark ? finds zero or one custom character class.  The plus sign + finds one or more custom character class
+compilesearchobject = assigngroupnamescompileobjectoptionals.search(partialfullnamephonenumber)
+print(compilesearchobject.group("last")) #print Mylastname-hyphenated
+if compilesearchobject.group("middle") == None:
+    print("No middle name") #print No middle name
+else:
+    print(compilesearchobject.group("middle"))
+print(compilesearchobject.group("first")) #print Myfirstnamenomiddlename
+print(compilesearchobject.group("phone")) #print (650)-555-1298
+partialfullnamepartialphonenumber = "Mylastname-hyphenated, Myfirstnamenomiddlename: 555-1298"
+assigngroupnamescompileobjectoptionals = re.compile(r"(?P<last>[-a-zA-Z]+),((?P<middle>[-a-zA-Z]+,))? (?P<first>[-a-zA-Z]+): (?P<phone>(([(]\d{3}[)]-)?\d{3}-\d{4}))") #Last name, comma, space, middle name optional, comma, space, first name, colon, space, phone number with area code optional.  Optional explanation is question mark ? finds zero or one custom character class.  The plus sign + finds one or more custom character class
+compilesearchobject = assigngroupnamescompileobjectoptionals.search(partialfullnamepartialphonenumber)
+print(compilesearchobject.group("last")) #print Mylastname-hyphenated
+if compilesearchobject.group("middle") == None:
+    print("No middle name") #print No middle name
+else:
+    print(compilesearchobject.group("middle"))
+print(compilesearchobject.group("first")) #print Myfirstnamenomiddlename
+print(compilesearchobject.group("phone")) #print 555-1298
+integerstring = "1 2 3 4 5"
+def convertintegertofloatfunction(matchobject):
+    return (matchobject.group("numberlabel") + ".0")
+
+
+searchpattern = r"(?P<numberlabel>[0-9]+)" #Looks for a number consisting of one or more digits.  Give each name the group name numberlabel.
+regexpsearchintegerinstring = re.compile(searchpattern)
+print(regexpsearchintegerinstring.sub(convertintegertofloatfunction, integerstring)) #print 1.0 2.0 3.0 4.0 5.0.  Take integerstring matching the searchpattern to the function convertintegertofloatfunction.  The function uses group to extract the matching substring from the match object matchobject to produce a new string concatenate with .0.  sub returns the new string.
 
 #A regex object's search() method searches the string it is passed for matches.  The search() method returns None if the regex pattern is not found in the string.  If the pattern is found, the search() method returns a Match object.  Match objects have a group() method which returns the actual matched text from the searched string.
 phonenumberregex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
@@ -449,6 +558,7 @@ print(re.sub(r"\t", ", ", numberstabed)) #print 1, 2, 3, 4.  Replace tab with co
 print(numberstabed) #print 1    2   3   4
 print(re.sub(r"\t", ", ", numberstabed, count=2)) #print 1, 2, 3    4.  Replace tab with comma and a space two times.
 #re.split function separates a string to list with a delimiter.  The examples separates each string by a comma and its whitespaces to a list.  Set maxsplit=number to specify the maximum number of splits.
+#The split() function returns a list where the string is split at each match.  re.split(pattern, string, maxsplit=0,flags=0).
 #\s Any space, tab, or newline character. (Think of this as matching “space” characters.)
 #Question mark ? matches zero or one occurrence.  Asterik * matches zero or more occurrences.  Plus sign + matches one or more occurrences
 numberswhitespaces = "1, 2, 3,4, 5,6,       7,8"
@@ -456,6 +566,11 @@ print(re.split(r",\s?", numberswhitespaces)) #print ['1', '2', '3', '4', '5', '6
 print(re.split(r",\s*", numberswhitespaces)) #print ['1', '2', '3', '4', '5', '6', '7', '8']
 print(re.split(r",\s+", numberswhitespaces)) #print ['1', '2', '3,4', '5,6', '7,8']
 print(re.split(r",\s*", numberswhitespaces, maxsplit=3)) #print ['1', '2', '3', '4, 5,6,       7,8']
+hotstring = "It was a hot summer hot night"
+splitathot = re.compile(r"hot")
+print(re.split(splitathot, hotstring)) #print ['It was a ', ' summer ', ' night']
+splitathotnospaces = re.compile(r" hot ")
+print(re.split(splitathotnospaces, hotstring)) #print ['It was a', 'summer', 'night']
 #re.finditer function finds every matching substring in a string and returns one match substrings at a time
 contact = "Wally White, Home:  555-555-1234, Work:  555-555-4321"
 print(re.findall(r"\d{3}-\d{3}-\d{4}", contact)) #print ['555-555-1234', '555-555-4321']
