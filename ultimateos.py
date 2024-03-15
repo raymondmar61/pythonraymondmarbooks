@@ -260,9 +260,95 @@ print(environmentvariables["OLDPWD"]) #print /home/mar
 #Run Linux commands, execute Linux commands
 import subprocess
 listfiles = subprocess.run(["ls", "-l"]) #type and execute ls -l in terminal
+listfilesneedprintfunction = subprocess.run(["ls", "-l"], capture_output=True)
+print(listfilesneedprintfunction) #print CompletedProcess(args=['ls', '-l'], returncode=0, stdout=b'total 215520\n-rwxrwxrw- 1 mar vboxsf    345082 Aug  3  2023 56_power_query_tutorials.pdf\n-rw-rw-rw- 1 mar mar          121 Jan 11 14:16 accountscreatetextfile.txt\n-rw-rw-rw- 1 mar mar           83 Mar 21  2023 accountscsvfile.csv\n-rw-rw-rw- 1 mar mar          119 Mar 21  2023 accountsjson.json\n-rwxrwxrw- 1 mar vboxsf     16175 Sep 28  2022 Admission_Predict_Ver1.1.csv\n-rw-rw-rw- 1 mar mar         8221 Jun  5  2023 advancedguidepythonprogrammingasyncio.py\n-rw-rw-rw- 1 mar mar . . .
+print(listfilesneedprintfunction.stdout) #print b'total 215520\n-rwxrwxrw- 1 mar vboxsf    345082 Aug  3  2023 56_power_query_tutorials.pdf\n-rw-rw-rw- 1 mar mar          121 Jan 11 14:16 accountscreatetextfile.txt\n-rw-rw-rw- 1 mar mar           83 Mar 21  2023 accountscsvfile.csv\n-rw-rw-rw- 1 mar mar          119 Mar 21  2023 accountsjson.json\n-rwxrwxrw- 1 mar vboxsf     16175 Sep 28  2022 Admission_Predict_Ver1.1.csv\n-rw-rw-rw- 1 mar mar         8221 Jun  5  2023 advancedguidepythonprogrammingasyncio.py\n-rw-rw-rw- 1 mar mar . . .
+print(listfilesneedprintfunction.stdout.decode())
+'''
+total 215520
+-rwxrwxrw- 1 mar vboxsf    345082 Aug  3  2023 56_power_query_tutorials.pdf
+-rw-rw-rw- 1 mar mar          121 Jan 11 14:16 accountscreatetextfile.txt
+-rw-rw-rw- 1 mar mar           83 Mar 21  2023 accountscsvfile.csv
+-rw-rw-rw- 1 mar mar          119 Mar 21  2023 accountsjson.json
+-rwxrwxrw- 1 mar vboxsf     16175 Sep 28  2022 Admission_Predict_Ver1.1.csv
+-rw-rw-rw- 1 mar mar         8221 Jun  5  2023 advancedguidepythonprogrammingasyncio.py
+...
+'''
+listfilesneedprintfunction = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+print(listfilesneedprintfunction.stdout)
+'''
+total 215520
+-rwxrwxrw- 1 mar vboxsf    345082 Aug  3  2023 56_power_query_tutorials.pdf
+-rw-rw-rw- 1 mar mar          121 Jan 11 14:16 accountscreatetextfile.txt
+-rw-rw-rw- 1 mar mar           83 Mar 21  2023 accountscsvfile.csv
+-rw-rw-rw- 1 mar mar          119 Mar 21  2023 accountsjson.json
+-rwxrwxrw- 1 mar vboxsf     16175 Sep 28  2022 Admission_Predict_Ver1.1.csv
+-rw-rw-rw- 1 mar mar         8221 Jun  5  2023 advancedguidepythonprogrammingasyncio.py
+...
+'''
+listfilesneedprintfunction = subprocess.run(["ls", "-l"], shell=True, capture_output=True, text=True)
+print(listfilesneedprintfunction.stdout)
+'''
+56_power_query_tutorials.pdf
+accountscreatetextfile.txt
+accountscsvfile.csv
+accountsjson.json
+Admission_Predict_Ver1.1.csv
+advancedguidepythonprogrammingasyncio.py
+'''
+listfilesneedprintfunction = subprocess.run(["ls", "-l"], shell=True, text=True)
+print(listfilesneedprintfunction.stdout) #print None
+listfilesneedprintfunctionpipe = subprocess.run(["ls", "-l"], stdout=subprocess.PIPE, text=True)
+print(listfilesneedprintfunctionpipe.stdout)
+'''
+56_power_query_tutorials.pdf                      generatepasswords.py                      pythondataanalyticsvisualization05timeseries.py
+ accountscreatetextfile.txt                   Im1.jpg                               pythondataanalyticsvisualization06interactingwithdatabases.py
+ accountscsvfile.csv                          Im2.png                               pythondataanalyticsvisualization07dataanalysisapplicationexamples.py
+ accountsjson.json                        imagename1.jpeg                           pythonforprogrammersbasics02.py
+ Admission_Predict_Ver1.1.csv                     imagename2.png                            pythonforprogrammersbasics.py
+ advancedguidepythonprogrammingasyncio.py             imdbratings.csv                           pythonforprogrammersregularexpressions.py
+ ...
+total 215520
+-rwxrwxrw- 1 mar vboxsf    345082 Aug  3  2023 56_power_query_tutorials.pdf
+-rw-rw-rw- 1 mar mar          121 Jan 11 14:16 accountscreatetextfile.txt
+-rw-rw-rw- 1 mar mar           83 Mar 21  2023 accountscsvfile.csv
+-rw-rw-rw- 1 mar mar          119 Mar 21  2023 accountsjson.json
+-rwxrwxrw- 1 mar vboxsf     16175 Sep 28  2022 Admission_Predict_Ver1.1.csv
+-rw-rw-rw- 1 mar mar         8221 Jun  5  2023 advancedguidepythonprogrammingasyncio.py
+...
+'''
+unsuccessfullinuxcommand = subprocess.run(["ls", "-l", "doesnotexist"], capture_output=True, text=True)
+print(unsuccessfullinuxcommand.stdout) #print *nothing*
+print(unsuccessfullinuxcommand.returncode) #print 2
+print(unsuccessfullinuxcommand.stderr) #print ls: cannot access 'doesnotexist': No such file or directory
+unsuccessfullinuxcommand = subprocess.run(["ls", "-l", "doesnotexist"], capture_output=True)
+print(unsuccessfullinuxcommand.stdout) #print b''
+print(unsuccessfullinuxcommand.returncode) #print 2
+print(unsuccessfullinuxcommand.stderr) #print b"ls: cannot access 'doesnotexist': No such file or directory\n"
 printworkingdirectory = subprocess.run(["pwd"]) #type and execute pwd in terminal
 historytrivia = subprocess.run(["calendar"]) #type and execute calendar in terminal
 #openfirefox = subprocess.run(["firefox"]) #type and execute firefox in terminal.  Opens Firefox browser.
+readtextfile = subprocess.run(["cat", "moby01.txt"], capture_output=True, text=True)
+print(readtextfile.stdout)
+'''
+Call me Ishmael. Some years ago--never mind how long precisely--
+having little or no money in my purse, and nothing particular
+to interest me on shore, I thought I would sail about a little
+and see the watery part of the world. It is a way I have
+of driving off the spleen and regulating the circulation.
+...
+'''
+readtextfilemorecommand = subprocess.run(["more", "moby01.txt"], capture_output=True, text=True)
+catviewfile = subprocess.run(["cat"], capture_output=True, text=True, input=readtextfilemorecommand.stdout)
+print(catviewfile.stdout)
+'''
+Call me Ishmael. Some years ago--never mind how long precisely--
+having little or no money in my purse, and nothing particular
+to interest me on shore, I thought I would sail about a little
+and see the watery part of the world. It is a way I have
+of driving off the spleen and regulating the circulation.
+...
+'''
 
 #https://stackoverflow.com/questions/20810366/executing-shell-script-using-subprocess-popen-in-python
 subprocess.call("echo Hello world", shell=True) #executes echo to print Hello world
@@ -270,3 +356,10 @@ subprocess.call("echo Hello world", shell=True) #executes echo to print Hello wo
 subprocess.call("calendar", shell=True) #executes calendar Linux command
 #typehelloworld = subprocess.run(["echo Hello world"]) #FileNotFoundError: [Errno 2] No such file or directory: 'echo Hello world'
 subprocess.call("echo Hello world", shell=True) #executes echo to print Hello world
+
+subprocess.call("ls *.txt", shell=True) #return text files in present directory
+listoutput = subprocess.check_output("ls *.txt", shell=True)
+print(listoutput) #print b'accountscreatetextfile.txt\nbasicreadwritefile.txt\ncombinedatatitaniclowercasecolumns.txt\ncombinedatatitanic.txt\ncopytemp.txt\nCreate Test File On My Windows.txt\n . . .
+print(type(listoutput)) #print <class 'bytes'>
+print(listoutput.decode()) #print text files in present directory
+print(type(listoutput.decode())) #print <class 'str'>
