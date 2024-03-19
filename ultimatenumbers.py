@@ -134,3 +134,88 @@ print(type(generateanumber)) #print <class 'range_iterator'>
 print(next(generateanumber)) #print 3
 print(list(generateanumber)) #print [4, 5, 6, 7, 8, 9]
 #print(next(generateanumber)) #Error message StopIteration
+
+#Itertools module
+import itertools
+#Iterate over a collection of items.  Implement the iterator protocol.  Define the __iter__ and __next__ methods.
+#Iteration works in Python:  Python asks if the object is iterable by invoking the iter builtin.  It invokes the __iter__ method.  If iterable, it returns an iterator object.  The object implements __next__.  __next__ method invoked repeatedly until it raises a StopIteration exception.
+#Count.  The count iterator counts.  count(start, increment default is 1).  You indicate where the counter starts and how much increase with each iteration.
+for i in itertools.count(1):
+    if i >= 20:
+        print("Count from 1 to 19 break now")
+        break
+    print(i)
+    '''
+    1
+    2
+    3
+    4
+    5
+    ...
+    18
+    19
+    Count from 1 to 19 break now
+    '''
+for i in itertools.count(-10, 4):
+    if i >= 20:
+        print("Count from -10 to 19 by fours break now")
+        break
+    print(i)
+    '''
+    -10
+    -6
+    -2
+    2
+    6
+    10
+    14
+    18
+    Count from -10 to 19 by fours break now
+    '''
+#Repeat.  The repeat iterator repeats a set number of times or infinitely.  The Python documentation says repeat is useful if you want to give constant values to map or zip.  Instructor never seen repeat used in practice.
+for eachrepeat in itertools.repeat(100, 5):
+    print(eachrepeat, end=", ") #print 100, 100, 100, 100, 100,
+print("\n")
+#Filterfalse.  The built-in filter function returns an iterable object based on the combination of a predicate or a function which returns True or False and an iterable.  The filter function applies the predicate to each element of the iterable.  Objects are returned when the predicate returns True.
+mylist = [10, 20, 25, 30, 35, 36, 40, 42, 45]
+for eachmylist in mylist:
+    print(eachmylist % 2) #RM:  0 is False, 1 is True
+    '''
+    0
+    0
+    1
+    0
+    1
+    0
+    0
+    0
+    1
+    '''
+mylist = [10, 20, 25, 30, 35, 36, 40, 42, 45]
+filterfalsevariable = filter(lambda x: x % 2, mylist)
+print(filterfalsevariable) #print <filter object at 0x7fb5cacd5a00>
+print(list(filterfalsevariable)) #print [25, 35, 45].  The code returns a filter list consisting of numbers in mylist which are odd.  Returns True for odd numbers x % 2 is 1.  Returns False for even numbers x % 2 is 0.
+filterfalsevariableevenumbers = filter(lambda x: not x % 2, mylist)
+print(list(filterfalsevariableevenumbers)) #print [10, 20, 30, 36, 40, 42].  The code returns a filter list consisting of numbers in mylist which are even.  Returns True for even numbers x % 2 is not 0.  Returns False for odd numbers x % 2 is not 1.
+filterfalseevenumbers = itertools.filterfalse(lambda x: x % 2, mylist)
+print(list(filterfalseevenumbers)) #print [10, 20, 30, 36, 40, 42].  The code returns a filter list consisting of numbers in mylist which are odd.  Returns True for odd numbers x % 2 is 1.  Returns False for even numbers x % 2 is 0.
+#Takewhile.  Takewhile iterators needs a predicate and an iterable.  Returns elements from the iterable as long as the predicate returns True.  The iterable stops when the predicate returns False.
+stopwhenfalseoddnumber = list(itertools.takewhile(lambda x: not x % 2, mylist))
+print(stopwhenfalseoddnumber) #print [10, 20].  Returns True when even number.  Returns False when odd number and iterator stops which is 25.
+#Dropwhile.  Dropwhile iterators needs a predicate and an iterable.  Returns elements from the iterable when the predicate returns the first False.  The iterable stops filtering when the predicate returns True.  All iterables are returned True or False.
+stopfilteringtrueoddnumber = list(itertools.dropwhile(lambda x: not x % 2, mylist))
+print(stopfilteringtrueoddnumber) #print [25, 30, 35, 36, 40, 42, 45]  #Ignores True when even number.  False when odd number. and returns the first false number and returns all numbers thereafter True or False.  In other words, the interator starts returning results from the first false to the end of the elements.
+#Product.  Takes any number of iterables as arguments.  Returns a tuple containing one element from each of the arguments.  The iterator stops after returning all possible tuples.
+#Combinations and permutations.  Combinations can be used once in an area.  Permutations all possibilities are returned.  Simple example (a, b) and (b, a) can't be used in a permutation because they're the same in combination.
+fourletterscombinewith = "abcd"
+fournumberstobecombinedwith = [10, 20, 30, 40]
+print(list(itertools.product(fourletterscombinewith, fournumberstobecombinedwith))) #print [('a', 10), ('a', 20), ('a', 30), ('a', 40), ('b', 10), ('b', 20), ('b', 30), ('b', 40), ('c', 10), ('c', 20), ('c', 30), ('c', 40), ('d', 10), ('d', 20), ('d', 30), ('d', 40)]
+print(list(itertools.product(fourletterscombinewith, fournumberstobecombinedwith, repeat=2))) #print [('a', 10, 'a', 10), ('a', 10, 'a', 20), ('a', 10, 'a', 30), ('a', 10, 'a', 40), ('a', 10, 'b', 10), ('a', 10, 'b', 20), ('a', 10, 'b', 30), ('a', 10, 'b', 40), ('a', 10, 'c', 10), ('a', 10, 'c', 20), ('a', 10, 'c', 30), ('a', 10, 'c', 40), ('a', 10, 'd', 10), ('a', 10, 'd', 20), ('a', 10, 'd', 30), ('a', 10, 'd', 40), ('a', 20, 'a', 10), ('a', 20, 'a', 20), ('a', 20, 'a', 30), ('a', 20, 'a', 40), ('a', 20, 'b', 10), ('a', 20, 'b', 20), ('a', 20, 'b', 30), ('a', 20, 'b', 40), ('a', 20, 'c', 10), ('a', 20, 'c', 20), ('a', 20, 'c', 30), . . .]
+print(list(itertools.combinations(fourletterscombinewith, 4))) #print [('a', 'b', 'c', 'd')]
+print(list(itertools.combinations(fourletterscombinewith, 2))) #print [('a', 'b'), ('a', 'c'), ('a', 'd'), ('b', 'c'), ('b', 'd'), ('c', 'd')]
+print(list(itertools.permutations(fourletterscombinewith))) #print [('a', 'b', 'c', 'd'), ('a', 'b', 'd', 'c'), ('a', 'c', 'b', 'd'), ('a', 'c', 'd', 'b'), ('a', 'd', 'b', 'c'), ('a', 'd', 'c', 'b'), ('b', 'a', 'c', 'd'), ('b', 'a', 'd', 'c'), ('b', 'c', 'a', 'd'), ('b', 'c', 'd', 'a'), ('b', 'd', 'a', 'c'), ('b', 'd', 'c', 'a'), ('c', 'a', 'b', 'd'), ('c', 'a', 'd', 'b'), ('c', 'b', 'a', 'd'), ('c', 'b', 'd', 'a'), ('c', 'd', 'a', 'b'), ('c', 'd', 'b', 'a'), ('d', 'a', 'b', 'c'), ('d', 'a', 'c', 'b'), ('d', 'b', 'a', 'c'), ('d', 'b', 'c', 'a'), ('d', 'c', 'a', 'b'), ('d', 'c', 'b', 'a')]
+print(list(itertools.permutations(fourletterscombinewith, 2))) #print [('a', 'b'), ('a', 'c'), ('a', 'd'), ('b', 'a'), ('b', 'c'), ('b', 'd'), ('c', 'a'), ('c', 'b'), ('c', 'd'), ('d', 'a'), ('d', 'b'), ('d', 'c')]
+minigymfiveworkouts = itertools.combinations(range(1, 6), 2)
+print(list(minigymfiveworkouts)) #print [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+print(list(itertools.combinations_with_replacement(fourletterscombinewith, 3))) #print [('a', 'a', 'a'), ('a', 'a', 'b'), ('a', 'a', 'c'), ('a', 'a', 'd'), ('a', 'b', 'b'), ('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'c'), ('a', 'c', 'd'), ('a', 'd', 'd'), ('b', 'b', 'b'), ('b', 'b', 'c'), ('b', 'b', 'd'), ('b', 'c', 'c'), ('b', 'c', 'd'), ('b', 'd', 'd'), ('c', 'c', 'c'), ('c', 'c', 'd'), ('c', 'd', 'd'), ('d', 'd', 'd')]
+print(list(itertools.combinations_with_replacement(fournumberstobecombinedwith, 2))) #print [(10, 10), (10, 20), (10, 30), (10, 40), (20, 20), (20, 30), (20, 40), (30, 30), (30, 40), (40, 40)]
