@@ -1,3 +1,67 @@
+import collections
+listofwords = ['call', 'me', 'ishmael', 'some', 'years', 'ago', 'never', 'mind', 'how', 'long', 'precisely', 'having', 'little', 'or', 'no', 'money', 'in', 'my', 'purse', 'and', 'nothing', 'particular', 'to', 'interest', 'me', 'on', 'shore', 'i', 'thought', 'i', 'would', 'sail', 'about', 'a', 'little', 'and', 'see', 'the', 'watery', 'part', 'of', 'the', 'world', 'it', 'is', 'a', 'way', 'i', 'have', 'of', 'driving', 'off', 'the', 'spleen', 'and', 'regulating', 'the', 'circulation', 'whenever', 'i', 'find', 'myself', 'growing', 'grim', 'about', 'the', 'mouth', 'whenever', 'it', 'is', 'a', 'damp', 'drizzly', 'november', 'in', 'my', 'soul', 'whenever', 'i', 'find', 'myself', 'involuntarily', 'pausing', 'before', 'coffin', 'warehouses', 'and', 'bringing', 'up', 'the', 'rear', 'of', 'every', 'funeral', 'i', 'meet', 'and', 'especially', 'whenever', 'my', 'hypos', 'get', 'such', 'an', 'upper', 'hand', 'of', 'me', 'that', 'it', 'requires', 'a', 'strong', 'moral', 'principle', 'to', 'prevent', 'me', 'from', 'deliberately', 'stepping', 'into', 'the', 'street', 'and', 'methodically', 'knocking', 'people', 's', 'hats', 'off', 'then', 'i', 'account', 'it', 'high', 'time', 'to', 'get', 'to', 'sea', 'as', 'soon', 'as', 'i', 'can', 'this', 'is', 'my', 'substitute', 'for', 'pistol', 'and', 'ball', 'with', 'a', 'philosophical', 'flourish', 'cato', 'throws', 'himself', 'upon', 'his', 'sword', 'i', 'quietly', 'take', 'to', 'the', 'ship', 'there', 'is', 'nothing', 'surprising', 'in', 'this', 'if', 'they', 'but', 'knew', 'it', 'almost', 'all', 'men', 'in', 'their', 'degree', 'some', 'time', 'or', 'other', 'cherish', 'very', 'nearly', 'the', 'same', 'feelings', 'towards', 'the', 'ocean', 'with', 'me', 'there', 'now', 'is', 'your', 'insular', 'city', 'of', 'the', 'manhattoes', 'belted', 'round', 'by', 'wharves', 'as', 'indian', 'isles', 'by', 'coral', 'reefs', 'commerce', 'surrounds', 'it', 'with', 'her', 'surf', 'right', 'and', 'left', 'the', 'streets', 'take', 'you', 'waterward', 'its', 'extreme', 'downtown', 'is', 'the', 'battery', 'where', 'that', 'noble', 'mole', 'is', 'washed', 'by', 'waves', 'and', 'cooled', 'by', 'breezes', 'which', 'a', 'few', 'hours', 'previous', 'were', 'out', 'of', 'sight', 'of', 'land', 'look', 'at', 'the', 'crowds', 'of', 'water', 'gazers', 'there']
+wordcounttopten = collections.Counter(listofwords).most_common(10)
+print(wordcounttopten) #print [('the', 14), ('and', 9), ('i', 9), ('of', 8), ('is', 7), ('a', 6), ('it', 6), ('me', 5), ('to', 5), ('in', 4)]
+
+import copy
+letterslist = ["a", "b", "c", "d"]
+print(letterslist) #print ['a', 'b', 'c', 'd']
+cheeseletterslist = copy.copy(letterslist) #copy.copy makes a duplicate copy of a mutable value such as a list or dictionary
+print(cheeseletterslist) #print ['a', 'b', 'c', 'd']
+print(letterslist) #print ['a', 'b', 'c', 'd']
+cheeseletterslist[1] = "cheese"
+print(cheeseletterslist) #print ['a', 'cheese', 'c', 'd']
+print(letterslist) #print ['a', 'b', 'c', 'd']
+letterslist = ["a", "b", "c", "d"]
+cheeseletterslist = letterslist
+print(cheeseletterslist) #print ['a', 'b', 'c', 'd']
+print(letterslist) #print ['a', 'b', 'c', 'd']
+
+import csv
+with open("csvmodule.csv", "w") as fileobject:
+    columnheaders = "columnheader1,columnheader2,columnheader3"
+    fileobject.write(str(columnheaders) + "\n")
+    newrecord = "Brian,73,Taurus\n"
+    aplacementrow = "Name,Age,Star sign"
+    fileobject.write(str(aplacementrow) + "\n")
+    fileobject.write("Sandra,48,Virgo" + "\n")
+    fileobject.write("Zoe,25,Scorpio" + "\n")
+    fileobject.write("Keith,43,Leo" + "\n")
+    fileobject.write("Raymond,74,Leo")
+with open("csvmodule.csv", "r") as fileobject:
+    usereadmethod = fileobject.read()
+    print(usereadmethod)
+    '''
+    columnheader1,columnheader2,columnheader3
+    Name,Age,Star sign
+    Sandra,48,Virgo
+    Zoe,25,Scorpio
+    Keith,43,Leo
+    Raymond,74,Leo
+    '''
+openfiletolist = list(csv.reader(open("csvmodule.csv")))
+print(openfiletolist) #print [['columnheader1', 'columnheader2', 'columnheader3'], ['Name', 'Age', 'Star sign'], ['Sandra', '48', 'Virgo'], ['Zoe', '25', 'Scorpio'], ['Keith', '43', 'Leo'], ['Raymond', '74', 'Leo']]
+for eachopenfiletolist in openfiletolist:
+    listtostring = ",".join(map(str, eachopenfiletolist))
+    print(listtostring)
+    '''
+    columnheader1,columnheader2,columnheader3
+    Name,Age,Star sign
+    Sandra,48,Virgo
+    Zoe,25,Scorpio
+    Keith,43,Leo
+    Raymond,74,Leo
+    '''
+seachterm = "Leo"
+for eachopenfiletolist in openfiletolist:
+    listtostring = ",".join(map(str, eachopenfiletolist))
+    if seachterm in listtostring:
+        print("Found searchterm: " + listtostring)
+        '''
+        Found searchterm: Keith,43,Leo
+        Found searchterm: Raymond,74,Leo
+        '''
+
 import importfile
 #import a file with objects; import python file importfile.py
 xis4 = importfile.x
@@ -10,6 +74,128 @@ print(y) #print 5
 import importfile as ifxy
 print(ifxy.x) #print 4
 print(ifxy.y) #print 5
+
+import itertools
+#Iterate over a collection of items.  Implement the iterator protocol.  Define the __iter__ and __next__ methods.
+#Iteration works in Python:  Python asks if the object is iterable by invoking the iter builtin.  It invokes the __iter__ method.  If iterable, it returns an iterator object.  The object implements __next__.  __next__ method invoked repeatedly until it raises a StopIteration exception.
+#Count.  The count iterator counts.  count(start, increment default is 1).  You indicate where the counter starts and how much increase with each iteration.
+for i in itertools.count(1):
+    if i >= 20:
+        print("Count from 1 to 19 break now")
+        break
+    print(i)
+    '''
+    1
+    2
+    3
+    4
+    5
+    ...
+    18
+    19
+    Count from 1 to 19 break now
+    '''
+for i in itertools.count(-10, 4):
+    if i >= 20:
+        print("Count from -10 to 19 by fours break now")
+        break
+    print(i)
+    '''
+    -10
+    -6
+    -2
+    2
+    6
+    10
+    14
+    18
+    Count from -10 to 19 by fours break now
+    '''
+#Cycle.  The cycle iterator starts from the front to the back and repeats.
+cyclestartsfromfronttobackrepeating = ["Giants", "Warriors", "49ers", "A's", "Sharks", "Earthquakes"]
+counter = 1
+for needcountertostopcycle in itertools.cycle(cyclestartsfromfronttobackrepeating):
+    if counter > 20:
+        break
+    else:
+        print(counter, needcountertostopcycle)
+        counter += 1
+        '''
+        1 Giants
+        2 Warriors
+        3 49ers
+        4 A's
+        5 Sharks
+        6 Earthquakes
+        7 Giants
+        ...
+        19 Giants
+        20 Warriors
+        '''
+#Repeat.  The repeat iterator repeats a set number of times or infinitely.  The Python documentation says repeat is useful if you want to give constant values to map or zip.  Instructor never seen repeat used in practice.
+for eachrepeat in itertools.repeat(100, 5):
+    print(eachrepeat, end=", ") #print 100, 100, 100, 100, 100,
+print("\n")
+
+#Filterfalse.  The built-in filter function returns an iterable object based on the combination of a predicate or a function which returns True or False and an iterable.  The filter function applies the predicate to each element of the iterable.  Objects are returned when the predicate returns True.
+mylist = [10, 20, 25, 30, 35, 36, 40, 42, 45]
+for eachmylist in mylist:
+    print(eachmylist % 2) #RM:  0 is False, 1 is True
+    '''
+    0
+    0
+    1
+    0
+    1
+    0
+    0
+    0
+    1
+    '''
+mylist = [10, 20, 25, 30, 35, 36, 40, 42, 45]
+filterfalsevariable = filter(lambda x: x % 2, mylist)
+print(filterfalsevariable) #print <filter object at 0x7fb5cacd5a00>
+print(list(filterfalsevariable)) #print [25, 35, 45].  The code returns a filter list consisting of numbers in mylist which are odd.  Returns True for odd numbers x % 2 is 1.  Returns False for even numbers x % 2 is 0.
+filterfalsevariableevenumbers = filter(lambda x: not x % 2, mylist)
+print(list(filterfalsevariableevenumbers)) #print [10, 20, 30, 36, 40, 42].  The code returns a filter list consisting of numbers in mylist which are even.  Returns True for even numbers x % 2 is not 0.  Returns False for odd numbers x % 2 is not 1.
+filterfalseevenumbers = itertools.filterfalse(lambda x: x % 2, mylist)
+print(list(filterfalseevenumbers)) #print [10, 20, 30, 36, 40, 42].  The code returns a filter list consisting of numbers in mylist which are odd.  Returns True for odd numbers x % 2 is 1.  Returns False for even numbers x % 2 is 0.
+#Takewhile.  Takewhile iterators needs a predicate and an iterable.  Returns elements from the iterable as long as the predicate returns True.  The iterable stops when the predicate returns False.
+stopwhenfalseoddnumber = list(itertools.takewhile(lambda x: not x % 2, mylist))
+print(stopwhenfalseoddnumber) #print [10, 20].  Returns True when even number.  Returns False when odd number and iterator stops which is 25.
+#Dropwhile.  Dropwhile iterators needs a predicate and an iterable.  Returns elements from the iterable when the predicate returns the first False.  The iterable stops filtering when the predicate returns True.  All iterables are returned True or False.
+stopfilteringtrueoddnumber = list(itertools.dropwhile(lambda x: not x % 2, mylist))
+print(stopfilteringtrueoddnumber) #print [25, 30, 35, 36, 40, 42, 45]  #Ignores True when even number.  False when odd number. and returns the first false number and returns all numbers thereafter True or False.  In other words, the interator starts returning results from the first false to the end of the elements.
+
+#Compress.  We provide two iterables of equal lengths.  We get the elements from the first iterable whenever the corresponding elements from the second iterable is True.  However, the iterator stops when it finishes the shorter of the two iterable.\
+print([True] * 8) #print [True, True, True, True, True, True, True, True]
+tenlettersonestring = "abcdefghij"
+eightletterseighttrues = itertools.compress(tenlettersonestring, [True] * 8)
+print(eightletterseighttrues) #print <itertools.compress object at 0x7f262e1f5b50>
+print(list(eightletterseighttrues)) #print ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+threefalses = [True, False, True, False, False, True]
+threelettersthreefalses = itertools.compress(tenlettersonestring, threefalses)
+print(list(threelettersthreefalses)) #print ['a', 'c', 'f']
+combinationtruefalses = [False, False, "c", False, "e", True, "G", "HH", ""]
+print(list(itertools.compress(tenlettersonestring, combinationtruefalses))) #print ['c', 'e', 'f', 'g', 'h']
+#Accumulate.  Provides a running total on the numbers.  Running sum.
+runningtotaltentofifty = list(itertools.accumulate([10, 20, 30, 40, 50]))
+print(runningtotaltentofifty) #print [10, 30, 60, 100, 150]
+
+#Product.  Takes any number of iterables as arguments.  Returns a tuple containing one element from each of the arguments.  The iterator stops after returning all possible tuples.
+#Combinations and permutations.  Combinations can be used once in an area.  Permutations all possibilities are returned.  Simple example (a, b) and (b, a) can't be used in a permutation because they're the same in combination.
+fourletterscombinewith = "abcd"
+fournumberstobecombinedwith = [10, 20, 30, 40]
+print(list(itertools.product(fourletterscombinewith, fournumberstobecombinedwith))) #print [('a', 10), ('a', 20), ('a', 30), ('a', 40), ('b', 10), ('b', 20), ('b', 30), ('b', 40), ('c', 10), ('c', 20), ('c', 30), ('c', 40), ('d', 10), ('d', 20), ('d', 30), ('d', 40)]
+print(list(itertools.product(fourletterscombinewith, fournumberstobecombinedwith, repeat=2))) #print [('a', 10, 'a', 10), ('a', 10, 'a', 20), ('a', 10, 'a', 30), ('a', 10, 'a', 40), ('a', 10, 'b', 10), ('a', 10, 'b', 20), ('a', 10, 'b', 30), ('a', 10, 'b', 40), ('a', 10, 'c', 10), ('a', 10, 'c', 20), ('a', 10, 'c', 30), ('a', 10, 'c', 40), ('a', 10, 'd', 10), ('a', 10, 'd', 20), ('a', 10, 'd', 30), ('a', 10, 'd', 40), ('a', 20, 'a', 10), ('a', 20, 'a', 20), ('a', 20, 'a', 30), ('a', 20, 'a', 40), ('a', 20, 'b', 10), ('a', 20, 'b', 20), ('a', 20, 'b', 30), ('a', 20, 'b', 40), ('a', 20, 'c', 10), ('a', 20, 'c', 20), ('a', 20, 'c', 30), . . .]
+print(list(itertools.combinations(fourletterscombinewith, 4))) #print [('a', 'b', 'c', 'd')]
+print(list(itertools.combinations(fourletterscombinewith, 2))) #print [('a', 'b'), ('a', 'c'), ('a', 'd'), ('b', 'c'), ('b', 'd'), ('c', 'd')]
+print(list(itertools.permutations(fourletterscombinewith))) #print [('a', 'b', 'c', 'd'), ('a', 'b', 'd', 'c'), ('a', 'c', 'b', 'd'), ('a', 'c', 'd', 'b'), ('a', 'd', 'b', 'c'), ('a', 'd', 'c', 'b'), ('b', 'a', 'c', 'd'), ('b', 'a', 'd', 'c'), ('b', 'c', 'a', 'd'), ('b', 'c', 'd', 'a'), ('b', 'd', 'a', 'c'), ('b', 'd', 'c', 'a'), ('c', 'a', 'b', 'd'), ('c', 'a', 'd', 'b'), ('c', 'b', 'a', 'd'), ('c', 'b', 'd', 'a'), ('c', 'd', 'a', 'b'), ('c', 'd', 'b', 'a'), ('d', 'a', 'b', 'c'), ('d', 'a', 'c', 'b'), ('d', 'b', 'a', 'c'), ('d', 'b', 'c', 'a'), ('d', 'c', 'a', 'b'), ('d', 'c', 'b', 'a')]
+print(list(itertools.permutations(fourletterscombinewith, 2))) #print [('a', 'b'), ('a', 'c'), ('a', 'd'), ('b', 'a'), ('b', 'c'), ('b', 'd'), ('c', 'a'), ('c', 'b'), ('c', 'd'), ('d', 'a'), ('d', 'b'), ('d', 'c')]
+minigymfiveworkouts = itertools.combinations(range(1, 6), 2)
+print(list(minigymfiveworkouts)) #print [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+print(list(itertools.combinations_with_replacement(fourletterscombinewith, 3))) #print [('a', 'a', 'a'), ('a', 'a', 'b'), ('a', 'a', 'c'), ('a', 'a', 'd'), ('a', 'b', 'b'), ('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'c'), ('a', 'c', 'd'), ('a', 'd', 'd'), ('b', 'b', 'b'), ('b', 'b', 'c'), ('b', 'b', 'd'), ('b', 'c', 'c'), ('b', 'c', 'd'), ('b', 'd', 'd'), ('c', 'c', 'c'), ('c', 'c', 'd'), ('c', 'd', 'd'), ('d', 'd', 'd')]
+print(list(itertools.combinations_with_replacement(fournumberstobecombinedwith, 2))) #print [(10, 10), (10, 20), (10, 30), (10, 40), (20, 20), (20, 30), (20, 40), (30, 30), (30, 40), (40, 40)]
 
 import pickle
 #Pickle module write to a file and read from a file
@@ -77,6 +263,63 @@ with open("dictionarynumberpklfile.pkl", "wb") as writefileobject:
 with open("dictionarynumberpklfile.pkl", "rb") as readfileobject:
     openpicklefile = pickle.load(readfileobject)
     print(openpicklefile) #print {'a': 1, 'b': 2, 'c': 3}
+
+import pprint
+mobydicktext = "Call me Ishmael. Some years ago--never mind how long precisely-- having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off--then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.\n There now is your insular city of the Manhattoes, belted round by wharves as Indian isles by coral reefs--commerce surrounds it with her surf. Right and left, the streets take you waterward. Its extreme downtown is the battery, where that noble mole is washed by waves, and cooled by breezes, which a few hours previous were out of sight of land.  Look at the crowds of water - gazers there."
+cleanoutput = pprint.pprint(mobydicktext) #RM:  I don't understand from the tutorial file automatetheboringstuffpythonbasics.py
+print(cleanoutput)
+'''
+('Call me Ishmael. Some years ago--never mind how long precisely-- having '
+ 'little or no money in my purse, and nothing particular to interest me on '
+ 'shore, I thought I would sail about a little and see the watery part of the '
+ 'world. It is a way I have of driving off the spleen and regulating the '
+ 'circulation. Whenever I find myself growing grim about the mouth; whenever '
+ 'it is a damp, drizzly November in my soul; whenever I find myself '
+ 'involuntarily pausing before coffin warehouses, and bringing up the rear of '
+ 'every funeral I meet; and especially whenever my hypos get such an upper '
+ 'hand of me, that it requires a strong moral principle to prevent me from '
+ "deliberately stepping into the street, and methodically knocking people's "
+ 'hats off--then, I account it high time to get to sea as soon as I can. This '
+ 'is my substitute for pistol and ball. With a philosophical flourish Cato '
+ 'throws himself upon his sword; I quietly take to the ship. There is nothing '
+ 'surprising in this. If they but knew it, almost all men in their degree, '
+ 'some time or other, cherish very nearly the same feelings towards the ocean '
+ 'with me.\n'
+ ' There now is your insular city of the Manhattoes, belted round by wharves '
+ 'as Indian isles by coral reefs--commerce surrounds it with her surf. Right '
+ 'and left, the streets take you waterward. Its extreme downtown is the '
+ 'battery, where that noble mole is washed by waves, and cooled by breezes, '
+ 'which a few hours previous were out of sight of land.  Look at the crowds of '
+ 'water - gazers there.')
+None
+'''
+print(type(cleanoutput)) #print <class 'NoneType'>
+print(pprint.pformat(mobydicktext))
+'''
+('Call me Ishmael. Some years ago--never mind how long precisely-- having '
+ 'little or no money in my purse, and nothing particular to interest me on '
+ 'shore, I thought I would sail about a little and see the watery part of the '
+ 'world. It is a way I have of driving off the spleen and regulating the '
+ 'circulation. Whenever I find myself growing grim about the mouth; whenever '
+ 'it is a damp, drizzly November in my soul; whenever I find myself '
+ 'involuntarily pausing before coffin warehouses, and bringing up the rear of '
+ 'every funeral I meet; and especially whenever my hypos get such an upper '
+ 'hand of me, that it requires a strong moral principle to prevent me from '
+ "deliberately stepping into the street, and methodically knocking people's "
+ 'hats off--then, I account it high time to get to sea as soon as I can. This '
+ 'is my substitute for pistol and ball. With a philosophical flourish Cato '
+ 'throws himself upon his sword; I quietly take to the ship. There is nothing '
+ 'surprising in this. If they but knew it, almost all men in their degree, '
+ 'some time or other, cherish very nearly the same feelings towards the ocean '
+ 'with me.\n'
+ ' There now is your insular city of the Manhattoes, belted round by wharves '
+ 'as Indian isles by coral reefs--commerce surrounds it with her surf. Right '
+ 'and left, the streets take you waterward. Its extreme downtown is the '
+ 'battery, where that noble mole is washed by waves, and cooled by breezes, '
+ 'which a few hours previous were out of sight of land.  Look at the crowds of '
+ 'water - gazers there.')
+'''
+print(type(pprint.pformat(mobydicktext))) #print <class 'str'>
 
 import subprocess
 listfiles = subprocess.run(["ls", "-l"]) #type and execute ls -l in terminal
@@ -185,6 +428,13 @@ print(listoutput.decode()) #print text files in present directory
 print(type(listoutput.decode())) #print <class 'str'>
 
 import sys
+while True:
+    response = input("Terminate a program or exit calling sys.exit() function.  Type exit to exit. ")
+    if response == "exit":
+        sys.exit()
+    else:
+        continue
+
 sys.stderr.write("pronounced s-t-err for errors\n") #return pronounced s-t-err for errors
 sys.stderr.flush()
 sys.stdout.write("pronounced s-t-out for output\n") #return pronounced s-t-out for output
