@@ -1,3 +1,5 @@
+#Modules import collections, copy, csv, fileinput, importfile, itertools, operator, pathlib, pickle, pprint, shutil, subprocess, sys, usefultoolspythonfile RM:  it's a python file module import python file usefultoolspythonfile.py, zipfile
+
 import collections
 listofwords = ['call', 'me', 'ishmael', 'some', 'years', 'ago', 'never', 'mind', 'how', 'long', 'precisely', 'having', 'little', 'or', 'no', 'money', 'in', 'my', 'purse', 'and', 'nothing', 'particular', 'to', 'interest', 'me', 'on', 'shore', 'i', 'thought', 'i', 'would', 'sail', 'about', 'a', 'little', 'and', 'see', 'the', 'watery', 'part', 'of', 'the', 'world', 'it', 'is', 'a', 'way', 'i', 'have', 'of', 'driving', 'off', 'the', 'spleen', 'and', 'regulating', 'the', 'circulation', 'whenever', 'i', 'find', 'myself', 'growing', 'grim', 'about', 'the', 'mouth', 'whenever', 'it', 'is', 'a', 'damp', 'drizzly', 'november', 'in', 'my', 'soul', 'whenever', 'i', 'find', 'myself', 'involuntarily', 'pausing', 'before', 'coffin', 'warehouses', 'and', 'bringing', 'up', 'the', 'rear', 'of', 'every', 'funeral', 'i', 'meet', 'and', 'especially', 'whenever', 'my', 'hypos', 'get', 'such', 'an', 'upper', 'hand', 'of', 'me', 'that', 'it', 'requires', 'a', 'strong', 'moral', 'principle', 'to', 'prevent', 'me', 'from', 'deliberately', 'stepping', 'into', 'the', 'street', 'and', 'methodically', 'knocking', 'people', 's', 'hats', 'off', 'then', 'i', 'account', 'it', 'high', 'time', 'to', 'get', 'to', 'sea', 'as', 'soon', 'as', 'i', 'can', 'this', 'is', 'my', 'substitute', 'for', 'pistol', 'and', 'ball', 'with', 'a', 'philosophical', 'flourish', 'cato', 'throws', 'himself', 'upon', 'his', 'sword', 'i', 'quietly', 'take', 'to', 'the', 'ship', 'there', 'is', 'nothing', 'surprising', 'in', 'this', 'if', 'they', 'but', 'knew', 'it', 'almost', 'all', 'men', 'in', 'their', 'degree', 'some', 'time', 'or', 'other', 'cherish', 'very', 'nearly', 'the', 'same', 'feelings', 'towards', 'the', 'ocean', 'with', 'me', 'there', 'now', 'is', 'your', 'insular', 'city', 'of', 'the', 'manhattoes', 'belted', 'round', 'by', 'wharves', 'as', 'indian', 'isles', 'by', 'coral', 'reefs', 'commerce', 'surrounds', 'it', 'with', 'her', 'surf', 'right', 'and', 'left', 'the', 'streets', 'take', 'you', 'waterward', 'its', 'extreme', 'downtown', 'is', 'the', 'battery', 'where', 'that', 'noble', 'mole', 'is', 'washed', 'by', 'waves', 'and', 'cooled', 'by', 'breezes', 'which', 'a', 'few', 'hours', 'previous', 'were', 'out', 'of', 'sight', 'of', 'land', 'look', 'at', 'the', 'crowds', 'of', 'water', 'gazers', 'there']
 wordcounttopten = collections.Counter(listofwords).most_common(10)
@@ -60,6 +62,124 @@ for eachopenfiletolist in openfiletolist:
         '''
         Found searchterm: Keith,43,Leo
         Found searchterm: Raymond,74,Leo
+        '''
+
+import fileinput
+#import multiple files
+with fileinput.input(files=("moby01.txt", "waldosentences.txt", "basicreadwritefile.txt")) as fileobjectvariable:
+    for printtext in fileobjectvariable:
+        print(printtext, end="")
+        print("filename: " + fileobjectvariable.filename()) #print filename: temp.txt
+        print("True or False is the line the first line:", fileobjectvariable.isfirstline()) #print The first line: True
+        print("The line number:", fileobjectvariable.lineno()) #print The first line number: 1
+        print("The file line number:", fileobjectvariable.filelineno()) #print The first file line number: 1
+        print("\n")
+        '''
+        Call me Ishmael. Some years ago--never mind how long precisely--
+        filename: moby01.txt
+        True or False is the line the first line: True
+        The line number: 1
+        The file line number: 1
+
+
+        having little or no money in my purse, and nothing particular
+        filename: moby01.txt
+        True or False is the line the first line: False
+        The line number: 2
+        The file line number: 2
+
+
+        to interest me on shore, I thought I would sail about a little
+        filename: moby01.txt
+        True or False is the line the first line: False
+        The line number: 3
+        The file line number: 3
+
+
+        and see the watery part of the world. It is a way I have
+        filename: moby01.txt
+        True or False is the line the first line: False
+        The line number: 4
+        The file line number: 4
+
+        . . .
+
+        by breezes, which a few hours previous were out of sight of land.
+        filename: moby01.txt
+        True or False is the line the first line: False
+        The line number: 25
+        The file line number: 25
+
+
+        Look at the crowds of water-gazers there.filename: moby01.txt
+        True or False is the line the first line: False
+        The line number: 26
+        The file line number: 26
+
+
+        Page number 2:  Amet porttitor Waldo eget dolor morbi non arcu risus
+        filename: waldosentences.txt
+        True or False is the line the first line: True
+        The line number: 27
+        The file line number: 1
+
+
+        Page number 7:  Risus nec feugiat in Waldo fermentum posuere urna nec tincidunt praesent
+        filename: waldosentences.txt
+        True or False is the line the first line: False
+        The line number: 28
+        The file line number: 2
+
+
+        Page number 10:  Quisque sagittis purus sit Waldo amet volutpat consequat mauris
+        filename: waldosentences.txt
+        True or False is the line the first line: False
+        The line number: 29
+        The file line number: 3
+
+        . . .
+
+        Page number 26:  Posuere urna nec tincidunt praesent semper Waldo feugiat nibh sed pulvinarfilename: waldosentences.txt
+        True or False is the line the first line: False
+        The line number: 35
+        The file line number: 9
+
+
+        Write function write to file.
+        filename: basicreadwritefile.txt
+        True or False is the line the first line: True
+        The line number: 36
+        The file line number: 1
+
+
+        Second line need \n.
+        filename: basicreadwritefile.txt
+        True or False is the line the first line: False
+        The line number: 37
+        The file line number: 2
+
+
+        Close() function to close file.
+        filename: basicreadwritefile.txt
+        True or False is the line the first line: False
+        The line number: 38
+        The file line number: 3
+        '''
+with fileinput.input(files=("moby01.txt", "waldosentences.txt", "basicreadwritefile.txt")) as fileobjectvariable:
+    for printtext in fileobjectvariable:
+        print(printtext, end="")
+        '''
+        Call me Ishmael. Some years ago--never mind how long precisely--
+        having little or no money in my purse, and nothing particular
+        . . .
+        by breezes, which a few hours previous were out of sight of land.
+        Look at the crowds of water-gazers there.Page number 2:  Amet porttitor Waldo eget dolor morbi non arcu risus
+        Page number 7:  Risus nec feugiat in Waldo fermentum posuere urna nec tincidunt praesent
+        Page number 10:  Quisque sagittis purus sit Waldo amet volutpat consequat mauris
+        . . .
+        Page number 26:  Posuere urna nec tincidunt praesent semper Waldo feugiat nibh sed pulvinarWrite function write to file.
+        Second line need \n.
+        Close() function to close file.
         '''
 
 import importfile
@@ -197,6 +317,29 @@ print(list(minigymfiveworkouts)) #print [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3),
 print(list(itertools.combinations_with_replacement(fourletterscombinewith, 3))) #print [('a', 'a', 'a'), ('a', 'a', 'b'), ('a', 'a', 'c'), ('a', 'a', 'd'), ('a', 'b', 'b'), ('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'c'), ('a', 'c', 'd'), ('a', 'd', 'd'), ('b', 'b', 'b'), ('b', 'b', 'c'), ('b', 'b', 'd'), ('b', 'c', 'c'), ('b', 'c', 'd'), ('b', 'd', 'd'), ('c', 'c', 'c'), ('c', 'c', 'd'), ('c', 'd', 'd'), ('d', 'd', 'd')]
 print(list(itertools.combinations_with_replacement(fournumberstobecombinedwith, 2))) #print [(10, 10), (10, 20), (10, 30), (10, 40), (20, 20), (20, 30), (20, 40), (30, 30), (30, 40), (40, 40)]
 
+import operator #https://stackoverflow.com/questions/4174941/how-to-sort-a-list-of-lists-by-a-specific-index-of-the-inner-list
+sortlistwithinalist = [[1, 2, 3], [2, 1, 3], [4, 0, 1]]
+print(sortlistwithinalist) #print [[1, 2, 3], [2, 1, 3], [4, 0, 1]]
+sortlistwithinalist.sort(key=operator.itemgetter(0))
+print(sortlistwithinalist) #print [[1, 2, 3], [2, 1, 3], [4, 0, 1]]
+sortlistwithinalist.sort(key=operator.itemgetter(1)) #Sort the second element or index number one in the sublists
+print(sortlistwithinalist) #print [[4, 0, 1], [2, 1, 3], [1, 2, 3]]
+sortlistwithinalist = [[10, 25, 39], [200, 111, 354], [400, -1, 1123]]
+print(sortlistwithinalist) #print [[10, 25, 39], [200, 111, 354], [400, -1, 1123]]
+sortlistwithinalist.sort(key=operator.itemgetter(1))
+print(sortlistwithinalist) #print [[400, -1, 1123], [10, 25, 39], [200, 111, 354]]
+
+import pathlib
+currentpath = pathlib.Path()
+print(currentpath.cwd()) #print /home/mar/python
+print(currentpath.cwd().parts) #print ('/', 'home', 'mar', 'python').  parts is part of the pathlib module.  parts property returns a tuple of all the components of a path.
+print(currentpath.cwd().parent) #print /home/mar.  parent is part of the pathlib module.  parent property returns the path up to the second to the last name or excludes the last name.
+print(currentpath.cwd().name) #print python.  name is part of the pathlib module.  name property returns the basename of the path.
+print(currentpath.joinpath("media", "sf_UbuntuShare2004", "deletefolder")) #print media/sf_UbuntuShare2004/deletefolder
+print(currentpath.joinpath("i", "make", "up", "a", "path")) #print i/make/up/a/path
+print(currentpath.joinpath("home", "mar", "python", "yytest.py")) #print home/mar/python/yytest.py
+print(currentpath.joinpath("home", "mar", "python", "yytest.py").suffix) #print .py.  suffix is part of the pathlib module.  suffix returns the dotted extension or file type.
+
 import pickle
 #Pickle module write to a file and read from a file
 studentsgradesdictionarylist = {"andy": ["A", "A", "B"], "laura": ["B", "B", "A"], "sam": ["A", "B", "C"]}
@@ -320,6 +463,25 @@ print(pprint.pformat(mobydicktext))
  'water - gazers there.')
 '''
 print(type(pprint.pformat(mobydicktext))) #print <class 'str'>
+
+import shutil
+import os
+copyfiletoanotherdirectory = shutil.copy("moby01.txt", "/home/mar") #copy temp.txt file in the python directory /home/mar/python to /home/mar
+copyfiletoanotherdirectory
+copyfilenewnametoanotherdirectory = shutil.copy("moby01.txt", "/home/mar/renamemoby01.txt") #copy temp.txt file in the python directory /home/mar/python to /home/mar under new file name renamemoby01.txt
+copyfilenewnametoanotherdirectory
+copydirectorytoanotherlocation = shutil.copytree("/home/mar/python", "/home/mar/createnewdirectory/") #copy python directory to a new directory name createnewdirectory
+copydirectorytoanotherlocation
+# os.rmdir("/home/mar/createnewdirectory") #RM:  quick Google search can't delete directory with files inside using os module
+shutil.rmtree("/home/mar/createnewdirectory") #delete directory, delete folder permanently with files inside
+currentworkingdirectory = os.getcwd()
+print(currentworkingdirectory) #print /home/mar/python
+createtempfilename = os.path.join(currentworkingdirectory, "temp.txt")
+with open(createtempfilename, "w") as actuallywritetotempfile:
+    actuallywritetotempfile.write("The quick brown fox jumps over the lazy dog.")
+movefiletoanotherdirectory = shutil.move("temp.txt", "/media/sf_UbuntuShare2004") #move temptext.txt file to sf_UbuntuShare2004 folder
+movefiletoanotherdirectory
+os.unlink("/media/sf_UbuntuShare2004/temp.txt") #delete temp.txt at /media/sf_UbuntuShare2004 directory
 
 import subprocess
 listfiles = subprocess.run(["ls", "-l"]) #type and execute ls -l in terminal
@@ -490,3 +652,56 @@ pythonbuiltinmodules = sys.builtin_module_names #Python modules builtin modules
 pythonsystemmodules = sys.modules #Python system modules
 print(pythonsystemmodules) #print {'sys': <module 'sys' (built-in)>, 'builtins': <module 'builtins' (built-in)>, '_frozen_importlib': <module 'importlib._bootstrap' (frozen)>, '_imp': <module '_imp' (built-in)>, '_warnings': <module '_warnings' (built-in)>, '_io': <module 'io' (built-in)>, 'marshal': <module 'marshal' (built-in)>,. . .}
 print(pythonsystemmodules.keys()) #print dict_keys(['sys', 'builtins', '_frozen_importlib', '_imp', '_warnings', '_io', 'marshal', 'posix', '_frozen_importlib_external', '_thread', '_weakref', 'time', 'zipimport', '_codecs', 'codecs', 'encodings.aliases', 'encodings', 'encodings.utf_8', '_signal', '__main__', 'encodings.latin_1', '_abc', 'abc', 'io', '_stat', 'stat', '_collections_abc', 'genericpath', 'posixpath', 'os.path', 'os', '_sitebuiltins', '_locale', '_bootlocale', 'types', 'importlib._bootstrap', 'importlib._bootstrap_external', 'warnings', 'importlib', 'importlib.machinery', 'importlib.abc', '_operator', 'operator', 'keyword', '_heapq', 'heapq', 'itertools', 'reprlib', '_collections', 'collections', '_functools', 'functools', 'contextlib', 'importlib.util', 'mpl_toolkits', 'apport_python_hook', 'sitecustomize', 'site'])
+
+import usefultoolspythonfile
+#import a file with objects; import python file usefultoolspythonfile.py
+print(help(usefultoolspythonfile))
+'''
+Help on module usefultoolspythonfile:
+
+NAME
+    usefultoolspythonfile
+
+FUNCTIONS
+    getfileextension(filename)
+    
+    rolldice(number)
+
+DATA
+    beatles = ['John Lennon', 'Paul McCartney', 'George Harrison', 'Ringo ...
+    feetinmile = 5280
+    metersinkilometer = 1000
+
+FILE
+    /home/mar/python/usefultoolspythonfile.py
+'''
+print(usefultoolspythonfile.feetinmile) #print 5280
+print(usefultoolspythonfile.beatles) #print ['John Lennon', 'Paul McCartney', 'George Harrison', 'Ringo Starr']
+print(usefultoolspythonfile.beatles[1]) #print Paul McCartney
+print(usefultoolspythonfile.getfileextension("text.txt")) #print txt
+print(usefultoolspythonfile.rolldice(10)) #print 6
+
+import zipfile
+import shutil
+import os
+viewfilesinzipfolder = zipfile.ZipFile("ml-100k.zip")
+print(viewfilesinzipfolder) #print <zipfile.ZipFile filename='ml-100k.zip' mode='r'>
+print(viewfilesinzipfolder.namelist()) #print ['ml-100k/', 'ml-100k/allbut.pl', 'ml-100k/mku.sh', 'ml-100k/README', 'ml-100k/u.data', 'ml-100k/u.genre', 'ml-100k/u.info', 'ml-100k/u.item', 'ml-100k/u.occupation', 'ml-100k/u.user', 'ml-100k/u1.base', 'ml-100k/u1.test', 'ml-100k/u2.base', 'ml-100k/u2.test', 'ml-100k/u3.base', 'ml-100k/u3.test', 'ml-100k/u4.base', 'ml-100k/u4.test', 'ml-100k/u5.base', 'ml-100k/u5.test', 'ml-100k/ua.base', 'ml-100k/ua.test', 'ml-100k/ub.base', 'ml-100k/ub.test']
+afileinzipfileinformation = viewfilesinzipfolder.getinfo("ml-100k/allbut.pl")
+print(afileinzipfileinformation) #print <ZipInfo filename='ml-100k/allbut.pl' compress_type=deflate filemode='-rwxr-x---' file_size=716 compress_size=361>
+print(afileinzipfileinformation.file_size) #print 716 #RM:  number in bytes
+print(afileinzipfileinformation.compress_size) #print 361 #RM:  number in bytes
+extractonefileinzipfile = viewfilesinzipfolder.extract("ml-100k/allbut.pl", "/home/mar/python") #extract() method extracts a file to destination which is extract ml-100k/allbut.pl file to /home/mar/python directory.  Opens file from zip file.
+extractonefileinzipfile
+extractallfilesinzipfile = viewfilesinzipfolder.extractall("/home/mar/python/extractzipfilefolder") #extractall() method extracts all files and folders in zip file to extractzipfilefolder folder
+viewfilesinzipfolder.close()
+shutil.rmtree("/home/mar/python/extractzipfilefolder") #delete directory, delete folder permanently with files inside
+createzipfileforloop = zipfile.ZipFile("zipfilealltextfiles.zip", "w")  #Use "a" append mode as the second argument to add files to an existing zip file
+for forlooptextfiles in os.listdir():
+    if forlooptextfiles.endswith(".txt"):
+        createzipfileforloop.write(forlooptextfiles, compress_type=zipfile.ZIP_DEFLATED)
+createzipfileforloop.close()
+viewfilesinzipfolder = zipfile.ZipFile("zipfilealltextfiles.zip")
+print(viewfilesinzipfolder) #print <zipfile.ZipFile filename='zipfilealltextfiles.zip' mode='r'>
+print(viewfilesinzipfolder.namelist()) #print ['moby01.txt', 'endgametabpaymentmethod.txt', 'combinedatatitanic.txt', 'datapipes.txt', 'waldosentences.txt', 'tempcopied.txt', 'combinedatatitaniclowercasecolumns.txt', 'employees.txt', 'ex_06-01.txt', 'endgametabexpenses.txt', . . .]
+createzipfileforloop.close()
