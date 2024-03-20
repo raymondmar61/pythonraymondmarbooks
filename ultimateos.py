@@ -9,7 +9,7 @@ print(os.getcwd())  #print /home/mar.  Get current working directory.
 os.mkdir("createnewfoldername") #Create new directory.
 os.chdir("/home/mar/createnewfoldername")
 print(os.getcwd()) #print /home/mar/createnewfoldername
-os.rmdir("/home/mar/createnewfoldername") #delete directory, delete folder permanently
+os.rmdir("/home/mar/createnewfoldername") #delete directory, delete folder permanently.  Quick Google search can't delete directory with files inside using os module.  Use shutil module.
 os.makedirs("/home/mar/anditssubdirectorywhichisoptional") #create directories and optional subdirectory
 os.makedirs("/home/mar/sub2insidehome1/sub3insidesub2/sub4insidesub3")
 os.removedirs("/home/mar/anditssubdirectorywhichisoptional")  #delete directories and optional subdirectory
