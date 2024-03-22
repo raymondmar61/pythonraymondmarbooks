@@ -1,9 +1,28 @@
-#Modules import collections, copy, csv, fileinput, glob, importfile, itertools, operator, pathlib, pickle, pprint, shutil, subprocess, sys, usefultoolspythonfile RM:  it's a python file module import python file usefultoolspythonfile.py, zipfile
+#Modules import collections, copy, csv, fileinput, glob, heapq, importfile, itertools, operator, pathlib, pickle, pprint, shutil, subprocess, sys, usefultoolspythonfile RM:  it's a python file module import python file usefultoolspythonfile.py, zipfile
+
+import time as remember_alias_as_likepandamodule
+print(remember_alias_as_likepandamodule.timezone) #print 28800
 
 import collections
 listofwords = ['call', 'me', 'ishmael', 'some', 'years', 'ago', 'never', 'mind', 'how', 'long', 'precisely', 'having', 'little', 'or', 'no', 'money', 'in', 'my', 'purse', 'and', 'nothing', 'particular', 'to', 'interest', 'me', 'on', 'shore', 'i', 'thought', 'i', 'would', 'sail', 'about', 'a', 'little', 'and', 'see', 'the', 'watery', 'part', 'of', 'the', 'world', 'it', 'is', 'a', 'way', 'i', 'have', 'of', 'driving', 'off', 'the', 'spleen', 'and', 'regulating', 'the', 'circulation', 'whenever', 'i', 'find', 'myself', 'growing', 'grim', 'about', 'the', 'mouth', 'whenever', 'it', 'is', 'a', 'damp', 'drizzly', 'november', 'in', 'my', 'soul', 'whenever', 'i', 'find', 'myself', 'involuntarily', 'pausing', 'before', 'coffin', 'warehouses', 'and', 'bringing', 'up', 'the', 'rear', 'of', 'every', 'funeral', 'i', 'meet', 'and', 'especially', 'whenever', 'my', 'hypos', 'get', 'such', 'an', 'upper', 'hand', 'of', 'me', 'that', 'it', 'requires', 'a', 'strong', 'moral', 'principle', 'to', 'prevent', 'me', 'from', 'deliberately', 'stepping', 'into', 'the', 'street', 'and', 'methodically', 'knocking', 'people', 's', 'hats', 'off', 'then', 'i', 'account', 'it', 'high', 'time', 'to', 'get', 'to', 'sea', 'as', 'soon', 'as', 'i', 'can', 'this', 'is', 'my', 'substitute', 'for', 'pistol', 'and', 'ball', 'with', 'a', 'philosophical', 'flourish', 'cato', 'throws', 'himself', 'upon', 'his', 'sword', 'i', 'quietly', 'take', 'to', 'the', 'ship', 'there', 'is', 'nothing', 'surprising', 'in', 'this', 'if', 'they', 'but', 'knew', 'it', 'almost', 'all', 'men', 'in', 'their', 'degree', 'some', 'time', 'or', 'other', 'cherish', 'very', 'nearly', 'the', 'same', 'feelings', 'towards', 'the', 'ocean', 'with', 'me', 'there', 'now', 'is', 'your', 'insular', 'city', 'of', 'the', 'manhattoes', 'belted', 'round', 'by', 'wharves', 'as', 'indian', 'isles', 'by', 'coral', 'reefs', 'commerce', 'surrounds', 'it', 'with', 'her', 'surf', 'right', 'and', 'left', 'the', 'streets', 'take', 'you', 'waterward', 'its', 'extreme', 'downtown', 'is', 'the', 'battery', 'where', 'that', 'noble', 'mole', 'is', 'washed', 'by', 'waves', 'and', 'cooled', 'by', 'breezes', 'which', 'a', 'few', 'hours', 'previous', 'were', 'out', 'of', 'sight', 'of', 'land', 'look', 'at', 'the', 'crowds', 'of', 'water', 'gazers', 'there']
 wordcounttopten = collections.Counter(listofwords).most_common(10)
 print(wordcounttopten) #print [('the', 14), ('and', 9), ('i', 9), ('of', 8), ('is', 7), ('a', 6), ('it', 6), ('me', 5), ('to', 5), ('in', 4)]
+separatedictionarylist = collections.OrderedDict()
+separatedictionarylist["apple"] = "red"
+separatedictionarylist["grape"] = "green"
+separatedictionarylist["banana"] = "yellow"
+separatedictionarylist["orange"] = "orangecolor"
+separatedictionarylist["honey dew"] = "green"
+print(separatedictionarylist) #print OrderedDict([('apple', 'red'), ('grape', 'green'), ('banana', 'yellow'), ('orange', 'orangecolor'), ('honey dew', 'green')])
+for eachseparatedictionarylist in separatedictionarylist:
+    print(eachseparatedictionarylist)
+    '''
+    apple
+    grape
+    banana
+    orange
+    honey dew
+    '''
 
 import copy
 letterslist = ["a", "b", "c", "d"]
@@ -189,6 +208,24 @@ print(textfilesinlist) #print ['moby01.txt', 'endgametabpaymentmethod.txt', 'com
 pandafilesinlist = glob.glob("*panda*")
 print(pandafilesinlist) #print ['pandasdataschool2022_01.py', 'pandasdataschool2022_02.py', 'pandasjoejames02.py', 'pandasdataschool2022_03.py', 'ultimatepandasdataschool.py', 'pythondataanalyticsvisualization03pandas.py', . . . ]
 
+import heapq
+grades = [32, 43, 654, 34, 132, 66, 99, 532]
+print(grades) #print [32, 43, 654, 34, 132, 66, 99, 532]
+print(max(grades)) #print 654
+print(min(grades)) #print 32
+print(heapq.nlargest(1, grades)) #print [654]
+print(heapq.nsmallest(1, grades)) #print [32]
+print(heapq.nlargest(3, grades)) #print [654, 532, 132]
+print(heapq.nsmallest(2, grades)) #print [32, 34]
+stocks = [{"Ticker": "AAPL", "Price": 201}, {"Ticker": "GOOG", "Price": 800}, {"Ticker": "F", "Price": 54}, {"Ticker": "MSFT", "Price": 313}, {"Ticker": "TUNA", "Price": 68}]
+print(stocks) #print [{'Ticker': 'AAPL', 'Price': 201}, {'Ticker': 'GOOG', 'Price': 800}, {'Ticker': 'F', 'Price': 54}, {'Ticker': 'MSFT', 'Price': 313}, {'Ticker': 'TUNA', 'Price': 68}]
+twolargeststockprice = heapq.nlargest(2, stocks, key=lambda anyvariable: anyvariable["Price"])
+print(twolargeststockprice) #print [{'Ticker': 'GOOG', 'Price': 800}, {'Ticker': 'MSFT', 'Price': 313}]
+twosmalleststockprice = heapq.nsmallest(2, stocks, key=lambda assignanyvariable: assignanyvariable["Price"])
+print(twosmalleststockprice) #print [{'Ticker': 'F', 'Price': 54}, {'Ticker': 'TUNA', 'Price': 68}]
+twosortascendingstockticker = heapq.nsmallest(2, stocks, key=lambda stocksymbol: stocksymbol["Ticker"])
+print(twosortascendingstockticker) #print [{'Ticker': 'AAPL', 'Price': 201}, {'Ticker': 'F', 'Price': 54}]
+
 import importfile
 #import a file with objects; import python file importfile.py
 xis4 = importfile.x
@@ -313,6 +350,9 @@ print(runningtotaltentofifty) #print [10, 30, 60, 100, 150]
 #Combinations and permutations.  Combinations can be used once in an area.  Permutations all possibilities are returned.  Simple example (a, b) and (b, a) can't be used in a permutation because they're the same in combination.
 fourletterscombinewith = "abcd"
 fournumberstobecombinedwith = [10, 20, 30, 40]
+tuplestuples = itertools.product(fourletterscombinewith, fournumberstobecombinedwith)
+print(tuplestuples) #print <itertools.product object at 0x7fac6962e800>
+print(tuple(tuplestuples)) #print (('a', 10), ('a', 20), ('a', 30), ('a', 40), ('b', 10), ('b', 20), ('b', 30), ('b', 40), ('c', 10), ('c', 20), ('c', 30), ('c', 40), ('d', 10), ('d', 20), ('d', 30), ('d', 40))
 print(list(itertools.product(fourletterscombinewith, fournumberstobecombinedwith))) #print [('a', 10), ('a', 20), ('a', 30), ('a', 40), ('b', 10), ('b', 20), ('b', 30), ('b', 40), ('c', 10), ('c', 20), ('c', 30), ('c', 40), ('d', 10), ('d', 20), ('d', 30), ('d', 40)]
 print(list(itertools.product(fourletterscombinewith, fournumberstobecombinedwith, repeat=2))) #print [('a', 10, 'a', 10), ('a', 10, 'a', 20), ('a', 10, 'a', 30), ('a', 10, 'a', 40), ('a', 10, 'b', 10), ('a', 10, 'b', 20), ('a', 10, 'b', 30), ('a', 10, 'b', 40), ('a', 10, 'c', 10), ('a', 10, 'c', 20), ('a', 10, 'c', 30), ('a', 10, 'c', 40), ('a', 10, 'd', 10), ('a', 10, 'd', 20), ('a', 10, 'd', 30), ('a', 10, 'd', 40), ('a', 20, 'a', 10), ('a', 20, 'a', 20), ('a', 20, 'a', 30), ('a', 20, 'a', 40), ('a', 20, 'b', 10), ('a', 20, 'b', 20), ('a', 20, 'b', 30), ('a', 20, 'b', 40), ('a', 20, 'c', 10), ('a', 20, 'c', 20), ('a', 20, 'c', 30), . . .]
 print(list(itertools.combinations(fourletterscombinewith, 4))) #print [('a', 'b', 'c', 'd')]
