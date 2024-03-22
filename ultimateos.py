@@ -242,6 +242,13 @@ for extractfilenames in os.scandir():
     pythonforprogrammersbasics02.py
     ...
     '''
+import glob
+allfilenamesinlist = glob.glob("*")
+print(allfilenamesinlist) #print ['NativityExamplepage3.pdf', 'moby01.txt', 'endgamecsvexpenses.csv', 'endgametabpaymentmethod.txt', 'pythoninfiniteloopalistlinks.pdf', 'combinedatatitanic.txt', 'creditcategoryfilename.xlsx', 'pythonforprogrammersbasics02.py', 'ETH_1h.csv', 'ml-100k', 'survey_results_schema.csv', 'pythondataanalyticsvisualization02numpy.py', 'exporttocsv.csv', 'mymath.py', 'quickpythonbook01.py', 'datapipes.txt', . . . ]
+textfilesinlist = glob.glob("*.txt")
+print(textfilesinlist) #print ['moby01.txt', 'endgametabpaymentmethod.txt', 'combinedatatitanic.txt', 'datapipes.txt', 'waldosentences.txt', 'tempcopied.txt', . . . ]
+pandafilesinlist = glob.glob("*panda*")
+print(pandafilesinlist) #print ['pandasdataschool2022_01.py', 'pandasdataschool2022_02.py', 'pandasjoejames02.py', 'pandasdataschool2022_03.py', 'ultimatepandasdataschool.py', 'pythondataanalyticsvisualization03pandas.py', . . . ]
 
 #Operating system
 print(os.name) #print posix.  os.name returns the name of the Python module imported to handle the operation system specific details.  Use os.name to determine the operating system user is using.
