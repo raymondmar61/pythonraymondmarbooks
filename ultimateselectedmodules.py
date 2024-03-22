@@ -1,4 +1,4 @@
-#Modules import collections, copy, csv, fileinput, importfile, itertools, operator, pathlib, pickle, pprint, shutil, subprocess, sys, usefultoolspythonfile RM:  it's a python file module import python file usefultoolspythonfile.py, zipfile
+#Modules import collections, copy, csv, fileinput, glob, importfile, itertools, operator, pathlib, pickle, pprint, shutil, subprocess, sys, usefultoolspythonfile RM:  it's a python file module import python file usefultoolspythonfile.py, zipfile
 
 import collections
 listofwords = ['call', 'me', 'ishmael', 'some', 'years', 'ago', 'never', 'mind', 'how', 'long', 'precisely', 'having', 'little', 'or', 'no', 'money', 'in', 'my', 'purse', 'and', 'nothing', 'particular', 'to', 'interest', 'me', 'on', 'shore', 'i', 'thought', 'i', 'would', 'sail', 'about', 'a', 'little', 'and', 'see', 'the', 'watery', 'part', 'of', 'the', 'world', 'it', 'is', 'a', 'way', 'i', 'have', 'of', 'driving', 'off', 'the', 'spleen', 'and', 'regulating', 'the', 'circulation', 'whenever', 'i', 'find', 'myself', 'growing', 'grim', 'about', 'the', 'mouth', 'whenever', 'it', 'is', 'a', 'damp', 'drizzly', 'november', 'in', 'my', 'soul', 'whenever', 'i', 'find', 'myself', 'involuntarily', 'pausing', 'before', 'coffin', 'warehouses', 'and', 'bringing', 'up', 'the', 'rear', 'of', 'every', 'funeral', 'i', 'meet', 'and', 'especially', 'whenever', 'my', 'hypos', 'get', 'such', 'an', 'upper', 'hand', 'of', 'me', 'that', 'it', 'requires', 'a', 'strong', 'moral', 'principle', 'to', 'prevent', 'me', 'from', 'deliberately', 'stepping', 'into', 'the', 'street', 'and', 'methodically', 'knocking', 'people', 's', 'hats', 'off', 'then', 'i', 'account', 'it', 'high', 'time', 'to', 'get', 'to', 'sea', 'as', 'soon', 'as', 'i', 'can', 'this', 'is', 'my', 'substitute', 'for', 'pistol', 'and', 'ball', 'with', 'a', 'philosophical', 'flourish', 'cato', 'throws', 'himself', 'upon', 'his', 'sword', 'i', 'quietly', 'take', 'to', 'the', 'ship', 'there', 'is', 'nothing', 'surprising', 'in', 'this', 'if', 'they', 'but', 'knew', 'it', 'almost', 'all', 'men', 'in', 'their', 'degree', 'some', 'time', 'or', 'other', 'cherish', 'very', 'nearly', 'the', 'same', 'feelings', 'towards', 'the', 'ocean', 'with', 'me', 'there', 'now', 'is', 'your', 'insular', 'city', 'of', 'the', 'manhattoes', 'belted', 'round', 'by', 'wharves', 'as', 'indian', 'isles', 'by', 'coral', 'reefs', 'commerce', 'surrounds', 'it', 'with', 'her', 'surf', 'right', 'and', 'left', 'the', 'streets', 'take', 'you', 'waterward', 'its', 'extreme', 'downtown', 'is', 'the', 'battery', 'where', 'that', 'noble', 'mole', 'is', 'washed', 'by', 'waves', 'and', 'cooled', 'by', 'breezes', 'which', 'a', 'few', 'hours', 'previous', 'were', 'out', 'of', 'sight', 'of', 'land', 'look', 'at', 'the', 'crowds', 'of', 'water', 'gazers', 'there']
@@ -181,6 +181,13 @@ with fileinput.input(files=("moby01.txt", "waldosentences.txt", "basicreadwritef
         Second line need \n.
         Close() function to close file.
         '''
+import glob
+allfilenamesinlist = glob.glob("*")
+print(allfilenamesinlist) #print ['NativityExamplepage3.pdf', 'moby01.txt', 'endgamecsvexpenses.csv', 'endgametabpaymentmethod.txt', 'pythoninfiniteloopalistlinks.pdf', 'combinedatatitanic.txt', 'creditcategoryfilename.xlsx', 'pythonforprogrammersbasics02.py', 'ETH_1h.csv', 'ml-100k', 'survey_results_schema.csv', 'pythondataanalyticsvisualization02numpy.py', 'exporttocsv.csv', 'mymath.py', 'quickpythonbook01.py', 'datapipes.txt', . . . ]
+textfilesinlist = glob.glob("*.txt")
+print(textfilesinlist) #print ['moby01.txt', 'endgametabpaymentmethod.txt', 'combinedatatitanic.txt', 'datapipes.txt', 'waldosentences.txt', 'tempcopied.txt', . . . ]
+pandafilesinlist = glob.glob("*panda*")
+print(pandafilesinlist) #print ['pandasdataschool2022_01.py', 'pandasdataschool2022_02.py', 'pandasjoejames02.py', 'pandasdataschool2022_03.py', 'ultimatepandasdataschool.py', 'pythondataanalyticsvisualization03pandas.py', . . . ]
 
 import importfile
 #import a file with objects; import python file importfile.py
@@ -330,6 +337,7 @@ sortlistwithinalist.sort(key=operator.itemgetter(1))
 print(sortlistwithinalist) #print [[400, -1, 1123], [10, 25, 39], [200, 111, 354]]
 
 import pathlib
+import glob
 currentpath = pathlib.Path()
 print(currentpath.cwd()) #print /home/mar/python
 print(currentpath.cwd().parts) #print ('/', 'home', 'mar', 'python').  parts is part of the pathlib module.  parts property returns a tuple of all the components of a path.
@@ -339,6 +347,9 @@ print(currentpath.joinpath("media", "sf_UbuntuShare2004", "deletefolder")) #prin
 print(currentpath.joinpath("i", "make", "up", "a", "path")) #print i/make/up/a/path
 print(currentpath.joinpath("home", "mar", "python", "yytest.py")) #print home/mar/python/yytest.py
 print(currentpath.joinpath("home", "mar", "python", "yytest.py").suffix) #print .py.  suffix is part of the pathlib module.  suffix returns the dotted extension or file type.
+print(currentpath.iterdir()) #print <generator object Path.iterdir at 0x7f69e9696580>
+print(list(currentpath.iterdir())) #print [PosixPath('NativityExamplepage3.pdf'), PosixPath('moby01.txt'), PosixPath('endgamecsvexpenses.csv'), PosixPath('endgametabpaymentmethod.txt'), PosixPath('pythoninfiniteloopalistlinks.pdf'), PosixPath('combinedatatitanic.txt'), . . .]
+print(list(currentpath.glob("*.txt"))) #print [PosixPath('moby01.txt'), PosixPath('endgametabpaymentmethod.txt'), PosixPath('combinedatatitanic.txt'), PosixPath('datapipes.txt'), PosixPath('waldosentences.txt'), PosixPath('tempcopied.txt'), . . .]
 
 import pickle
 #Pickle module write to a file and read from a file
@@ -652,6 +663,22 @@ pythonbuiltinmodules = sys.builtin_module_names #Python modules builtin modules
 pythonsystemmodules = sys.modules #Python system modules
 print(pythonsystemmodules) #print {'sys': <module 'sys' (built-in)>, 'builtins': <module 'builtins' (built-in)>, '_frozen_importlib': <module 'importlib._bootstrap' (frozen)>, '_imp': <module '_imp' (built-in)>, '_warnings': <module '_warnings' (built-in)>, '_io': <module 'io' (built-in)>, 'marshal': <module 'marshal' (built-in)>,. . .}
 print(pythonsystemmodules.keys()) #print dict_keys(['sys', 'builtins', '_frozen_importlib', '_imp', '_warnings', '_io', 'marshal', 'posix', '_frozen_importlib_external', '_thread', '_weakref', 'time', 'zipimport', '_codecs', 'codecs', 'encodings.aliases', 'encodings', 'encodings.utf_8', '_signal', '__main__', 'encodings.latin_1', '_abc', 'abc', 'io', '_stat', 'stat', '_collections_abc', 'genericpath', 'posixpath', 'os.path', 'os', '_sitebuiltins', '_locale', '_bootlocale', 'types', 'importlib._bootstrap', 'importlib._bootstrap_external', 'warnings', 'importlib', 'importlib.machinery', 'importlib.abc', '_operator', 'operator', 'keyword', '_heapq', 'heapq', 'itertools', 'reprlib', '_collections', 'collections', '_functools', 'functools', 'contextlib', 'importlib.util', 'mpl_toolkits', 'apport_python_hook', 'sitecustomize', 'site'])
+
+print("Type something for screen input.  Type \"demonstration\" Press Enter when done.")
+screeninputfromuser = sys.stdin.readline()
+print(screeninputfromuser) #print demonstration
+with open("inputtotextfile.txt", "w") as fileobject:
+    sys.stdout = fileobject
+    sys.stdout.writelines(["A list of writelines number one sentence in its line.\n", "A list of writelines number two sentence in its own line.\n"])
+    #RM:  inputtotextfile.txt created with A list of writelines number one sentence in its line.\n A list of writelines number two sentence in its own line.\n
+    sys.stdout = sys.__stdout__
+print("Write to the standard output.  Type \"brown fox \" for screen input.  Press Enter when done.")
+screeninputfromuserwritetofile = sys.stdin.readline()
+with open("inputtotextfile.txt", "a") as fileobject:
+    sys.stdout = fileobject
+    sys.stdout.writelines(screeninputfromuserwritetofile)
+    sys.stdout = sys.__stdout__
+    #RM:  brown fox appended to inputtotextfile.txt A list of writelines number one sentence in its line.\n A list of writelines number two sentence in its own line.\n brown fox\n
 
 import usefultoolspythonfile
 #import a file with objects; import python file usefultoolspythonfile.py
