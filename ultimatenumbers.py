@@ -62,6 +62,16 @@ print(math.pi) #print 3.141592653589793
 squareroot = math.sqrt(25)
 iterablesequencesum = math.fsum([4, 5, 600, 10]) #fsum(seq, /) Return an accurate floating point sum of values in the iterable seq.
 print(iterablesequencesum) #print 619.0
+absolutevalue = abs(-5.1)
+print(absolutevalue) #print 5.1
+absolutevaluealwaysfloat = math.fabs(-700)
+print(absolutevaluealwaysfloat) #print 700.0
+remainder = 10 % 5
+print(remainder) #print 0
+remainderalwaysfloat = math.remainder(10, 5)
+print(remainderalwaysfloat) #print 0.0
+remainderalwaysfloat = math.fmod(10, 5)
+print(remainderalwaysfloat) #print 0.0
 
 #Random module
 import random
@@ -82,7 +92,7 @@ choosenumber = random.choice(bonussixrandomintegersincrementsoffive)  #random.ch
 print(choosenumber) #print 5
 
 fiverandomnumbersnoduplicates = random.sample(range(1, 21), 5) #random.sample takes a population and a sample size k and returns k random members of the population no duplicates.  An error message appears if the number of returns exceed the number of sample range.
-print(fiverandomnumbersnoduplicates) #print #print [14, 6, 20, 1, 8]
+print(fiverandomnumbersnoduplicates) #print [14, 6, 20, 1, 8]
 print(type(fiverandomnumbersnoduplicates)) #print <class 'list'>
 fiverandomnumbersnoduplicates1, fiverandomnumbersnoduplicates2, fiverandomnumbersnoduplicates3, fiverandomnumbersnoduplicates4, fiverandomnumbersnoduplicates5 = random.sample(range(1, 21), 5)
 print(fiverandomnumbersnoduplicates1) #print 5
@@ -91,6 +101,32 @@ print(fiverandomnumbersnoduplicates3) #print 3
 print(fiverandomnumbersnoduplicates4) #print 1
 print(fiverandomnumbersnoduplicates5) #print 20
 print(type(fiverandomnumbersnoduplicates5)) #print <class 'int'>
+#The shuffle() is an inbuilt method of the random module. It is used to shuffle a sequence (list). Shuffling a list of objects means changing the position of the elements of the sequence
+random.shuffle(fiverandomnumbersnoduplicates)
+print(fiverandomnumbersnoduplicates) #print [1, 20, 14, 8, 6]
+#Use the random.seed function to guarantee reproducibility of a random sequence such as debugging.
+seednumber = 32
+random.seed(seednumber) #Define a seed to make random numbers predictable or the same random numbers appear every time
+for samerandomnumbers in range(10):
+    print(random.randrange(1, 7), end=" ") #print 1 2 2 3 6 2 4 1 6 1
+print("\b")
+for differentrandomnumbers1 in range(10): #RM:  the differentrandomnumbers*number* generates different values because it continues the pseudorandom number sequence which started at samerandomnumbers
+    print(random.randrange(1, 7), end=" ") #print 1 3 5 3 1 5 6 4 3 5
+print("\b")
+for differentrandomnumbers2 in range(10):
+    print(random.randrange(1, 7), end=" ") #print 1 5 2 5 1 4 6 2 3 2
+print("\b")
+random.seed(seednumber) #start again random.seed(seednumber)
+for samerandomnumbers in range(10):
+    print(random.randrange(1, 7), end=" ") #print 1 2 2 3 6 2 4 1 6 1
+print("\b")
+for differentrandomnumbers3 in range(10):
+    print(random.randrange(1, 7), end=" ") #print 1 3 5 3 1 5 6 4 3 5
+print("\b")
+for differentrandomnumbers4 in range(10):
+    print(random.randrange(1, 7), end=" ") #print 1 5 2 5 1 4 6 2 3 2
+print("\n")
+random.seed() #deactivate random.seed or stop random.seed
 
 
 #Statistics module
@@ -98,6 +134,10 @@ import statistics
 grades = [100, 100, 90, 40, 80, 100, 85, 70, 90, 65, 90, 85, 50.5]
 averagenumber = statistics.mean(grades)
 print(averagenumber) #print 80.42307692307692
+middlenumber = statistics.median(grades)
+print(middlenumber) #print 85
+mostcommonnumber = statistics.mode(grades)
+print(mostcommonnumber) #print 100
 print("Two decimal points %.2f" % (averagenumber)) #print Two decimal points 80.42
 populationvariance = statistics.pvariance(grades)
 print(populationvariance) #print 334.07100591715977
