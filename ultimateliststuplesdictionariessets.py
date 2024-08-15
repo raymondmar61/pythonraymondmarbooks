@@ -468,6 +468,14 @@ dictionarycomprehension = {stocksymbolkey: stockpricevalue for stocksymbolkey, s
 print(dictionarycomprehension) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 print("get() method get value for FB stock price " + str(basicfunctionsforadictionary.get("FB", "default value if there's no FB ticker symbol")) + ".") #print get() method get value for FB stock price 76.45.
 print("get() method get value for APPL stock price " + str(basicfunctionsforadictionary.get("APPL", "default value if there's no APPL ticker symbol")) + ".") #print get() method get value for APPL stock price default value if there's no APPL ticker symbol.
+keyvaluedictionary = {"A":"1a","B":"2b","C":"3c","D":"4d","E":"5e","F":"6f","G":"7g","H":"8h","I":"9i"}
+twoletterslist = ["AL","BZ","CP","DX","EL","FX","GR","HM"]
+separatelettersdictionary = {}
+for eachtwoletterslist in twoletterslist:
+    print(eachtwoletterslist[0]) #print A\n B\n C\n D\n . . .
+    firstletter = eachtwoletterslist[0]
+    separatelettersdictionary[firstletter] = keyvaluedictionary.get(firstletter,"default string if no firstletter variable")
+print(separatelettersdictionary) #print {'A': '1a', 'B': '2b', 'C': '3c', 'D': '4d', 'E': '5e', 'F': '6f', 'G': '7g', 'H': '8h'}
 copydictionary = basicfunctionsforadictionary.copy() #copy dictionary
 print(copydictionary) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 basicfunctionsforadictionary.clear()
