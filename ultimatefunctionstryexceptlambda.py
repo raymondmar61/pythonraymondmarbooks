@@ -180,6 +180,12 @@ Enter a number between one and ten 5
 5
 You Won.  Don't call the callmyownfunction()
 '''
+def functionreturnalist(inputlist):
+    print(inputlist) #print ['apple', '', 'bananna', 'grape', '', 'cantalope']
+    return [nonullstring for nonullstring in inputlist if nonullstring != ""] #function returns list
+
+inputlist = ["apple","","bananna","grape","","cantalope"]
+print(functionreturnalist(inputlist)) #print ['apple', 'bananna', 'grape', 'cantalope']
 
 #double asterisks before the parameter **userinfo cause Python to create an empty dictionary called user_info and pack whatever name-value pairs it receives into this dictionary.  Function works no matter how many additional key-value pairs are provided in the function call.
 def buildprofile(first, last, **userinfo):
