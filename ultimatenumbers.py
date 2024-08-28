@@ -259,3 +259,28 @@ minigymfiveworkouts = itertools.combinations(range(1, 6), 2)
 print(list(minigymfiveworkouts)) #print [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
 print(list(itertools.combinations_with_replacement(fourletterscombinewith, 3))) #print [('a', 'a', 'a'), ('a', 'a', 'b'), ('a', 'a', 'c'), ('a', 'a', 'd'), ('a', 'b', 'b'), ('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'c'), ('a', 'c', 'd'), ('a', 'd', 'd'), ('b', 'b', 'b'), ('b', 'b', 'c'), ('b', 'b', 'd'), ('b', 'c', 'c'), ('b', 'c', 'd'), ('b', 'd', 'd'), ('c', 'c', 'c'), ('c', 'c', 'd'), ('c', 'd', 'd'), ('d', 'd', 'd')]
 print(list(itertools.combinations_with_replacement(fournumberstobecombinedwith, 2))) #print [(10, 10), (10, 20), (10, 30), (10, 40), (20, 20), (20, 30), (20, 40), (30, 30), (30, 40), (40, 40)]
+
+#Binary
+#https://stackoverflow.com/questions/2451386/what-does-the-caret-operator-do
+#The caret ^ is a bitwise XOR; in other words, an exclusive OR.  XOR evalulates to True if and only if its arguments differ; in other words, one is True and the other is False.
+#It invokes the __xor__() or __rxor__() method of the object as needed, which for integer types does a bitwise exclusive-or.  It's a bit-by-bit exclusive-or. Binary bitwise operators.
+#Whatever data types are placed to the right and left of the symbol must implement this function in a compatible way. For integers, it is the common XOR operation.
+print(0 ^ 0) #print 0
+print(1 ^ 1) #print 0
+print(1 ^ 0) #print 1
+print(0 ^ 1) #print 1
+print(8 ^ 3) #print 11.  1000 is 8 binary.  0011 is 3 binary.  1011 is 11 binary.
+print(0b1000 ^ 0b0011) #print 11.  You can do binary numbers by typing 0bX where X is your binary.
+print(8 ^ 4) #print 12
+print(8 ^ 1) #print 9
+print(8 ^ 0) #print 8
+print(7 ^ 1) #print 6
+print(7 ^ 2) #print 5
+print(7 ^ 7) #print 0
+print(7 ^ 8) #print 15
+print(9 ^ 1) #print 8
+print(16 ^ 1) #print 17
+print(15 ^ 1) #print 14
+print(3 ^ 4) #print 7
+print(5 ^ 6) #print 3
+print(1234 ^ 4321) #print 5171
