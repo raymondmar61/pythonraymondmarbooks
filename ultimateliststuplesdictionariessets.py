@@ -25,6 +25,11 @@ rightlist = "the second sublist inside main list"
 appendlistinsidelist.append([leftlist, rightlist])
 print(appendlistinsidelist) #print [['sublist append', 'inside main list'], ['A second append sublist', 'the second sublist inside main list']]
 print(list("Convert string to list 491")) #print ['C', 'o', 'n', 'v', 'e', 'r', 't', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'l', 'i', 's', 't', ' ', '4', '9', '1']
+print([*"abcdefghijklmnopqrstuvwxyz"]) #print ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+multipleletters = "Convert a string to list"
+print([*multipleletters]) #print ['C', 'o', 'n', 'v', 'e', 'r', 't', ' ', 'a', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'l', 'i', 's', 't']
+multiplenumbers = "154986531235248"
+print([*multiplenumbers]) #print ['1', '5', '4', '9', '8', '6', '5', '3', '1', '2', '3', '5', '2', '4', '8']
 convertnumberstostring = list(map(str, [29, 58, -5, 210, 985]))
 print(convertnumberstostring) #print ['29', '58', '-5', '210', '985']
 duplicateitems = ["cat", "dog", "moon", "shoe", "cat", "dog", "cat"]
@@ -372,6 +377,10 @@ print(replaceletters) #print [1.5, 2.3, 4.4, 5.4, 599, 1.5, 5.1, 599]
 list45 = [22, 13, 45, 50, 98, 69, 43, 44, 1]
 add1add5 = [(eachlist45 + 1) if eachlist45 >= 45 else (eachlist45 + 5) for eachlist45 in list45]
 print(add1add5) #print [27, 18, 46, 51, 99, 70, 48, 49, 6]
+twentynumberslist = [n for n in range(100, 121)]
+print(twentynumberslist) #print [100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
+converttoasciicharacterjoin = ''.join([chr(asciinumber) for asciinumber in twentynumberslist]) #combine list comprehension
+print(converttoasciicharacterjoin) #print defghijklmnopqrstuvwx
 
 #Tuples
 print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')
@@ -468,6 +477,14 @@ dictionarycomprehension = {stocksymbolkey: stockpricevalue for stocksymbolkey, s
 print(dictionarycomprehension) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 print("get() method get value for FB stock price " + str(basicfunctionsforadictionary.get("FB", "default value if there's no FB ticker symbol")) + ".") #print get() method get value for FB stock price 76.45.
 print("get() method get value for APPL stock price " + str(basicfunctionsforadictionary.get("APPL", "default value if there's no APPL ticker symbol")) + ".") #print get() method get value for APPL stock price default value if there's no APPL ticker symbol.
+keyvaluedictionary = {"A":"1a","B":"2b","C":"3c","D":"4d","E":"5e","F":"6f","G":"7g","H":"8h","I":"9i"}
+twoletterslist = ["AL","BZ","CP","DX","EL","FX","GR","HM"]
+separatelettersdictionary = {}
+for eachtwoletterslist in twoletterslist:
+    print(eachtwoletterslist[0]) #print A\n B\n C\n D\n . . .
+    firstletter = eachtwoletterslist[0]
+    separatelettersdictionary[firstletter] = keyvaluedictionary.get(firstletter,"default string if no firstletter variable")
+print(separatelettersdictionary) #print {'A': '1a', 'B': '2b', 'C': '3c', 'D': '4d', 'E': '5e', 'F': '6f', 'G': '7g', 'H': '8h'}
 copydictionary = basicfunctionsforadictionary.copy() #copy dictionary
 print(copydictionary) #print {'GOOG': 520.54, 'FB': 76.45, 'YHOO': 39.28, 'AMZN': 306.21, 'AAPL': 99.76}
 basicfunctionsforadictionary.clear()

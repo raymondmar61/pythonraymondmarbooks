@@ -255,7 +255,30 @@ valuelist = ["49ers", "Giants", "Warriors", "Sharks"]
 print(list(zip(keylist, valuelist))) #print [('football', '49ers'), ('baseball', 'Giants'), ('basketball', 'Warriors'), ('hockey', 'Sharks')]
 combinelistsdictionary = {key: value for key, value in list(zip(keylist, valuelist))}
 print(combinelistsdictionary) #print {'football': '49ers', 'baseball': 'Giants', 'basketball': 'Warriors', 'hockey': 'Sharks'}
-
+keyvaluedictionary = {"A":"1a","B":"2b","C":"3c","D":"4d","E":"5e","F":"6f","G":"7g","H":"8h","I":"9i"}
+twoletterslist = ["AL","BZ","CP","DX","EL","FX","GR","HM"]
+for separateletters in twoletterslist:
+    letter1, letter2 = [*separateletters]
+    print("letter and numberletter "+letter1+" "+letter2)
+    print(f"letter and numberletter: {letter1} {letter2}")
+    '''
+    letter and numberletter A L
+    letter and numberletter: A L
+    letter and numberletter B Z
+    letter and numberletter: B Z
+    letter and numberletter C P
+    letter and numberletter: C P
+    ...
+    '''
+for separateletters in twoletterslist:
+    letter1, needasplaceholder  = [*separateletters]
+    print(f"{letter1} is {keyvaluedictionary[letter1]}.  Here is needasplaceholder {needasplaceholder}")
+    '''
+    A is 1a.  Here is needasplaceholder L
+    B is 2b.  Here is needasplaceholder Z
+    C is 3c.  Here is needasplaceholder P
+    ...
+    '''
 
 #While loop
 initializewhileloop = "This sentence is true"
