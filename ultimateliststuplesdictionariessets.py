@@ -25,6 +25,11 @@ rightlist = "the second sublist inside main list"
 appendlistinsidelist.append([leftlist, rightlist])
 print(appendlistinsidelist) #print [['sublist append', 'inside main list'], ['A second append sublist', 'the second sublist inside main list']]
 print(list("Convert string to list 491")) #print ['C', 'o', 'n', 'v', 'e', 'r', 't', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'l', 'i', 's', 't', ' ', '4', '9', '1']
+print([*"abcdefghijklmnopqrstuvwxyz"]) #print ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+multipleletters = "Convert a string to list"
+print([*multipleletters]) #print ['C', 'o', 'n', 'v', 'e', 'r', 't', ' ', 'a', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'l', 'i', 's', 't']
+multiplenumbers = "154986531235248"
+print([*multiplenumbers]) #print ['1', '5', '4', '9', '8', '6', '5', '3', '1', '2', '3', '5', '2', '4', '8']
 convertnumberstostring = list(map(str, [29, 58, -5, 210, 985]))
 print(convertnumberstostring) #print ['29', '58', '-5', '210', '985']
 duplicateitems = ["cat", "dog", "moon", "shoe", "cat", "dog", "cat"]
@@ -372,6 +377,10 @@ print(replaceletters) #print [1.5, 2.3, 4.4, 5.4, 599, 1.5, 5.1, 599]
 list45 = [22, 13, 45, 50, 98, 69, 43, 44, 1]
 add1add5 = [(eachlist45 + 1) if eachlist45 >= 45 else (eachlist45 + 5) for eachlist45 in list45]
 print(add1add5) #print [27, 18, 46, 51, 99, 70, 48, 49, 6]
+twentynumberslist = [n for n in range(100, 121)]
+print(twentynumberslist) #print [100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
+converttoasciicharacterjoin = ''.join([chr(asciinumber) for asciinumber in twentynumberslist]) #combine list comprehension
+print(converttoasciicharacterjoin) #print defghijklmnopqrstuvwx
 
 #Tuples
 print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')
