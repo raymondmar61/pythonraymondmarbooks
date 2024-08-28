@@ -201,6 +201,12 @@ splitcountwords = countwords.split(" ")
 topwords = Counter(splitcountwords)
 threemostcommonwords = topwords.most_common(5)
 print(threemostcommonwords) #print [('the', 7), ('in', 4), ('', 4), ('to', 4), ('We', 3)].  RM:  I intentionally double spaced after the periods.
+from string import ascii_lowercase #print lower case alphabet letters
+print(ascii_lowercase) #print abcdefghijklmnopqrstuvwxyz
+print(type(ascii_lowercase)) #print <class 'str'>
+print(*ascii_lowercase) #print a b c d e f g h i j k l m n o p q r s t u v w x y z
+print(*list(ascii_lowercase)) #print a b c d e f g h i j k l m n o p q r s t u v w x y z
+print([*"abcdefghijklmnopqrstuvwxyz"]) #print ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 #Boolean
 print(bool("return true" > "or return false using bool()")) #print True
