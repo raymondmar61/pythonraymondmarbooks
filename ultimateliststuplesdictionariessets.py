@@ -30,6 +30,9 @@ multipleletters = "Convert a string to list"
 print([*multipleletters]) #print ['C', 'o', 'n', 'v', 'e', 'r', 't', ' ', 'a', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'l', 'i', 's', 't']
 multiplenumbers = "154986531235248"
 print([*multiplenumbers]) #print ['1', '5', '4', '9', '8', '6', '5', '3', '1', '2', '3', '5', '2', '4', '8']
+sortmultiplenumbers = [*multiplenumbers]
+sortmultiplenumbers.sort()
+print(sortmultiplenumbers) #print ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '5', '6', '8', '8', '9']
 convertnumberstostring = list(map(str, [29, 58, -5, 210, 985]))
 print(convertnumberstostring) #print ['29', '58', '-5', '210', '985']
 duplicateitems = ["cat", "dog", "moon", "shoe", "cat", "dog", "cat"]
@@ -68,6 +71,10 @@ print(joinitemsinlist) #print ['convert', 'list', 'to', 'string']
 print(" ".join(joinitemsinlist)) #print convert list to string
 print("-".join(joinitemsinlist)) #print convert-list-to-string
 print("\n".join(joinitemsinlist)) #print convert\n list\n to\n string
+#Convert list to integer
+numberslist = ["128","954896","0","4895","68"]
+combinenumbers = "".join(numberslist)
+print(combinenumbers) #print 1289548960489568
 threepipes = ["|||"]
 fourthreepipes = threepipes * 4
 print(fourthreepipes) #print ['|||', '|||', '|||', '|||']
@@ -388,6 +395,9 @@ print(tuple((1, 2, 3))) #print (1, 2, 3)
 print(tuple((1, 2, 3)) * 3) #print (1, 2, 3, 1, 2, 3, 1, 2, 3)
 print(tuple(["A", "tuple", "can't", "change", "what", "is", "stored"])) #print ('A', 'tuple', "can't", 'change', 'what', 'is', 'stored')
 print(tuple(list("Tuples are for menu items which don't change."))) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'f', 'o', 'r', ' ', 'm', 'e', 'n', 'u', ' ', 'i', 't', 'e', 'm', 's', ' ', 'w', 'h', 'i', 'c', 'h', ' ', 'd', 'o', 'n', "'", 't', ' ', 'c', 'h', 'a', 'n', 'g', 'e', '.')
+print(tuple("56623104")) #print ('5', '6', '6', '2', '3', '1', '0', '4')
+print(tuple(("5", "6", "6", "2", "3", "1", "0", "4"))) #print ('5', '6', '6', '2', '3', '1', '0', '4')
+print(tuple((5, 6, 6, 2, 3, 1, 0, 4))) #print (5, 6, 6, 2, 3, 1, 0, 4)
 slicetuple = ("a", "b", "c", "d", "e", "f", "g", "h")
 print(slicetuple.index("e")) #print 4.  Return index position.
 print(slicetuple[2]) #print C
@@ -423,7 +433,15 @@ for n in range(1, 11):
     rightside = n + 10
     appendtuplelist.append((leftside, rightside, wordstring[n - 1]))
 print(appendtuplelist) #print [(1, 11, 'apple'), (2, 12, 'banana'), (3, 13, 'chocolate'), (4, 14, 'dream'), (5, 15, 'echo'), (6, 16, 'figure'), (7, 17, 'g15'), (8, 18, 'hightower'), (9, 19, 'ice'), (10, 20, 'jam')]
-
+import functools
+#Convert string tuple to interger tuple
+convertstringtuple = ('5', '6', '6', '2', '3', '1', '0', '4')
+integertuple = tuple(map(int, convertstringtuple))
+print(integertuple) #print (5, 6, 6, 2, 3, 1, 0, 4)
+#Convert integer tuple to integer or combine integer tuple numbers or combine tuple numbers
+convertintegertuple = (5, 6, 6, 2, 3, 1, 0, 4)
+tupletointeger = functools.reduce(lambda sub, elem: sub * 10 + elem, convertintegertuple)
+print(tupletointeger) #print 56623104
 #Dictionaries
 blankdictionary = {}
 blankdictionary["Insert key in brackets"] = "Insert item right of equal sign"
