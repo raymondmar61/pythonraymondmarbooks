@@ -57,6 +57,10 @@ exponentetothepower = math.exp(2) #Return e raised to the power of x
 print(exponentetothepower) #print 7.38905609893065
 exponentsxtothepowerofy = math.pow(2, 4)
 print(exponentsxtothepowerofy) #print 16.0
+squareroot = math.pow(49, 1 / 2)
+print(squareroot) #print 7.0
+cuberoot = math.pow(27, 1 / 3)
+print(cuberoot) #print 3.0
 print(math.log(16, 2)) #print 4.0
 print(math.pi) #print 3.141592653589793
 squareroot = math.sqrt(25)
@@ -175,6 +179,23 @@ print(next(generateanumber)) #print 3
 print(list(generateanumber)) #print [4, 5, 6, 7, 8, 9]
 #print(next(generateanumber)) #Error message StopIteration
 
+#Check number is cube root
+def isperfectcube(x):
+    x = abs(x)
+    return int(round(x ** (1. / 3))) ** 3 == x
+
+
+print(isperfectcube(27)) #print True
+
+#Find cube root
+import math
+def cubicroot(n):
+    return round(math.exp(math.log(n) / 3), 6)
+
+
+print(cubicroot(41063625)) #print 345.0
+print(cubicroot(127035954683)) #print 5027.0
+
 #Itertools module
 import itertools
 #Iterate over a collection of items.  Implement the iterator protocol.  Define the __iter__ and __next__ methods.
@@ -259,6 +280,23 @@ minigymfiveworkouts = itertools.combinations(range(1, 6), 2)
 print(list(minigymfiveworkouts)) #print [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
 print(list(itertools.combinations_with_replacement(fourletterscombinewith, 3))) #print [('a', 'a', 'a'), ('a', 'a', 'b'), ('a', 'a', 'c'), ('a', 'a', 'd'), ('a', 'b', 'b'), ('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'c'), ('a', 'c', 'd'), ('a', 'd', 'd'), ('b', 'b', 'b'), ('b', 'b', 'c'), ('b', 'b', 'd'), ('b', 'c', 'c'), ('b', 'c', 'd'), ('b', 'd', 'd'), ('c', 'c', 'c'), ('c', 'c', 'd'), ('c', 'd', 'd'), ('d', 'd', 'd')]
 print(list(itertools.combinations_with_replacement(fournumberstobecombinedwith, 2))) #print [(10, 10), (10, 20), (10, 30), (10, 40), (20, 20), (20, 30), (20, 40), (30, 30), (30, 40), (40, 40)]
+#Permutate a number.  Number must be a string.
+import itertools
+testnumber = 56623104
+testnumberlength = len(str(testnumber))
+cubicpermutation = itertools.permutations(str(testnumber), testnumberlength)
+print(testnumberlength) #print 8
+print(cubicpermutation) #print <itertools.permutations object at 0x7fdf7a232b80>
+for eachcubicpermutation in cubicpermutation:
+    integertuple = tuple(map(int, eachcubicpermutation))
+    if integertuple == (5, 6, 6, 2, 3, 1, 0, 4) or integertuple == (6, 6, 4, 3, 0, 1, 2, 5):
+        print(integertuple)
+        '''
+        (5, 6, 6, 2, 3, 1, 0, 4)
+        (5, 6, 6, 2, 3, 1, 0, 4)
+        (6, 6, 4, 3, 0, 1, 2, 5)
+        (6, 6, 4, 3, 0, 1, 2, 5)
+        '''
 
 #Binary
 #https://stackoverflow.com/questions/2451386/what-does-the-caret-operator-do
