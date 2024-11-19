@@ -179,6 +179,34 @@ print(next(generateanumber)) #print 3
 print(list(generateanumber)) #print [4, 5, 6, 7, 8, 9]
 #print(next(generateanumber)) #Error message StopIteration
 
+#Check number is square root or perfect square
+import math
+def checkperfectsquare(n):
+    if n >= 0:
+        squareroot = math.isqrt(n) #The isqrt() function calculates the integer square root of a given number.
+        #print(squareroot * squareroot == n)
+        return (squareroot * squareroot == n)
+def issquarenumber(n):
+    root = math.sqrt(n)
+    return (root % 1 == 0) #return True if square number
+def isnotsquarenumber(n):
+    root = math.sqrt(n)
+    return (root % 1 != 0) #return False if square number
+
+
+number = 4
+print(checkperfectsquare(4)) #print True
+print(issquarenumber(4)) #print True
+print(isnotsquarenumber(4)) #print  False
+number = 100
+print(checkperfectsquare(100)) #print True
+print(issquarenumber(100)) #print True
+print(isnotsquarenumber(100)) #print  False
+number = 5
+print(checkperfectsquare(5)) #print False
+print(issquarenumber(5)) #print False
+print(isnotsquarenumber(5)) #print  True
+
 #Check number is cube root
 def isperfectcube(x):
     x = abs(x)
