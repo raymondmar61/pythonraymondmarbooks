@@ -350,6 +350,74 @@ for eachrandomnumbers in randomnumbers:
         There are fives and nines
         What's going on here.
         '''
+possibilities = [[(2, 5, 9), (4, 9, 3), (6, 3, 7), (8, 7, 1), (10, 1, 5)], [(2, 9, 5), (10, 5, 1), (8, 1, 7), (6, 7, 3), (4, 3, 9)], [(6, 3, 5), (7, 5, 2), (8, 2, 4), (9, 4, 1), (10, 1, 3)], [(6, 5, 3), (10, 3, 1), (9, 1, 4), (8, 4, 2), (7, 2, 5)]]
+print(possibilities) #print [[(2, 5, 9), (4, 9, 3), (6, 3, 7), (8, 7, 1), (10, 1, 5)], [(2, 9, 5), (10, 5, 1), (8, 1, 7), (6, 7, 3), (4, 3, 9)], [(6, 3, 5), (7, 5, 2), (8, 2, 4), (9, 4, 1), (10, 1, 3)], [(6, 5, 3), (10, 3, 1), (9, 1, 4), (8, 4, 2), (7, 2, 5)]]
+for possibility in possibilities:
+    print(possibility)
+    '''
+    [(2, 5, 9), (4, 9, 3), (6, 3, 7), (8, 7, 1), (10, 1, 5)]
+    [(2, 9, 5), (10, 5, 1), (8, 1, 7), (6, 7, 3), (4, 3, 9)]
+    [(6, 3, 5), (7, 5, 2), (8, 2, 4), (9, 4, 1), (10, 1, 3)]
+    [(6, 5, 3), (10, 3, 1), (9, 1, 4), (8, 4, 2), (7, 2, 5)]
+    '''
+for possibility in possibilities:
+    newpossibilities1 = []
+    for tupletolist in possibility:
+        print(tupletolist)
+        newpossibilities1.append(list(tupletolist))
+        print("newpossibilities1 list inside second loop", newpossibilities1)
+        '''
+        (2, 5, 9)
+        newpossibilities1 list inside second loop [[2, 5, 9]]
+        (4, 9, 3)
+        newpossibilities1 list inside second loop [[2, 5, 9], [4, 9, 3]]
+        (6, 3, 7)
+        newpossibilities1 list inside second loop [[2, 5, 9], [4, 9, 3], [6, 3, 7]]
+        (8, 7, 1)
+        newpossibilities1 list inside second loop [[2, 5, 9], [4, 9, 3], [6, 3, 7], [8, 7, 1]]
+        (10, 1, 5)
+        newpossibilities1 list inside second loop [[2, 5, 9], [4, 9, 3], [6, 3, 7], [8, 7, 1], [10, 1, 5]]
+        '''
+    print("newpossibilities1 list", newpossibilities1) #print newpossibilities1 list [[2, 5, 9], [4, 9, 3], [6, 3, 7], [8, 7, 1], [10, 1, 5]]
+print("\n")
+for possibility in possibilities:
+    newpossibilities2 = []
+    for extractsublist in possibility:
+        print(extractsublist)
+        newpossibilities2 = newpossibilities2 + list(extractsublist)
+        print("newpossibilities2 list inside second loop", newpossibilities2)
+        '''
+        (2, 5, 9)
+        newpossibilities2 list inside second loop [2, 5, 9]
+        (4, 9, 3)
+        newpossibilities2 list inside second loop [2, 5, 9, 4, 9, 3]
+        (6, 3, 7)
+        newpossibilities2 list inside second loop [2, 5, 9, 4, 9, 3, 6, 3, 7]
+        (8, 7, 1)
+        newpossibilities2 list inside second loop [2, 5, 9, 4, 9, 3, 6, 3, 7, 8, 7, 1]
+        (10, 1, 5)
+        '''
+    print("newpossibilities2 list", newpossibilities2) #print newpossibilities2 list [2, 5, 9, 4, 9, 3, 6, 3, 7, 8, 7, 1, 10, 1, 5]
+print("\n")
+listofnumbers = [2, 5, 9, 4, 9, 3, 6, 3, 7, 8, 7, 1, 10, 1, 5]
+nocommasnumbers = ""
+for n in listofnumbers:
+    print("".join(str(n))) #print 2\n 5\n 9\n 4\n 9\n 3\n 6\n 3\n 7\n 8\n 7\n 1\n 10\n 1\n 5
+    nocommasnumbers = nocommasnumbers + "".join(str(n))
+print(nocommasnumbers) #print 2594936378711015
+print("\n")
+listcontainlistoftuplenumbers = [[(2, 5, 9), (4, 9, 3), (6, 3, 7), (8, 7, 1), (10, 1, 5)], [(2, 9, 5), (10, 5, 1), (8, 1, 7), (6, 7, 3), (4, 3, 9)], [(6, 3, 5), (7, 5, 2), (8, 2, 4), (9, 4, 1), (10, 1, 3)], [(6, 5, 3), (10, 3, 1), (9, 1, 4), (8, 4, 2), (7, 2, 5)]]
+for eachlistoftuplenumbers in listcontainlistoftuplenumbers:
+    print(eachlistoftuplenumbers) #print [(2, 5, 9), (4, 9, 3), (6, 3, 7), (8, 7, 1), (10, 1, 5)]
+    convertsublisttuplestolist = []
+    for eachtupleinsidelist in eachlistoftuplenumbers:
+        print(eachtupleinsidelist) #print (2, 5, 9)\n (4, 9, 3)\n (6, 3, 7)\n (8, 7, 1)\n (10, 1, 5)
+        convertsublisttuplestolist = convertsublisttuplestolist + list(eachtupleinsidelist)
+    nocommasnumbers = ""
+    for n in convertsublisttuplestolist:
+        # print("".join(str(n)))
+        nocommasnumbers = nocommasnumbers + "".join(str(n))
+    print(nocommasnumbers) #print 2594936378711015
 unconfirmedusers = ["Alice", "Brian", "Candace"]
 confirmedusers = []
 while unconfirmedusers:
@@ -442,6 +510,14 @@ print(integertuple) #print (5, 6, 6, 2, 3, 1, 0, 4)
 convertintegertuple = (5, 6, 6, 2, 3, 1, 0, 4)
 tupletointeger = functools.reduce(lambda sub, elem: sub * 10 + elem, convertintegertuple)
 print(tupletointeger) #print 56623104
+onetuple = (2, 5, 9)
+print(onetuple) #print (2, 5, 9)
+print(type(onetuple)) #print <class 'tuple'>
+print(map(int, onetuple)) #print <map object at 0x7261ac463f70>
+print(str(map(int, onetuple))) #print <map object at 0x7261ac463f70>
+tupletointeger = functools.reduce(lambda sub, elem: sub * 10 + elem, onetuple)
+print(tupletointeger) #print 259
+
 #Dictionaries
 blankdictionary = {}
 blankdictionary["Insert key in brackets"] = "Insert item right of equal sign"
@@ -547,6 +623,17 @@ for eachvalueislist in valueislist.values():
     good
     ['insert', 'new value', 'in dictionary', 'as a list']
     '''
+#setdefault(key[, default]).  If key is in the dictionary, return its value. If not, insert key with a value of default and return default. default defaults to None.
+cardictionary = {"brand": "Ford", "model": "Mustang", "year": 1964}
+print(cardictionary) #print {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+setdefault = cardictionary.setdefault("model", "Bronco")
+print(setdefault) #print Mustang.  Key model is in the dictionary.  Return the value Mustang.
+print(cardictionary) #print {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+setdefault = cardictionary.setdefault("color", "White")
+print(setdefault) #print White.  Key color is not in the dictionary.  Insert key color with default White and return value White.
+print(cardictionary) #print {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'White'}
+cardictionary["color"] = "Blue"
+print(cardictionary) #print {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'Blue'}
 missingvalue = {"name": "Pooka", "age": 5}
 print(missingvalue) #print {'name': 'Pooka', 'age': 5}
 missingvalue.setdefault("color", "add key and default value if key and value doesn't exist")
