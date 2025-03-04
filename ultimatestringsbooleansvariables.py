@@ -65,16 +65,16 @@ checkcase = "Methods Check A String'S Case."
 print(checkcase.isupper()) #print False
 print(checkcase.islower()) #print False
 print(checkcase.istitle()) #print True.  'S is capitalized for title!?!
-print(checkcase.isalpha()) #print False.  isalpha() method can't have spaces.  Alphabetic characters only.
+print(checkcase.isalpha()) #print False.  isalpha() method can't have spaces.  Alphabetic characters only.  Integer not a string returns an error.
 print(checkcase[0:7].isalpha()) #print True.  isalpha() method can't have spaces.  Alphabetic characters only.
-print(checkcase[0:7].isalnum()) #print True.  isalnum() method can't have spaces.  isalnum searches for alpha numeric or alphanumeric or alpha-numeric.
+print(checkcase[0:7].isalnum()) #print True.  isalnum() method can't have spaces.  isalnum searches for alpha numeric or alphanumeric or alpha-numeric as strings.
 print(checkcase.isspace()) #print False
 checkspaces = " 4 cke x  sioj "
 print(checkspaces.isspace()) #print False.  White spaces or spaces only.
 alldecimals0to9base10 = "123789"
-print(alldecimals0to9base10.isdecimal()) #print True.  Python isdecimal() function returns a Boolean value TRUE if the input string contains all decimal characters
-print(alldecimals0to9base10.isdigit()) #print True.  No positive signs or negative signs.
-print(alldecimals0to9base10.isnumeric()) #print True.  isnumeric is a numeric value without a positive sign or negative sign and no decimals.
+print(alldecimals0to9base10.isdecimal()) #print True.  Python isdecimal() function returns a Boolean value TRUE if the input string contains all decimal characters.  Must be string.
+print(alldecimals0to9base10.isdigit()) #print True.  No positive signs or negative signs.  Must be string.
+print(alldecimals0to9base10.isnumeric()) #print True.  isnumeric is a numeric value without a positive sign or negative sign and no decimals.  Must be string.
 splitstring = "Separate string by letters or spaces"
 print(splitstring) #print Separate string by letters or spaces
 print(splitstring.split()) #print ['Separate', 'string', 'by', 'letters', 'or', 'spaces']
