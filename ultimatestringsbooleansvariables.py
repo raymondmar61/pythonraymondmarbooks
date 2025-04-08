@@ -207,6 +207,42 @@ print(type(ascii_lowercase)) #print <class 'str'>
 print(*ascii_lowercase) #print a b c d e f g h i j k l m n o p q r s t u v w x y z
 print(*list(ascii_lowercase)) #print a b c d e f g h i j k l m n o p q r s t u v w x y z
 print([*"abcdefghijklmnopqrstuvwxyz"]) #print ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+textinput = "123ABCxope987ZYXabcABC1"
+textinputlowercase = textinput.lower()
+print(textinputlowercase) #print 123abcxope987zyxabcabc1
+countsplittextinput = Counter(textinputlowercase)
+print(countsplittextinput) #print Counter({'a': 3, 'b': 3, 'c': 3, '1': 2, 'x': 2, '2': 1, '3': 1, 'o': 1, 'p': 1, 'e': 1, '9': 1, '8': 1, '7': 1, 'z': 1, 'y': 1})
+print(type(countsplittextinput)) #print <class 'collections.Counter'>
+love = countsplittextinput.most_common()
+counter = 0
+for eachstring, counteachstring in love:
+    print(eachstring, counteachstring)
+    if counteachstring > 1:
+        print("There is more than one " + eachstring)
+        counter += 1
+    '''
+    a 3
+    There is more than one a
+    b 3
+    There is more than one b
+    c 3
+    There is more than one c
+    1 2
+    There is more than one 1
+    x 2
+    There is more than one x
+    2 1
+    3 1
+    o 1
+    p 1
+    e 1
+    9 1
+    8 1
+    7 1
+    z 1
+    y 1
+    '''
+print(counter) #print 5
 
 #Boolean
 print(bool("return true" > "or return false using bool()")) #print True
