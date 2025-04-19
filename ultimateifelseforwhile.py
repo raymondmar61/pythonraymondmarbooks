@@ -369,6 +369,25 @@ while True:
     Too high.  I'm thinking of a number between 1 and 50.  Guess again. 24
     Correct, you win.  Exit while loop.
     '''
+for i in range(1,6):
+    print(i)
+    if i==3:
+        print("i is 3.  Skip the remaining while loop.  Start with the next iteration i = 4")
+        continue
+    print(i+1)
+    '''
+    1
+    2
+    2
+    3
+    3
+    i is 3.  Skip the remaining while loop.  Start with the next iteration i = 4
+    4
+    5
+    5
+    6
+    '''
+
 while True:
     name = input("Who are you?  Enter Joe to proceed; otherwise, while loop goes back to the top of while loop.  There is no initialization. ")
     if name != "Joe":
