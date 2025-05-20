@@ -365,6 +365,20 @@ rightlist.append("add text to the blank right list")
 print(middlelist) #print []
 print(rightlist) #print ['add text to the blank right list']
 stringvariable = "The String"
+number = 12.3456
+print("%f" % (number)) #print 12.345600
+print("%.2f" % (number)) #print 12.35
+print("%.8f" % (number)) #print 12.34560000
+print("%+f always display a positive sign for positive numbers" % (number)) #print +12.345600 always display a positive sign for positive numbers
+print("%-f" % (number)) #print 12.345600
+negativenumber = -12.3456
+print("%f always display a negative sign for negative numbers" % negativenumber) #print -12.345600 always display a negative sign for negative numbers
+print("%-f" % negativenumber) #print -12.345600
+print("%+f" % negativenumber) #print -12.345600
+print("% f line negative numbers with negative sign and positive numbers without positive sign" % number) #print  12.345600 line negative numbers with negative sign and positive numbers without positive sign
+testscore = 75.4
+print("Add a percentage to the string type two percentages %% exam test %f%% like two blackslahes." % testscore) #print Add a percentage to the string type two percentages % exam test 75.400000% like two blackslahes.
+print("Add a percentage to the string type two percentages %% exam test %.1f%% like two blackslahes." % testscore) #print Add a percentage to the string type two percentages % exam test 75.4% like two blackslahes.
 integervariable = 457
 decimalvariable = 3.14159
 print("Use plus sign to concatenate string variables.  Integer is " + str(integervariable) + ".  String is " + stringvariable + ".") #print Use plus sign to concatenate string variables.  Integer is 457.  String is The String.
@@ -372,7 +386,7 @@ print("use comma to concateante numerical variables.  Integer is", integervariab
 print("Use the percent f for an integer as a floating number %f.  Use the percent s for a string %s." % (integervariable, stringvariable)) #print Use the percent f for an integer as a floating number 457.000000.  Use the percent s for a string The String.
 print("Use the percent f for a decimal as a floating number %f." % (decimalvariable)) #print Use the percent f for a decimal as a floating number 3.141590.
 print("Use the percent period 2 f for a decimal as a floating number two decimals %.2f." % (decimalvariable)) #print Use the percent period 2 f for a decimal as a floating number two decimals 3.14.
-print("Use the percent d for a decimal as an integer %d." % (decimalvariable)) #print Use the percent d for a decimal as an integer 3.
+print("Use the percent d for a decimal as an integer %d." % (decimalvariable)) #print Use the percent d for a decimal as an integer 3.  %i also works.
 print("Pi is %f" % (3.14159)) #print Pi is 3.141590
 print("Pi is %.2f" % (3.14159)) #print Pi is 3.14
 print("Pi is %6.2f" % (3.14159)) #print Pi is **3.14
@@ -421,9 +435,28 @@ print(f"Fill with zeros in front of numerical value width ten [{27:+010d}]") #pr
 print(f"String integer value with commas {123456789:,d}.") #print String numerical value with commas 123,456,789.
 print(f"String decimal value with commas {123456.78:,.3f}.") #print String numerical value with commas 123,456.780.
 print(f"String decimal value with commas {123456.78:,.6f}.") #print String decimal value with commas 123,456.780000.
+number = 12.3456
+print("%e e-notation" % number) #print 1.234560e+01 e-notation
+print("%.3e three decimal places e-notation" % number) #print 1.235e+01 three decimal places e-notation
+print("%.8e eight decimal places e-notation" % number) #print 1.23456000e+01 eight decimal places e-notation
+print("%E E-notation capital E" % number) #print 1.234560E+01 E-notation capital E
+number1 = 12.3
+number2 = 456712345.6
+print("%g Python automatically choose float or e-notation with lower case e" % number1) #print 12.3 Python automatically choose float or e-notation with lower case e
+print("%g Python automatically choose float or e-notation with lower case e" % number2) #print 4.56712e+08 Python automatically choose float or e-notation with lower case e
+print("%G Python automatically choose float or e-notation with upper case e" % number2) #print 4.56712E+08 Python automatically choose float or e-notation with upper case e
+print("More than one format string use number 1 %.1f and number 2 %.2f include in parenthesis after a single percentage tuples of variables" % (number1, number2)) #print More than one format string use number 1 12.3 and number 2 456712345.60 include in parenthesis after a single percentage tuples of variables
+formattedvariable = "%.2f" % 12.3456
+print("Format a variable format a number as string " + formattedvariable) #print Format a variable format a number as string 12.35
+print(type(formattedvariable)) #print <class 'str'>
+print(f"F-strings type a lowercase f before the string quotation mark.  Use the number1 {number1:.1f} and number2 {number2:f} variables.") #print F-strings type a lowercase f before the string quotation mark.  Use the number1 12.3 and number2 456712345.600000 variables.
 value = 42
 stringinterpolation = f"The answer is {value}"
 print(stringinterpolation) #print The answer is 42
+distance = 149597870700
+printstringvariable = f"The sun is {distance} meters from the earth."
+print(printstringvariable) #print The sun is 149597870700 meters from the earth.
+print(f"The sun is {distance:.4e} meters e-notation from the earth.") #print The sun is 1.4960e+11 meters e-notation from the earth.
 pi = 3.1415
 print(f"pi is {pi:{10}.{2}}") #print pi is *******3.1
 value = "grapes"
