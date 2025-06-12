@@ -25,6 +25,38 @@ Close() function to close file.
 '''
 #Note that once you have read some text from a file using read(), readline(), or readlines(), then that line is not read again.
 fileread.close()
+openfileobject = open("keylog.txt", "r")
+readfiletoview = openfileobject.readlines()
+print(readfiletoview) #print ['319\n', '680\n', '180\n', '690\n', '129\n', '620\n', '762\n', '689\n', '762\n', '318\n', '368\n', '710\n', . . .
+openfileobject.close() #Close the open file when you're done.  The reason is if another program needs to use the file, the other program might not be able to access the file.
+openfileobject = open("keylog.txt", "r")
+readfiletoviewline1 = openfileobject.readline()
+readfiletoviewline2 = openfileobject.readline()
+readfiletoviewline3 = openfileobject.readline()
+print(readfiletoviewline1) #print 319
+print(readfiletoviewline2) #print 680
+print(readfiletoviewline3) #print 180
+#Use the seek() method to start at the beginning when read each line one at a time with readline().  Set seek() to zero.
+openfileobject.seek(0)
+readfiletoviewline1again = openfileobject.readline()
+readfiletoviewline2again = openfileobject.readline()
+readfiletoviewline3again = openfileobject.readline()
+print(readfiletoviewline1again) #print 319
+print(readfiletoviewline2again) #print 680
+print(readfiletoviewline3again) #print 180
+openfileobject.close()
+writefileusingprint = open("printtotextfile.txt", "w")
+print("Use print() to write to a file.  Include file=*object name* at the end.", file=writefileusingprint)
+writefileusingprint.close()
+readfileusingprint = open("printtotextfile.txt", "r")
+readfiletoviewline = readfileusingprint.readline()
+print(readfiletoviewline) #print Use print() to write to a file.  Include file=*object name* at the end.
+readfileusingprint.close()
+#Binary files don't have text.  Binary files are music, pictures, or data not text formatted.  Binary files don't have lines.  readline() and readlines() can't be used in binary files.  Open binary files add the letter b to the file mode.  binarymusicfile = open("openmusicfile.mp3","rb").
+openmusicfileobject = open("bartsimpsonsbankrun.mp4", "rb")
+readmusicfileobject = openmusicfileobject.readlines()
+openmusicfileobject.close()
+print(readmusicfileobject) #print . . . \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x007\xa3\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00{']
 fileread = open("basicreadwritefile.txt", "r")
 readlinesobjectvariable = fileread.readlines()
 for eachreadlinesobjectvariable in readlinesobjectvariable:
