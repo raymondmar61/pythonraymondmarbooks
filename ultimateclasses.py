@@ -11,6 +11,87 @@
 #When an object of a class is created, the object doesn't have any attributes.  The attributes are added dynamically using the self.attributename = value.
 #Any attribute name beginning with an underscore is for a class's internal use only.  Attributes don't begin with an underscore are considered ppublicly accessible.
 
+#Create a class without creating an object or an instance.  No methods or no function inside a class.
+import random
+
+class Card:
+    def __init__(self, suitid, rankid):
+        self.rankid = rankid
+        self.suitid = suitid
+
+        #Rank and value attributes
+        if self.rankid == 1:
+            self.rank = "Ace"
+            self.value = 1
+        elif self.rankid == 11:
+            self.rank = "Jack"
+            self.value = 10
+        elif self.rankid == 12:
+            self.rank = "Queen"
+            self.value = 10
+        elif self.rankid == 13:
+            self.rank = "King"
+            self.value = 10
+        elif 2 <= self.rankid <= 10:
+            self.rank = str(self.rankid)
+            self.value = self.rankid
+        else:
+            self.rank = "RankError"
+            self.value = -1
+
+        #Suit attributes
+        if self.suitid == 1:
+            self.suit = "Diamonds"
+        elif self.suitid == 2:
+            self.suit = "Hearts"
+        elif self.suitid == 3:
+            self.suit = "Spades"
+        elif self.suitid == 4:
+            self.suit = "Clubs"
+        else:
+            self.suit = "SuitError"
+
+        self.shortname = self.rank[0] + self.suit[0] #Get the first initial for Ace, Jack, Queen, and King; Diamonds, Hearts, Spades, and Clubs
+        if self.rank == "10":
+            self.shortname = self.rank + self.suit[0] #Include the string number 10 for ten of *suit*
+        self.longname = self.rank + " of " + self.suit
+        print(self.longname + ": " + self.shortname + ".  Value: " + str(self.value))
+        '''
+        Ace of Diamonds: AD.  Value: 1
+        2 of Diamonds: 2D.  Value: 2
+        3 of Diamonds: 3D.  Value: 3
+        ...
+        9 of Clubs: 9C.  Value: 9
+        10 of Clubs: 10C.  Value: 10
+        Jack of Clubs: JC.  Value: 10
+        Queen of Clubs: QC.  Value: 10
+        King of Clubs: KC.  Value: 10
+        '''
+
+
+#Make a deck of cards
+decklist = []
+for suitid in range(1, 5):
+    for rankid in range(1, 14):
+        decklist.append(Card(suitid, rankid))
+print(decklist) #print [<__main__.Card object at 0x7957cee8ffd0>, <__main__.Card object at 0x7957cee8d090>, <__main__.Card object at 0x7957cee8d0f0>, <__main__.Card object at 0x7957cee8d330>, . . . ,<__main__.Card object at 0x7957cee8d120>, <__main__.Card object at 0x7957cee8cfd0>, <__main__.Card object at 0x7957cee8cf40>]
+#Pick five cards from the deck to make a hand
+handlist = []
+numberofcardspicked = 5
+for pickedcounter in range(0, numberofcardspicked):
+    cardpicked = random.choice(decklist)
+    handlist.append(cardpicked)
+    decklist.remove(cardpicked)
+print(handlist) #print [<__main__.Card object at 0x7957cee8d120>, <__main__.Card object at 0x7957cee8d240>, <__main__.Card object at 0x7957cee8d0f0>, <__main__.Card object at 0x7957cee8dae0>, <__main__.Card object at 0x7957cee8d5a0>]
+for eachcard in handlist:
+    print(eachcard.shortname, "=", eachcard.longname, " Value:", eachcard.value)
+    '''
+    JC = Jack of Clubs  Value: 10
+    10C = 10 of Clubs  Value: 10
+    3D = 3 of Diamonds  Value: 3
+    5S = 5 of Spades  Value: 5
+    8C = 8 of Clubs  Value: 8
+    '''
 class Boat():
     pass
 
@@ -1124,7 +1205,7 @@ with Contextmanagertypevaluetraceback() as yeserrormessage:
     traceback=division by zero
     '''
 
-#Duck Typing:  A programming style which does not look at an object’s type to determine if it has the right interface; instead, the method or attribute is simply called or used ("If it looks like a duck and quacks like a duck, it must be a duck.").  RM:  I don't understand.
+#Duck Typing:  A programming style which does not look at an object's type to determine if it has the right interface; instead, the method or attribute is simply called or used ("If it looks like a duck and quacks like a duck, it must be a duck.").  RM:  I don't understand.
 class Boat():
     pass
     def earnings(self):
