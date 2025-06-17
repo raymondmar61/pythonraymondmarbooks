@@ -179,6 +179,73 @@ print(next(generateanumber)) #print 3
 print(list(generateanumber)) #print [4, 5, 6, 7, 8, 9]
 #print(next(generateanumber)) #Error message StopIteration
 
+#Fractions module
+import fractions
+print(fractions.Fraction(6, 10)) #print 3/5.  Round fractions rounding fractions.
+print(type(fractions.Fraction(6, 10))) #print <class 'fractions.Fraction'>
+print(fractions.Fraction(1, 3)) #print 1/3.  1/3 can't be rounded down.
+print(fractions.Fraction(20, 8)) #print 5/2.  20/8 can be rounded down.
+a = fractions.Fraction(22, 99)
+print(a) #print 2/9.  22/99 can be rounded down by 11.
+addfraction1 = fractions.Fraction(1, 4)
+addfraction2 = fractions.Fraction(1, 2)
+print(addfraction1 + addfraction2) #print 3/4
+addfraction1 = fractions.Fraction(2, 3)
+addfraction2 = fractions.Fraction(2, 3)
+print(addfraction1 + addfraction2) #print 4/3.  2/3 is 1/3 + 1/3.  (2/3 + 1/3) + 1/3.  (1) + 1/3 = 4/3.
+arithemeticfraction1 = fractions.Fraction(2, 3)
+arithemeticfraction2 = fractions.Fraction(2, 9)
+print(arithemeticfraction1 - arithemeticfraction2) #print 4/9
+print(arithemeticfraction1 * arithemeticfraction2) #print 4/27
+decimaltofraction = fractions.Fraction(1.25)
+print(decimaltofraction) #print 5/4
+decimaltofraction = fractions.Fraction(2.5)
+print(decimaltofraction) #print 5/2
+decimaltofraction = fractions.Fraction(1.33)
+print(decimaltofraction) #print 748723438050345/562949953421312
+decimaltofraction = fractions.Fraction("1.33")
+print(decimaltofraction) #print 133/100
+#limit_denominator() method.  Finds and returns the closest Fraction that has denominator at most max_denominator. This method is useful for finding rational approximations to a given floating-point number.  default max_denominator is 1000000.
+decimaltofraction = fractions.Fraction(1.33).limit_denominator()
+print(decimaltofraction) #print 133/100
+print(type(decimaltofraction)) #print <class 'fractions.Fraction'>
+technicallyzero = fractions.Fraction()
+print(technicallyzero) #print 0
+technicallyzero = fractions.Fraction(0, 1)
+print(technicallyzero) #print 0
+print(fractions.Fraction(.3)) #print 5404319552844595/18014398509481984
+print(fractions.Fraction(".3")) #print 3/10
+print(fractions.Fraction(.3).limit_denominator()) #print 3/10
+print(fractions.Fraction(2 / 10)) #print 3602879701896397/18014398509481984
+print(fractions.Fraction("2/10")) #print 1/5
+print(fractions.Fraction(2 / 10).limit_denominator) #print <bound method Fraction.limit_denominator of Fraction(3602879701896397, 18014398509481984)>
+print(fractions.Fraction(2 / 10).limit_denominator()) #print 1/5
+print(fractions.Fraction(2 / 10).limit_denominator(10)) #print 1/5
+print(fractions.Fraction(3.1415937).limit_denominator(30)) #print 22/7
+print(fractions.Fraction(3.1415937).limit_denominator(100)) #print 311/99
+print(fractions.Fraction(.1)) #print 3602879701896397/36028797018963968
+print(fractions.Fraction(.1).limit_denominator()) #print 1/10
+print(fractions.Fraction(.1).limit_denominator(30)) #print 1/10
+print(fractions.Fraction.from_float(.1)) #print 3602879701896397/36028797018963968
+print(fractions.Fraction.from_float(.1).limit_denominator(10)) #print 1/10
+print(fractions.Fraction.from_float(.1).limit_denominator(100)) #print 1/10
+print(fractions.Fraction.from_float(.3)) #print 5404319552844595/18014398509481984
+print(fractions.Fraction.from_float(.3).limit_denominator(10)) #print 3/10
+print(fractions.Fraction.from_float(.3).limit_denominator(100)) #print 3/10
+print(fractions.Fraction(20 / 40).numerator) #print 1
+print(fractions.Fraction(20 / 40).denominator) #print 2
+print(fractions.Fraction(20 / 33).numerator) #print 5458908639236965
+print(fractions.Fraction(20 / 33).denominator) #print 9007199254740992
+#print(fractions.Fraction(20 / 33).denominator.limit_denominator(10)) #print AttributeError: 'int' object has no attribute 'limit_denominator'
+print(fractions.Fraction((5 * 4), (30 + 3))) #print 20/33
+print(round(fractions.Fraction(3 / 2))) #print 2
+print(round(fractions.Fraction(1.5))) #print 2
+print(round(fractions.Fraction(5 / 2))) #print 2
+print(round(fractions.Fraction(2.5))) #print 2
+print(round(fractions.Fraction(6 / 2))) #print 3
+print(round(fractions.Fraction(3.25))) #print 3
+print(round(fractions.Fraction(3.5))) #print 4
+
 #Check number is square root or perfect square
 import math
 def checkperfectsquare(n):
