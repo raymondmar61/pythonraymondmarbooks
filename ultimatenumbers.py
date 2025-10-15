@@ -43,6 +43,91 @@ print("Type the colon period and number f for a floating number or decimal numbe
 print("Decimal variable return two decimals {:.2f}.".format(decimalvariable)) #print Decimal variable return two decimals 3.14.
 print("Decimal variable return five decimals {:.5f}.".format(decimalvariable)) #Decimal variable return five decimals 3.14159.
 
+#Modulo or modulus
+#Get the remainder from division.  Written with the percent sign %.  Takes a number and maps the number to a range based on the remainder when you divide the number.  number % modulus = remainder.  The remainder is always less than the modulus number.
+#Take the modulus number and calculate how many times the modulus number fits in the first number.  The amount remaining is the answer or the remainder.
+#Modular arithmetic.  A group of integers which wrap around when the maximum value is reached.
+#Congruence means equivalent.
+#Programming languges calculate negative modulus differently.  For example, Python and JavaScript return different answers.
+print(10 / 3) #print 3.3333333333333335
+pizzaslices = 10
+people = 3
+print(pizzaslices / people) #print 3.3333333333333335
+print(pizzaslices % people) #print 1
+print(12 % 3) #print 0.  12 / 3 = 4.  No remainder
+print(7 % 2) #print 1.  7 - (3 * 2) = 1 remainder.
+print(7 % 6) #print 1
+print(6 % 7) #print 6
+print(12 % 10) #print 2
+print(10 % 12) #print 10
+print(15 % 100) #print 15
+print(15 % 299) #print 15
+print(19 % 5987) #print 19
+print(294 % 379654) #print 294
+print(13 / 12) #print 1.0833333333333333
+print(13 % 12) #print 1
+print(divmod(13, 12)) #print (1,1).  Return division result quotient and remainder.
+print(15 / 4) #print 3.75
+print(15 % 4) #print 3
+print(240 / 13) #print 18.46153846153846
+print(240 % 13) #print 6
+print(37 / 5) #print 7.4
+print(37 // 5) #print 7
+print(37 % 5) #print 2
+print(divmod(37, 5)) #print (7,2).  Return division result quotient and remainder.
+print(8 / 3) #print 2.6666666666666665
+print(8 % 3) #print 2
+print(8 / -3) #print -2.6666666666666665
+print(8 % -3) #print -1
+print(-20 % 6) #print 4.  Negative dividend and positive divisor.  Add postivie divisor to negative dividend.   Stop the math when the answer is zero or a positive number.  -20+6=-14+6=-8+6=-2+6=+4
+print(20 % -6) #print -4.  Positive dividend and negative divisor.  Subtract negative divisor being absolute negative divisor to positive dividend.  Stop the math when the answer is zero or a negative number.  20-6=14-6=8-6=2-6=-4
+print(5 % 3) #print 2.
+print(-5 % 3) #print 1.  Negative dividend.
+print(5 % -3) #print -1.  Negative divisor.
+print(-5 % -3) #print -2.  Negative dividend and negative divisor.  Reason is the floor operator when calculating the remainder using the modulus operator.
+#Python calculates the remainder.  r = a % n and r = a - (n * math.floor(a / n))
+from math import floor
+print(13 % 12) #print 1
+print(13 - (12 * floor(13 / 12))) #print 1
+print(8 % -3) #print -1
+print(8 - (-3 * floor(8 / -3))) #print -1
+print(-5 - (3 * floor(-5 / 3))) #print 1.  For (-5 % 3)
+print(5 - (-3 * floor(5 / -3))) #print -1.  For (5 % -3)
+print(-5 - (-3 * floor(-5 / -3))) #print -2.  For (-5 % -3)
+print(12.5 % 5.5) #print 1.5.  Floating numbers.
+print(17.0 % 12.0) #print 5.0
+print(13.3 % 1.1) #print 0.09999999999999964.  Don't use floating value to store money.  Use decimal module.
+from math import fmod #Use math.fmod for floating point or decimal remainders.
+print(fmod(12.5, 5.5)) #print 1.5.
+#Python negative remainders calculate differently
+print(8 % -3) #print -1
+print(fmod(8, -3)) #print 2.0
+#https://www.mathsisfun.com/numbers/division-remainder.html
+#7 divided by 2 is 3 with a remainder of 1.  Take remainder 1 and divisor 2; 1 / 2 = 0.5.
+print(7 / 2) #print 3.5
+print(7 % 2) #print 1
+print(16 / 9) #print 1.7777777777777777
+print(16 % 9) #print 7
+print(7 / 9) #print 0.7777777777777778
+print(19 / 5) #print 3.8
+print(19 % 5) #print 4
+print(4 / 5) #print 0.8
+#https://www.mathsisfun.com/numbers/congruence.html
+#Congruence.  Numbers are congruent when the numbers have the same remainder after being divided by the same number or the same modulus.  For example, 2 and 14 are congruent with modulus 12.
+samemodulus = 12
+print(2 % samemodulus) #print 2
+print(14 % samemodulus) #print 2
+#17 and 134 are congruent with modulus 9
+samemodulus = 9
+print(17 % samemodulus) #print 8
+print(134 % samemodulus) #print 8
+#The symbol for congruence is the hamburger icon or triple horizontal lines
+print("17 --- 134 mod 9.  17 is congruent to 134 using modulus 9.")
+#Subtract the two congruence numbers and divide by the modulus number.  The answer should be a multiple number.
+print(134 - 17) #print 117
+print((134 - 17) / samemodulus) #print 13.0
+print((134 - 17) // samemodulus) #print 13
+
 #Math module
 import math
 #print(help(math)) #print module help module description function descriptions
@@ -94,7 +179,6 @@ print(bonus5) #print 20
 print(bonus6) #print 85
 choosenumber = random.choice(bonussixrandomintegersincrementsoffive)  #random.choice works for a list of strings
 print(choosenumber) #print 5
-
 fiverandomnumbersnoduplicates = random.sample(range(1, 21), 5) #random.sample takes a population and a sample size k and returns k random members of the population no duplicates.  An error message appears if the number of returns exceed the number of sample range.
 print(fiverandomnumbersnoduplicates) #print [14, 6, 20, 1, 8]
 print(type(fiverandomnumbersnoduplicates)) #print <class 'list'>
@@ -131,7 +215,6 @@ for differentrandomnumbers4 in range(10):
     print(random.randrange(1, 7), end=" ") #print 1 5 2 5 1 4 6 2 3 2
 print("\n")
 random.seed() #deactivate random.seed or stop random.seed
-
 
 #Statistics module
 import statistics
@@ -245,6 +328,15 @@ print(round(fractions.Fraction(2.5))) #print 2
 print(round(fractions.Fraction(6 / 2))) #print 3
 print(round(fractions.Fraction(3.25))) #print 3
 print(round(fractions.Fraction(3.5))) #print 4
+
+#Convert seconds to hours, minutes, and seconds
+totalseconds = 67000
+hours = int(totalseconds / 3600)
+minutes = int((totalseconds / 60) % 60)
+seconds = totalseconds % 60
+print(hours, minutes, seconds) #print 18 36 40
+print(hours, "hours", minutes, "minutes", seconds, "seconds") #print 18 hours 36 minutes 40 seconds
+print(f"{totalseconds} seconds = {hours} hours, {minutes} minutes, {seconds} seconds") #print 67000 seconds = 18 hours, 36 minutes, 40 seconds
 
 #Check number is square root or perfect square
 import math
