@@ -35,6 +35,7 @@ sortmultiplenumbers.sort()
 print(sortmultiplenumbers) #print ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '5', '6', '8', '8', '9']
 convertnumberstostring = list(map(str, [29, 58, -5, 210, 985]))
 print(convertnumberstostring) #print ['29', '58', '-5', '210', '985']
+print(sorted(["L0ND0N", "DUBL1N", "S1NGAP0RE", "BUDAPE5T", "PAR15"])) #print ['BUDAPE5T', 'DUBL1N', 'L0ND0N', 'PAR15', 'S1NGAP0RE'].  Sort function sort.
 duplicateitems = ["cat", "dog", "moon", "shoe", "cat", "dog", "cat"]
 print(duplicateitems) #print ['cat', 'dog', 'moon', 'shoe', 'cat', 'dog', 'cat']
 countitemsinlist = duplicateitems.count("cat")
