@@ -191,6 +191,37 @@ print(splitmethod.expandtabs(1)) #expandtabs replaces tab characters with the sp
 You   can have tabs 
    and newlines mixed in
 '''
+#The maketrans() method create a mapping translation table used with the translate() method to replace or remove characters within a string.  The maketrans() method returns a dictionary-like translation table, which maps Unicode ordinal values of characters to their corresponding replacements or None for characters to be removed.
+#str.maketrans(x, y, z). x Required. If only one parameter is specified, this has to be a dictionary describing how to perform the replace. If two or more parameters are specified, this parameter has to be a string specifying the characters you want to replace. y Optional. A string with the same length as parameter x. Each character in the first parameter will be replaced with the corresponding character in this string.  z Optional. A string describing which characters to remove from the original string.
+#str.maketrans(x[, y[, z]])  x: A string, dictionary, or sequence of characters that need to be replaced. y (optional): A string with the same length as x, specifying the replacement characters. z (optional): A string containing characters to be removed.
+replaceawithAewithEdeletex = str.maketrans("ae", "AE", "x")
+originalstring = "example string with some text"
+print(originalstring) #print example string with some text
+replacedstring = originalstring.translate(replaceawithAewithEdeletex)
+print(replacedstring) #print EAmplE string with somE tEt
+replaceswithp = "Replace all s with p hello sam"
+print(replaceswithp) #print Replace all s with p hello sam
+needtranslatemethod = str.maketrans("s", "p")
+print(replaceswithp.translate(needtranslatemethod)) #print Replace all p with p hello pam
+replaceletters = "mSa"
+withtheseletters = "eJo"
+deletetheseletters = "odnght"
+maketransvariables = str.maketrans(replaceletters, withtheseletters, deletetheseletters)
+originalstring = "Good night Sam!"
+print(originalstring) #print Good night Sam!
+replacedstring = originalstring.translate(maketransvariables)
+print(replacedstring) #print G i Joe!
+#maketrans() method create mapping tables that specify how specific characters in a string should be replaced. This method is often used in conjunction with the translate() method to perform character replacements efficiently.
+translationtable = str.maketrans("abc", "xyz")  #maketrans() method creates a mapping where a is replaced with x, b with y, and c with z
+originaltext = "abcde"
+translatestring = originaltext.translate(translationtable) #  translate() method applies the mapping to the string "abcde" resulting in the transformed string "xyzde".
+print(translatestring) #print xyzde
+removecharacters = str.maketrans("", "", ".!?")
+deletesymbols = "Learn Python!.?"
+print(deletesymbols.translate(removecharacters)) #print Learn Python
+usedictionary = str.maketrans({"L": "D", "w": "v"})
+usedictionaryresult = "Learn Python with DvD".translate(usedictionary)
+print(usedictionaryresult) #print Dearn Python vith DvD
 from collections import Counter
 countwords = "Count the words in the string.  We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem."
 print(countwords) #print Count the words in the string.  We hope to one day become the world's leader in free, education resources.  We are constantly discovering and adding more free content to the website everyday.  There is already an enormous amount of resoruces online that can be accessed for free by anyone in the world, the main issue right now is that very little of it is organized or structured in any way.  We want to be the solution to that problem.
