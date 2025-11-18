@@ -37,6 +37,7 @@ print(re.match("find me at the beginning", stringvariable)) #print <re.Match obj
 print(re.search("find me at the beginning", stringvariable)) #print <re.Match object; span=(0, 24), match='find me at the beginning'>
 print(re.match("at the begin", stringvariable)) #print None
 print(re.search("at the begin", stringvariable)) #print <re.Match object; span=(8, 20), match='at the begin'>
+#The fullmatch() method returns a match object if the entire string matches the pattern.
 matchfivestringnumbers = "02215"
 print(re.fullmatch(matchfivestringnumbers, "02215")) #print <re.Match object; span=(0, 5), match='02215'>
 print(re.fullmatch(matchfivestringnumbers, "02215") is True) #print False
@@ -48,6 +49,27 @@ if re.fullmatch(matchfivestringnumbers, "13329"):
 else:
     print("False no fullmatch") #print False no fullmatch
 print(re.fullmatch(matchfivestringnumbers, "35530")) #print None
+'''
+\\d Any numeric digit from 0 to 9.
+Use the dollar character after defining the character class.  Must end with dollar sign.
+Pipe | is the or.
+Curly brackets {} for specific repetitions or to repeat a specific number of times.  Type the number in curly brackets.
+'''
+pinfourdigitorsixdigit = "123456"
+# pinnumberregex = re.compile(r"\d\d\d\d$|\d\d\d\d\d\d$") #RM:  same as re.compile(r"(\d{4}|\d{6})$")
+pinnumberregex = re.compile(r"(\d{4}|\d{6})$") #We want the pattern to match the string.  Combining these properties, we get a pattern that will only match the entire string.
+print(re.fullmatch(pinnumberregex, pinfourdigitorsixdigit)) #print <re.Match object; span=(0, 6), match='123456'>
+checkvalidpin = re.fullmatch(pinnumberregex, pinfourdigitorsixdigit)
+print(checkvalidpin) #print <re.Match object; span=(0, 6), match='123456'>
+try:
+    print(checkvalidpin[0]) #print 123456
+    print("True") #print True
+except:
+    print("False")
+if checkvalidpin:
+    print("True") #print True
+else:
+    print("False")
 #The compile() function compiles a regular expression pattern into a regular expression object.  The regular expression object can be used for other methods such as match() and search().  re.compile(pattern, flags=0).  The compiled regular expression objects methods and attributes are different than their function counterparts.
 compilerobjectfindme = re.compile(r"find me at the beginning")
 compilerobjectatthe = re.compile(r"at the begin")
