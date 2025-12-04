@@ -381,6 +381,75 @@ print(type(dictionaryinalist)) #print <class 'list'>
 print(type(dictionaryinalist[1])) #print <class 'dict'>
 print(sorted(dictionaryinalist, key=operator.itemgetter("fname"), reverse=False)) #print [{'fname': 'Amanda', 'lname': 'Roberts', 'znickname': '5fivesame'}, {'fname': 'Bernie', 'lname': 'Zunks', 'znickname': '3three'}, {'fname': 'Bernie', 'lname': 'Barbie', 'znickname': '8gate'}, {'fname': 'Bucky', 'lname': 'Roberts', 'znickname': '1won'}, {'fname': 'Dean', 'lname': 'Hayes', 'znickname': '7heaven'}, {'fname': 'Jenna', 'lname': 'Hayes', 'znickname': '4door'}, {'fname': 'Sally', 'lname': 'Jones', 'znickname': '5five'}, {'fname': 'Tom', 'lname': 'Roberts', 'znickname': '2shoe'}, {'fname': 'Tom', 'lname': 'Williams', 'znickname': '6six'}, {'fname': 'Tom', 'lname': 'Jones', 'znickname': '9wine'}]
 print(sorted(dictionaryinalist, key=operator.itemgetter("lname", "znickname"), reverse=False)) #print [{'fname': 'Bernie', 'lname': 'Barbie', 'znickname': '8gate'}, {'fname': 'Jenna', 'lname': 'Hayes', 'znickname': '4door'}, {'fname': 'Dean', 'lname': 'Hayes', 'znickname': '7heaven'}, {'fname': 'Sally', 'lname': 'Jones', 'znickname': '5five'}, {'fname': 'Tom', 'lname': 'Jones', 'znickname': '9wine'}, {'fname': 'Bucky', 'lname': 'Roberts', 'znickname': '1won'}, {'fname': 'Tom', 'lname': 'Roberts', 'znickname': '2shoe'}, {'fname': 'Amanda', 'lname': 'Roberts', 'znickname': '5fivesame'}, {'fname': 'Tom', 'lname': 'Williams', 'znickname': '6six'}, {'fname': 'Bernie', 'lname': 'Zunks', 'znickname': '3three'}]
+'''
+Logical xor.  Bitwise Exclusive Or.  Returns the bitwise exclusive or of a and b.  operator.xor(a,b) and operator.__xor__(a,b)
+The syntax is a^b.  The caret ^ is the bitwise exclusive-or operator.  ^ returns a bitwise xor for intergers, logical xor for booleans, an exclusive union for sets, user-defined results for classes which implements __xor__, and TypeError for undefined types such as strings or dictionaries.  Also, generating parity bits for error checking and fault tolerance.
+operator.ixor(a,b) and operator.__ixor__(a,b).  The syntax is a^=b.
+'''
+from operator import xor
+a = 1
+b = 2
+print(bool(a)) #print True
+print(bool(b)) #print True
+print(xor(bool(a), bool(b))) #print False
+a = 1
+b = 1
+print(bool(a)) #print True
+print(bool(b)) #print True
+print(xor(bool(a), bool(b))) #print False
+a = 0
+b = 0
+print(bool(a)) #print False
+print(bool(b)) #print False
+a = 0
+b = 1
+print(bool(a)) #print False
+print(bool(b)) #print True
+print("Correct", xor(bool(a), bool(b))) #print Correct True
+a = "bat"
+b = "ball"
+print(bool(a)) #print True
+print(bool(b)) #print True
+print(xor(bool(a), bool(b))) #print False
+a = "bat"
+b = ""
+print(bool(a)) #print True
+print(bool(b)) #print False
+print(xor(bool(a), bool(b))) #print False
+#XOR on Integers.  The integer numbers are first converted into the binary numbers and then each bit is compared with one another. The final answer is then again converted back into the original integer form.  XOR is a bitwise operator to compare bits of both the integers bit by bit after converting them into binary numbers.
+firstinteger = 10
+secondinteger = 27
+print(firstinteger) #print 10
+print(secondinteger) #print 27
+#Convert integer to its binary string
+print(bin(firstinteger)) #print 0b1010
+print(bin(secondinteger)) #print 0b11011
+xorinteger = firstinteger ^ secondinteger
+print(xorinteger) #print 17
+print(bin(xorinteger)) #print 0b10001
+xorintegerfunction = xor(firstinteger, secondinteger)
+print(xorintegerfunction) #print 17
+print(bin(xorintegerfunction)) #print 0b10001
+import operator
+xorintegeroperator = operator.xor(firstinteger, secondinteger)
+print(xorintegeroperator) #print 17
+xorinteger = bool(firstinteger) ^ bool(secondinteger)
+print(xorinteger) #print False
+#The XOR operator works by checking the respective bit of the two integer numbers and produces 1 if the bits are different, otherwise, it returns 0.
+integerinbinarya = 1100
+integerinbinaryb = 1010
+print(integerinbinarya) #print 1100
+print(integerinbinaryb) #print 1010
+'''
+1100
+1010
+0110 <--integerinbinarya^integerinbinaryb. Reading from left to right and from top to bottom:  1 and 1 is False 0.  1 and 1 is True 1.  0 and 1 is True 1.  0 and 0 is False 0.
+'''
+firstinteger = 10
+secondinteger = 6
+print(bin(firstinteger)) #print 0b1010
+print(bin(secondinteger)) #print 0b110
+print(firstinteger ^ secondinteger) #print 12.  The binary is 1100 for which I don't know how to XOR binary.  10 is binary 1010.  6 is binary 0110.  12 is binary 1100.
 
 import pathlib
 import glob
