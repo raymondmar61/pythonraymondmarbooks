@@ -423,7 +423,6 @@ print("Pi is %.2f" % (3.14159)) #print Pi is 3.14
 print("Pi is %6.2f" % (3.14159)) #print Pi is **3.14
 print("Pi is %-6f for geometry circles" % (3.14159)) #print Pi is 3.141590 for geometry circles
 print("Pi is %-6.2f" % (3.14159)) #print Pi is 3.14**
-print("Use curly braces {{}}.  Double curly braces as escape curly brace.  Integer is {}.  String is {}.".format(integervariable, stringvariable)) #print Use curly braces {}.  Double curly braces as escape curly brace.  Integer is 457.  String is The String.
 print("Type the colon period and number f for a floating number or decimal number from an integer {:.1f} {:.2f}.".format(integervariable, integervariable)) #print Type the colon period and number f for a floating number or decimal number from an integer 457.0 457.00.
 print("Decimal variable return two decimals {:.2f}.".format(decimalvariable)) #print Decimal variable return two decimals 3.14.
 print("Decimal variable return five decimals {:.5f}.".format(decimalvariable)) #Decimal variable return five decimals 3.14159.
@@ -436,6 +435,33 @@ print("{0:{2}} is the food of gods".format("Ambrosia", 55, 10)) #print Ambrosia 
 print("{food:{width}} is the food of gods".format(food="Ambrosia", width=10)) #print Ambrosia   is the food of gods.  Ambrosia90 is the food of gods.  10 spaces start at 0.
 print("{0:>10} is the food of gods".format("Ambrosia")) #print **Ambrosia is the food of gods.  >10 forces right justify of the field and pads with spaces
 print("{0:&>10} is the food of gods".format("Ambrosia")) #print &&Ambrosia is the food of gods.  &>10 forces right justify of the field and pads with ampersands instead of spaces
+name = "Raymond"
+age = 34
+height = 70
+print("Use curly brackets contained inside quotes to reference variables.  name {} age {}.  End the sentence after the last quote with .format() or dot format().  The variables are inside the parenthesis in order from left to right for the curly brackets. Here's the height {}".format(name, age, height)) #print Use curly brackets contained
+print("Use curly braces {{}}.  Double curly braces as escape curly brace.  Integer is {}.  String is {}.".format(integervariable, stringvariable)) #print Use curly braces {}.  Double curly braces as escape curly brace.  Integer is 457.  String is The String.
+print("Change positional argument variables.  Start count 0.  Print age first, height second, and name third.  Age {1}, height {2}, and name {0}.".format(name, age, height)) #print Change positional argument variables.  Start count 0.  Print age first, height second, and name third.  Age 34, height 70, and name Raymond.
+print("The format specifiers also work for .format. Left align {:>}".format(name)) #print The format specifiers also work for .format. Left align Raymond
+print("The letter d in {{:d'}} is an integer variable.  Age {:d}.".format(age)) #print The letter d in {:d'} is an integer variable.  Age 34.
+print("The letter f in {{:f'}} is a floating point variable.  Age {:f}.".format(age)) #print The letter f in {:f'} is a floating point variable.  Age 34.000000.
+print("Give me a negative number for negative numbers use the negative sign -. I must multiply height by -1 for a negative number.  {:-d}".format(height * -1))
+'''
+Format specifiers {value:flags} format a value based on what flags are inserted.  The value can be a variable.  The flags are the format specifiers.
+
+value.(number)f rounds to a decimal place or rounds a fixed point
+value:(number) allocates a number many spaces
+value:03 allocates a number many spaces which is three and use zeros as padding
+value:< left justify
+value:> right justify
+value:^ center align
+value:+ indicate positive value for positive numbers.  Print the positive sign.
+value:- indicate negative value for negative numbers.  Print the negative sign.
+value:= place sign to the leftmost position
+value: insert a space before positive numbers
+value:, comma separator for thousands numbers
+'''
+stringvalue = "A string is the value"
+print(f"Center align inside the curly brackets{stringvalue:^}.  The value is not a variable.") #print Center align inside the curly bracketsA string is the value.  The value is not a variable.
 print(f"F-string quick lesson.  Double curly braces as escape curly brace {{}}.  Print the stringvariable {stringvariable}.  Print the integer {integervariable}.") #print F-string quick lesson.  Double curly braces as escape curly brace {}.  Print the stringvariable The String.  Print the integer 457.
 #f-strings for float values and integer values.  Letter f to format float values.  Letter d to format integer values.
 print(f"Two decimal places for 17.489 is {17.489:.2f}.") #print Two decimal places for 17.489 is 17.49.
@@ -466,6 +492,21 @@ print(f"Fill with zeros in front of numerical value width ten [{27:+010d}]") #pr
 print(f"String integer value with commas {123456789:,d}.") #print String numerical value with commas 123,456,789.
 print(f"String decimal value with commas {123456.78:,.3f}.") #print String numerical value with commas 123,456.780.
 print(f"String decimal value with commas {123456.78:,.6f}.") #print String decimal value with commas 123,456.780000.
+price1 = 3.14159
+price2 = -987.65
+price3 = 12.34
+price4 = 3498.8999
+print(f"Begin the string using format specifiers with the letter f.  Price 1 is {price1:.2f}.  .2f is round to a decimal point two places as a float f.") #print Begin the string using format specifiers with the letter f.  Price 1 is 3.14.  .2f is round to a decimal point two places as a float f.
+print(f"Begin the string using format specifiers with the letter f.  Price 2 is ${price2:.2f}") #print Begin the string using format specifiers with the letter f.  Price 2 is $-987.65
+print(f"Begin the string using format specifiers with the letter f.  Price 3 is {price3:.1f}") #print Begin the string using format specifiers with the letter f.  Price 3 is 12.3
+print(f"Ten spaces for the format specifier price3.  Price 3 is {price3:10}") #print Ten spaces for the format specifier price3.  Price 3 is 12.34
+print(f"Ten spaces for the format specifier price3.  The number zero before 10 is zero padding to fill for a total of ten spaces.  Price 3 is {price3:010}") #print Ten spaces for the format specifier price3.  The number zero before 10 is zero padding to fill for a total of ten spaces.  Price 3 is 0000012.34
+print(f"Ten spaces for the format specifier price3.  Less than is left justify.  Price 3 is {price3:<10}") #print Ten spaces for the format specifier price3.  Less than is left justify.  Price 3 is 12.34
+print(f"Ten spaces for the format specifier price3.  The number zero before 10 is zero padding to fill for a total of ten spaces.  Less than is left justify.  Price 3 is {price3:<010}") #print Ten spaces for the format specifier price3.  The number zero before 10 is zero padding to fill for a total of ten spaces.  Less than is left justify.  Price 3 is 12.3400000
+print(f"Price 3 is positive {price3:+}") #print Price 3 is positive + 12.34
+print(f"Price 3 is with a space_{price3: }") #print Price 3 is with a space_ 12.34
+print(f"Price 4 using thousands separator and space{price4: ,}") #print Price 4 using thousands separator and space 3, 498.8999
+print(f"Price 4 using thousands separator indicate positive two decimal places {price4:+,.2f}") #print Price 4 using thousands separator indicate positive two decimal places + 3, 498.90
 number = 12.3456
 print("%e e-notation" % number) #print 1.234560e+01 e-notation
 print("%.3e three decimal places e-notation" % number) #print 1.235e+01 three decimal places e-notation
@@ -477,6 +518,8 @@ print("%g Python automatically choose float or e-notation with lower case e" % n
 print("%g Python automatically choose float or e-notation with lower case e" % number2) #print 4.56712e+08 Python automatically choose float or e-notation with lower case e
 print("%G Python automatically choose float or e-notation with upper case e" % number2) #print 4.56712E+08 Python automatically choose float or e-notation with upper case e
 print("More than one format string use number 1 %.1f and number 2 %.2f include in parenthesis after a single percentage tuples of variables" % (number1, number2)) #print More than one format string use number 1 12.3 and number 2 456712345.60 include in parenthesis after a single percentage tuples of variables
+print("Scientific notation use {{:e}}.  Number is 874.577 8.745770X10^2.  {:e}".format(874.577)) #print Scientific notation use {:e}.  Number is 874.577 8.745770X10^2.  8.745770e+02
+print("Scientific notation use {{:E}}.  Number is 602214090000000000000000 6.02214X10^23.  {:E}.  Move the decimal point 23 places to the right.".format(602214090000000000000000)) #print Scientific notation use {:E}.  Number is 602214090000000000000000 6.02214X10^23.  6.022141E+23.  Move the decimal point 23 places to the right.
 formattedvariable = "%.2f" % 12.3456
 print("Format a variable format a number as string " + formattedvariable) #print Format a variable format a number as string 12.35
 print(type(formattedvariable)) #print <class 'str'>

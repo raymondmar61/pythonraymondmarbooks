@@ -37,6 +37,9 @@ convertbinarytointeger = "11"
 print(int(convertbinarytointeger, 2)) #print 3
 convertbinarytointeger = "-1010"
 print(int(convertbinarytointeger, 2)) #print -10
+print("Use format function for binary number.  {:b}".format(79)) #print Use format function for binary number.  1001111
+print("Use format function for hexadecimal number.  {:x}".format(183)) #print Use format function for hexadecimal number.  b7
+print("Use format function for hexadecimal number.  {:X}".format(183)) #print Use format function for hexadecimal number.  B7
 #Customize the output with string formatting techniques for precise widths and formatting.
 print(bin(255)) #print 0b11111111
 print(bin(255)[2:]) #print 11111111

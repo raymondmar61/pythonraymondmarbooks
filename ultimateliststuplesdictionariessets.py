@@ -457,6 +457,10 @@ twentynumberslist = [n for n in range(100, 121)]
 print(twentynumberslist) #print [100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
 converttoasciicharacterjoin = ''.join([chr(asciinumber) for asciinumber in twentynumberslist]) #combine list comprehension
 print(converttoasciicharacterjoin) #print defghijklmnopqrstuvwx
+#Use a list for .format
+scoreslist = [78, 96, 83, 86]
+print("The second entry score is {[1]}.".format(scoreslist)) #print The second entry score is 96.
+print("The second entry score is {s[1]}.".format(s=scoreslist)) #print The second entry score is 96.
 
 #Tuples
 print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')
@@ -694,6 +698,10 @@ for key, value in nameandcolor.items():
     Ren's name as key favorite color is as value Blue.
     Ten's name as key favorite color is as value White.
     '''
+#Use a dictionary for .format
+jobsdictionary = {"name": "Mekael", "job": "Carpender"}
+print("{name} is a {job}.  Double asterisks unpacks the dictionary.".format(**jobsdictionary)) #print Mekael is a Carpender.  Double asterisks unpacks the dictionary.
+print("{job} is a {name}.  Double asterisks unpacks the dictionary.".format(**jobsdictionary)) #print Carpender is a Mekael.  Double asterisks unpacks the dictionary.
 
 #Sets
 setvariable = set([10, 20, 30, 10, 20, 30, 40, "abc", "abcabcabc", "printed sets items printed in random order"])
