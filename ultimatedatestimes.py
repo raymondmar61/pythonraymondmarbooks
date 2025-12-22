@@ -92,6 +92,14 @@ convertmilitarytimestep2 = datetime.datetime.strftime(convertmilitarytimestep1, 
 print(convertmilitarytimestep2) #print 08/21/24 02:36:27 PM
 print(type(convertmilitarytimestep2)) #print <class 'str'>
 
+#Use f strings for date and for time
+from datetime import datetime
+asofnow = datetime.now()
+print(asofnow) #print 2025-12-22 14:14:03.316495
+print(f"F strings for dates F strings for time {asofnow:%x}") #print F strings for dates F strings for time 12/22/25
+print(f"F strings for dates F strings for time {asofnow:%c}") #print F strings for dates F strings for time Mon Dec 22 14:14:03 2025
+print(f"F strings for dates F strings for time {asofnow:%H:%M:%S}") #print F strings for dates F strings for time 14:14:03
+
 #Date calculations date
 yearmonthday1 = datetime.date(2017, 1, 30)
 print(yearmonthday1) #print 2017-01-30

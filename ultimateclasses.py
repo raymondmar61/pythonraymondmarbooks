@@ -799,6 +799,33 @@ try:
 except AttributeError:
     print("AttributeError.  'PrivateClass' object has no attribute '__privatedata'") #print AttributeError.  'PrivateClass' object has no attribute '__privatedata'
 
+class Customfstrings:
+    def __init__(self, texttomodify: str) -> None: #texttomodify input as string and return nothing
+        self.texttomodify = texttomodify
+    def __format__(self, formatspecifier: str) -> str: #formatspecifier input as string and return as string.  The formatspecifier is value user inputs after the f string colon.
+        match formatspecifier:
+            case "convertalluppercase":
+                return self.texttomodify.upper()
+            case "convertalllowercase":
+                return self.texttomodify.lower()
+            case "countstring":
+                return str(len(self.texttomodify))
+            case "swawpcases":
+                return self.texttomodify.swapcase()
+            # can't work because must return a string
+            # case "stringtolist":
+            #     return list(self.texttomodify.split(" "))
+            case _:
+                raise ValueError(f"Don't recognize the custom F string format specifier {formatspecifier}.  Format specifier not created in class Customfstrings")
+
+
+mytext = Customfstrings("The Quick Brown Fox Jumps Over The Lazy Dog")
+print(f"{mytext:convertalluppercase}") #print THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+print(f"{mytext:convertalllowercase}") #print the quick brown fox jumps over the lazy dog
+print(f"{mytext:countstring}") #print 43
+print(f"{mytext:swawpcases}") #print tHE qUICK bROWN fOX jUMPS oVER tHE lAZY dOG
+#print(f"{mytext:intentionalerror}") #print ValueError: Don't recognize the custom F string format specifier intentionalerror.  Format specifier not created in class Customfstrings
+
 #Call class and call function inside class which is a method
 class Chooseafunction():
     def __init__(self, name, defaultnull=""):

@@ -42,6 +42,17 @@ print("Pi is %-8.2f" % (3.14159)) #print Pi is 3.14****
 print("Type the colon period and number f for a floating number or decimal number from an integer {:.1f} {:.2f}.".format(integervariable, integervariable)) #print Type the colon period and number f for a floating number or decimal number from an integer 457.0 457.00.
 print("Decimal variable return two decimals {:.2f}.".format(decimalvariable)) #print Decimal variable return two decimals 3.14.
 print("Decimal variable return five decimals {:.5f}.".format(decimalvariable)) #Decimal variable return five decimals 3.14159.
+print(f"Can type an expression inside the curly braces for a f string {1+1}=1+1.") #print Can type an expression inside the curly braces for a f string 2=1+1.
+print(f"{1+1=}") #print 1+1=2
+print(f"{1+1 = }") #print 1+1 = 2
+decimaltopercent = .5678
+print(f"Two decimal places {decimaltopercent:.2f}")
+print(f"Convert decimal to percent two decimal places {decimaltopercent:.2%}")
+print(f"Convert decimal to percent one decimal places {decimaltopercent:.1%}")
+underscoresvisualguidecommas = 1_000_000_000
+print(f"One billion {underscoresvisualguidecommas}") #print One billion 1000000000
+print(f"One billion underscore separator {underscoresvisualguidecommas:_}") #print One billion 1000000000
+print(f"One billion comma separator {underscoresvisualguidecommas:,}") #print One billion 1000000000
 
 #Modulo or modulus
 #Get the remainder from division.  Written with the percent sign %.  Takes a number and maps the number to a range based on the remainder when you divide the number.  number % modulus = remainder.  The remainder is always less than the modulus number.

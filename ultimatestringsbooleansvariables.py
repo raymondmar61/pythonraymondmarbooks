@@ -458,10 +458,15 @@ value:+ indicate positive value for positive numbers.  Print the positive sign.
 value:- indicate negative value for negative numbers.  Print the negative sign.
 value:= place sign to the leftmost position
 value: insert a space before positive numbers
-value:, comma separator for thousands numbers
+value:, comma separator for thousands numbers.  Underscore is the only other valid separator.
 '''
-stringvalue = "A string is the value"
-print(f"Center align inside the curly brackets{stringvalue:^}.  The value is not a variable.") #print Center align inside the curly bracketsA string is the value.  The value is not a variable.
+stringvalue = "A string is the value F string"
+print(f"Center align inside the curly brackets{stringvalue:^}.  The value is not a variable.") #print Center align inside the curly bracketsA string is the value F string.  The value is not a variable.
+print(f"{len(stringvalue)}") #print 30
+print(f"Left align using underscores numbered {40-len(stringvalue)} spaces {stringvalue:_<40}") #print Left align using underscores numbered 10 spaces A string is the value F string__________
+print(f"Right align using underscores numbered {40-len(stringvalue)} spaces {stringvalue:_>40}") #print Right align using underscores numbered 10 spaces __________A string is the value F string
+variablefornumberofspaces = 40
+print(f"Left align using underscores numbered {40-len(stringvalue)} spaces variable with curly braces {stringvalue:_<{variablefornumberofspaces}}") #print Left align using underscores numbered 10 spaces variable with curly braces A string is the value F string__________
 print(f"F-string quick lesson.  Double curly braces as escape curly brace {{}}.  Print the stringvariable {stringvariable}.  Print the integer {integervariable}.") #print F-string quick lesson.  Double curly braces as escape curly brace {}.  Print the stringvariable The String.  Print the integer 457.
 #f-strings for float values and integer values.  Letter f to format float values.  Letter d to format integer values.
 print(f"Two decimal places for 17.489 is {17.489:.2f}.") #print Two decimal places for 17.489 is 17.49.

@@ -39,10 +39,17 @@ value:+ indicate positive value for positive numbers.  Print the positive sign.
 value:- indicate negative value for negative numbers.  Print the negative sign.
 value:= place sign to the leftmost position
 value: insert a space before positive numbers
-value:, comma separator for thousands numbers
+value:, comma separator for thousands numbers.  Underscore is the only other valid separator.
 '''
-stringvalue = "A string is the value"
-print(f"Center align inside the curly brackets{stringvalue:^}.  The value is not a variable.") #print Center align inside the curly bracketsA string is the value.  The value is not a variable.
+stringvalue = "A string is the value F string"
+print(f"Center align inside the curly brackets{stringvalue:^}.  The value is not a variable.") #print Center align inside the curly bracketsA string is the value F string.  The value is not a variable.
+stringvalue = "A string is the value F string"
+print(f"Center align inside the curly brackets{stringvalue:^}.  The value is not a variable.") #print Center align inside the curly bracketsA string is the value F string.  The value is not a variable.
+print(f"{len(stringvalue)}") #print 30
+print(f"Left align using underscores numbered {40-len(stringvalue)} spaces {stringvalue:_<40}") #print Left align using underscores numbered 10 spaces A string is the value F string__________
+print(f"Right align using underscores numbered {40-len(stringvalue)} spaces {stringvalue:_>40}") #print Right align using underscores numbered 10 spaces __________A string is the value F string
+variablefornumberofspaces = 40
+print(f"Left align using underscores numbered {40-len(stringvalue)} spaces variable with curly braces {stringvalue:_<{variablefornumberofspaces}}") #print Left align using underscores numbered 10 spaces variable with curly braces A string is the value F string__________
 price1 = 3.14159
 price2 = -987.65
 price3 = 12.34
@@ -58,6 +65,33 @@ print(f"Price 3 is positive {price3:+}") #print Price 3 is positive + 12.34
 print(f"Price 3 is with a space_{price3: }") #print Price 3 is with a space_ 12.34
 print(f"Price 4 using thousands separator and space{price4: ,}") #print Price 4 using thousands separator and space 3, 498.8999
 print(f"Price 4 using thousands separator indicate positive two decimal places {price4:+,.2f}") #print Price 4 using thousands separator indicate positive two decimal places + 3, 498.90
+print(f"Can type an expression inside the curly braces for a f string {1+1}=1+1.") #print Can type an expression inside the curly braces for a f string 2=1+1.
+print(f"{1+1=}") #print 1+1=2
+print(f"{1+1 = }") #print 1+1 = 2
+quickdebugging = 100
+print(quickdebugging) #print 100
+print("quickdebugging=" + str(quickdebugging)) #print quickdebugging=100
+print(f"{quickdebugging}") #print 100
+print(f"{quickdebugging=} is faster than typing 'quickdebugging=+str(quickdebugging)'.") #quickdebugging=100 is faster than typing 'quickdebugging=+str(quickdebugging)''.
+print(isinstance(quickdebugging, int)) #print True
+print(f"{isinstance(quickdebugging,int)=}") #print isinstance(quickdebugging,int)=True
+decimaltopercent = .5678
+print(f"Two decimal places {decimaltopercent:.2f}")
+print(f"Convert decimal to percent two decimal places {decimaltopercent:.2%}")
+print(f"Convert decimal to percent one decimal places {decimaltopercent:.1%}")
+underscoresvisualguidecommas = 1_000_000_000
+print(f"One billion {underscoresvisualguidecommas}") #print One billion 1000000000
+print(f"One billion underscore separator {underscoresvisualguidecommas:_}") #print One billion 1000000000
+print(f"One billion comma separator {underscoresvisualguidecommas:,}") #print One billion 1000000000
+
+#Use f strings for date and for time
+from datetime import datetime
+asofnow = datetime.now()
+print(asofnow) #print 2025-12-22 14:14:03.316495
+print(f"F strings for dates F strings for time {asofnow:%x}") #print F strings for dates F strings for time 12/22/25
+print(f"F strings for dates F strings for time {asofnow:%c}") #print F strings for dates F strings for time Mon Dec 22 14:14:03 2025
+print(f"F strings for dates F strings for time {asofnow:%H:%M:%S}") #print F strings for dates F strings for time 14:14:03
+
 #Use a dictionary for .format
 jobsdictionary = {"name": "Mekael", "job": "Carpender"}
 print("{name} is a {job}.  Double asterisks unpacks the dictionary.".format(**jobsdictionary)) #print Mekael is a Carpender.  Double asterisks unpacks the dictionary.
@@ -71,3 +105,31 @@ print("Scientific notation use {{:E}}.  Number is 602214090000000000000000 6.022
 print("Use format function for binary number.  {:b}".format(79)) #print Use format function for binary number.  1001111
 print("Use format function for hexadecimal number.  {:x}".format(183)) #print Use format function for hexadecimal number.  b7
 print("Use format function for hexadecimal number.  {:X}".format(183)) #print Use format function for hexadecimal number.  B7
+
+#Custom F Strings
+class Customfstrings:
+    def __init__(self, texttomodify: str) -> None: #texttomodify input as string and return nothing
+        self.texttomodify = texttomodify
+    def __format__(self, formatspecifier: str) -> str: #formatspecifier input as string and return as string.  The formatspecifier is value user inputs after the f string colon.
+        match formatspecifier:
+            case "convertalluppercase":
+                return self.texttomodify.upper()
+            case "convertalllowercase":
+                return self.texttomodify.lower()
+            case "countstring":
+                return str(len(self.texttomodify))
+            case "swawpcases":
+                return self.texttomodify.swapcase()
+            # can't work because must return a string
+            # case "stringtolist":
+            #     return list(self.texttomodify.split(" "))
+            # case _:
+                raise ValueError(f"Don't recognize the custom F string format specifier {formatspecifier}.  Format specifier not created in class Customfstrings")
+
+
+mytext = Customfstrings("The Quick Brown Fox Jumps Over The Lazy Dog")
+print(f"{mytext:convertalluppercase}") #print THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+print(f"{mytext:convertalllowercase}") #print the quick brown fox jumps over the lazy dog
+print(f"{mytext:countstring}") #print 43
+print(f"{mytext:swawpcases}") #print tHE qUICK bROWN fOX jUMPS oVER tHE lAZY dOG
+#print(f"{mytext:intentionalerror}") #print ValueError: Don't recognize the custom F string format specifier intentionalerror.  Format specifier not created in class Customfstrings
