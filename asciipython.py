@@ -4,7 +4,7 @@
 #ASCII defines exactly 128 characters (0-127).  Control characters (0-31) non-printable characters like newline, tab, carriage return.  Printable characters (32-126) space, letters, digits, punctuation.  DEL (127) delete character.
 
 #Common ASCII Values.  Digits 0-9: 48-57.  Uppercase letters A-Z: 65-90.  Lowercase letters a-z: 97-122.  Space: 32.  Newline: 10.  Tab: 9.
-#ord() gets the ASCII value.  Input must be a string value.
+#ord() function ordinal gets the ASCII value.  Input must be a string value.
 print(ord("0")) #print 48
 print(ord("9")) #print 57
 print(ord("A")) #print 65
@@ -18,7 +18,7 @@ print(ord("z")) #print 122
 print(ord(" ")) #print 32.  Space
 print(ord("\n")) #print 10.  New line.
 print(ord("\t")) #print 9.  Tab.
-#chr() gets character from ASCII value.
+#chr() function gets character from ASCII value.
 print(chr(48)) #print 0
 print(chr(57)) #print 9
 print(chr(65)) #print A
@@ -32,6 +32,9 @@ print(chr(122)) #print z
 print(chr(32) + "<-- is a space") #print  <--is a space
 print(f"{chr(32)}<-- is a space") #print  <--is a space
 #The ascii() function returns a readable version for strings, tuples, lists, and any object.  It returns a printable representation of an object using only ASCII characters.  Non-ascii characters are replaced with escape characters; any non-ASCII characters present are automatically escaped using Unicode escape sequences such as \x, \u, or \U.
+numbertoascii = 1
+print(ascii(numbertoascii)) #print 1
+print(type(ascii(numbertoascii))) #print <class 'str'>
 converttoascii = "The quick brown fox jumps over the lazy dog."
 print(ascii(converttoascii)) #print 'The quick brown fox jumps over the lazy dog.'
 #Method check string is all ASCII
@@ -54,6 +57,7 @@ nonasciilist = ["L", "i", "s", "t", "Ň", "ĕ", "Ŵ"]
 print(ascii(nonasciilist)) #print ['L', 'i', 's', 't', '\u0147', '\u0115', '\u0174']
 nonasciituple = ("T", "u", "p", "l", "ĕ")
 print(ascii(nonasciituple)) #print ('T', 'u', 'p', 'l', '\u0115')
+print(type(ascii(nonasciituple))) #print <class 'str'>
 
 #ASCII is the first 128 code points of Unicode from U+0000 to U+007F. Every ASCII character has the same numeric value in Unicode.  UTF-8 encodes ASCII characters as single bytes.  ASCII files are valid UTF-8 files.
 converttoascii = "The quick brown fox jumps over the lazy dog."
