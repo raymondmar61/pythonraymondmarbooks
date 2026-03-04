@@ -702,6 +702,70 @@ for key, value in nameandcolor.items():
 jobsdictionary = {"name": "Mekael", "job": "Carpender"}
 print("{name} is a {job}.  Double asterisks unpacks the dictionary.".format(**jobsdictionary)) #print Mekael is a Carpender.  Double asterisks unpacks the dictionary.
 print("{job} is a {name}.  Double asterisks unpacks the dictionary.".format(**jobsdictionary)) #print Carpender is a Mekael.  Double asterisks unpacks the dictionary.
+#Python dict.fromkeys() method creates a new dictionary with keys from a specified iterable and assigns a uniform value or same value to all keys.  dict.fromkeys(iterable, [value]).  The iterable can be a list, tuple, string, or set for which the elements are the keys for the new dictionary.  The value is option which is the value assigned to all keys.  If omitted, then the value is the default None.
+#Method dict.fromkeys() returns a dictionary with the specified keys and the specified value.  dict.fromkeys(keys, value).  keys is the iterable specifying the keys of the new dictionary.  value is the value for all keys; default is None.  value is optional.  The method puts the same value for each element.
+#The .fromkeys() method returns a dictionary with a specified set of keys.  It can also initialize the keys with a  value.
+threekeys = ("key1", "key2", "key3")
+dictionarythreekeys = dict.fromkeys(threekeys)
+print(dictionarythreekeys) #print {'key1': None, 'key2': None, 'key3': None}
+threefruits = ["apple", "banana", "cherry"]
+threefruitsvalue = "fruit"
+dictionarythreefruits = dict.fromkeys(threefruits, threefruitsvalue)
+print(dictionarythreefruits) #print {'apple': 'fruit', 'banana': 'fruit', 'cherry': 'fruit'}
+stringiterable = "Lion"
+stringiterablevalue = "King"
+dictionarystringiterable = dict.fromkeys(stringiterable, stringiterablevalue)
+print(dictionarystringiterable) #print {'L': 'King', 'i': 'King', 'o': 'King', 'n': 'King'}
+#All keys reference the exact same instance of that mutable object in memory.  Modifying the value through one key affects all other keys.
+keys = ["a", "b", "c"]
+value = [1]
+new_dict = dict.fromkeys(keys, value)
+print(f"Initial dict: {new_dict}") #print Initial dict: {'a': [1], 'b': [1], 'c': [1]}
+new_dict["a"].append(2) #Append to the list using key "a".  All keys are affected which is append the number 2.
+print(f"Updated dict: {new_dict}") #print Updated dict: {'a': [1, 2], 'b': [1, 2], 'c': [1, 2]}
+#However, .append() the value variable instead of the new_dict variable.
+keys = ["a", "b", "c"]
+value = [1]
+new_dict = dict.fromkeys(keys, value)
+print(new_dict) #print {'a': [1], 'b': [1], 'c': [1]}
+value.append(2)
+print(new_dict) #print {'a': [1, 2], 'b': [1, 2], 'c': [1, 2]}
+vowelsset = {"a", "e", "i", "o", "u"}
+value = [1]
+vowelssetdictionary = dict.fromkeys(vowelsset, value)
+print(vowelssetdictionary) #print {'e': [1], 'o': [1], 'a': [1], 'u': [1], 'i': [1]}
+value.append(2)
+print(vowelssetdictionary) #print {'e': [1, 2], 'o': [1, 2], 'a': [1, 2], 'u': [1, 2], 'i': [1, 2]}
+#We can use dictionary comprehension and prevent updating the dictionary when the mutable object is updated.
+vowelsset = {"a", "e", "i", "o", "u"}
+value = [1]
+vowelsdictionary = {eachvowelsset: list(value) for eachvowelsset in vowelsset}
+print(vowelsdictionary) #print {'o': [1], 'i': [1], 'u': [1], 'a': [1], 'e': [1]}.  #RM:  can't append to update the value list
+#To create a dictionary where each key has a unique mutable object, create a dictionary comprehension.
+keys = ["a", "b", "c"]
+new_dict = {eachkeys: [] for eachkeys in keys}
+print(f"Initial dict: {new_dict}") #print Initial dict: {'a': [], 'b': [], 'c': []}
+new_dict["a"].append(2)
+print(f"Updated dict: {new_dict}") #print Updated dict: {'a': [2], 'b': [], 'c': []}
+numberwords = ["one", "two", "three", "four", "five"]
+print(numberwords) #print ['one', 'two', 'three', 'four', 'five']
+for number in range(1, 6):
+    numberwordsnumericaldictionary = dict.fromkeys(numberwords, number)
+    print(numberwordsnumericaldictionary)
+    '''
+    {'one': 1, 'two': 1, 'three': 1, 'four': 1, 'five': 1}
+    {'one': 2, 'two': 2, 'three': 2, 'four': 2, 'five': 2}
+    {'one': 3, 'two': 3, 'three': 3, 'four': 3, 'five': 3}
+    {'one': 4, 'two': 4, 'three': 4, 'four': 4, 'five': 4}
+    {'one': 5, 'two': 5, 'three': 5, 'four': 5, 'five': 5}
+    '''
+duplicatenumbers = [1, 4, 6, 22, 3, 5, 4, 3, 6, 2, 1, 51, 3, 1] #remove duplicates from an iterable and keep the original order.  dict.fromkeys() creates a dictionary where all values are None by default.  The unique keys are preserved.  Dictionaries maintain the order in which the keys are inserted starting with Python 3.7.
+listsetorderdoesntmatter = list(set(duplicatenumbers))
+print(listsetorderdoesntmatter) #print [1, 2, 3, 4, 5, 6, 51, 22]
+removeduplicatenumbers = dict.fromkeys(duplicatenumbers)
+print(removeduplicatenumbers) #print {1: None, 4: None, 6: None, 22: None, 3: None, 5: None, 2: None, 51: None}
+removeduplicatenumbers = list(dict.fromkeys(duplicatenumbers))
+print(removeduplicatenumbers) #print [1, 4, 6, 22, 3, 5, 2, 51].  Order maintained or order matters.
 
 #Sets
 setvariable = set([10, 20, 30, 10, 20, 30, 40, "abc", "abcabcabc", "printed sets items printed in random order"])
@@ -769,3 +833,38 @@ print({1, 3, 5, 7}.issuperset({3, 2})) #print False
 numbersset = {0, 1, 2, 4, 5, 6, 7, 8, 9, 17}
 setcomprehension = {eachnumbersset for eachnumbersset in numbersset if eachnumbersset % 2 == 0}
 print(setcomprehension) #print {0, 2, 4, 6, 8}
+#Use sorted() function to order a set or to sort elements in a set.  The result is returned as a sorted list.  Sorting doesn't return a set type because order doesn't matter in a set for mathematics and most programming language.  {1,2} is the same as {2,1}.
+#The sorted() funciton works for any iterable such as lists, sets, tuples, and strings.  A new list is returned.
+fruitsset = {"orange", "apple", "apple", "banana"}
+print(fruitsset) #print {'banana', 'apple', 'orange'}
+print(type(fruitsset)) #print <class 'set'>
+sortfruitsset = sorted(fruitsset)
+print(sortfruitsset) #print ['apple', 'banana', 'orange']
+print(type(sortfruitsset)) #print <class 'list'>
+#Sort can be changed to descending order
+sortfruitssetdescending = sorted(fruitsset, reverse=True)
+print(sortfruitssetdescending) #print ['orange', 'banana', 'apple']
+#Use the key parameter with a predefined function to sort.   Key expects a function used on each value being sorted.  The key parameter arguments must be one.  The key parameter must handle all values in the iterable.
+x = set([0.000000000, 0.009518000, 10.277200999, 0.030810999, 0.018384000, 4.918560000])
+print(x) #print {0.0, 0.009518, 4.91856, 0.018384, 10.277200999, 0.030810999}
+sortfloat = sorted(x, key=float, reverse=False)
+print(sortfloat) #print [0.0, 0.009518, 0.018384, 0.030810999, 4.91856, 10.277200999]
+kindergartenwords = {"apple", "ball", "cat", "dog"}
+print(kindergartenwords) #print {'ball', 'dog', 'cat', 'apple'}
+print(sorted(kindergartenwords)) #print ['apple', 'ball', 'cat', 'dog']
+print(sorted(kindergartenwords, key=len)) #print ['dog', 'cat', 'ball', 'apple'].  Sorted by number of letters.
+print(sorted(kindergartenwords, key=len, reverse=True)) #print ['apple', 'ball', 'dog', 'cat'].  Sorted by number of letters descending.
+kindergartenwords2 = ["Cookie", "beddy", "lizard", "Water", "shirt", "game", "Ball", "Beddy", "balloon", "Babop", "bebop", "water"]
+print(kindergartenwords2) #print ['Cookie', 'beddy', 'lizard', 'Water', 'shirt', 'game', 'Ball', 'Beddy', 'balloon', 'Babop', 'bebop', 'water']
+print(sorted(kindergartenwords2, key=str.lower)) #print ['Babop', 'Ball', 'balloon', 'bebop', 'beddy', 'Beddy', 'Cookie', 'game', 'lizard', 'shirt', 'Water', 'water'].  Sort in ascending order regardless of upper case or lower case.  Case is ignored.  RM:  doensn't make sense to me.  I thought sort by ascending order lower case priority over upper case.
+#Use the key parameter to define sort order or define variable to sort.  User defined function assigned to the key parameter.  Allows custome sorting based on an attribute.  Key expects a function used on each value being sorted.
+namesage = {("Ron", 16), ("Randy", 45), ("Lindsey", 23), ("Arnold", 78)}
+def definefunctionreturnname(firstitem):
+    return firstitem[0]
+def definefunctionreturnage(seconditem):
+    return seconditem[1]
+
+
+print(namesage) #print {('Lindsey', 23), ('Randy', 45), ('Ron', 16), ('Arnold', 78)}
+print(sorted(namesage, key=definefunctionreturnname)) #print [('Arnold', 78), ('Lindsey', 23), ('Randy', 45), ('Ron', 16)]
+print(sorted(namesage, key=definefunctionreturnage, reverse=True)) #print [('Arnold', 78), ('Randy', 45), ('Lindsey', 23), ('Ron', 16)]
