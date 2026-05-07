@@ -13,6 +13,9 @@ complextnumber = 3 + 2j
 exponentsasteriks = 2**4
 print(exponentsasteriks) #print 16
 print(pow(2, 4)) #print 16
+#Round function.  Rounds numbers to the nearest integer and rounds up.
+print(round(12.345)) #print 12
+print(round(12.675)) #print 13
 roundthreedecimals = round(floatnumber, 3)
 print(roundthreedecimals) #print 458.219
 print(42 == 42.0) #print True
@@ -96,6 +99,9 @@ print(5 % 3) #print 2.
 print(-5 % 3) #print 1.  Negative dividend.
 print(5 % -3) #print -1.  Negative divisor.
 print(-5 % -3) #print -2.  Negative dividend and negative divisor.  Reason is the floor operator when calculating the remainder using the modulus operator.
+#Use Modulo and divide by 1 to isolate the numbers right of decimal point.  Extract fraction extract fractional.
+decimalnumber = 12.345
+numbersrightdecimal = decimalnumber % 1
 #Python calculates the remainder.  r = a % n and r = a - (n * math.floor(a / n))
 from math import floor
 print(13 % 12) #print 1
@@ -172,6 +178,17 @@ remainderalwaysfloat = math.remainder(10, 5)
 print(remainderalwaysfloat) #print 0.0
 remainderalwaysfloat = math.fmod(10, 5)
 print(remainderalwaysfloat) #print 0.0
+#Use modf from math module to return the whole number or integer left of decimal and fractional number right of decimal as a tuple.
+decimalnumber = 12.345
+fractionnumber, integernumber = math.modf(12.345)
+print(fractionnumber) #print 0.34500000000000064.  You may get small trailing artifacts because of floating point precision problems.
+print(integernumber)  #print 12.0
+#Truncate the number return integer only.  Remove decimal.  No rounding.
+print(math.trunc(2.77)) #print 2
+print(math.trunc(8.32)) #print 8
+print(math.trunc(8.999)) #print 8
+print(math.trunc(-99.29)) #print -99
+print(math.trunc(999998.99999)) #print 999998
 
 #Random module
 import random
@@ -258,6 +275,11 @@ print(type(decimal.Decimal(decimalstring))) #print <class 'decimal.Decimal'>
 decimalstringcalculations = decimal.Decimal(decimalstring)
 print(decimalstringcalculations) #print 0.00
 print(decimalstringcalculations + 1) #print 1.00
+#Decimal module for precision accuracy
+from decimal import Decimal
+number = Decimal("12.345")
+numbersrightdecimalexact = number % 1
+print(numbersrightdecimalexact) #print 0.345
 
 #Manual counter, manual iterator
 generateanumber = iter(range(0, 10))
