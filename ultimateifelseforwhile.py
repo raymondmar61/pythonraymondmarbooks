@@ -279,6 +279,15 @@ for separateletters in twoletterslist:
     C is 3c.  Here is needasplaceholder P
     ...
     '''
+#Extract integers from a list of floating numbers
+forloopmultiplenumbers = [998.99, 56.8, 25.6, -52.0]
+integerlist = []
+for eachdecimalnumber in forloopmultiplenumbers:
+    integerlist.append(str(eachdecimalnumber).split(".")[0]) #Want the first entry in the split which is the integer part
+print(integerlist) #print ['998', '56', '25', '-52']
+integerlistconvertinteger = [int(i) for i in integerlist]
+print(integerlistconvertinteger) #print [998, 56, 25, -52]
+
 
 #While loop
 initializewhileloop = "This sentence is true"
