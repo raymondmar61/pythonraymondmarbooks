@@ -602,3 +602,9 @@ def convertintegertofloatfunction(matchobject):
 searchpattern = r"(?P<numberlabel>[0-9]+)" #Looks for a number consisting of one or more digits.  Give each name the group name numberlabel.
 regexpsearchintegerinstring = re.compile(searchpattern)
 print(regexpsearchintegerinstring.sub(convertintegertofloatfunction, integerstring)) #print 1.0 2.0 3.0 4.0 5.0.  Take integerstring matching the searchpattern to the function convertintegertofloatfunction.  The function uses group to extract the matching substring from the match object matchobject to produce a new string concatenate with .0.  sub returns the new string.
+
+#Regular expression extract all decimal numbers right of decimal in a text
+import re
+text = "The price is 12.34 and the weight is 0.567"
+alldecimalnumbersrightofdecimal = re.findall(r"\.(\d+)", text)
+print(alldecimalnumbersrightofdecimal) #print ['34', '567']
