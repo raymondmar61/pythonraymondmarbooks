@@ -274,6 +274,18 @@ for eachstring, counteachstring in love:
     y 1
     '''
 print(counter) #print 5
+strng = "123456987654"
+sz = 6
+#Split string by number of characters or every nth character.  Google AI and https://stackoverflow.com/questions/9475241/split-string-every-nth-character
+for i in range(0, len(strng), sz):
+    print(i) #print 0\n 6
+for i in range(0, len(strng), sz):
+    print(strng[i:i + sz]) #print 123456\n 987654
+listcomprehensionsplitstring = [strng[i:i + sz] for i in range(0, len(strng), sz)]
+print(listcomprehensionsplitstring) #print ['123456', '987654']
+import textwrap
+chunks = textwrap.wrap(strng, width=sz)
+print(chunks) #print ['123456', '987654']
 
 #Boolean
 print(bool("return true" > "or return false using bool()")) #print True

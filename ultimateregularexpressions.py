@@ -325,6 +325,15 @@ threewordssemicolonfivewordsobject = threewordssemicolonfivewordscompile.search(
 print(threewordssemicolonfivewordsobject.group()) #print red;blue
 print(threewordssemicolonfivewordsobject.groups()) #print ()
 #print(threewordssemicolonfivewordsobject.group(1)) #print IndexError: no such group
+import re #RM:  doesn't work if the string contain newlines
+chunksregularexpressions = re.findall(f".{{1,{sz}}}", strng)
+print(chunksregularexpressions) #print ['123456', '987654']
+chunksregularexpressions2 = re.findall(("." * sz), strng)
+print(chunksregularexpressions2) #print ['123456', '987654']
+chunksregularexpressions3 = re.findall("......?", strng)
+print(chunksregularexpressions3) #print ['123456', '987654']
+chunksregularexpressions4 = re.findall(".{1,6}", strng)
+print(chunksregularexpressions4) #print ['123456', '987654']
 
 #Include re.DOTALL to match all characters including the newline \n
 multiplelinestring = "One run.\n  Two shoes.\n  Three trees.\n"
