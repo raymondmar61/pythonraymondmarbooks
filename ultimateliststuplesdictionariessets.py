@@ -461,6 +461,21 @@ print(converttoasciicharacterjoin) #print defghijklmnopqrstuvwx
 scoreslist = [78, 96, 83, 86]
 print("The second entry score is {[1]}.".format(scoreslist)) #print The second entry score is 96.
 print("The second entry score is {s[1]}.".format(s=scoreslist)) #print The second entry score is 96.
+#Flat lists flatten lists
+givenlist = [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]
+basicforloops = []
+for eachgivenlist in givenlist:
+    for eachitem in eachgivenlist:
+        basicforloops.append(eachitem)
+print(basicforloops) #print [3, 2, 1, 4, 6, 5, 9, 7, 8]
+flatlistnestedlistcomprehension = [item for sublist in givenlist for item in sublist]
+print(flatlistnestedlistcomprehension) #print [3, 2, 1, 4, 6, 5, 9, 7, 8]
+flatlistextend = []
+for eachgivenlist in givenlist:
+    flatlistextend.extend(eachgivenlist)
+print(flatlistextend) #print [3, 2, 1, 4, 6, 5, 9, 7, 8]
+flatlistsum = sum(givenlist, [])
+print(flatlistsum) #print [3, 2, 1, 4, 6, 5, 9, 7, 8]
 
 #Tuples
 print(tuple("Tuples are immutable")) #print ('T', 'u', 'p', 'l', 'e', 's', ' ', 'a', 'r', 'e', ' ', 'i', 'm', 'm', 'u', 't', 'a', 'b', 'l', 'e')

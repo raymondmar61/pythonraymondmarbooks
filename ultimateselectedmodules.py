@@ -300,6 +300,12 @@ for needcountertostopcycle in itertools.cycle(cyclestartsfromfronttobackrepeatin
 for eachrepeat in itertools.repeat(100, 5):
     print(eachrepeat, end=", ") #print 100, 100, 100, 100, 100,
 print("\n")
+#Flatten list
+givenlist = [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]
+flatlistitertoolschain = list(itertools.chain.from_iterable(givenlist))
+print(flatlistitertoolschain) #print [3, 2, 1, 4, 6, 5, 9, 7, 8]
+flatlistitertoolschain2 = list(itertools.chain(*givenlist))
+print(flatlistitertoolschain2) #print [3, 2, 1, 4, 6, 5, 9, 7, 8]
 
 #Filterfalse.  The built-in filter function returns an iterable object based on the combination of a predicate or a function which returns True or False and an iterable.  The filter function applies the predicate to each element of the iterable.  Objects are returned when the predicate returns True.
 mylist = [10, 20, 25, 30, 35, 36, 40, 42, 45]
