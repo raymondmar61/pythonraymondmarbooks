@@ -274,18 +274,6 @@ for eachstring, counteachstring in love:
     y 1
     '''
 print(counter) #print 5
-strng = "123456987654"
-sz = 6
-#Split string by number of characters or every nth character.  Google AI and https://stackoverflow.com/questions/9475241/split-string-every-nth-character
-for i in range(0, len(strng), sz):
-    print(i) #print 0\n 6
-for i in range(0, len(strng), sz):
-    print(strng[i:i + sz]) #print 123456\n 987654
-listcomprehensionsplitstring = [strng[i:i + sz] for i in range(0, len(strng), sz)]
-print(listcomprehensionsplitstring) #print ['123456', '987654']
-import textwrap
-chunks = textwrap.wrap(strng, width=sz)
-print(chunks) #print ['123456', '987654']
 
 #Boolean
 print(bool("return true" > "or return false using bool()")) #print True
@@ -552,3 +540,59 @@ pi = 3.1415
 print(f"pi is {pi:{10}.{2}}") #print pi is *******3.1
 value = "grapes"
 print(f"String interpolation value variable {value}.") #print String interpolation value variable grapes.
+
+#eval()
+'''
+The Python eval() function is a built-in tool that parses a string and executes it as a Python expression.  Convert string representations of data structures such as a list in a string to Python objects.  Dynamically evaluate Python expressions from any input as a string or a compiled code object.   Python’s eval() runs the following steps to evaluate a string based expression:  1 Parse expression.  2 Compile it to bytecode.  3 Evaluate it as a Python expression.  4 Return the result of the evaluation.  The name expression for the first argument to eval() highlights that the function works only with expressions and not with compound statements.  Any other statement such as if, for, while, import, def, or class, raises an error.  Assignment operations aren’t allowed with eval(); for example print(eval("pi = 3.1416")).
+
+eval(code to evaluate, globals=optional dictionary to specify global variables, locals=optional dictionary to specify local variables).
+
+Boolean expression Value comparison operators: <, >, <=, >=, ==, !=.  Logical (Boolean) operators: and, or, not.  Membership test operators: in, not in.  Identity operators: is, is not.  Returns True or False.
+
+Entered 5 to input() becomes "5".  eval() converts "5" to 5.
+Entered 2.5 to input() becomes "2.5".  eval() converts "2.5" to 2.5.
+Entered "poundcake" to input() becomes ""poundcake"".  eval() converts ""poundcake"" to "poundcake".
+Entered poundcake to input() becomes "poundcake".  eval() converts "poundcake" to poundcake.
+
+eval() is considered dangerous.  Use extreme caution.  eval() executies arbitrary code even if input is untrusted.
+'''
+'''
+Simple best example use eval() function
+x = input("Enter something: ") #Entered 5
+print(x * 2) #print 55.  RM:  should be 10
+x = int(input("Enter something: ")) #Entered 5.5
+print(x * 2) #print ValueError: invalid literal for int() with base 10: '5.5'
+x = float(input("Enter something: ")) #Entered 5
+print(x * 2) #print 10.0
+x = eval(input("Enter something: ")) #Entered 5
+print(x * 2) #print 10
+x = eval(input("Enter something: ")) #Entered poundcake
+print(x * 2) #print NameError: name 'poundcake' is not defined
+x = eval(input("Enter something: ")) #Entered "poundcake"
+print(x * 2) #print poundcakepoundcake
+'''
+print(eval("5+10")) #print 15
+print(eval("sum([1,2,3,4])")) #print 10
+expression = "x*(x+1)*(x+2)"
+x = 3
+print(eval(expression)) #print 60
+booleanexpression = 5
+print(eval("booleanexpression == 4")) #print False
+booleanexpression = None
+print(eval("booleanexpression is None")) #print True
+conditionalexpression = ("a", "b", "c")
+print(eval("'c' in conditionalexpression")) #print True
+print(eval("'d' in conditionalexpression")) #print False
+conditionalexpression = 100
+print(eval("conditionalexpression > 50")) #print True
+print(eval("conditionalexpression > 150")) #print False
+print(eval("a>b", {"a": 2, "b": 4})) #print False
+globalvariable1 = 100
+globalvariable2 = 200
+print(eval("x+100", {"x": globalvariable1})) #print 200
+print(eval("x+100+y", {"x": globalvariable1, "y": globalvariable2})) #print 400
+print(eval("x+100+y+z", {"x": globalvariable1, "y": globalvariable2, "z": 1})) #print 401
+localvariable1 = 500
+localvariable2 = 600
+print(eval("x+1000", {}, {"x": localvariable1})) #print 1500
+print(eval("x+1000+y", {}, {"x": localvariable1, "y": localvariable2})) #print 2100
