@@ -23,6 +23,19 @@ for eachseparatedictionarylist in separatedictionarylist:
     orange
     honey dew
     '''
+from collections import Counter
+#Counter is a dictionary where elements are stored as keys and their counts are stored as values
+iterablecounter = Counter(['aaa', 'bbb', 'aaa', 'ccc', 'ccc', 'aaa'])
+mapcounter = Counter({'red': 4, 'blue': 2})
+keywordargumentscounter = Counter(cats=4, dogs=8)
+print(iterablecounter) #print Counter({'aaa': 3, 'ccc': 2, 'bbb': 1})
+print(mapcounter) #print Counter({'red': 4, 'blue': 2})
+print(keywordargumentscounter) #print Counter({'dogs': 8, 'cats': 4})
+print(f"Counter keys {keywordargumentscounter.keys()}") #print Counter keys dict_keys(['cats', 'dogs'])
+print(f"Counter values {keywordargumentscounter.values()}") #print  ounter values dict_values([4, 8])
+print(f"list all elements {list(keywordargumentscounter.elements())}") #print list all elements ['cats', 'cats', 'cats', 'cats', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs']
+print(f"count elements {iterablecounter.total()}") #print count elements 6
+print(f"2 most common elements {keywordargumentscounter.most_common(2)}") #print 2 most common elements [('dogs', 8), ('cats', 4)]
 
 import copy
 letterslist = ["a", "b", "c", "d"]
