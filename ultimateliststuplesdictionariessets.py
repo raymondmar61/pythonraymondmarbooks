@@ -539,6 +539,33 @@ tupletointeger = functools.reduce(lambda sub, elem: sub * 10 + elem, onetuple)
 print(tupletointeger) #print 259
 
 #Dictionaries
+#Two ways to create a dictionary
+createdictionary1 = {"name": "William", "age": 28, "city": "Cairo"}
+print(createdictionary1) #print {'name': 'William', 'age': 28, 'city': 'Cairo'}
+createdictionary2constructor = dict(name="William", age=28, city="Cairo")
+print(createdictionary2constructor) #print {'name': 'William', 'age': 28, 'city': 'Cairo'}
+hashmapdictionary2 = dict()
+print(hashmapdictionary2) #print {}
+print(hashmapdictionary2) #print {}
+hashmapdictionary2["insertkey1"] = "insertvalue1"
+print(hashmapdictionary2.get("insertkey1")) #print insertvalue1.  The get() method returns None if the key doesn't exist.  No error message appears when retrieving a value for which the key doesn't exist.
+hashmapdictionary2["insertkey2"] = "insertvalue2"
+hashmapdictionary2["insertkey3"] = "insertvalue3"
+print(hashmapdictionary2) #print {'insertkey1': 'insertvalue1', 'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3'}
+hashmapdictionary2["insertkey4"] = ["multiple","values","forinsertvalue4"]
+print(hashmapdictionary2) #print {'insertkey1': 'insertvalue1', 'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3', 'insertkey4': ['multiple', 'values', 'forinsertvalue4']}
+hashmapdictionary2["insertkey4"].append("append another value to a key with multiple values")
+print(hashmapdictionary2) #print {'insertkey1': 'insertvalue1', 'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3', 'insertkey4': ['multiple', 'values', 'forinsertvalue4', 'append another value to a key with multiple values']}
+hashmapdictionary2.pop("insertkey1")
+print(hashmapdictionary2) #print {'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3', 'insertkey4': ['multiple', 'values', 'forinsertvalue4', 'append another value to a key with multiple values']}
+hashmapdictionary2["assigntruevalue"] = True
+print(hashmapdictionary2) #print {'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3', 'insertkey4': ['multiple', 'values', 'forinsertvalue4', 'append another value to a key with multiple values'], 'assigntruevalue': True}
+hashmapdictionary2.clear()
+print(hashmapdictionary2) #print {}
+hashmapdictionary2["justcleardictionary"] = "Delete entire contents in a dictionary"
+print(hashmapdictionary2) #print {'justcleardictionary': 'Delete entire contents in a dictionary'}
+hashmapdictionary2["addanentry"] = "Loop a dictionary looping a dictionary"
+print(hashmapdictionary2.items()) #print dict_items([('justcleardictionary', 'Delete entire contents in a dictionary'), ('addanentry', 'Loop a dictionary looping a dictionary')])
 blankdictionary = {}
 blankdictionary["Insert key in brackets"] = "Insert item right of equal sign"
 blankdictionary["Insert key left of colon"] = "Insert value to blankdictionary dictionary"
@@ -781,6 +808,13 @@ removeduplicatenumbers = dict.fromkeys(duplicatenumbers)
 print(removeduplicatenumbers) #print {1: None, 4: None, 6: None, 22: None, 3: None, 5: None, 2: None, 51: None}
 removeduplicatenumbers = list(dict.fromkeys(duplicatenumbers))
 print(removeduplicatenumbers) #print [1, 4, 6, 22, 3, 5, 2, 51].  Order maintained or order matters.
+from collections import defaultdict
+alternatehashmapimplementation = defaultdict(lambda: "Default value instead of an error is The key doesn't exist")
+alternatehashmapimplementation["createdefaultdict"] = "defaultdict in collections module"
+alternatehashmapimplementation["builtindictionaries"] = "defaultdict and dictionaries are almost the same"
+print(alternatehashmapimplementation) #print defaultdict(<function <lambda> at 0x7ac1ed586560>, {'createdefaultdict': 'defaultdict in collections module', 'builtindictionaries': 'defaultdict and dictionaries are almost the same'})
+print(alternatehashmapimplementation["createdefaultdict"]) #print defaultdict in collections module
+print(alternatehashmapimplementation["keydoesntexist"]) #print Default value instead of an error is The key doesn't exist
 
 #Sets
 setvariable = set([10, 20, 30, 10, 20, 30, 40, "abc", "abcabcabc", "printed sets items printed in random order"])
