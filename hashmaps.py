@@ -38,7 +38,7 @@ print(hashmapdictionary2.get("insertkey1")) #print insertvalue1.  The get() meth
 hashmapdictionary2["insertkey2"] = "insertvalue2"
 hashmapdictionary2["insertkey3"] = "insertvalue3"
 print(hashmapdictionary2) #print {'insertkey1': 'insertvalue1', 'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3'}
-hashmapdictionary2["insertkey4"] = ["multiple","values","forinsertvalue4"]
+hashmapdictionary2["insertkey4"] = ["multiple", "values", "forinsertvalue4"]
 print(hashmapdictionary2) #print {'insertkey1': 'insertvalue1', 'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3', 'insertkey4': ['multiple', 'values', 'forinsertvalue4']}
 hashmapdictionary2["insertkey4"].append("append another value to a key with multiple values")
 print(hashmapdictionary2) #print {'insertkey1': 'insertvalue1', 'insertkey2': 'insertvalue2', 'insertkey3': 'insertvalue3', 'insertkey4': ['multiple', 'values', 'forinsertvalue4', 'append another value to a key with multiple values']}
@@ -82,3 +82,79 @@ print(f"Counter values {keywordargumentscounter.values()}") #print  ounter value
 print(f"list all elements {list(keywordargumentscounter.elements())}") #print list all elements ['cats', 'cats', 'cats', 'cats', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs', 'dogs']
 print(f"count elements {iterablecounter.total()}") #print count elements 6
 print(f"2 most common elements {keywordargumentscounter.most_common(2)}") #print 2 most common elements [('dogs', 8), ('cats', 4)]
+
+#Python： Creating a HASHMAP using Lists [9HFbhPscPU0]
+'''
+A set of key and value pairs.  For example, beans is 1.85, corn is 2.38, and rice is 1.92.  A data structure to store key and value pairs data.  There are no duplicate keys; keys are unique.  Fast access to the data.  Also called dictionary, map, hash table, and array.  Use dict for dictionary in Python.
+'''
+print(["fifty five"] * 6) #print ['fifty five', 'fifty five', 'fifty five', 'fifty five', 'fifty five', 'fifty five']
+class HashMap:
+    #constructor
+    def __init__(self):
+        self.size = 6 #size of array
+        self.map = [None] * self.size #array to store the data
+    def gethash(self, key):
+        hash = 0
+        for char in str(key): #calculate index number for the key
+            hash += ord(char)
+            return hash % self.size #index number calculated is returned
+    def add(self, key, value): #takes a key and a value
+        keyhash = self.gethash(key) #keyhash is the index value from gethash() function
+        keyvalue = [key, value] #the key and the value to insert into the index number inside the array
+        if self.map[keyhash] is None: #check if the index number is empty.  If true, then add keyvalue at the index number.
+            self.map[keyhash] = list([keyvalue])
+            return True
+        else: #if not empty, check if the key exists.  If the key exists, then update the value.  If the key doesn't exist, then append to the array.
+            for pair in self.map[keyhash]:
+                if pair[0] == key:
+                    pair[1] == value
+                    return True
+            self.map[keyhash].append(keyvalue)
+            return True
+    def get(self, key):
+        keyhash = self.gethash(key) #get the hash given the key
+        if self.map[keyhash] is not None: #locate the index number or cell from the hash given the key.  If the key exists, then iterate through the pairs.  Find the value which matches the key.  Return the value if located.
+            for pair in self.map[keyhash]:
+                if pair[0] == key:
+                    return pair[1]
+        return None
+    def delete(self, key):
+        keyhash = self.gethash(key) #locate the key
+        if self.map[keyhash] is None:
+            return False
+        for i in range(0, len(self.map[keyhash])):
+            if self.map[keyhash][i][0] == key:
+                self.map[keyhash].pop(i)
+                return True
+    def print(self):
+        print("print() function Phonebook")
+        for item in self.map:
+            if item is not None:
+                print(str(item))
+
+
+hashing = HashMap()
+hashing.add("Bob", "567-8888")
+hashing.add("Ming", "293-6753")
+hashing.add("Ming", "333-8233") #Overwrite Ming's phone number from 293-6753 to 333-8233
+hashing.add("Ankit", "293-8625")
+hashing.add("Aditya", "852-6551")
+hashing.add("Alicia", "632-4123")
+hashing.add("Mike", "567-2188")
+hashing.add("Aditya", "777-8888")
+hashing.print()
+'''
+print() function Phonebook
+[['Bob', '567-8888']]
+[['Ming', '293-6753'], ['Ankit', '293-8625'], ['Aditya', '852-6551'], ['Alicia', '632-4123'], ['Mike', '567-2188']]
+#RM:  Ming phone should be 333-8233.  Aditya phone number should be 777-8888.
+'''
+hashing.delete("Bob")
+hashing.print()
+'''
+print() function Phonebook
+[]
+[['Ming', '293-6753'], ['Ankit', '293-8625'], ['Aditya', '852-6551'], ['Alicia', '632-4123'], ['Mike', '567-2188']]
+#RM:  Ming phone should be 333-8233.  Aditya phone number should be 777-8888.
+'''
+print("Ming: " + hashing.get("Ming")) #print Ming: 293-6753.  Ming phone should be 333-8233
