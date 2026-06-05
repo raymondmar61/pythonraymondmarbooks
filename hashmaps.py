@@ -158,3 +158,49 @@ print() function Phonebook
 #RM:  Ming phone should be 333-8233.  Aditya phone number should be 777-8888.
 '''
 print("Ming: " + hashing.get("Ming")) #print Ming: 293-6753.  Ming phone should be 333-8233
+
+#Hash Tables： Hash Functions, Sets, & Maps - DSA Course in Python Lecture 4 [iZyxNEBpqFY]
+shashset = set()
+print(shashset) #print set()
+#Add item into a set takes constant time O(1)
+shashset.add(1)
+shashset.add(2)
+shashset.add(3)
+print(shashset) #print {1, 2, 3}
+#Lookup item into a set takes constant time O(1)
+if 1 in shashset:
+    print(True) #print True
+shashset.remove(3)
+print(shashset) #print {1, 2}
+stringvariable = "aaaaaaabbbbbbbbbbbccccccccceeeeeeeee"
+settstring = set(stringvariable) #Construct set takes O(stringvariable).  stringvariable is the length of the string.
+print(settstring) #print {'a', 'e', 'b', 'c'}.  A set of all the unique elements.
+dhashmapdictionary = {"greg": 1, "steve": 2, "rob": 3}
+print(dhashmapdictionary) #print {'greg': 1, 'steve': 2, 'rob': 3}
+#Add key and value pair to dictionary takes constant time O(1)
+dhashmapdictionary["arsh"] = 4
+print(dhashmapdictionary) #print {'greg': 1, 'steve': 2, 'rob': 3, 'arsh': 4}
+#Lookup key in a dictionary takes constant time O(1)
+if "greg" in dhashmapdictionary:
+    print(True) #print True
+#Lookup value provide its key in a dictionary takes constant time O(1)
+print(dhashmapdictionary["greg"]) #print 1
+#Loop key and value pairs in a dictionary takes time O(n) where n is the number of key and value pairs
+for key, value in dhashmapdictionary.items():
+    print(f"key {key} value {value}")
+    '''
+    key greg value 1
+    key steve value 2
+    key rob value 3
+    key arsh value 4
+    '''
+#Default dictionary
+from collections import defaultdict
+defaultdictionary = defaultdict(int) #Default is a integer data type which is number 0.
+print(defaultdictionary) #print defaultdict(<class 'int'>, {})
+print(defaultdictionary[2]) #print 0.  There are no key value pairs.  defaultdict added key 2 and value 0 pair.
+print(defaultdictionary) #print defaultdict(<class 'int'>, {2: 0})
+#Counter
+from collections import Counter
+countletters = Counter(stringvariable)
+print(countletters) #print Counter({'b': 11, 'c': 9, 'e': 9, 'a': 7})
