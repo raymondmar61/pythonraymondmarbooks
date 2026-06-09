@@ -204,3 +204,145 @@ print(defaultdictionary) #print defaultdict(<class 'int'>, {2: 0})
 from collections import Counter
 countletters = Counter(stringvariable)
 print(countletters) #print Counter({'b': 11, 'c': 9, 'e': 9, 'a': 7})
+
+#Hash Map - Data Structures in Python #4 [qqUYkoFRW8Y]
+cityinitializehashmap = {} #cityinitializehashmap = dict() is valid
+cityinitializehashmap["Canada"] = []
+print(cityinitializehashmap) #print {'Canada': []}
+citiescanada = ["Calgary", "Vancouver", "Toronto"]
+cityinitializehashmap["Canada"] += citiescanada
+print(cityinitializehashmap) #print {'Canada': ['Calgary', 'Vancouver', 'Toronto']}
+#Dictionary all keys need to be initialized.  The default dictionary DefaultDict all keys are already initialized.
+from collections import defaultdict
+citymap = defaultdict(list)
+citiescanada = ["Calgary", "Vancouver", "Toronto"]
+citymap["Canada"] += citiescanada
+print(citymap) #print defaultdict(<class 'list'>, {'Canada': ['Calgary', 'Vancouver', 'Toronto']})
+citymap["USA"] += ["New York City", "Austin", "Seattle"]
+citymap["England"] += ["London", "Manchester"]
+print(citymap) #print defaultdict(<class 'list'>, {'Canada': ['Calgary', 'Vancouver', 'Toronto'], 'USA': ['New York City', 'Austin', 'Seattle'], 'England': ['London', 'Manchester']})
+countrieslist = citymap.keys()
+print(countrieslist) #print dict_keys(['Canada', 'USA', 'England'])
+citieslist = citymap.values()
+print(citieslist) #print dict_values([['Calgary', 'Vancouver', 'Toronto'], ['New York City', 'Austin', 'Seattle'], ['London', 'Manchester']])
+itemslist = citymap.items()
+print(itemslist) #print dict_items([('Canada', ['Calgary', 'Vancouver', 'Toronto']), ('USA', ['New York City', 'Austin', 'Seattle']), ('England', ['London', 'Manchester'])])
+strswords = ["eat", "tea", "tan", "ate", "nat", "bat"]
+initializehashmap = defaultdict(list)
+print(initializehashmap) #print defaultdict(<class 'list'>, {})
+resultlist = []
+for eachstrswords in strswords:
+    print(eachstrswords)
+    sorteachstrswords = tuple(sorted(eachstrswords))
+    print(sorteachstrswords)
+    initializehashmap[sorteachstrswords].append(eachstrswords)
+    print(initializehashmap)
+    '''
+    eat
+    ('a', 'e', 't')
+    defaultdict(<class 'list'>, {('a', 'e', 't'): ['eat']})
+    tea
+    ('a', 'e', 't')
+    defaultdict(<class 'list'>, {('a', 'e', 't'): ['eat', 'tea']})
+    tan
+    ('a', 'n', 't')
+    defaultdict(<class 'list'>, {('a', 'e', 't'): ['eat', 'tea'], ('a', 'n', 't'): ['tan']})
+    ate
+    ('a', 'e', 't')
+    defaultdict(<class 'list'>, {('a', 'e', 't'): ['eat', 'tea', 'ate'], ('a', 'n', 't'): ['tan']})
+    nat
+    ('a', 'n', 't')
+    defaultdict(<class 'list'>, {('a', 'e', 't'): ['eat', 'tea', 'ate'], ('a', 'n', 't'): ['tan', 'nat']})
+    bat
+    ('a', 'b', 't')
+    defaultdict(<class 'list'>, {('a', 'e', 't'): ['eat', 'tea', 'ate'], ('a', 'n', 't'): ['tan', 'nat'], ('a', 'b', 't'): ['bat']})
+    '''
+for eachvalue in initializehashmap.values():
+    print(eachvalue)
+    '''
+    ['eat', 'tea', 'ate']
+    ['tan', 'nat']
+    ['bat']
+    '''
+    resultlist.append(eachvalue)
+print(resultlist) #print [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
+
+#Hash Map - Data Structures in Python #4 [qqUYkoFRW8Y]
+class HashMap:
+    def __init__(self, capacitynumberofbuckets):
+        self.capacity = capacitynumberofbuckets
+        self.sizenumberofelementsinhashmap = 0
+        self.buckets = [[] for placeholder in range(self.capacity)]
+
+    #O(i) runtime is constant
+    def __len__(self): #length method
+        return self.size
+
+    #O(1) average constant runtime.  Worst is O(n) which is linear time.  Depends on the quality of the hash function.
+    def __contains__(self, key):
+        index = self._hashfunction(key)
+        bucket = self.buckets[index]
+        for k, v in bucket:
+            if k == key:
+                return True
+        return False
+
+    #O(1) average constant runtime.  Worst is O(n) which is linear time.  Depends on the quality of the hash function.
+    def put(self, key, value): #insert key value pair
+        index = self._hashfunction(key)
+        bucket = self.buckets[index]
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                bucket[i] = (key, value)
+                break
+        else:
+            bucket.append((key, value))
+            self.sizenumberofelementsinhashmap += 1
+    #O(1) average constant runtime.  Worst is O(n) which is linear time.  Depends on the quality of the hash function.
+    def get(self, key): #find the value
+        index = self._hashfunction(key)
+        bucket = self.buckets[index]
+        for k, v in bucket:
+            if k == key:
+                return v
+        raise KeyError("Key not found")
+
+    #O(1) average constant runtime.  Worst is O(n) which is linear time.  Depends on the quality of the hash function.
+    def remove(self, key): #delete key value pair
+        index = self._hashfunction(key)
+        bucket = self.buckets[index]
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                del bucket[i]
+                self.size -= 1
+                break
+        else:
+            raise KeyError("Key not found")
+
+    #O(n) which is linear time runtime
+    def keys(self): #keys method
+        return [k for bucket in self.buckets for k, _ in bucket]
+
+    #O(n) which is linear time runtime
+    def values(self): #values method
+        return [v for bucket in self.buckets for _, v in bucket]
+
+    #O(n) which is linear time runtime
+    def items(self): #items method
+        return [(k, v) for bucket in self.buckets for k, v in bucket]
+
+    #O(k) which is linear time in key length
+    def _hashfunction(self, key): #the underscore means its private
+        keystring = str(key)
+        hashresult = 0
+        for everycharacter in keystring:
+            hashresult = (hashresult * 31 + ord(everycharacter)) % self.capacity
+        return hashresult
+
+
+hashmap = HashMap(32)
+hashmap.put("name", "Mike")
+hashmap.put("age", 30)
+hashmap.put("job", "programmer")
+print(hashmap.items()) #print [('name', 'Mike'), ('job', 'programmer'), ('age', 30)]
+print(hashmap.buckets) #print [[], [], [], [], [], [], [], [], [], [], [], [('name', 'Mike')], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [('job', 'programmer')], [], [('age', 30)]]
