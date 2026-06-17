@@ -68,6 +68,20 @@ class Card:
         King of Clubs: KC.  Value: 10
         '''
 
+#Pass an object from class.
+class Ball(object):
+    def __init__(self, ball_type="regular"): #default ball_type is regular
+        self.ball_type = ball_type
+
+
+ball1 = Ball()
+ball1.ball_type
+ball2 = Ball("super")
+ball2.ball_type
+ball1printfunction = Ball()
+print(ball1printfunction.ball_type) #print regular
+ball2printfunction = Ball("super")
+print(ball2printfunction.ball_type) #print super
 
 #Make a deck of cards
 decklist = []
