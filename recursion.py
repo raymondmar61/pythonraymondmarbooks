@@ -131,3 +131,70 @@ Digging in the hole 2
 First sentence 1
 120
 '''
+
+#40 Python Tutorial for Beginners ｜ Recursion [XkL3SUioNvo]
+#Recursion is calling a function from itself.  Calling a function from the same function.
+def samefunctioninfinitecalling():
+    print("Hello.  I'm from the function samefunctioninfinitecalling().")
+    samefunctioninfinitecalling() #Calling samefunctioninfinitecalling() itself.  Unfortunately, RecursionError: maximum recursion depth exceeded while calling a Python object.  YouTuber said call same function one thousand times by default.  Limit thousand times.  My error message said [Previous line repeated 992 more times].
+
+
+#samefunctioninfinitecalling() #return Hello.  I'm from the function samefunctioninfinitecalling().
+counter = 1
+def samefunctioncounter():
+    global counter #UnboundLocalError: local variable 'counter' referenced before assignment.
+    print("Hello.  I'm from the function samefunctioncounter().  Counter", counter)
+    counter += 1
+    if counter == 100:
+        return True
+    samefunctioncounter() #Calling samefunctioncounter() itself.
+
+
+samefunctioncounter() #return Hello.  I'm from the function samefunctioncounter().  Counter 1
+#Change recursion limit
+import sys
+print(sys.getrecursionlimit()) #print 1000
+sys.setrecursionlimit(2000)
+print(sys.getrecursionlimit()) #print 2000.  However, YouTuber ran a function which stopped at count 1,996.
+
+#5 Simple Steps for Solving Any Recursive Problem [ngCos392W4w]
+#Recursive Leap Of Faith is assuming simpler cases work out.
+#Write a recursive function that given an input n sums all nonnegative integers up to n?
+def sumiteration(n):
+    result = 0
+    for i in range(n + 1):
+        result += i
+    return result
+
+
+print(sumiteration(50)) #print 1275
+
+def summathematical(n):
+    return n * ((n + 1) / 2) #((n + 1) // 2) is incorrect
+
+
+print(summathematical(50)) #print 1275
+
+def sumrecursion(n):
+    if n == 0:
+        return 0
+    else:
+        return n + sumrecursion(n - 1)
+
+
+print(sumrecursion(50)) #print 1275
+print(sumrecursion(5)) #print 15
+'''
+sumrecursion(5):  5+sumrecursion(4).  Theoretically the answer is 15.  The function is not evaluated yet.  Go back and repeat the process.
+sumrecursion(4):  4+sumrecursion(3).  Theoretically the answer is 10.  The function is not evaluated yet.  Go back and repeat the process.
+sumrecursion(3):  3+sumrecursion(2).  Theoretically the answer is 6.  The function is not evaluated yet.  Go back and repeat the process.
+sumrecursion(2):  2+sumrecursion(1).  Theoretically the answer is 3.  The function is not evaluated yet.  Go back and repeat the process.
+sumrecursion(1):  1+sumrecursion(0).  Theoretically the answer is 1.  The function is not evaluated yet.  Go back and repeat the process.
+sumrecursion(0):  0.  Base case if n == 0 return 0.  Evaluate the problem sumrecursion() function when n = 1, then n = 2, then n = 3, then n = 4, and then n = 5.
+'''
+#Write a function that takes two inputs n and m and outputs the number of unique paths from the top left corner to [the] bottom right corner of a nXm grid.  Constraints:  you can only move down or right 1 unit at a time.
+def gridpaths(n, m):
+    if n == 1 or m == 1:
+        return 1
+    else:
+        return gridpaths(n, m - 1) + gridpaths(n - 1, m)
