@@ -198,3 +198,19 @@ def gridpaths(n, m):
         return 1
     else:
         return gridpaths(n, m - 1) + gridpaths(n - 1, m)
+#Write a function that counts the number of ways you can partition n objects using parts up to m (assuming m >= 0).  For example, dots are objects.  Partition 6 dots up to 4 parts.  n=6.  m=4.  4+2; 4+1+1; 3+3; 3+2+1; 3+1+1+1; 2+2+2; 2+2+1+1; 2+1+1+1+1; 1+1+1+1+1+1.  9 partitions.  Partition 5 dots up to 5 parts.  n=5.  m=5.  5+0; 4+1; 3+2; 3+1+1; 2+2+1; 2+1+1+1; 1+1+1+1+1.  7 partitions.
+#The simplest partition is n=0 and m=0.  There is 1 parition.  There is always 1 parition when n=0 and m>=0.  Another simplest parition is n>=1 and m=0.  There is 0 parition.
+#Another base case is n<0.  There is 0 partition.
+def countpartitions(n, m):
+    if n == 0:
+        return 1
+    elif m == 0 or n < 0:
+        return 0
+    else:
+        return countpartitions(n - m, m) + countpartitions(n, m - 1)
+
+
+print(countpartitions(6, 4)) #print 9
+print(countpartitions(5, 5)) #print 7
+print(countpartitions(3, 2)) #print 2
+print(countpartitions(0, 200)) #print 1
