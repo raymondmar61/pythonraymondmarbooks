@@ -92,6 +92,10 @@ print(usernumberslistcomprehension) #print [1, 2, 3, 1, 2, 3, 1, 2, 3, 4]
 print(sum(usernumberslistcomprehension)) #print 22
 sumusernumberslistcomprehension = sum([int(eachusernumbers) for eachusernumbers in usernumbers.split()])
 print(sumusernumberslistcomprehension) #print 22
+numbers = [1, 2, 3, 4] #Multiply each number inside list
+multiplier = 3
+scaled_numbers = [num * multiplier for num in numbers]
+print(scaled_numbers)  #print [3, 6, 9, 12]
 #enumerate works by supplying a corresponding index to each element in the list that you pass it. Each time you go through the loop, index will be one greater, and item will be the next item in the sequence. It's very similar to using a normal for loop with a list, except this gives us an easy way to count how many items we've seen so far.
 firstname = ["Bucky", "Tom", "Taylor"]
 lastname = ["Roberts", "Hanks", "Swift"]
