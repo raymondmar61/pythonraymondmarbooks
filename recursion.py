@@ -1,3 +1,122 @@
+#Raymond addone() recursion function solving by myself
+def addone(start, end):
+    startin = start + 1
+    print("begin", startin)
+    if startin == end:
+        return "okay"
+    else:
+        print("else", startin)
+        addone(startin, end) #exclude the return key in return addone(startin, end) the return "okay" value is not printed for print(addone(1, 10)).  We're not returning the recursive call.
+
+
+print(addone(1, 10))
+'''
+begin 2
+else 2
+begin 3
+else 3
+begin 4
+else 4
+begin 5
+else 5
+begin 6
+else 6
+begin 7
+else 7
+begin 8
+else 8
+begin 9
+else 9
+begin 10
+None
+'''
+
+def addone(start, end):
+    startin = start + 1
+    print("begin", startin)
+    if startin == end:
+        return "okay"
+    else:
+        print("else", startin)
+        return addone(startin, end)
+
+
+print(addone(1, 10))
+'''
+begin 2
+else 2
+begin 3
+else 3
+begin 4
+else 4
+begin 5
+else 5
+begin 6
+else 6
+begin 7
+else 7
+begin 8
+else 8
+begin 9
+else 9
+begin 10
+okay
+'''
+
+def addone(start, end):
+    print("begin", start)
+    if start == end:
+        return
+    addone(start + 1, end)
+
+
+print(addone(1, 10))
+'''
+begin 1
+begin 2
+begin 3
+begin 4
+begin 5
+begin 6
+begin 7
+begin 8
+begin 9
+begin 10
+None
+'''
+
+def addone(start, end):
+    print("begin", start)
+    if start == end:
+        return
+    addone(start + 1, end)
+    print("afterrecursion", start, end)
+
+
+print(addone(1, 10))
+'''
+begin 1
+begin 2
+begin 3
+begin 4
+begin 5
+begin 6
+begin 7
+begin 8
+begin 9
+begin 10
+afterrecursion 9 10
+afterrecursion 8 10
+afterrecursion 7 10
+afterrecursion 6 10
+afterrecursion 5 10
+afterrecursion 4 10
+afterrecursion 3 10
+afterrecursion 2 10
+afterrecursion 1 10
+None
+'''
+
 #Learn RECURSION in 5 minutes! [ivl5-snqul8]
 '''
 Recursion.  A function which calls itself from within.  It helps visualize a complex problem in basic steps which can be solved easier iteratively or recursively.  Iteratively is using a for loop or while loop.  Recursively is using if else or adding or subtracting the number of steps.
@@ -214,3 +333,38 @@ print(countpartitions(6, 4)) #print 9
 print(countpartitions(5, 5)) #print 7
 print(countpartitions(3, 2)) #print 2
 print(countpartitions(0, 200)) #print 1
+
+#Recursion for Python Beginners with Recursive Function Examples [72uVUU1boKo].mp4.  RM:  I wrote addone() function before watching the video in an attempt to remember and to comprehend from past recursion videos.  Aug 13, 2026.
+def add_one(num):
+    if (num >= 9):
+        return num + 1 #ends the function
+    total = num + 1
+    print(total)
+    return add_one(total) #exclude the return key in return add_one(total) the return num + 1 value is not printed for print(add_one(0)).  We're not returning the recursive call.
+
+
+add_one(0)
+'''
+1
+2
+3
+4
+5
+6
+7
+8
+9
+'''
+print(add_one(0)) #prints return num + 1 statement
+'''
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+'''
