@@ -132,3 +132,40 @@ if searchbinary(listnumbers, nfindnumber):
     print("Found at position number", position + 1)
 else:
     print("Not found")
+
+#Binary Search - Leetcode 704 - Python [s4DPM8ct1pI]
+#A list of integers sorted ascending.  Integer target.  Write a function search target in the list.  Return the index number.  Otherwise return -1.  Run the program efficiently with 0(log n) runtime.  Use binary search.
+class Solution:
+    def search(self, numslist: list[int], targetnumber: int) -> int:
+        lleft, rright = 0, len(numslist) - 1
+        print("lleft", lleft)
+        print("rright", rright)
+        while lleft <= rright:
+            mmiddle = (lleft + rright) // 2
+            if numslist[mmiddle] > targetnumber:
+                rright = mmiddle - 1
+            elif numslist[mmiddle] < targetnumber:
+                lleft = mmiddle + 1
+            else:
+                return mmiddle
+        return -1
+
+
+integerslist = [-1, 0, 3, 5, 9, 12]
+target = 9
+firstexample = Solution()
+print(firstexample.search(integerslist, target))
+'''
+lleft 0
+rright 5
+4
+'''
+integerslist = [-1, 0, 3, 5, 9, 12]
+target = 2
+secondexample = Solution()
+print(secondexample.search(integerslist, target)) #print -1
+'''
+lleft 0
+rright 5
+-1
+'''
