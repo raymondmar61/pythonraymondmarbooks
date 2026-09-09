@@ -169,3 +169,116 @@ lleft 0
 rright 5
 -1
 '''
+
+#Binary Search Algorithm Explained (Full Code Included) - Python Algorithms Series for Beginners [DnvWAd-RGhk]
+def binarysearch(sequence, itemsearched):
+    sequence.sort()
+    beginningindex = 0
+    endingindex = len(sequence) - 1
+    while beginningindex <= endingindex:
+        midpoint = beginningindex + ((endingindex - beginningindex) // 2)
+        midpointvalue = sequence[midpoint]
+        if midpointvalue == itemsearched:
+            return midpoint
+        elif itemsearched < midpointvalue:
+            endingindex = midpoint - 1
+        else:
+            beginningindex = midpoint + 1
+    return None
+
+
+sequencea = [2, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14]
+itemsearcheda = 12
+print(binarysearch(sequencea, itemsearcheda)) #print 8
+sequenceb = [2, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14]
+itemsearchedb = 3
+print(binarysearch(sequenceb, itemsearchedb)) #print None
+
+#recursivebinarysearch is wrong
+def recursivebinarysearch(sequencelist, searchfor):
+    sequencelist.sort()
+    beginningindex = 0
+    endingindex = len(sequencelist) - 1
+    midpoint = beginningindex + ((endingindex - beginningindex) // 2)
+    print(sequencelist)
+    print("inside recursive beginning index, ending index, midpoint", beginningindex, endingindex, midpoint)
+    midpointnumbervalue = sequencelist[midpoint]
+    print("inside recursive midpointvalue", midpointnumbervalue)
+    if midpointnumbervalue == searchfor:
+        return searchfor
+    elif sequencelist[midpoint] == searchfor:
+        return searchfor
+    elif searchfor < midpointnumbervalue:
+        condenselist = sequencelist[0:midpoint]
+        print(condenselist)
+        recursivebinarysearch(condenselist, searchfor)
+    elif searchfor > midpointnumbervalue:
+        condenselist = sequencelist[midpoint + 1:]
+        print(condenselist)
+        recursivebinarysearch(condenselist, searchfor)
+    else:
+        return "Error"
+    return None
+
+
+sequencelista = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+searchfora = 5
+print(recursivebinarysearch(sequencelista, searchfora))
+'''
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+inside recursive beginning index, ending index, midpoint 0 8 4
+inside recursive midpointvalue 5
+5
+'''
+print(recursivebinarysearch(sequencelista, 6))
+'''
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+inside recursive beginning index, ending index, midpoint 0 8 4
+inside recursive midpointvalue 5
+[6, 7, 8, 9]
+[6, 7, 8, 9]
+inside recursive beginning index, ending index, midpoint 0 3 1
+inside recursive midpointvalue 7
+[6]
+[6]
+inside recursive beginning index, ending index, midpoint 0 0 0
+inside recursive midpointvalue 6
+None
+'''
+
+singlenumbersequence = list(range(1, 10))
+print(singlenumbersequence) #print [1, 2, 3, 4, 5, 6, 7, 8, 9]
+searchfor = 7
+beginningindex = 0
+endingindex = len(singlenumbersequence) - 1
+midpoint = beginningindex + ((endingindex - beginningindex) // 2)
+print("beginning index, ending index, midpoint", beginningindex, endingindex, midpoint)
+midpointnumbervalue = singlenumbersequence[midpoint]
+print("midpointvalue", midpointnumbervalue)
+if midpointnumbervalue == searchfor:
+    print("found number", searchfor)
+elif searchfor < midpointnumbervalue:
+    condenselist = singlenumbersequence[0:midpoint]
+elif searchfor > midpointnumbervalue:
+    condenselist = singlenumbersequence[midpoint:]
+print(condenselist)
+endingindex = len(condenselist) - 1
+midpoint = beginningindex + ((endingindex - beginningindex) // 2)
+print("beginning index, ending index, midpoint", beginningindex, endingindex, midpoint)
+midpointnumbervalue = condenselist[midpoint]
+print("midpointvalue", midpointnumbervalue)
+if midpointnumbervalue == searchfor:
+    print("found number", searchfor)
+elif searchfor < midpointnumbervalue:
+    condenselist = singlenumbersequence[0:midpoint]
+elif searchfor > midpointnumbervalue:
+    condenselist = singlenumbersequence[midpoint:]
+'''
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+beginning index, ending index, midpoint 0 8 4
+midpointvalue 5
+[5, 6, 7, 8, 9]
+beginning index, ending index, midpoint 0 4 2
+midpointvalue 7
+found number 7
+'''
