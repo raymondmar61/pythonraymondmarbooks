@@ -282,3 +282,61 @@ beginning index, ending index, midpoint 0 4 2
 midpointvalue 7
 found number 7
 '''
+
+#Algorithms in Python： Binary Search [zeULw-a7Mw8]
+datalist = [2, 4, 5, 7, 8, 9, 12, 14, 17, 19, 22, 25, 27, 28, 33, 37]
+targetnumber = 28
+#Linear search or brute force
+def linearsearch(datalist, targetnumber):
+    datalist.sort()
+    for eachdatalist in range(len(datalist)):
+        if datalist[eachdatalist] == targetnumber:
+            return True
+    return False
+
+
+print(linearsearch(datalist, targetnumber)) #print True
+print(linearsearch(datalist, 50)) #print False
+#Iterative binary search
+def binarysearchiterative(datalist, targetnumber):
+    datalist.sort()
+    low = 0 #initial low first element index number
+    high = len(datalist) - 1 #initial high last element index number
+    while low <= high: #main binary search
+        mid = low + ((high - low) // 2) #acquire the middle element index number
+        midelementvalue = datalist[mid] #the middle element number or value.  midelementvalue is short for middleelement.
+        if targetnumber == midelementvalue:
+            return True
+        elif targetnumber < midelementvalue: #move the search area to the left of the list.  Eliminate all index numbers on the right side of the mid variable.  No need to search the right side of the mid variable.  The high variable is the mid variable minus 1.
+            high = mid - 1
+        elif targetnumber > midelementvalue: #move the search area to the right of the list.  Eliminate all index numbers on the left side of the mid variable.  No need to search the left side of the mid variable.  The low variable is the mid variable minus 1.
+            low = mid + 1
+        else:
+            print("Error")
+            return False
+    return False
+
+
+print(binarysearchiterative(datalist, targetnumber)) #print True
+print(binarysearchiterative(datalist, 50)) #print False
+#Recursive binary search
+def binarysearchrecursive(datalist, targetnumber, low, high):
+    if low > high: #Base case
+        return False
+    else:
+        mid = low + ((high - low) // 2) #acquire the middle element index number
+        midelementvalue = datalist[mid] #the middle element number or value.  midelementvalue is short for middleelement.
+        if targetnumber == midelementvalue:
+            return True
+        elif targetnumber < midelementvalue:
+            return binarysearchrecursive(datalist, targetnumber, low, mid - 1) #change high variable calculating new high variable high = mid - 1
+        elif targetnumber > midelementvalue: ##change low variable calculating new low variable low = mid + 1
+            return binarysearchrecursive(datalist, targetnumber, mid + 1, high)
+        else:
+            print("Error")
+            return False
+    return False
+
+
+print(binarysearchrecursive(datalist, targetnumber, 0, len(datalist) - 1)) #print True
+print(binarysearchrecursive(datalist, 50, 0, len(datalist) - 1)) #print False
