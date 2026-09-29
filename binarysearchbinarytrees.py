@@ -340,3 +340,249 @@ def binarysearchrecursive(datalist, targetnumber, low, high):
 
 print(binarysearchrecursive(datalist, targetnumber, 0, len(datalist) - 1)) #print True
 print(binarysearchrecursive(datalist, 50, 0, len(datalist) - 1)) #print False
+
+#Binary Search in Python [4Q36e9EOxLU]
+'''
+import random
+numberslist = []
+for x in range(100):
+    numberslist.append(random.randint(0, 500))
+print(numberslist) #print [487, 353, 211, 75, 207, 353, 253, 315, 295, 131, 447, 269, 149, 273, 249, 416, 164, 333, 441, 351, 48, 314, 485, 327, 158, 395, 21, 455, 418, 471, 123, 438, 70, 101, 139, 247, 256, 363, 52, 150, 432, 338, 185, 216, 185, 166, 331, 12, 208, 378, 306, 304, 446, 240, 333, 443, 245, 486, 494, 80, 127, 1, 360, 370, 222, 193, 220, 217, 172, 349, 408, 440, 377, 220, 66, 129, 475, 85, 431, 421, 368, 360, 352, 262, 285, 486, 179, 12, 197, 209, 93, 311, 52, 430, 379, 127, 341, 407, 185, 336]
+'''
+numberslist = [487, 353, 211, 75, 207, 353, 253, 315, 295, 131, 447, 269, 149, 273, 249, 416, 164, 333, 441, 351, 48, 314, 485, 327, 158, 395, 21, 455, 418, 471, 123, 438, 70, 101, 139, 247, 256, 363, 52, 150, 432, 338, 185, 216, 185, 166, 331, 12, 208, 378, 306, 304, 446, 240, 333, 443, 245, 486, 494, 80, 127, 1, 360, 370, 222, 193, 220, 217, 172, 349, 408, 440, 377, 220, 66, 129, 475, 85, 431, 421, 368, 360, 352, 262, 285, 486, 179, 12, 197, 209, 93, 311, 52, 430, 379, 127, 341, 407, 185, 336]
+def binarysearchrecursive(numberslist, numbersearch, leftboundary, rightboundary):
+    numberslist.sort()
+    if leftboundary > rightboundary: #Bad numberslist or numbersearch not in numberslist
+        return -1
+    middleboundary = (leftboundary + rightboundary) // 2
+    if numbersearch == numberslist[middleboundary]:
+        return "The number", numbersearch, "is found at sorted numberslist index number", middleboundary
+    elif numbersearch < numberslist[middleboundary]:
+        return binarysearchrecursive(numberslist, numbersearch, leftboundary, middleboundary - 1) #change rightboundary to the middleboundary-1.  Move search area to the left of the middleboundary.
+    else:
+        return binarysearchrecursive(numberslist, numbersearch, middleboundary + 1, rightboundary) #change leftboundary to the middleboundary+1.  Move search area to the right of the middleboundary.
+
+
+numberslist.sort()
+print(numberslist) #print [1, 12, 12, 21, 48, 52, 52, 66, 70, 75, 80, 85, 93, 101, 123, 127, 127, 129, 131, 139, 149, 150, 158, 164, 166, 172, 179, 185, 185, 185, 193, 197, 207, 208, 209, 211, 216, 217, 220, 220, 222, 240, 245, 247, 249, 253, 256, 262, 269, 273, 285, 295, 304, 306, 311, 314, 315, 327, 331, 333, 333, 336, 338, 341, 349, 351, 352, 353, 353, 360, 360, 363, 368, 370, 377, 378, 379, 395, 407, 408, 416, 418, 421, 430, 431, 432, 438, 440, 441, 443, 446, 447, 455, 471, 475, 485, 486, 486, 487, 494]
+print(binarysearchrecursive(numberslist, 93, 0, len(numberslist) - 1)) #print ('The number', 93, 'is found at sorted numberslist index number', 12)
+
+#Binary Search Tree in Python [DlWxqU3LLpY]
+class TreeNode:
+    def __init__(self, value):
+        self.leftnode = None
+        self.rightnode = None
+        self.value = value
+    def insertnewnode(self, value):
+        if value < self.value:
+            if self.leftnode is None: #there is no value on the left node
+                self.leftnode = TreeNode(value)
+            else:
+                self.leftnode.insertnewnode(value)
+        else:
+            if self.rightnode is None: #there is no value on the right node
+                self.rightnode = TreeNode(value)
+            else:
+                self.rightnode.insertnewnode(value)
+    def inordertraversal(self):
+        if self.leftnode:
+            self.leftnode.inordertraversal()
+        print(self.value)
+        if self.rightnode:
+            self.rightnode.inordertraversal()
+    def preordertraversal(self):
+        print(self.value)
+        if self.leftnode:
+            self.leftnode.preordertraversal()
+        if self.rightnode:
+            self.rightnode.preordertraversal()
+    def postordertraversal(self):
+        if self.leftnode:
+            self.leftnode.postordertraversal()
+        if self.rightnode:
+            self.rightnode.postordertraversal()
+        print(self.value)
+    def findnode(self, value):
+        if value < self.value:
+            if self.leftnode is None:
+                return False
+            else:
+                return self.leftnode.findnode(value)
+        elif value > self.value:
+            if self.rightnode is None:
+                return False
+            else:
+                return self.rightnode.findnode(value)
+        else:
+            return True
+
+
+tree1 = TreeNode(10)
+tree1.insertnewnode(5)
+tree1.insertnewnode(4)
+tree1.insertnewnode(2)
+tree1.insertnewnode(1)
+tree1.insertnewnode(3)
+tree1.insertnewnode(22)
+tree1.insertnewnode(11)
+tree1.insertnewnode(12)
+print(tree1.leftnode.leftnode.leftnode.rightnode.value) #print 3
+tree2 = TreeNode(6)
+tree2.insertnewnode(5)
+tree2.insertnewnode(2)
+tree2.insertnewnode(4)
+tree2.insertnewnode(1)
+tree2.insertnewnode(2)
+tree2.insertnewnode(4)
+tree2.insertnewnode(19)
+tree2.insertnewnode(29)
+tree2.insertnewnode(11)
+tree2.insertnewnode(4)
+tree2.insertnewnode(2)
+tree2.inordertraversal()
+'''
+1
+2
+2
+2
+4
+4
+4
+5
+6
+11
+19
+29
+'''
+print("\n")
+tree3 = TreeNode(6)
+tree3.insertnewnode(5)
+tree3.insertnewnode(2)
+tree3.insertnewnode(4)
+tree3.insertnewnode(1)
+tree3.insertnewnode(2)
+tree3.insertnewnode(4)
+tree3.insertnewnode(19)
+tree3.insertnewnode(29)
+tree3.insertnewnode(11)
+tree3.insertnewnode(4)
+tree3.insertnewnode(2)
+tree3.preordertraversal()
+'''
+6
+5
+2
+1
+4
+2
+2
+4
+4
+19
+11
+29
+'''
+print("\n")
+tree4 = TreeNode(6)
+tree4.insertnewnode(5)
+tree4.insertnewnode(2)
+tree4.insertnewnode(4)
+tree4.insertnewnode(1)
+tree4.insertnewnode(2)
+tree4.insertnewnode(4)
+tree4.insertnewnode(19)
+tree4.insertnewnode(29)
+tree4.insertnewnode(11)
+tree4.insertnewnode(4)
+tree4.insertnewnode(2)
+tree4.postordertraversal()
+'''
+1
+2
+2
+4
+4
+4
+2
+5
+11
+29
+19
+6
+'''
+print(tree4.findnode(7)) #print False
+print(tree4.findnode(29)) #print True
+
+'''
+#Binary Search Tree Simulation
+#Pseudocode from https://see-algorithms.com/data-structures/BST
+function insert(node, key):
+    if key < node.value
+        if node.left is null:
+            node.left = new Node(key)
+        else:
+            insert(node.left, key)
+    else if key > node.value:
+        if node.right is null:
+            node.right = new Node(key)
+        else:
+            insert(node.right, key)
+'''
+
+#Binary Search Trees in Python： Introduction - Insertion and Search [yC83Kp2xig8]
+
+#Node class for the binary search tree.
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.leftchildsouthwest = None
+        self.rightchildsoutheast = None
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None #root node is empty when start creating binary search tree.
+    def insert(self, data): #insert method.  Provide the data which contains the nodes to be inserted to the binary search tree.
+        if self.root is None: #If nothing in the tree, then root is set to None.  Set the root equal to the node constructed.
+            self.root = Node(data) #Construct the node from the data provided.  Is this the parent or root node or initial insert node?
+        else:
+            self._insertallothernodes(data, self.root) #One or more nodes.  Helper method with the underscore in a recursive manner.  Insert the new node for which there is a parent.
+    def _insertallothernodes(self, data, currentnode):
+        if data < currentnode.data:
+            if currentnode.leftchildsouthwest is None: #If there is no left child, then insert the node as the left child
+                currentnode.leftchildsouthwest = Node(data)
+            else: #There is a left child.  Move to the left or move southwest(?).  Recursively call the _insertallothernodes() function.
+                self._insertallothernodes(data, currentnode.leftchildsouthwest)
+        elif data > currentnode.data:
+            if currentnode.rightchildsoutheast is None: #If there is no right child, then insert the node as the right child
+                currentnode.rightchildsoutheast = Node(data)
+            else: #There is a right child.  Move to the right or move southeast(?).  Recursively call the _insertallothernodes() function.
+                self._insertallothernodes(data, currentnode.rightchildsoutheast)
+        else: #data is equal to an element or node already in the tree.  No duplicates.
+            print("Value is already present in tree.")
+    def findandsearch(self, data):
+        if self.root:
+            isfound = self._find(data, self.root) #Find the node in the binary tree
+            if isfound:
+                return True
+            return False
+        else:
+            return None
+    def _find(self, data, currentnode):
+        if data > currentnode.data and currentnode.rightchildsoutheast: #Finding the node is on the right side
+            return self._find(data, currentnode.rightchildsoutheast)
+        elif data < currentnode.data and currentnode.leftchildsouthwest: #Finding the node is on the left side
+            return self._find(data, currentnode.leftchildsouthwest)
+        if data == currentnode.data: #Found the node after self._find recursively
+            return True
+
+
+bst1 = BinarySearchTree()
+bst1.insert(4)
+bst1.insert(2)
+bst1.insert(8)
+bst1.insert(5)
+bst1.insert(10)
+print(bst1.findandsearch(4)) #print True
+print(bst1.findandsearch(5)) #print True
+print(bst1.findandsearch(10)) #print True
+print(bst1.findandsearch(11)) #print False
