@@ -617,3 +617,21 @@ import re
 text = "The price is 12.34 and the weight is 0.567"
 alldecimalnumbersrightofdecimal = re.findall(r"\.(\d+)", text)
 print(alldecimalnumbersrightofdecimal) #print ['34', '567']
+
+#Extract number at end as integer with leading zeros
+extractnumberatend = re.findall(r"\d+$", stringfoo)
+print(extractnumberatend) #print ['00098']
+extractfullinteger = "".join(extractnumberatend)
+print(extractfullinteger) #print 00098
+rawnumber = "00098"
+width = len(rawnumber)
+print(width) #print 5
+newnumber = int(rawnumber) + 1
+print(newnumber) #print 99
+#f string
+print(f"{newnumber:0{width}d}") #print 00099
+print(f"{newnumber:0{1}d}") #print 99
+print(f"{newnumber:0{2}d}") #print 99
+print(f"{newnumber:0{3}d}") #print 099
+print(f"{newnumber:0{4}d}") #print 0099
+print(f"{newnumber:0{5}d}") #print 00099
